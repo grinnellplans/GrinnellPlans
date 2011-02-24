@@ -1,0 +1,61 @@
+.left
+  %br
+  %br
+  %table{:cellpadding=>0, :width=>"100%"}
+    %tr
+      %td{:colspan=>2, :align=>"center"}
+        =image_tag "logo.png"
+    %tr.boxes
+      %td.boxes{:colspan=>2, :align=>"center"}
+        =form_for @account, :url=>{:action=>:login} do |f|
+          =f.label :username
+          =f.text_field :username
+          %br
+          =f.label :password
+          =f.password_field :password
+          %br
+          =f.submit "Login"
+          =f.hidden_field "js_test_value",:value => "off"
+          :javascript
+            document.getElementById("account_js_test_value").value = "on";
+      %tr
+        %td{:align=>"right", :width=>"50%"}
+          =form_for @account, :url=>{:action=>:login} do |f|
+            =f.hidden_field "guest", :value => "1" 
+            =f.submit "Guest"
+        %td
+    %tr
+      %td{:colspan=>2, :align=>"center"}
+     
+        %br
+        %br
+          Need a plan? 
+          =link_to "Register", "TODO"
+          if you have an @grinnell.edu email address.
+        %br
+        %span{:style=>"font-size:.7em"}
+          Otherwise
+          =mail_to "grinnellplans@gmail.com", "email us"
+          Alumni, please include your @alumni.grinnell.edu forwarding address (which you can get 
+          =link_to "here", "http://www.alumniconnections.com/olc/pub/GRN/permanentemail.html"
+          ) and grad year.
+        %br
+        %br
+        What is plans? 
+        =link_to "GrinnellPlans FAQ", "documents/faq.html"
+        %br
+        Email 
+        =mail_to "grinnellplans@gmail.com"
+        with questions or concerns.
+        %br
+        %br
+        %br
+        %br
+        %font{:size=>"-1", :face=>"verdana"}
+          %i This site is not owned by, operated by, or officially  affiliated with Grinnell College, Grinnell, IA.
+%hr
+%center
+%p.legalese
+  Use of the GrinnellPlans service means you have accepted the 
+  =link_to "GrinnellPlans Terms of Service", "http://www.grinnellplans.com/tos/"
+  agreement. If you do not accept and abide by this agreement, you may not use GrinnellPlans. This agreement is subject to change without notice, so you should periodically review the most up-to-date version.

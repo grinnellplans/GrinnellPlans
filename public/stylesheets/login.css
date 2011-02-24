@@ -1,0 +1,22 @@
+BODY { 
+ font-family: verdana;
+ }
+TD { 
+ align: center;
+ }
+.boxes { 
+ font-family: courier; 
+ }
+.buttons {
+ }
+.graphic{
+ position: relative;
+ top: 50px;
+ }
+.legalese {
+ position: static; 
+ text-align: justify;
+ cellpadding: 3;
+ font-size: 8pt;
+ font-family: verdana;
+ }
