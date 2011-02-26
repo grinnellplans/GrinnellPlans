@@ -36,9 +36,9 @@ ActiveRecord::Schema.define(:version => 0) do
 
   add_index "accounts", ["changed"], :name => "changed"
   add_index "accounts", ["password"], :name => "password"
-  add_index "accounts", ["password"], :name => "password_2"
+  add_index "accounts", ["username", "changed"], :name => "username_changed"
+  add_index "accounts", ["username", "userid"], :name => "usernameid_uniq", :unique => true
   add_index "accounts", ["username"], :name => "username", :unique => true
-  add_index "accounts", ["username"], :name => "username_2"
 
   create_table "autofinger", :id => false, :force => true do |t|
     t.integer  "owner",    :limit => 2, :default => 0, :null => false
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(:version => 0) do
   end
 
   add_index "autofinger", ["interest"], :name => "interest"
+  add_index "autofinger", ["owner", "interest"], :name => "unique", :unique => true
   add_index "autofinger", ["owner"], :name => "owner"
 
   create_table "avail_links", :primary_key => "linknum", :force => true do |t|
@@ -82,12 +83,16 @@ ActiveRecord::Schema.define(:version => 0) do
     t.string  "status", :limit => 3
   end
 
+  add_index "js_status", ["userid"], :name => "userid_idx"
+
   create_table "mainboard", :primary_key => "threadid", :force => true do |t|
     t.string   "title",       :limit => 128
     t.datetime "created"
     t.datetime "lastupdated"
     t.integer  "userid",      :limit => 2,   :default => 0, :null => false
   end
+
+  add_index "mainboard", ["lastupdated"], :name => "lastupdated"
 
   create_table "migration_test", :id => false, :force => true do |t|
     t.text "field1"
@@ -140,6 +145,8 @@ ActiveRecord::Schema.define(:version => 0) do
     t.string   "display",       :limit => 5
     t.datetime "date_approved"
   end
+
+  add_index "secrets", ["display", "date_approved"], :name => "display_date"
 
   create_table "style", :primary_key => "style", :force => true do |t|
     t.string "path",  :limit => 128
