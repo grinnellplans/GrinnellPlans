@@ -35,15 +35,6 @@ class AccountTest < ActiveSupport::TestCase
     assert a.valid_password?( "foobar" )
   end
 
-  test "transitions legacy MD5 password" do
-    old_crypted = "$1$f8Qwor9I$bSkUziPv/xNI/.Vhb/NUr."
-    assert a = Account.create( :username => "foobar", :crypted_password => old_crypted )
-    a.valid_password?( "barbaz" )
-    assert_equal old_crypted, a.crypted_password
-    a.valid_password?( "foobar" )
-    assert_not_equal old_crypted, a.crypted_password
-  end
-
   test "transitions legacy DES password" do
     old_crypted = "abVbJXzHUY99s"
     assert a = Account.create( :username => "foobar", :crypted_password => old_crypted )
@@ -51,5 +42,6 @@ class AccountTest < ActiveSupport::TestCase
     assert_equal old_crypted, a.crypted_password
     a.valid_password?( "foobar" )
     assert_not_equal old_crypted, a.crypted_password
+    assert_match /\$1\$.{8}\$.{22}/, a.crypted_password
   end
 end
