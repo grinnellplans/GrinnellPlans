@@ -47,6 +47,7 @@ GEM
       net-ssh (>= 2.0.14)
       net-ssh-gateway (>= 1.0.0)
     columnize (0.3.2)
+    crypt3 (1.1.2)
     dynamic_form (1.1.3)
     erubis (2.6.6)
       abstract (>= 1.0.0)
@@ -112,6 +113,7 @@ DEPENDENCIES
   annotate
   authlogic
   capistrano
+  crypt3
   dynamic_form
   exception_notification!
   haml

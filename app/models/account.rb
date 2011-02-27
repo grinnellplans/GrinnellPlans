@@ -43,7 +43,10 @@ class Account < ActiveRecord::Base
   acts_as_authentic do |c|
     c.login_field :username
     c.crypted_password_field :crypted_password
-    c.crypto_provider Authlogic::CryptoProviders::MD5
+    c.transition_from_crypto_providers [
+      PhpCrypt::CryptoProviders::DES,
+      PhpCrypt::CryptoProviders::MD5
+    ]
     c.validate_email_field false
     c.check_passwords_against_database false
   end

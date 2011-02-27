@@ -12,6 +12,7 @@ gem 'mysql'
 gem 'haml'
 gem 'authlogic'
 gem 'dynamic_form'
+gem 'crypt3'
 
 #https://github.com/rails/jquery-ujs
 gem 'jquery-rails', '>= 0.2.6'
