@@ -21,7 +21,11 @@ class Account < ActiveRecord::Base
   has_one :viewed_secret, :foreign_key=> :userid
   has_one :plan, :foreign_key => :user_id
   has_one :display, :foreign_key => :user_id
-  
+
+  before_validation do
+    self.show_images = true
+  end
+
   #can't have "changed" attribute because of changed? method
   class << self
     def instance_method_already_implemented?(method_name)
@@ -36,6 +40,23 @@ class Account < ActiveRecord::Base
     self[:changed]
   end
 
+  acts_as_authentic do |c|
+    c.login_field :username
+    c.crypted_password_field :crypted_password
+    c.crypto_provider PhpCrypt::CryptoProviders::MD5
+    c.transition_from_crypto_providers PhpCrypt::CryptoProviders::DES
+    c.validate_email_field false
+    c.check_passwords_against_database false
+  end
+
+  # Trick authlogic into behaving with our column name
+  def crypted_password= hash
+    write_attribute :password, hash
+  end
+
+  def crypted_password
+    read_attribute :password
+  end
 end
 
 

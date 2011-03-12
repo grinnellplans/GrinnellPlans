@@ -7,7 +7,8 @@
         =image_tag "logo.png"
     %tr.boxes
       %td.boxes{:colspan=>2, :align=>"center"}
-        =form_for @account, :url=>{:action=>:login} do |f|
+        =form_for @session, :url => account_session_path do |f|
+          = f.error_messages
           =f.label :username
           =f.text_field :username
           %br
@@ -20,7 +21,7 @@
             document.getElementById("account_js_test_value").value = "on";
       %tr
         %td{:align=>"right", :width=>"50%"}
-          =form_for @account, :url=>{:action=>:login} do |f|
+          =form_for @session do |f|
             =f.hidden_field "guest", :value => "1" 
             =f.submit "Guest"
         %td
