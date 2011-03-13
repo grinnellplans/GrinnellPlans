@@ -5,11 +5,12 @@ class ViewedSecret < ActiveRecord::Base
 end
 
 
+
 # == Schema Information
 #
 # Table name: viewed_secrets
 #
-#  userid :integer(4)      default(0), not null, primary key
+#  userid :integer         not null, primary key
 #  date   :datetime
 #
 

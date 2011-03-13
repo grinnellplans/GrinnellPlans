@@ -3,11 +3,12 @@ class TentativeAccount < ActiveRecord::Base
 end
 
 
+
 # == Schema Information
 #
 # Table name: tentative_accounts
 #
-#  tentative_accounts_id :integer(4)      not null, primary key
+#  tentative_accounts_id :integer         not null, primary key
 #  created               :datetime
 #  token                 :string(16)
 #  session               :string(200)

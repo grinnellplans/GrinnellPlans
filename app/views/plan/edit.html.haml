@@ -1,0 +1,11 @@
+#editform
+  =form_for @plan,  :url => {:action=>:update, :controller=>:plan} do |f|
+    =f.text_area :edit_text, :onkeyup=>"javascript:checkPlanLength()"
+    %br
+    #edit_fill_meter
+      .fill_bar
+        .full_amount
+      .fill_percent
+        0%
+    =f.submit
+

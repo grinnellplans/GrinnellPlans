@@ -6,13 +6,14 @@ class PollVote < ActiveRecord::Base
 end
 
 
+
 # == Schema Information
 #
 # Table name: poll_votes
 #
-#  poll_vote_id   :integer(4)      not null, primary key
-#  poll_choice_id :integer(4)
-#  userid         :integer(4)
+#  poll_vote_id   :integer         not null, primary key
+#  poll_choice_id :integer
+#  userid         :integer
 #  created        :datetime
 #
 

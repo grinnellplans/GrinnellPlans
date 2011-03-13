@@ -8,15 +8,16 @@ class SubBoard < ActiveRecord::Base
 end
 
 
+
 # == Schema Information
 #
 # Table name: subboard
 #
-#  messageid :integer(2)      not null, primary key
+#  messageid :integer         not null, primary key
 #  threadid  :integer(2)      default(0), not null
 #  created   :datetime
 #  userid    :integer(2)      default(0), not null
 #  title     :string(128)
-#  contents  :text            default(""), not null
+#  contents  :text            not null
 #
 

@@ -1,0 +1,5 @@
+-unless current_account.blank?
+  -for link in current_account.avail_links
+    =link.html_code.to_s.html_safe #TODO railsify
+    %br
+    

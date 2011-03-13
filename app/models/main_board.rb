@@ -5,11 +5,12 @@ class MainBoard < ActiveRecord::Base
   has_many :sub_boards, :foreign_key =>:threadid
 end
 
+
 # == Schema Information
 #
 # Table name: mainboard
 #
-#  threadid    :integer(2)      not null, primary key
+#  threadid    :integer         not null, primary key
 #  title       :string(128)
 #  created     :datetime
 #  lastupdated :datetime

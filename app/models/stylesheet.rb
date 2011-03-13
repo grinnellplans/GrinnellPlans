@@ -4,11 +4,12 @@ class Stylesheet < ActiveRecord::Base
   
 end
 
+
 # == Schema Information
 #
 # Table name: stylesheet
 #
-#  userid     :integer(2)      default(0), not null
+#  userid     :integer         not null
 #  stylesheet :text(255)
 #
 

@@ -1,14 +1,20 @@
 class PollQuestion < ActiveRecord::Base
   set_primary_key :poll_question_id 
   has_many :poll_choices
+ 
+ # don't use "type" as a column for Single table inheritance, it's a legacy name
+ def self.inheritance_column
+   "na"
+ end
 end
+
 
 
 # == Schema Information
 #
 # Table name: poll_questions
 #
-#  poll_question_id :integer(4)      not null, primary key
+#  poll_question_id :integer         not null, primary key
 #  html             :text
 #  type             :string(20)
 #  created          :datetime

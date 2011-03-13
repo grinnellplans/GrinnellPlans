@@ -3,11 +3,12 @@ class Style < ActiveRecord::Base
   has_many :displays, :foreign_key => :style
 end
 
+
 # == Schema Information
 #
 # Table name: style
 #
-#  style :integer(1)      not null
+#  style :integer         not null
 #  path  :string(128)
 #  descr :string(255)
 #

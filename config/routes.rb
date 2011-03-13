@@ -1,4 +1,20 @@
 Plans::Application.routes.draw do
+  # get "admin/add_hser"
+  # get "admin/auth"
+  # get "admin/change_motd"
+  # get "admin/change_password"
+  # get "admin/change_spec"
+  # get "admin/delete_user"
+  # get "admin/email"
+  # get "admin/index"
+  # get "admin/manage_donations"
+  # get "admin/new_accounts"
+  # get "admin/polls"
+  # get "admin/secrets"
+  # get "admin/style_stats"
+  # get "admin/swap_password"
+  # get "admin/update_frequency"
+
   # map.connect ':controller', :action => 'index'
   # map.connect 'read', :controller=>'accounts', :action => 'index'
 
@@ -54,7 +70,7 @@ Plans::Application.routes.draw do
   root :to => "home#index"
 
   # See how all your routes lay out with "rake routes"
-
+  match 'read/:username' => 'plan#read'
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
    match ':controller(/:action(/:id(.:format)))'

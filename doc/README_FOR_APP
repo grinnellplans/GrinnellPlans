@@ -1,14 +1,22 @@
-Use this README file to introduce your application and point to useful places in the API for learning more.
-Run "rake doc:app" to generate API documentation for your models, controllers, helpers, and libraries.
-
-
-to generate diagrams:
->rake diagram:all
-
-to annotate models:
->annotate
-
-to start app:
+to start app, provided you've got rails installed:
 >bundle install
+>rake db:setup  
 >rails server
 
+to generate diagrams (in doc/):
+>rake diagram:all
+diagrams are also generated after >rake db:migrate 
+
+ 
+to annotate models (that is, to add the column info to the models as comments):
+>annotate
+
+
+I like Hirb to pretty up the display of data when you're using the console.  
+Once you've got the console going just "Hirb.enable" to enable pretty data formatting
+
+I started with the doc/grinnellplans_sample_dbdump.sql database that I got from http://code.google.com/p/grinnellplans/source/checkout
+
+
+to export seed data from your existing development database to the db/seed/development/TABLE_NAME.csv
+>rake export_all_models 

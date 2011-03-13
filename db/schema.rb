@@ -38,9 +38,9 @@ ActiveRecord::Schema.define(:version => 20110227065143) do
 
   add_index "accounts", ["changed"], :name => "changed"
   add_index "accounts", ["password"], :name => "password"
-  add_index "accounts", ["username", "changed"], :name => "username_changed"
-  add_index "accounts", ["username", "userid"], :name => "usernameid_uniq", :unique => true
+  add_index "accounts", ["password"], :name => "password_2"
   add_index "accounts", ["username"], :name => "username", :unique => true
+  add_index "accounts", ["username"], :name => "username_2"
 
   create_table "autofinger", :id => false, :force => true do |t|
     t.integer  "owner",    :limit => 2, :default => 0, :null => false
@@ -52,14 +52,13 @@ ActiveRecord::Schema.define(:version => 20110227065143) do
   end
 
   add_index "autofinger", ["interest"], :name => "interest"
-  add_index "autofinger", ["owner", "interest"], :name => "unique", :unique => true
   add_index "autofinger", ["owner"], :name => "owner"
 
   create_table "avail_links", :primary_key => "linknum", :force => true do |t|
     t.string "linkname",  :limit => 128
     t.text   "descr"
-    t.text   "html_code"
-    t.text   "static"
+    t.text   "html_code", :limit => 255
+    t.text   "static",    :limit => 255
   end
 
   create_table "boardvotes", :primary_key => "voteid", :force => true do |t|
@@ -85,16 +84,12 @@ ActiveRecord::Schema.define(:version => 20110227065143) do
     t.string  "status", :limit => 3
   end
 
-  add_index "js_status", ["userid"], :name => "userid_idx"
-
   create_table "mainboard", :primary_key => "threadid", :force => true do |t|
     t.string   "title",       :limit => 128
     t.datetime "created"
     t.datetime "lastupdated"
     t.integer  "userid",      :limit => 2,   :default => 0, :null => false
   end
-
-  add_index "mainboard", ["lastupdated"], :name => "lastupdated"
 
   create_table "migration_test", :id => false, :force => true do |t|
     t.text "field1"
@@ -117,7 +112,7 @@ ActiveRecord::Schema.define(:version => 20110227065143) do
 
   create_table "plans", :force => true do |t|
     t.integer "user_id",   :limit => 2
-    t.text    "plan",      :limit => 2147483647
+    t.text    "plan",      :limit => 16777215
     t.text    "edit_text"
   end
 
@@ -148,15 +143,13 @@ ActiveRecord::Schema.define(:version => 20110227065143) do
     t.datetime "date_approved"
   end
 
-  add_index "secrets", ["display", "date_approved"], :name => "display_date"
-
   create_table "style", :primary_key => "style", :force => true do |t|
     t.string "path",  :limit => 128
     t.string "descr"
   end
 
   create_table "stylesheet", :primary_key => "userid", :force => true do |t|
-    t.text "stylesheet"
+    t.text "stylesheet", :limit => 255
   end
 
   create_table "subboard", :primary_key => "messageid", :force => true do |t|

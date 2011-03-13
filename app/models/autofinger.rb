@@ -2,8 +2,8 @@ class Autofinger < ActiveRecord::Base
   set_table_name :autofinger
   validates_presence_of :owner, :interest
   
-  belongs_to :interested_party, :foreign_key => :owner, :class_name => "Accounts"
-  belongs_to :subject_of_interest, :foreign_key => :interest, :class_name => "Accounts"
+  belongs_to :interested_party, :foreign_key => :owner, :class_name => "Account"
+  belongs_to :subject_of_interest, :foreign_key => :interest, :class_name => "Account"
 end
 
 # == Schema Information
