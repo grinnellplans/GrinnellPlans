@@ -12,7 +12,7 @@ install the gems that are specified in Gemfile
  bundle install 
 
 create the database (specified in database yml) and seed it with data
- rake db:migrate
+ rake db:setup
 
 start the server GrinnellPlans will be at http://localhost:3000
  rails server
