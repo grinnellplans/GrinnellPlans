@@ -1,7 +1,11 @@
 ==Grinnell Plans
 === Quickstart
-Install {git}[http://git-scm.com/]
-Install {ruby & rails}[http://rubyonrails.org/download]
+
+
+Install {git}[http://git-scm.com/].
+
+Install {ruby & rails}[http://rubyonrails.org/download].
+
 bundler will manage the gems for the project
  sudo gem install bundler
 checkout the project
