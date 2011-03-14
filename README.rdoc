@@ -1,0 +1,39 @@
+==Grinnell Plans
+=== Quickstart
+Install {git}[http://git-scm.com/]
+Install {ruby & rails}[http://rubyonrails.org/download]
+bundler will manage the gems for the project
+ sudo gem install bundler
+checkout the project
+ git clone git@github.com:annaswims/GrinnellPlans.git
+ cd GrinnellPlans
+
+install the gems that are specified in Gemfile
+ bundle install 
+
+create the database (specified in database yml) and seed it with data
+ rake db:migrate
+
+start the server GrinnellPlans will be at http://localhost:3000
+ rails server
+
+
+== helpful tasks
+
+to generate diagrams (in doc/):
+ rake diagram:all
+diagrams are also generated after rake db:migrate 
+
+ 
+to annotate models (that is, to add the column info to the models as comments):
+ annotate
+
+to pretty up the display of data when you're using the console.  
+Once you've got the console going (>rails console) >Hirb.enable 
+
+I started with the doc/grinnellplans_sample_dbdump.sql database that I got from http://code.google.com/p/grinnellplans/source/checkout
+
+to export seed data from your existing development database to the db/seed/development/TABLE_NAME.csv
+ rake export_all_models 
+
+
