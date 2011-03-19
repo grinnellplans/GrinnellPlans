@@ -1,4 +1,5 @@
 class PlansController < ApplicationController
+  before_filter :require_user
 
   def edit
    @plan = current_account.plan

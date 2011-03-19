@@ -14,4 +14,10 @@ class ApplicationController < ActionController::Base
     @current_account_session ||= AccountSession.find
   end
 
+  def require_user
+    if current_account.nil?
+      redirect_to new_account_session_path
+    end
+  end
+
 end
