@@ -27,3 +27,6 @@ group :development do
   gem "single_test"
 end
 
+group :test, :development do
+  gem 'rspec-rails'
+end
