@@ -15,8 +15,26 @@ class PlanController < ApplicationController
   end
   
   def read
-      @plan = Account.find_by_username(params[:username]).plan
-      # TODO mark as read
+      @account = Account.find_by_username(params[:username])
+      if @account.blank?
+        #search
+      else
+          # mark as read
+          autofinger = Autofinger.where(:owner=>current_account.userid, :interest=> @account.userid ).first
+          unless autofinger.blank?
+            autofinger.updated = '0'
+            autofinger.readtime = Time.now
+            autofinger.save!
+          end
+      end
+  end
+  
+  def search
+    
+  end
+  
+  def mark_as_read
+    
   end
   
 end
