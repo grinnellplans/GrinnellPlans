@@ -65,14 +65,13 @@ Plans::Application.routes.draw do
   #     resources :products
   #   end
 
+  # See how all your routes lay out with "rake routes"
+
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => "home#index"
+  root :controller => "plans", :action => "show", :id => "plans"
 
-  # See how all your routes lay out with "rake routes"
-  match 'read/:username' => 'plan#read'
-  # This is a legacy wild controller route that's not recommended for RESTful applications.
-  # Note: This route will make all actions in every controller accessible via GET requests.
-   match ':controller(/:action(/:id(.:format)))'
-   resource :account_session, :only => [ :new, :create, :destroy ]
+  resource :plan, :only => [ :edit, :update ]
+  resources :plans, :only => [ :show ], :as => "read"
+  resource :user, :controller => "account_sessions", :as => "account_session", :only => [ :new, :create, :destroy ], :path_names => { :new => "login" }
 end

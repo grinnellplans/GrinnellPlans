@@ -2,4 +2,4 @@
   -for link in current_account.avail_links
     =link.html_code.to_s.html_safe #TODO railsify
     %br
-    
+  = link_to "Log out", account_session_path, :method => :delete

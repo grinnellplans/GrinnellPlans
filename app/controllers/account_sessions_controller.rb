@@ -7,7 +7,7 @@ class AccountSessionsController < ApplicationController
   def create
     @session = AccountSession.new params[ :account_session ]
     if @session.save
-      redirect_to :controller => :home, :action => :index
+      redirect_to "/"
     else
       render :action => :new
     end

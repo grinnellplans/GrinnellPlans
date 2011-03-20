@@ -1,20 +1,22 @@
-class PlanController < ApplicationController
-  
+class PlansController < ApplicationController
+  before_filter :require_user
+
   def edit
    @plan = current_account.plan
   end
-  
+
   def update
     @plan = current_account.plan
     @plan.edit_text = params[:plan][:edit_text]
     if @plan.save
-      redirect_to :action=>:read, :username => @plan.account.username
+      redirect_to :action=>:show, :id => @plan.account.username
     else
       render :action => "edit"
     end
   end
+
   
-  def read
+  def show
       @account = Account.find_by_username(params[:username])
       if @account.blank?
         #search
@@ -34,7 +36,6 @@ class PlanController < ApplicationController
   end
   
   def mark_as_read
-    
   end
-  
+
 end

@@ -4,7 +4,6 @@ source  'http://gems.github.com'
 gem 'rails', '3.0.4'
 gem 'sqlite3'
 gem 'capistrano'
-gem 'mysql'
 gem 'haml'
 gem 'authlogic'
 gem 'dynamic_form'
@@ -28,3 +27,6 @@ group :development do
   gem "single_test"
 end
 
+group :test, :development do
+  gem 'rspec-rails'
+end
