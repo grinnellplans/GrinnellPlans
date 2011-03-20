@@ -1,12 +1,12 @@
-require 'test_helper'
+require 'spec_helper'
 
-class PlansControllerTest < ActionController::TestCase
-  def setup
+describe PlansController do
+  before do
     assert @account = Account.create( :username => "testaccount" )
     assert @plan = Plan.create( :account => @account, :edit_text => "" )
   end
 
-  test "redirects to login when no user present" do
+  it "redirects to login when no user present" do
     get :show, { :id => @account.username }, { }
     assert_redirected_to new_account_session_path
   end
