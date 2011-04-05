@@ -8,6 +8,7 @@ gem 'haml'
 gem 'authlogic'
 gem 'dynamic_form'
 gem 'crypt3'
+gem 'sanitize', :git => "git://github.com/youngian/sanitize.git"
 
 #https://github.com/rails/jquery-ujs
 gem 'jquery-rails', '>= 0.2.6'

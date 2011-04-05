@@ -24,7 +24,7 @@ describe Plan do
 
     it "sanitizes disallowed html" do
       input = "<script>alert('foo');</script> image: <img src=\"foo.jpg\" />"
-      expected = "&lt;script&gt;alert('foo');&lt;/script&gt; image: &lt;img src=&quot;foo.jpg&quot; /&gt;"
+      expected = "&lt;script&gt;alert('foo');&lt;/script&gt; image: &lt;img src=\"foo.jpg\"&gt;"
       it_converts_text input, expected
     end
 

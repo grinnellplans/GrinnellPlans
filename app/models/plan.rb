@@ -10,22 +10,26 @@ class Plan < ActiveRecord::Base
   # TODO make actual rails links
   # this is by no means finished or tested
   def clean_text
+    config = {}
+    config[ :elements ] = %w[ a b hr i p span pre tt ]
+    config[ :attributes ] = {
+      'a' => [ 'href' ],
+      'p' => [ 'class' ],
+      'span' => [ 'class' ],
+    }
+    config[ :protocols ] = {
+      'a' => { 'href' => [ 'http', 'https', 'mailto' ] }
+    }
+    config[ :escape_only ] = true
+    plan = edit_text
+    plan.gsub!(/\n/s, "<br>")
+    plan.gsub!(/<hr>/si, "</p><hr><p class=\"sub\">")
+    plan = '<p class="sub">'+plan+'</p>';
+    self.plan= Sanitize.clean plan, config
+     #self.plan.gsub!(/\&lt\;strike\&gt\;(.*?)\&lt\;\/strike\&gt\;/si, "<span class=\"strike\">\\1</span><!--strike-->")
+     #self.plan.gsub!(/\&lt\;u\&gt\;(.*?)\&lt\;\/u\&gt\;/si, "<span class=\"underline\">\\1</span><!--u-->") #allow stuff in the underline tag back in
+     #self.plan.gsub!(/\&lt\;a.+?href=.&quot\;(.+?).&quot\;&gt\;(.+?)&lt\;\/a&gt\;/si, "<a href=\"\\1\" class=\"onplan\">\\2</a>")
      checked = {}
-     self.plan= CGI.escapeHTML(edit_text) #take out html
-     # escape all html but <b><tt><pre><s><i><u><a href="">
-     self.plan.gsub!(/((\[\w*\],?){8})(?=[^ ,])/s, "$1 ")
-     self.plan.gsub!(/\n/s, "<br>")
-     self.plan.gsub!(/\&lt\;hr\&gt\;/si, "</p><hr><p class=\"sub\">")
-     # replace the first </p> that we just inserted erroneously
-     self.plan = '<p class="sub">'+self.plan+'</p>';
-     self.plan.gsub!(/\&lt\;b\&gt\;(.*?)\&lt\;\/b\&gt\;/si, "<b>\\1</b>") #allow stuff in the bold tag back in
-     self.plan.gsub!(/\&lt\;tt\&gt\;(.*?)\&lt\;\/tt\&gt\;/si, "<tt>\\1</tt>")
-     self.plan.gsub!(/\&lt\;pre\&gt\;(.*?)\&lt\;\/pre\&gt\;/si, "</p><pre class=\"sub\">\\1</pre><p class=\"sub\">")
-     self.plan.gsub!(/\&lt\;strike\&gt\;(.*?)\&lt\;\/strike\&gt\;/si, "<span class=\"strike\">\\1</span><!--strike-->")
-     self.plan.gsub!(/\&lt\;s\&gt\;(.*?)\&lt\;\/s\&gt\;/si, "<s>\\1</s>")
-     self.plan.gsub!(/\&lt\;i\&gt\;(.*?)\&lt\;\/i\&gt\;/si, "<i>\\1</i>") #allow stuff in the italics tag back in
-     self.plan.gsub!(/\&lt\;u\&gt\;(.*?)\&lt\;\/u\&gt\;/si, "<span class=\"underline\">\\1</span><!--u-->") #allow stuff in the underline tag back in
-     self.plan.gsub!(/\&lt\;a.+?href=.&quot\;(.+?).&quot\;&gt\;(.+?)&lt\;\/a&gt\;/si, "<a href=\"\\1\" class=\"onplan\">\\2</a>")
      loves = self.plan.scan(/.*?\[(.*?)\].*?/s)#get an array of everything in brackets
     logger.debug("self.plan________"+self.plan)
      for love in loves
