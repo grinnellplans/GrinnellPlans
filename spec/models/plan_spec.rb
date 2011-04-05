@@ -14,6 +14,12 @@ describe Plan do
       subject.save
     end
 
+    it "sanitizes disallowed html" do
+      input = "<script>alert('foo');</script> image: <img src=\"foo.jpg\" />"
+      expected = "&lt;script&gt;alert('foo');&lt;/script&gt; image: &lt;img src=\"foo.jpg\"&gt;"
+      it_converts_text input, expected
+    end
+
     it "wraps paragraphs at <hr>" do
       input = "foo<hr>bar"
       expected = "<p class=\"sub\">foo</p><hr><p class=\"sub\">bar</p>"
@@ -22,15 +28,31 @@ describe Plan do
       subject.plan.should == expected
     end
 
-    it "sanitizes disallowed html" do
-      input = "<script>alert('foo');</script> image: <img src=\"foo.jpg\" />"
-      expected = "&lt;script&gt;alert('foo');&lt;/script&gt; image: &lt;img src=\"foo.jpg\"&gt;"
-      it_converts_text input, expected
+    it "wraps paragraphs at <pre>" do
+      input = "foo<pre>bar</pre>"
+      expected = "<p class=\"sub\">foo</p><pre class=\"sub\">bar</pre><p class=\"sub\">"
+      subject.edit_text = input
+      subject.clean_text
+      subject.plan.should == expected
     end
 
-    it "allows safe html" do
-      input = "<i>Hello</i>, shouted the <b>crazy man</b>"
-      it_converts_text input, input
+    context "safe html" do
+      def accepts_tag name
+        input = "<#{name}>Some text</#{name}>"
+        it_converts_text input, input
+      end
+      def converts_tag name, new_open, new_close
+        input = "<#{name}>Some text</#{name}>"
+        expected = "<#{new_open}>Some text</#{new_close}>"
+        it_converts_text input, expected
+      end
+      it { accepts_tag "i" }
+      it { accepts_tag "b" }
+      it { accepts_tag "span" }
+      it { accepts_tag "tt" }
+      it { converts_tag "u", "span class=\"underline\"", "span" }
+      it { converts_tag "s", "span class=\"strike\"", "span" }
+      it { converts_tag "strike", "span class=\"strike\"", "span" }
     end
 
     it "allows html but strips disallowed elements" do
