@@ -33,6 +33,18 @@ describe Plan do
       it_converts_text input, input
     end
 
+    it "allows html but strips disallowed elements" do
+      input = "<span class=\"foo\" rel=\"self\" onClick='alert(\"bar\");'>Foo bar</span>"
+      expected = "<span class=\"foo\">Foo bar</span>"
+      it_converts_text input, expected
+    end
+
+    it "disallows other link protocols" do
+      input = "<a href='javascript:alert(\"foo\");'>Hi!</a>"
+      expected = "<a>Hi!</a>"
+      it_converts_text input, expected
+    end
+
     it "parses link format" do
       pending do
         input = "here is a [http://google.com|link]!"
