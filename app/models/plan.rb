@@ -11,23 +11,26 @@ class Plan < ActiveRecord::Base
 
   def clean_text
     plan = Markdown.new( gfm edit_text ).to_html
+
     # Convert some legacy elements
     { :u => :underline, :strike => :strike, :s => :strike }.each do |in_class,out_class|
       pattern = Regexp.new "<#{in_class}>(.*?)<\/#{in_class}>"
       replacement = "<span class=\"#{out_class}\">\\1</span>"
       plan.gsub! pattern, replacement
     end
+
     # Now sanitize any bad elements
-    config = {}
-    config[ :elements ] = %w[ a b hr i p span pre tt code br ]
-    config[ :attributes ] = {
-      'a' => [ 'href' ],
-      'span' => [ 'class' ],
+    self.plan = Sanitize.clean plan, {
+      :elements => %w[ a b hr i p span pre tt code br ],
+      :attributes => {
+        'a' => [ 'href' ],
+        'span' => [ 'class' ],
+      },
+      :protocols => {
+        'a' => { 'href' => [ 'http', 'https', 'mailto' ] }
+      },
     }
-    config[ :protocols ] = {
-      'a' => { 'href' => [ 'http', 'https', 'mailto' ] }
-    }
-    self.plan = Sanitize.clean( plan, config ).strip
+
     # TODO make actual rails links
      checked = {}
      loves = self.plan.scan(/.*?\[(.*?)\].*?/s)#get an array of everything in brackets
