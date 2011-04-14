@@ -10,8 +10,9 @@ class Plan < ActiveRecord::Base
   # TODO make actual rails links
   # this is by no means finished or tested
   def clean_text
+    plan = Markdown.new( edit_text ).to_html
     config = {}
-    config[ :elements ] = %w[ a b hr i p span pre tt ]
+    config[ :elements ] = %w[ a b hr i p span pre tt code ]
     config[ :attributes ] = {
       'a' => [ 'href' ],
       'p' => [ 'class' ],
@@ -20,8 +21,6 @@ class Plan < ActiveRecord::Base
     config[ :protocols ] = {
       'a' => { 'href' => [ 'http', 'https', 'mailto' ] }
     }
-    config[ :escape_only ] = true
-    plan = edit_text
     plan.gsub!(/\n/s, "<br>")
     plan.gsub!(/<hr>/si, "</p><hr><p class=\"sub\">")
     plan = '<p class="sub">'+plan+'</p>';

@@ -14,9 +14,9 @@ describe Plan do
       subject.save
     end
 
-    it "sanitizes disallowed html" do
+    it "scrubs disallowed html" do
       input = "<script>alert('foo');</script> image: <img src=\"foo.jpg\" />"
-      expected = "&lt;script&gt;alert('foo');&lt;/script&gt; image: &lt;img src=\"foo.jpg\"&gt;"
+      expected = "alert('foo'); image: "
       it_converts_text input, expected
     end
 
@@ -49,10 +49,17 @@ describe Plan do
       it { accepts_tag "i" }
       it { accepts_tag "b" }
       it { accepts_tag "span" }
+      it { accepts_tag "code" }
       it { accepts_tag "tt" }
       it { converts_tag "u", "span class=\"underline\"", "span" }
       it { converts_tag "s", "span class=\"strike\"", "span" }
       it { converts_tag "strike", "span class=\"strike\"", "span" }
+    end
+
+    it "escapes non-tag brackets" do
+      input = "foo < bar << baz > foo"
+      expected = "foo &lt; bar &lt;&lt; baz &gt; foo"
+      it_converts_text input, expected
     end
 
     it "allows html but strips disallowed elements" do
@@ -64,6 +71,12 @@ describe Plan do
     it "disallows other link protocols" do
       input = "<a href='javascript:alert(\"foo\");'>Hi!</a>"
       expected = "<a>Hi!</a>"
+      it_converts_text input, expected
+    end
+
+    it "supports inline code" do
+      input = "foo `bar   <script>baz</script>` foo"
+      expected = "foo <code>bar   <script>baz</script></code> foo"
       it_converts_text input, expected
     end
 
