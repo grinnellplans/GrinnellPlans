@@ -22,7 +22,7 @@ describe Plan do
 
     it "wraps paragraphs at <hr>" do
       input = "foo\n<hr>\nbar"
-      expected = "<p>foo</p>  <hr>   <p>bar</p>"
+      expected = "<p>foo</p>\n\n<hr><p>bar</p>"
       subject.edit_text = input
       subject.clean_text
       subject.plan.should == expected
@@ -77,6 +77,18 @@ describe Plan do
     it "supports inline code" do
       input = "foo `bar   <script>baz</script>` foo"
       expected = "foo <code>bar   &lt;script&gt;baz&lt;/script&gt;</code> foo"
+      it_converts_text input, expected
+    end
+
+    it "turns single newlines into <br>s" do
+      input = "foo\nbar"
+      expected = "foo<br>\nbar"
+      it_converts_text input, expected
+    end
+
+    it "turns double newlines into <p>s" do
+      input = "foo\n\nbar"
+      expected = "foo</p>\n\n<p>bar"
       it_converts_text input, expected
     end
 

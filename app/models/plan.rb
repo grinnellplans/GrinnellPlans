@@ -1,3 +1,5 @@
+require 'gfm/code'
+
 class Plan < ActiveRecord::Base
   belongs_to :account, :foreign_key=> :user_id
   before_save :clean_text
@@ -10,9 +12,9 @@ class Plan < ActiveRecord::Base
   # TODO make actual rails links
   # this is by no means finished or tested
   def clean_text
-    plan = Markdown.new( edit_text ).to_html
+    plan = Markdown.new( gfm edit_text ).to_html
     config = {}
-    config[ :elements ] = %w[ a b hr i p span pre tt code ]
+    config[ :elements ] = %w[ a b hr i p span pre tt code br ]
     config[ :attributes ] = {
       'a' => [ 'href' ],
       'span' => [ 'class' ],
@@ -20,7 +22,6 @@ class Plan < ActiveRecord::Base
     config[ :protocols ] = {
       'a' => { 'href' => [ 'http', 'https', 'mailto' ] }
     }
-    plan.gsub!(/\n/s, "<br>")
     self.plan = Sanitize.clean( plan, config ).strip
      #self.plan.gsub!(/\&lt\;strike\&gt\;(.*?)\&lt\;\/strike\&gt\;/si, "<span class=\"strike\">\\1</span><!--strike-->")
      #self.plan.gsub!(/\&lt\;u\&gt\;(.*?)\&lt\;\/u\&gt\;/si, "<span class=\"underline\">\\1</span><!--u-->") #allow stuff in the underline tag back in
