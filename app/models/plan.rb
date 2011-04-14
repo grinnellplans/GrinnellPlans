@@ -8,11 +8,16 @@ class Plan < ActiveRecord::Base
   def userid
     user_id
   end
-  
-  # TODO make actual rails links
-  # this is by no means finished or tested
+
   def clean_text
     plan = Markdown.new( gfm edit_text ).to_html
+    # Convert some legacy elements
+    { :u => :underline, :strike => :strike, :s => :strike }.each do |in_class,out_class|
+      pattern = Regexp.new "<#{in_class}>(.*?)<\/#{in_class}>"
+      replacement = "<span class=\"#{out_class}\">\\1</span>"
+      plan.gsub! pattern, replacement
+    end
+    # Now sanitize any bad elements
     config = {}
     config[ :elements ] = %w[ a b hr i p span pre tt code br ]
     config[ :attributes ] = {
@@ -23,9 +28,7 @@ class Plan < ActiveRecord::Base
       'a' => { 'href' => [ 'http', 'https', 'mailto' ] }
     }
     self.plan = Sanitize.clean( plan, config ).strip
-     #self.plan.gsub!(/\&lt\;strike\&gt\;(.*?)\&lt\;\/strike\&gt\;/si, "<span class=\"strike\">\\1</span><!--strike-->")
-     #self.plan.gsub!(/\&lt\;u\&gt\;(.*?)\&lt\;\/u\&gt\;/si, "<span class=\"underline\">\\1</span><!--u-->") #allow stuff in the underline tag back in
-     #self.plan.gsub!(/\&lt\;a.+?href=.&quot\;(.+?).&quot\;&gt\;(.+?)&lt\;\/a&gt\;/si, "<a href=\"\\1\" class=\"onplan\">\\2</a>")
+    # TODO make actual rails links
      checked = {}
      loves = self.plan.scan(/.*?\[(.*?)\].*?/s)#get an array of everything in brackets
     logger.debug("self.plan________"+self.plan)
