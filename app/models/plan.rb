@@ -15,16 +15,14 @@ class Plan < ActiveRecord::Base
     config[ :elements ] = %w[ a b hr i p span pre tt code ]
     config[ :attributes ] = {
       'a' => [ 'href' ],
-      'p' => [ 'class' ],
       'span' => [ 'class' ],
     }
     config[ :protocols ] = {
       'a' => { 'href' => [ 'http', 'https', 'mailto' ] }
     }
     plan.gsub!(/\n/s, "<br>")
-    plan.gsub!(/<hr>/si, "</p><hr><p class=\"sub\">")
-    plan = '<p class="sub">'+plan+'</p>';
-    self.plan= Sanitize.clean plan, config
+    plan.gsub!(/<hr>/si, "</p><hr><p>")
+    self.plan = Sanitize.clean( plan, config ).strip
      #self.plan.gsub!(/\&lt\;strike\&gt\;(.*?)\&lt\;\/strike\&gt\;/si, "<span class=\"strike\">\\1</span><!--strike-->")
      #self.plan.gsub!(/\&lt\;u\&gt\;(.*?)\&lt\;\/u\&gt\;/si, "<span class=\"underline\">\\1</span><!--u-->") #allow stuff in the underline tag back in
      #self.plan.gsub!(/\&lt\;a.+?href=.&quot\;(.+?).&quot\;&gt\;(.+?)&lt\;\/a&gt\;/si, "<a href=\"\\1\" class=\"onplan\">\\2</a>")

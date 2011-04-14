@@ -6,7 +6,7 @@ describe Plan do
     def it_converts_text input, expected
       subject.edit_text = input
       subject.clean_text
-      subject.plan.should == "<p class=\"sub\">#{expected}</p>"
+      subject.plan.should == "<p>#{expected}</p>"
     end
 
     it "is called on save" do
@@ -22,7 +22,7 @@ describe Plan do
 
     it "wraps paragraphs at <hr>" do
       input = "foo<hr>bar"
-      expected = "<p class=\"sub\">foo</p><hr><p class=\"sub\">bar</p>"
+      expected = "<p>foo</p><hr><p>bar</p>"
       subject.edit_text = input
       subject.clean_text
       subject.plan.should == expected
@@ -30,7 +30,7 @@ describe Plan do
 
     it "wraps paragraphs at <pre>" do
       input = "foo<pre>bar</pre>"
-      expected = "<p class=\"sub\">foo</p><pre class=\"sub\">bar</pre><p class=\"sub\">"
+      expected = "<p>foo</p><pre>bar</pre><p>"
       subject.edit_text = input
       subject.clean_text
       subject.plan.should == expected
