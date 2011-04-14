@@ -15,14 +15,14 @@ describe Plan do
     end
 
     it "scrubs disallowed html" do
-      input = "<script>alert('foo');</script> image: <img src=\"foo.jpg\" />"
-      expected = "alert('foo'); image: "
+      input = "foo <script>alert('foo');</script> image: <img src=\"foo.jpg\" />"
+      expected = "foo alert('foo'); image: "
       it_converts_text input, expected
     end
 
     it "wraps paragraphs at <hr>" do
-      input = "foo<hr>bar"
-      expected = "<p>foo</p><hr><p>bar</p>"
+      input = "foo\n<hr>\nbar"
+      expected = "<p>foo</p>  <hr>   <p>bar</p>"
       subject.edit_text = input
       subject.clean_text
       subject.plan.should == expected
@@ -30,7 +30,7 @@ describe Plan do
 
     it "wraps paragraphs at <pre>" do
       input = "foo<pre>bar</pre>"
-      expected = "<p>foo</p><pre>bar</pre><p>"
+      expected = "<p>foo</p><pre>bar</pre>"
       subject.edit_text = input
       subject.clean_text
       subject.plan.should == expected
@@ -76,7 +76,7 @@ describe Plan do
 
     it "supports inline code" do
       input = "foo `bar   <script>baz</script>` foo"
-      expected = "foo <code>bar   <script>baz</script></code> foo"
+      expected = "foo <code>bar   &lt;script&gt;baz&lt;/script&gt;</code> foo"
       it_converts_text input, expected
     end
 
