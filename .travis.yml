@@ -1,1 +1,1 @@
-script: "rake db:schema:load && rake spec
+script: "rake db:test:prepare && rake spec
