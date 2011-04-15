@@ -1,0 +1,1 @@
+script: "rake db:schema:load && rake spec
