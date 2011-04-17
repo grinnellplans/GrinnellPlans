@@ -1,4 +1,14 @@
 require 'spec_helper'
+require 'nokogiri/diff'
+
+RSpec::Matchers.define :be_same_html_as do |expected|
+  match do |actual|
+    Nokogiri::HTML( actual ).diff( Nokogiri::HTML( expected ) ).all? do |c,dummy|
+      c == " "
+    end
+  end
+  diffable
+end
 
 describe Plan do
   describe "#clean_text" do
@@ -6,7 +16,7 @@ describe Plan do
     def it_converts_text input, expected
       subject.edit_text = input
       subject.clean_text
-      subject.plan.should == "<p>#{expected}</p>"
+      subject.plan.should be_same_html_as "<p>#{expected}</p>"
     end
 
     it "is called on save" do
@@ -25,7 +35,7 @@ describe Plan do
       expected = "<p>foo</p>\n\n<hr><p>bar</p>"
       subject.edit_text = input
       subject.clean_text
-      subject.plan.should == expected
+      subject.plan.should be_same_html_as expected
     end
 
     it "wraps paragraphs at <pre>" do
@@ -33,7 +43,7 @@ describe Plan do
       expected = "<p>foo</p><pre>bar</pre>"
       subject.edit_text = input
       subject.clean_text
-      subject.plan.should == expected
+      subject.plan.should be_same_html_as expected
     end
 
     context "safe html" do
@@ -51,9 +61,9 @@ describe Plan do
       it { accepts_tag "span" }
       it { accepts_tag "code" }
       it { accepts_tag "tt" }
-      it { converts_tag "u", "span class=\"underline\"", "span" }
-      it { converts_tag "s", "span class=\"strike\"", "span" }
-      it { converts_tag "strike", "span class=\"strike\"", "span" }
+      it { converts_tag "u", "span class='underline'", "span" }
+      it { converts_tag "s", "span class='strike'", "span" }
+      it { converts_tag "strike", "span class='strike'", "span" }
     end
 
     it "escapes non-tag brackets" do
@@ -63,8 +73,8 @@ describe Plan do
     end
 
     it "allows html but strips disallowed elements" do
-      input = "<span class=\"foo\" rel=\"self\" onClick='alert(\"bar\");'>Foo bar</span>"
-      expected = "<span class=\"foo\">Foo bar</span>"
+      input = "<span class='foo' rel='self' onClick='alert(\"bar\");'>Foo bar</span>"
+      expected = "<span class='foo'>Foo bar</span>"
       it_converts_text input, expected
     end
 
@@ -95,7 +105,7 @@ describe Plan do
     it "parses link format" do
       pending do
         input = "here is a [http://google.com|link]!"
-        expected = "here is a <a href=\"http://google.com\">link</a>!"
+        expected = "here is a <a href='http://google.com'>link</a>!"
         it_converts_text input, expected
       end
     end
@@ -104,7 +114,7 @@ describe Plan do
       pending do
         oscar = Account.create! :username => "wildeosc", :password => "foobar", :password_confirmation => "foobar"
         input = "planlove [wildeosc]."
-        expected = "planlove [<a href=\"#{Rails.application.routes.url_helpers.read_path oscar.username}\" class=\"onplan\">wildosc</a>]."
+        expected = "planlove [<a href='#{Rails.application.routes.url_helpers.read_path oscar.username}' class='onplan'>wildosc</a>]."
         it_converts_text input, expected
       end
     end
