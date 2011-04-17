@@ -1,1 +1,1 @@
-script: "rake db:test:prepare && rake spec
+script: "rake db:setup spec
