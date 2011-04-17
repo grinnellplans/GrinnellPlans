@@ -1,1 +1,1 @@
-script: "rake db:setup spec
+script: "rake db:setup spec"
