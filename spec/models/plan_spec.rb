@@ -1,11 +1,11 @@
 require 'spec_helper'
 
 describe Plan do
-  describe "#plan" do
+  describe "#generated_html" do
     it "is html safe" do
       subject.edit_text = "foo"
       subject.save
-      subject.plan.should be_html_safe
+      subject.generated_html.should be_html_safe
     end
   end
 
@@ -14,7 +14,7 @@ describe Plan do
     def it_converts_text input, expected
       subject.edit_text = input
       subject.clean_text
-      subject.plan.should be_same_html_as "<p>#{expected}</p>"
+      subject.generated_html.should be_same_html_as "<p>#{expected}</p>"
     end
 
     it "is called on save" do
@@ -33,7 +33,7 @@ describe Plan do
       expected = "<p>foo</p>\n\n<hr><p>bar</p>"
       subject.edit_text = input
       subject.clean_text
-      subject.plan.should be_same_html_as expected
+      subject.generated_html.should be_same_html_as expected
     end
 
     it "wraps paragraphs at <pre>" do
@@ -41,7 +41,7 @@ describe Plan do
       expected = "<p>foo</p><pre>bar</pre>"
       subject.edit_text = input
       subject.clean_text
-      subject.plan.should be_same_html_as expected
+      subject.generated_html.should be_same_html_as expected
     end
 
     context "safe html" do

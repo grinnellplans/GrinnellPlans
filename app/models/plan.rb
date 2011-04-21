@@ -5,11 +5,13 @@ class Plan < ActiveRecord::Base
   before_save :clean_text
   before_update :set_modified_time
 
+  alias_attribute :generated_html, :plan
+
   def userid
     user_id
   end
 
-  def plan
+  def generated_html
     read_attribute( :plan ).html_safe
   end
 
@@ -24,7 +26,7 @@ class Plan < ActiveRecord::Base
     end
 
     # Now sanitize any bad elements
-    self.plan = Sanitize.clean plan, {
+    self.generated_html = Sanitize.clean plan, {
       :elements => %w[ a b hr i p span pre tt code br ],
       :attributes => {
         'a' => [ 'href' ],
@@ -37,8 +39,8 @@ class Plan < ActiveRecord::Base
 
     # TODO make actual rails links
      checked = {}
-     loves = self.plan.scan(/.*?\[(.*?)\].*?/s)#get an array of everything in brackets
-    logger.debug("self.plan________"+self.plan)
+     loves = self.generated_html.scan(/.*?\[(.*?)\].*?/s)#get an array of everything in brackets
+    logger.debug("self.plan________"+self.generated_html)
      for love in loves
         debugger
        item = love.first
@@ -48,24 +50,24 @@ class Plan < ActiveRecord::Base
          if account.blank?
            if item.match(/^\d+$/) && SubBoard.find(:first, :conditions=>{:messageid=>item})
              #TODO  Regexp.escape(item, "/")
-             self.plan.gsub!(/\[" . Regexp.escape(item) . "\]/s, "[<a href=\"board_messages.php?messagenum=$item#{item}\" class=\"boardlink\">#{item}</a>]")
+             self.generated_html.gsub!(/\[" . Regexp.escape(item) . "\]/s, "[<a href=\"board_messages.php?messagenum=$item#{item}\" class=\"boardlink\">#{item}</a>]")
            end
            if item =~ /:/
              if item =~ /|/
                love_replace = item.match(/(.+?)\|(.+)/si)
-                self.plan.gsub!(/\[" . Regexp.escape(item) . "\]/s, "<a href=\"/read/#{love_replace[1]}\" class=\"onplan\">#{love_replace[2]}</a>") #change all occurences of person on plan
+                self.generated_html.gsub!(/\[" . Regexp.escape(item) . "\]/s, "<a href=\"/read/#{love_replace[1]}\" class=\"onplan\">#{love_replace[2]}</a>") #change all occurences of person on plan
              else
-               self.plan.gsub!(/\[" .  Regexp.escape(item) . "\]/s, "<a href=\"#{item}\" class=\"onplan\">#{item}</a>")
+               self.generated_html.gsub!(/\[" .  Regexp.escape(item) . "\]/s, "<a href=\"#{item}\" class=\"onplan\">#{item}</a>")
              end
            end
          else
-           self.plan.gsub!(/\[#{item}\]/s, "[<a href=\"/read/#{item}\" class=\"planlove\">#{item}</a>]"); #change all occurences of person on plan
+           self.generated_html.gsub!(/\[#{item}\]/s, "[<a href=\"/read/#{item}\" class=\"planlove\">#{item}</a>]"); #change all occurences of person on plan
            
          end
        end
        checked[item]=true
      end
-     logger.debug("self.plan________"+self.plan)
+     logger.debug("self.plan________"+self.generated_html)
   end
   
   private
