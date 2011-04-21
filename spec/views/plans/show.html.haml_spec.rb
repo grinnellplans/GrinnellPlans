@@ -6,6 +6,6 @@ describe "plans/show.html.haml" do
     plan.expects( :plan ).returns( "Foo <b>bar</b>" )
     assign :plan, plan
     render
-    rendered.should == "Foo <b>bar</b>\n"
+    rendered.should be_same_html_as "Foo <b>bar</b>"
   end
 end

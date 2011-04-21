@@ -1,14 +1,4 @@
 require 'spec_helper'
-require 'nokogiri/diff'
-
-RSpec::Matchers.define :be_same_html_as do |expected|
-  match do |actual|
-    Nokogiri::HTML( actual ).diff( Nokogiri::HTML( expected ) ).all? do |c,dummy|
-      c == " "
-    end
-  end
-  diffable
-end
 
 describe Plan do
   describe "#clean_text" do
