@@ -21,4 +21,8 @@ describe PlansController do
     it { should render_template( "show" ) }
     it { assigns( :plan ).should == @plan }
   end
+
+  describe "update plan" do
+    it "does not allow updates of generated html"
+  end
 end
