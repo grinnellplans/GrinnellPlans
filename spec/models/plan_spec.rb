@@ -1,6 +1,14 @@
 require 'spec_helper'
 
 describe Plan do
+  describe "#plan" do
+    it "is html safe" do
+      subject.edit_text = "foo"
+      subject.save
+      subject.plan.should be_html_safe
+    end
+  end
+
   describe "#clean_text" do
     subject { Plan.new }
     def it_converts_text input, expected

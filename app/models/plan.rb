@@ -9,6 +9,10 @@ class Plan < ActiveRecord::Base
     user_id
   end
 
+  def plan
+    read_attribute( :plan ).html_safe
+  end
+
   def clean_text
     plan = Markdown.new( gfm edit_text ).to_html
 
