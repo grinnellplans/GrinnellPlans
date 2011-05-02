@@ -1,1 +1,1 @@
-script: "rake db:setup spec"
+script: "RAILS_ENV='test' rake db:setup spec"
