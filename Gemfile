@@ -24,8 +24,8 @@ gem 'crypt3'
 #A whitelist-based Ruby HTML sanitizer (http://wonko.com/post/sanitize)
 gem 'sanitize'
 
-#Discount (For Ruby) Implementation of John Gruber's Markdown
-gem 'rdiscount'
+# A powerful parser for Markdown (https://github.com/tanoku/redcarpet)
+gem 'redcarpet'
 
 #https://github.com/rails/jquery-ujs
 gem 'jquery-rails', '>= 0.2.6'

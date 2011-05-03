@@ -1,5 +1,3 @@
-require 'gfm/code'
-
 class Plan < ActiveRecord::Base
   belongs_to :account, :foreign_key=> :user_id
   before_save :clean_text
@@ -16,7 +14,7 @@ class Plan < ActiveRecord::Base
   end
 
   def clean_text
-    plan = Markdown.new( gfm edit_text ).to_html
+    plan = Redcarpet.new( edit_text, :hard_wrap ).to_html
 
     # Convert some legacy elements
     { :u => :underline, :strike => :strike, :s => :strike }.each do |in_class,out_class|
