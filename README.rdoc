@@ -8,12 +8,10 @@ Install {ruby & rails}[http://rubyonrails.org/download].
 
 bundler will manage the gems for the project
  sudo gem install bundler
- checkout the project
+checkout the project
  git clone git@github.com:annaswims/GrinnellPlans.git
  cd GrinnellPlans
- git submodule init
- git submodule update
- 
+
 install the gems that are specified in Gemfile
  bundle install 
 
