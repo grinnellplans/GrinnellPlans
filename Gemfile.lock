@@ -37,8 +37,9 @@ GEM
     activesupport (3.0.7)
     annotate (2.4.0)
     arel (2.0.9)
-    authlogic (2.1.6)
-      activesupport
+    authlogic (3.0.2)
+      activerecord (~> 3.0.7)
+      activerecord (~> 3.0.7)
     builder (2.1.2)
     capistrano (2.5.19)
       highline
@@ -133,7 +134,7 @@ PLATFORMS
 
 DEPENDENCIES
   annotate
-  authlogic
+  authlogic (~> 3.0.0)
   capistrano
   crypt3
   dynamic_form

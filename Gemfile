@@ -13,7 +13,7 @@ gem 'capistrano'
 gem 'haml'
 
 #A simple model based ruby authentication solution (https://github.com/binarylogic/authlogic)
-gem 'authlogic'
+gem 'authlogic', '~> 3.0.0'
 
 #Helpers to deal with your model backed forms in Rails3  (https://github.com/joelmoss/dynamic_form)
 gem 'dynamic_form'
