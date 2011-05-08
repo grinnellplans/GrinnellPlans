@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 source  'http://gems.github.com'
 
-gem 'rails', '3.0.4'
+gem 'rails', '~> 3.0.4'
 
 #our database, for now.  Eventually, it'll be msyql, but this is easier for now.
 gem 'sqlite3'
