@@ -23,6 +23,20 @@ describe PlansController do
   end
 
   describe "update plan" do
+    context "normal request" do
+      before do
+        post :update, :id => @account.username, :plan => { :edit_text => "Foo bar" }
+      end
+      it "changes plan contents" do
+        @plan.reload.edit_text.should == "Foo bar"
+      end
+      it "updates changed timestamp" do
+        @account.reload.changed_date.should >= Time.now - 5
+      end
+      it "redirects to show" do
+        assert_redirected_to read_path( :id => @account.username )
+      end
+    end
     it "does not allow updates of generated html"
   end
 end
