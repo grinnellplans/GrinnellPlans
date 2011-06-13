@@ -7,3 +7,16 @@ describe Autofinger do
     autofinger = described_class.create(:owner => owner, :interest => interest, :priority => nil).should be_invalid
   end
 end
+
+# == Schema Information
+#
+# Table name: autofinger
+#
+#  owner    :integer(2)      default(0), not null
+#  interest :integer(2)      default(0), not null
+#  priority :integer(1)
+#  updated  :string(1)
+#  updtime  :datetime
+#  readtime :datetime
+#
+

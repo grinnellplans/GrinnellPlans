@@ -6,3 +6,11 @@ describe Permission do
      
    end
 end
+# == Schema Information
+#
+# Table name: perms
+#
+#  userid :integer         not null
+#  status :string(32)
+#
+
