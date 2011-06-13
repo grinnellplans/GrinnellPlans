@@ -18,7 +18,7 @@ describe Plan do
     end
 
     it "is called on save" do
-      subject.expects( :clean_text )
+      subject.should_receive( :clean_text )
       subject.save
     end
 

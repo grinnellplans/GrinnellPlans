@@ -65,8 +65,9 @@ end
 
 group :test do
   #Mocha is a library for mocking and stubbing 
-  gem 'mocha'
+  # gem 'mocha'
   
+  gem 'factory_girl_rails'
   #Calculate the differences between two XML/HTML documents
   gem 'nokogiri-diff'
 end

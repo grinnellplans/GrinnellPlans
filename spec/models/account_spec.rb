@@ -10,6 +10,7 @@ shared_examples_for "password oracle" do
 end
 
 describe Account do
+  
   context "with password" do
     subject { described_class.create( :username => "foobar", :password => "foobar", :password_confirmation => "foobar" ); described_class.last }
     its( :crypted_password ) { should be_present }
