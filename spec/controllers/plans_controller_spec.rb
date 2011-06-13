@@ -37,10 +37,5 @@ describe PlansController do
         assert_redirected_to read_path( :id => @account.username )
       end
     end
-    it "does not allow updates of generated html" do
-      Plan.any_instance.expects( :generated_html= ).with( regexp_matches /.*Foo.*/ ).at_least_once
-      Plan.any_instance.expects( :generated_html= ).with( "Something evil" ).never
-      post :update, :id => @account.username, :plan => { :edit_text => "Foo bar", :generated_html => "Something evil" }
-    end
   end
 end
