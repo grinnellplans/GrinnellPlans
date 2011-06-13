@@ -17,25 +17,17 @@ class PlansController < ApplicationController
 
   
   def show
-      @account = Account.find_by_username(params[:username])
+      @account = Account.find_by_username(params[:id])
       if @account.blank?
-        #search
+        redirect_to :action=>:search, :id=>params[:id]
       else
-          # mark as read
-          autofinger = Autofinger.where(:owner=>current_account.userid, :interest=> @account.userid ).first
-          unless autofinger.blank?
-            autofinger.updated = '0'
-            autofinger.readtime = Time.now
-            autofinger.save!
-          end
+        # mark as read
+         Autofinger.mark_as_read(current_account.userid, @account.userid)
       end
   end
   
   def search
     
-  end
-  
-  def mark_as_read
   end
 
 end

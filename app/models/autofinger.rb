@@ -7,11 +7,12 @@ class Autofinger < ActiveRecord::Base
   validates_presence_of :interest, :owner
   
   def self.mark_as_read(owner, interest)
-     autofinger = Autofinger.where(:owner=>current_account.userid, :interest=> @account.userid ).first
+     autofinger = Autofinger.where(:owner=>owner, :interest=> interest ).first
       unless autofinger.blank?
         autofinger.updated = '0'
         autofinger.readtime = Time.now
-        autofinger.save!
+        # autofinger.save
+        #TODO fix error
       end
   end
 end
