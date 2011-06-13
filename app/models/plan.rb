@@ -1,10 +1,12 @@
 class Plan < ActiveRecord::Base
   belongs_to :account, :foreign_key=> :user_id
   before_save :clean_text
-  before_update :set_modified_time
+  attr_protected :generated_html
+  after_update :set_modified_time
 
   alias_attribute :generated_html, :plan
-
+  
+  #TODO Consider migrating user_id to userid, like everythig else
   def userid
     user_id
   end

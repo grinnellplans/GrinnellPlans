@@ -4,6 +4,16 @@ class Autofinger < ActiveRecord::Base
   
   belongs_to :interested_party, :foreign_key => :owner, :class_name => "Account"
   belongs_to :subject_of_interest, :foreign_key => :interest, :class_name => "Account"
+  validates_presence_of :interest, :owner
+  
+  def self.mark_as_read(owner, interest)
+     autofinger = Autofinger.where(:owner=>current_account.userid, :interest=> @account.userid ).first
+      unless autofinger.blank?
+        autofinger.updated = '0'
+        autofinger.readtime = Time.now
+        autofinger.save!
+      end
+  end
 end
 
 # == Schema Information
