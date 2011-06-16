@@ -1,3 +1,0 @@
-[submodule "lib/gfm"]
-	path = lib/gfm
-	url = https://github.com/github/github-flavored-markdown.git
