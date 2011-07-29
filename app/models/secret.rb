@@ -1,5 +1,17 @@
 class Secret < ActiveRecord::Base
   set_primary_key :secret_id
+  validates_presence_of :secret_text
+  validates_inclusion_of :display, :in => %w( yes no )
+  attr_protected :display, :date_approved
+  before_create :set_defaults
+  
+  private
+  
+  def set_defaults
+    self.date = Time.now
+    self.display = "no"
+  end
+  
 end
 
 

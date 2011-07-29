@@ -10,6 +10,7 @@ shared_examples_for "password oracle" do
 end
 
 describe Account do
+  
   context "with password" do
     subject { described_class.create( :username => "foobar", :password => "foobar", :password_confirmation => "foobar" ); described_class.last }
     its( :crypted_password ) { should be_present }
@@ -41,3 +42,32 @@ describe Account do
     end
   end
 end
+
+# == Schema Information
+#
+# Table name: accounts
+#
+#  userid            :integer         not null, primary key
+#  username          :string(16)      default(""), not null
+#  created           :datetime
+#  password          :string(34)
+#  email             :string(64)
+#  pseudo            :string(64)
+#  login             :datetime
+#  changed           :datetime
+#  poll              :integer(1)
+#  group_bit         :string(1)
+#  spec_message      :string(255)
+#  grad_year         :string(4)
+#  edit_cols         :integer(1)
+#  edit_rows         :integer(1)
+#  webview           :string(1)       default("0")
+#  notes_asc         :string(1)
+#  user_type         :string(128)
+#  show_images       :boolean         default(FALSE), not null
+#  guest_password    :string(30)
+#  is_admin          :boolean         default(FALSE)
+#  persistence_token :string(255)
+#  password_salt     :string(255)
+#
+

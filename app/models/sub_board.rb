@@ -4,7 +4,7 @@ class SubBoard < ActiveRecord::Base
   belongs_to :main_board, :foreign_key =>:threadid
   belongs_to :account, :foreign_key=> :userid
 
-  
+  validates_presence_of :threadid, :userid, :contents
 end
 
 

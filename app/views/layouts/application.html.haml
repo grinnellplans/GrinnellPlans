@@ -17,5 +17,7 @@
       });
   %body{:bgcolor=>"#ffffff"} 
     =yield
-    =render :partial=>"/layouts/links"
+    =unless @current_account.blank?
+      =render :partial=>"/layouts/links"
+      =render :partial => "/layouts/autofinger"
     =render :partial=>"/layouts/footer"

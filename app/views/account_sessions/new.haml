@@ -21,7 +21,7 @@
             document.getElementById("account_js_test_value").value = "on";
       %tr
         %td{:align=>"right", :width=>"50%"}
-          =form_for @session do |f|
+          =form_for @session, :url => account_session_path do |f|
             =f.hidden_field "guest", :value => "1" 
             =f.submit "Guest"
         %td

@@ -1,37 +1,46 @@
 class Plan < ActiveRecord::Base
   belongs_to :account, :foreign_key=> :user_id
   before_save :clean_text
-  before_update :set_modified_time
+  attr_protected :generated_html
+  after_update :set_modified_time
 
+  alias_attribute :generated_html, :plan
+  
+  #TODO Consider migrating user_id to userid, like everythig else
   def userid
     user_id
   end
-  
-  # TODO make actual rails links
-  # this is by no means finished or tested
+
+  def generated_html
+    read_attribute( :plan ).html_safe
+  end
+
   def clean_text
-    config = {}
-    config[ :elements ] = %w[ a b hr i p span pre tt ]
-    config[ :attributes ] = {
-      'a' => [ 'href' ],
-      'p' => [ 'class' ],
-      'span' => [ 'class' ],
+    plan = Redcarpet.new( edit_text, :hard_wrap ).to_html
+
+    # Convert some legacy elements
+    { :u => :underline, :strike => :strike, :s => :strike }.each do |in_class,out_class|
+      pattern = Regexp.new "<#{in_class}>(.*?)<\/#{in_class}>"
+      replacement = "<span class=\"#{out_class}\">\\1</span>"
+      plan.gsub! pattern, replacement
+    end
+
+    # Now sanitize any bad elements
+    self.generated_html = Sanitize.clean plan, {
+      :elements => %w[ a b hr i p span pre tt code br ],
+      :attributes => {
+        'a' => [ 'href' ],
+        'span' => [ 'class' ],
+      },
+      :protocols => {
+        'a' => { 'href' => [ 'http', 'https', 'mailto' ] }
+      },
     }
-    config[ :protocols ] = {
-      'a' => { 'href' => [ 'http', 'https', 'mailto' ] }
-    }
-    config[ :escape_only ] = true
-    plan = edit_text
-    plan.gsub!(/\n/s, "<br>")
-    plan.gsub!(/<hr>/si, "</p><hr><p class=\"sub\">")
-    plan = '<p class="sub">'+plan+'</p>';
-    self.plan= Sanitize.clean plan, config
-     #self.plan.gsub!(/\&lt\;strike\&gt\;(.*?)\&lt\;\/strike\&gt\;/si, "<span class=\"strike\">\\1</span><!--strike-->")
-     #self.plan.gsub!(/\&lt\;u\&gt\;(.*?)\&lt\;\/u\&gt\;/si, "<span class=\"underline\">\\1</span><!--u-->") #allow stuff in the underline tag back in
-     #self.plan.gsub!(/\&lt\;a.+?href=.&quot\;(.+?).&quot\;&gt\;(.+?)&lt\;\/a&gt\;/si, "<a href=\"\\1\" class=\"onplan\">\\2</a>")
+
+    # TODO make actual rails links
      checked = {}
-     loves = self.plan.scan(/.*?\[(.*?)\].*?/s)#get an array of everything in brackets
-    logger.debug("self.plan________"+self.plan)
+     loves = self.generated_html.scan(/.*?\[(.*?)\].*?/s)#get an array of everything in brackets
+    logger.debug("self.plan________"+self.generated_html)
      for love in loves
         debugger
        item = love.first
@@ -41,24 +50,24 @@ class Plan < ActiveRecord::Base
          if account.blank?
            if item.match(/^\d+$/) && SubBoard.find(:first, :conditions=>{:messageid=>item})
              #TODO  Regexp.escape(item, "/")
-             self.plan.gsub!(/\[" . Regexp.escape(item) . "\]/s, "[<a href=\"board_messages.php?messagenum=$item#{item}\" class=\"boardlink\">#{item}</a>]")
+             self.generated_html.gsub!(/\[" . Regexp.escape(item) . "\]/s, "[<a href=\"board_messages.php?messagenum=$item#{item}\" class=\"boardlink\">#{item}</a>]")
            end
            if item =~ /:/
              if item =~ /|/
                love_replace = item.match(/(.+?)\|(.+)/si)
-                self.plan.gsub!(/\[" . Regexp.escape(item) . "\]/s, "<a href=\"/read/#{love_replace[1]}\" class=\"onplan\">#{love_replace[2]}</a>") #change all occurences of person on plan
+                self.generated_html.gsub!(/\[" . Regexp.escape(item) . "\]/s, "<a href=\"/read/#{love_replace[1]}\" class=\"onplan\">#{love_replace[2]}</a>") #change all occurences of person on plan
              else
-               self.plan.gsub!(/\[" .  Regexp.escape(item) . "\]/s, "<a href=\"#{item}\" class=\"onplan\">#{item}</a>")
+               self.generated_html.gsub!(/\[" .  Regexp.escape(item) . "\]/s, "<a href=\"#{item}\" class=\"onplan\">#{item}</a>")
              end
            end
          else
-           self.plan.gsub!(/\[#{item}\]/s, "[<a href=\"/read/#{item}\" class=\"planlove\">#{item}</a>]"); #change all occurences of person on plan
+           self.generated_html.gsub!(/\[#{item}\]/s, "[<a href=\"/read/#{item}\" class=\"planlove\">#{item}</a>]"); #change all occurences of person on plan
            
          end
        end
        checked[item]=true
      end
-     logger.debug("self.plan________"+self.plan)
+     logger.debug("self.plan________"+self.generated_html)
   end
   
   private
