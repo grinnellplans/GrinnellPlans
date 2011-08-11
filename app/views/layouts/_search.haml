@@ -1,0 +1,6 @@
+.finger#form
+  =form_tag("plans/search")do
+    %div
+      %div{:class=>"form_prompt textinput"}
+        =text_field_tag :id
+      =submit_tag "Read"
