@@ -19,5 +19,11 @@ class ApplicationController < ActionController::Base
       redirect_to new_account_session_path
     end
   end
-
+  
+  def  reuqire_admin
+    if !true # TODO determine how a user is admin  
+      redirect_to new_account_session_path
+    end
+  end
+  
 end

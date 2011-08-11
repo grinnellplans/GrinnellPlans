@@ -7,6 +7,7 @@ class AccountSessionsController < ApplicationController
   def create
     @session = AccountSession.new params[ :account_session ]
     if @session.save
+      session[:autofinger_level] = 1
       redirect_to "/"
     else
       render :action => :new

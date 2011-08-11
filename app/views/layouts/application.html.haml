@@ -2,7 +2,8 @@
 %html{:dir=>"ltr"}
   %head
     %meta{"http-equiv"=>"Content-Type", :content=>"text/html", :charset=>"utf-8"}
-    %title GrinnellPlans
+    %meta{:name=>"ROBOTS", :content=>"noarchhive"}
+    %title TODO [THIS_PERSON]'s plan
     = stylesheet_link_tag :all
     = csrf_meta_tag
     = javascript_include_tag "http://www.google.com/jsapi?key=TODO"
@@ -15,9 +16,14 @@
       $("#username").focus();
       $("input:password").chromaHash({bars: 3, salt: "5bf999ac93430ed303cd0b56f976e289", minimum: 4});
       });
-  %body{:bgcolor=>"#ffffff"} 
-    =yield
-    =unless @current_account.blank?
-      =render :partial=>"/layouts/links"
-      =render :partial => "/layouts/autofinger"
-    =render :partial=>"/layouts/footer"
+  %body#planspage_readplan.planspage_readplan
+    .wrapper
+      .nav
+      .logo
+        =link_to "", root_path
+      =unless @current_account.blank?
+        =render :partial=>"/layouts/search"
+        =render :partial=>"/layouts/links"
+        =render :partial => "/layouts/autofinger"
+      =yield
+      =render :partial=>"/layouts/footer"

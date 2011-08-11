@@ -1,6 +1,14 @@
-Level1
-=show_autofinger(1)
-Level2
-=show_autofinger(2)
-Level3
-=show_autofinger(3)
+.autoread
+  %h2 Autoread List
+  %ul
+    -for priority in 1..3
+      /TODO classes first notcurrent
+      %li{:class=>"autoreadlevel #{cycle('even', 'odd')}"}
+        #autoreadname
+          =link_to "Level #{priority}", set_autofinger_level_plans_path(:level=>priority, :return_to=>request.fullpath), {:id=>"set_autoreadlev#{priority}", :class=>"autoreadlink"}
+          =link_to "X", mark_level_as_read_plans_path(:level=>priority, :return_to=>request.fullpath ), {:class=>"markasread", :method=>:put, :confirm=>"Are you sure you'd like to mark all the Plans on level 1 as read?"}
+          -if priority == session[:autofinger_level]
+            %ul
+              -for autofinger in @autofingers
+                %li{:class=>"autoreadentry #{cycle('even', 'odd')}" }
+                  =link_to autofinger.subject_of_interest.username, read_plan_path(autofinger.subject_of_interest.username)

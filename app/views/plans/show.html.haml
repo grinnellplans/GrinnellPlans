@@ -1,14 +1,32 @@
-%div
-  Username:
-  =@account.username
-%div
-  Last login:
-  =@account.login
-%div
-  Updated On:
-  =@account.changed_date
-%div
-  Name:
-  =@account.pseudo
-%div
+#plan
+  #header
+    %ul
+      %li#username
+        %span#username
+          %span#title
+            Username
+          %span#value
+            =@account.username
+      %li#lastupdated
+        %span#title
+          Last Updated:
+          / TODO 2 date formats
+        %span#long
+          =l @account.changed_date unless  @account.changed_date.nil?
+        %span#short
+          =l @account.changed_date unless  @account.changed_date.nil?
+      %li#lastlogin
+        %span#title
+          Last login:
+        %span#short
+          =@account.login
+        %span#long
+          =@account.login
+      %li#planname
+        %span#title
+          Name:
+        %span#value
+          =@account.pseudo
+ 
+#plan_text
   =@account.plan.generated_html

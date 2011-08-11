@@ -10,13 +10,13 @@ Plans::Application.routes.draw do
   # get "admin/manage_donations"
   # get "admin/new_accounts"
   # get "admin/polls"
-  # get "admin/secrets"
+  get "admin/secrets_index"
+
   # get "admin/style_stats"
   # get "admin/swap_password"
   # get "admin/update_frequency"
 
   # map.connect ':controller', :action => 'index'
-  # map.connect 'read', :controller=>'accounts', :action => 'index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -31,7 +31,7 @@ Plans::Application.routes.draw do
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-
+  
   # Sample resource route with options:
   #   resources :products do
   #     member do
@@ -70,10 +70,22 @@ Plans::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   root :controller => "plans", :action => "show", :id => "plans"
-  resource :plan, :only => [ :edit, :update ]
-  resources :plans, :only => [ :show ], :as => "read"
+  
+  resources:plans do
+    member do
+      get :edit
+      put :update
+      get :show, :as => "read"
+      get :search
+    end
+    collection do
+      get :set_autofinger_level
+      put :mark_level_as_read
+    end
+  end
   
   resources :secrets 
   
   resource :user, :controller => "account_sessions", :as => "account_session", :only => [ :new, :create, :destroy ], :path_names => { :new => "login" }
+
 end

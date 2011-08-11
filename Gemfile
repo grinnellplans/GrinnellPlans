@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 source  'http://gems.github.com'
 
-gem 'rails', '~> 3.0.4'
+gem 'rails', '~> 3.0.9'
 
 #our database, for now.  Eventually, it'll be msyql, but this is easier for now.
 gem 'sqlite3'
@@ -29,6 +29,9 @@ gem 'redcarpet'
 
 #https://github.com/rails/jquery-ujs
 gem 'jquery-rails', '>= 0.2.6'
+
+# https://github.com/mislav/will_paginate/tree/rails3
+gem 'will_paginate', '~> 3.0.beta'
 
 group :production do
   #email any errors to people specified in the environment.rb

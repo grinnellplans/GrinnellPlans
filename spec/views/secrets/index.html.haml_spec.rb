@@ -8,7 +8,5 @@ describe "secrets/index.html.erb" do
     ])
   end
 
-  it "renders a list of secrets" do
-    render
-  end
+  it "renders a list of secrets" 
 end
