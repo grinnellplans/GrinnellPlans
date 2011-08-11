@@ -26,7 +26,7 @@ class PlansController < ApplicationController
   
   def mark_level_as_read
     Autofinger.mark_level_as_read(current_account.userid, params[:level])
-     redirect_to params[:return_to]
+    redirect_to params[:return_to]
   end
   
   def set_autofinger_level
@@ -36,7 +36,6 @@ class PlansController < ApplicationController
   
   def search
     @account = Account.find_by_username(params[:id])
-    debugger
     if !@account.blank?
       redirect_to read_plan_path( :id => @account.username )
     else
@@ -45,8 +44,7 @@ class PlansController < ApplicationController
   end
   
   def load_autofingers
-    @autofingers = Autofinger.where(:owner=>@current_account.userid, :priority=> session[:autofinger_level])
-    #TODO unread only
+    @autofingers = Autofinger.where(:owner=>@current_account.userid, :priority=> session[:autofinger_level], :updated => "1")
   end
   
 

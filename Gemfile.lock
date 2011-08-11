@@ -48,6 +48,8 @@ GEM
       net-ssh (>= 2.0.14)
       net-ssh-gateway (>= 1.1.0)
     columnize (0.3.2)
+    composite_primary_keys (3.1.10)
+      activerecord (~> 3.0.0, >= 3.0.5)
     crypt3 (1.1.2)
     diff-lcs (1.1.2)
     dynamic_form (1.1.4)
@@ -142,6 +144,7 @@ DEPENDENCIES
   annotate
   authlogic (~> 3.0.0)
   capistrano
+  composite_primary_keys (~> 3.1.10)
   crypt3
   dynamic_form
   exception_notification!

@@ -33,6 +33,9 @@ gem 'jquery-rails', '>= 0.2.6'
 # https://github.com/mislav/will_paginate/tree/rails3
 gem 'will_paginate', '~> 3.0.beta'
 
+# supports composite primary keys for legacy tables like Autfinger https://github.com/drnic/composite_primary_keys
+gem "composite_primary_keys", "~> 3.1.10"
+
 group :production do
   #email any errors to people specified in the environment.rb
   gem "exception_notification", :git => "git://github.com/rails/exception_notification", :require => 'exception_notifier'
