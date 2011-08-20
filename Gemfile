@@ -28,10 +28,10 @@ gem 'sanitize'
 gem 'redcarpet'
 
 #https://github.com/rails/jquery-ujs
-gem 'jquery-rails', '>= 0.2.6'
+gem 'jquery-rails', '>= 1.0.12'
 
 # https://github.com/mislav/will_paginate/tree/rails3
-gem 'will_paginate', '~> 3.0.beta'
+gem 'will_paginate', '~> 3.0.pre4'
 
 # supports composite primary keys for legacy tables like Autfinger https://github.com/drnic/composite_primary_keys
 gem "composite_primary_keys", "~> 3.1.10"

@@ -63,7 +63,7 @@ GEM
     highline (1.6.2)
     hirb (0.4.5)
     i18n (0.5.0)
-    jquery-rails (1.0.9)
+    jquery-rails (1.0.12)
       railties (~> 3.0)
       thor (~> 0.14)
     linecache (0.43)
@@ -135,7 +135,7 @@ GEM
     treetop (1.4.9)
       polyglot (>= 0.3.1)
     tzinfo (0.3.29)
-    will_paginate (3.0.pre2)
+    will_paginate (3.0.0)
 
 PLATFORMS
   ruby
@@ -151,7 +151,7 @@ DEPENDENCIES
   factory_girl_rails
   haml
   hirb
-  jquery-rails (>= 0.2.6)
+  jquery-rails (>= 1.0.12)
   nokogiri-diff
   railroady
   rails (~> 3.0.9)
@@ -161,4 +161,4 @@ DEPENDENCIES
   sanitize
   single_test
   sqlite3
-  will_paginate (~> 3.0.beta)
+  will_paginate (~> 3.0.pre4)

@@ -1,20 +1,18 @@
 class Secret < ActiveRecord::Base
   set_primary_key :secret_id
-  self.per_page = 100
+  self.per_page = 5
  
-  DISPLAY_OPTIONS=["yes", "no", nil]
+  DISPLAY_OPTIONS = ["yes", "no"]
   validates_presence_of :secret_text
   validates_inclusion_of :display, :in =>DISPLAY_OPTIONS
   validates_length_of :secret_text, :maximum => 16777215
   attr_protected :display, :date_approved
-  before_create :set_date
-  
-  private
-  
-  def set_date
-    self.date = Time.now
+  before_create do 
+    self.set_date = Time.now
   end
-  
+  before_update do
+     self.date_approved = Time.now
+  end
 end
 
 

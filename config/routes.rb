@@ -1,20 +1,4 @@
 Plans::Application.routes.draw do
-  # get "admin/add_hser"
-  # get "admin/auth"
-  # get "admin/change_motd"
-  # get "admin/change_password"
-  # get "admin/change_spec"
-  # get "admin/delete_user"
-  # get "admin/email"
-  # get "admin/index"
-  # get "admin/manage_donations"
-  # get "admin/new_accounts"
-  # get "admin/polls"
-  get "admin/secrets_index"
-
-  # get "admin/style_stats"
-  # get "admin/swap_password"
-  # get "admin/update_frequency"
 
   # map.connect ':controller', :action => 'index'
 
@@ -58,18 +42,19 @@ Plans::Application.routes.draw do
   #     end
   #   end
 
-  # Sample resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
-
+  
   # See how all your routes lay out with "rake routes"
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
+
+
   root :controller => "plans", :action => "show", :id => "plans"
+  
+  namespace :admin do
+    resources :secrets, :only => [:index, :update]
+    resources :accounts, :only => [:new, :create]
+  end
   
   resources:plans do
     member do
