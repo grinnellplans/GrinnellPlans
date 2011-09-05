@@ -4,13 +4,18 @@ end
 
 
 
+
+
 # == Schema Information
 #
 # Table name: tentative_accounts
 #
-#  tentative_accounts_id :integer         not null, primary key
-#  created               :datetime
-#  token                 :string(16)
-#  session               :string(200)
+#  id                 :integer         not null
+#  username           :string(255)
+#  email              :string(255)
+#  user_type          :string(255)
+#  confirmation_token :string(255)
+#  created_at         :datetime
+#  updated_at         :datetime
 #
 

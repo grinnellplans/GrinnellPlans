@@ -2,7 +2,7 @@ class ModifyTentativeAccounts < ActiveRecord::Migration
   def self.up
     drop_table :tentative_accounts
     create_table :tentative_accounts do |t|
-      t.string :username, :email, :type, :confirmation_token
+      t.string :username, :email, :user_type, :confirmation_token
       t.timestamps
       t.primary_key :username
     end

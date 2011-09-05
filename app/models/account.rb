@@ -61,11 +61,13 @@ class Account < ActiveRecord::Base
 end
 
 
+
+
 # == Schema Information
 #
 # Table name: accounts
 #
-#  userid            :integer         not null, primary key
+#  userid            :integer         primary key
 #  username          :string(16)      default(""), not null
 #  created           :datetime
 #  password          :string(34)

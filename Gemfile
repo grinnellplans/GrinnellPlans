@@ -14,6 +14,7 @@ gem 'haml'
 
 #A simple model based ruby authentication solution (https://github.com/binarylogic/authlogic)
 gem 'authlogic', '~> 3.0.0'
+gem 'rails3-generators'
 
 #Helpers to deal with your model backed forms in Rails3  (https://github.com/joelmoss/dynamic_form)
 gem 'dynamic_form'
@@ -24,8 +25,11 @@ gem 'crypt3'
 #A whitelist-based Ruby HTML sanitizer (http://wonko.com/post/sanitize)
 gem 'sanitize'
 
-# A powerful parser for Markdown (https://github.com/tanoku/redcarpet)
+#A powerful parser for Markdown (https://github.com/tanoku/redcarpet)
 gem 'redcarpet'
+
+#Serialization using JSON
+gem "json", "~> 1.5.4"
 
 #https://github.com/rails/jquery-ujs
 gem 'jquery-rails', '>= 0.2.6'

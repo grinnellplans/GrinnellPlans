@@ -14,11 +14,12 @@
    </form>	
    -->
 
-<% form_for :account, @account, :url => { :action => "create" } do |f| %>
-Grinnell Username: <%= f.text_field :username %> <br/>
-User Type: <%= f.select :user_type, options_for_select([['Student','student'], 
-							['Staff Member', 'staff'], 
-							['Faculty Member', 'faculty'], 
-							['Student Group', 'group']]) %> <br/>
+<%= form_for @account, :as => :account, :url => { :action => "create" } do |f| %>
+My Grinnell email is <%= f.text_field :username %>
+@ <%= f.select :email_domain, options_for_select([['grinnell.edu'], ['alumni.grinnell.edu'], ['gmail.com']]), :selected => 'grinnell.edu' %>, and I am a
+<%= f.select :user_type, options_for_select([['Student','student'], 
+					     ['Staff Member', 'staff'], 
+					     ['Faculty Member', 'faculty'], 
+					     ['Student Group', 'group']]), :selected => 'student'%>.
 <%= submit_tag("Register") %>
 <% end %>

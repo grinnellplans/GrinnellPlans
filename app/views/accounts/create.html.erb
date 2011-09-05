@@ -1,2 +1,10 @@
+<% if @account_already_exists %>
+<p> A plan already exists for this Grinnellian. Please check the username you are trying to register with. If you have forgotten your password, please use the password reset utility. </p>
+<%end%>
+
+<% if @account_exists_but_not_confirmed %>
+<p> A confirmation email has already been sent to this account. Would you like to send another notification email? </p>
+<%end%>
+
 Username: <%= @account["username"] %> <br/>
 Account Type: <%= @account["user_type"] %> <br/>
