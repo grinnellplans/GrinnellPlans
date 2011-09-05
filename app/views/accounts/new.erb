@@ -1,0 +1,24 @@
+<h1>Plan Registration</h1>
+<p> If you have an email address at Grinnell College for yourself or for a group, you may use this page to create a Plan. Alumni are welcome to register with their alumni grinnell aliases. Please complete the form below to create your account. For any peculiar questions, please contact the administrators. </p>
+
+<!--
+   <form name="register" method="POST">
+     My Grinnell username is <input type="text" name="username">,
+     and I am a <select name="account_type">
+       <option value="student">student</option>
+       <option value="student">staff member</option>
+       <option value="student">faculty member</option>
+       <option value="group">student group</option>
+     </select>
+     <input type="submit" value="Register">
+   </form>	
+   -->
+
+<% form_for :account, @account, :url => { :action => "create" } do |f| %>
+Grinnell Username: <%= f.text_field :username %> <br/>
+User Type: <%= f.select :user_type, options_for_select([['Student','student'], 
+							['Staff Member', 'staff'], 
+							['Faculty Member', 'faculty'], 
+							['Student Group', 'group']]) %> <br/>
+<%= submit_tag("Register") %>
+<% end %>
