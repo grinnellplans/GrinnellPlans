@@ -1,3 +1,5 @@
+require File.expand_path('../../mailers/notifier.rb', __FILE__)
+
 class AccountsController < ApplicationController
 
   def index
@@ -29,17 +31,18 @@ class AccountsController < ApplicationController
       @account_exists_but_not_confirmed = true
       return
     end
-
+    
     tentative_account.delete! if tentative_account
-    tentative_account = TentativeAccount.create (:username => @account["username"],
-                                                 :user_type => @account["user_type"],
-                                                 :email => "#{@account['username']}@#{@account['email_domain']}",
-                                                 :confirmation_token => create_random_token)
+    @user_email = "#{@account['username']}@#{@account['email_domain']}"
+    ta = TentativeAccount.create (:username => @account["username"],
+                                  :user_type => @account["user_type"],
+                                  :email => @user_email,
+                                  :confirmation_token => create_random_token)
     
     # send email
-    raise tentative_account.inspect
-    
-    # display positive feedback
+    confirmation_email = Notifier.confirm ta.username, ta.email, ta.confirmation_token
+    confirmation_email.deliver
+    @confirmation_email_sent = true
   end
 
   def confirm

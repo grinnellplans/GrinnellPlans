@@ -1,6 +1,7 @@
 class TentativeAccount < ActiveRecord::Base
-  set_primary_key :tentative_accounts_id
 end
+
+
 
 
 
@@ -10,7 +11,7 @@ end
 #
 # Table name: tentative_accounts
 #
-#  id                 :integer         not null
+#  id                 :integer         not null, primary key
 #  username           :string(255)
 #  email              :string(255)
 #  user_type          :string(255)

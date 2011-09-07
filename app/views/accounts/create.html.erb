@@ -6,5 +6,7 @@
 <p> A confirmation email has already been sent to this account. Would you like to send another notification email? </p>
 <%end%>
 
-Username: <%= @account["username"] %> <br/>
-Account Type: <%= @account["user_type"] %> <br/>
+<% if @confirmation_email_sent %>
+<p>An email with your activation link was just sent to <%=@user_email%>. Please check your email and navigate to the activation link.<br/>
+Normally this email should be delivered instantaneously; however if you did not receive an activation email, please contact a plans admin at grinnellplans@gmail.com.</p>
+<%end%>
