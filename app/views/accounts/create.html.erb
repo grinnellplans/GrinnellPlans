@@ -1,12 +1,10 @@
 <% if @account_already_exists %>
-<p> A plan already exists for this Grinnellian. Please check the username you are trying to register with. If you have forgotten your password, please use the password reset utility. </p>
-<%end%>
+<p> A plan already exists for this Grinnellian. Please check the username you are trying to register with. If you have forgotten your password, please <%= link_to "reset your password", :action => 'reset_password', :username => @username%>.</p>
 
-<% if @account_exists_but_not_confirmed %>
-<p> A confirmation email has already been sent to this account. Would you like to send another notification email? </p>
-<%end%>
+<% elsif @account_exists_but_not_confirmed %>
+<p> A confirmation email has already been sent to <%= @user_email %>. <br/>
+    <%= link_to "Resend the notification email", :action => 'resend_confirmation_email', :username => @username %>. </p>
 
-<% if @confirmation_email_sent %>
-<p>An email with your activation link was just sent to <%=@user_email%>. Please check your email and navigate to the activation link.<br/>
-Normally this email should be delivered instantaneously; however if you did not receive an activation email, please contact a plans admin at grinnellplans@gmail.com.</p>
-<%end%>
+<% else render :partial => 'sent_confirmation_email' %>
+
+<% end %>
