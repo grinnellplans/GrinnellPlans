@@ -63,11 +63,12 @@ end
 
 
 
+
 # == Schema Information
 #
 # Table name: accounts
 #
-#  userid            :integer         primary key
+#  userid            :integer         not null, primary key
 #  username          :string(16)      default(""), not null
 #  created           :datetime
 #  password          :string(34)
