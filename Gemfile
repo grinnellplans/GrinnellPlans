@@ -34,6 +34,9 @@ gem "json", "~> 1.5.4"
 #https://github.com/rails/jquery-ujs
 gem 'jquery-rails', '>= 0.2.6'
 
+# https://github.com/ambethia/recaptcha
+gem "recaptcha", :require => "recaptcha/rails"
+
 group :production do
   #email any errors to people specified in the environment.rb
   gem "exception_notification", :git => "git://github.com/rails/exception_notification", :require => 'exception_notifier'

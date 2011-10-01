@@ -57,7 +57,26 @@ class Account < ActiveRecord::Base
   def crypted_password
     read_attribute :password
   end
-  
+
+  def self.create_new tentative_account
+    ta = tentative_account
+    password = SecureRandom.hex(10)
+    account_created = ActiveRecord::Base.transaction do
+      a = Account.create( :username => ta.username,
+                          :email => ta.email, 
+                          :user_type => ta.user_type,
+                          :password => password,
+                          :password_confirmation => password,
+                          :created => Time.now)
+      Plan.create( :user_id => a.userid,
+                   :plan => '',
+                   :edit_text => '' )
+      ta.delete
+    end
+    
+    return password if account_created
+    return nil
+  end
 end
 
 
