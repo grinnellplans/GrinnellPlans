@@ -43,9 +43,4 @@ class PlansController < ApplicationController
     end
   end
   
-  def load_autofingers
-    @autofingers = Autofinger.where(:owner=>@current_account.userid, :priority=> session[:autofinger_level], :updated => "1")
-  end
-  
-
 end
