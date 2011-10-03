@@ -7,7 +7,7 @@ class Admin::SecretsController < ApplicationController
 
   def update
     @secret = Secret.find(params[:id])
-    @secret.display = params[:display]
+    @secret.display_attr = params[:display_attr]
     if @secret.save
       render :nothing => true 
     else
