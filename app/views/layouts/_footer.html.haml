@@ -1,13 +1,13 @@
-.footer
-  .justupdated
+#footer
+  #justupdated
     %div 
       Do you read 
       =link_to "TODO",read_plan_path(:id=>" ")  #TODO
       , who just updated?
 
-  .poweredby
+  #poweredby
     %div
-      <img src="images/logo-small.png" class="logo" width="120px" height="45px">
+      <img src="/images/logo-small.png" class="logo" width="120px" height="45px">
       %span
         Powered by 
         =link_to "GrinnellPlans", "http://code.google.com/p/grinnellplans/"
@@ -19,7 +19,7 @@
         =link_to "recent bugs", "http://code.google.com/p/grinnellplans/issues/list?sort=-id"
         to avoid duplicates.
 
-  .legal
+  #legal
     %div
       %span
         ==Use of the GrinnellPlans service means you have accepted the #{link_to"GrinnellPlans Terms of Service agreement", "http://www.grinnellplans.com/tos"}. If you do not accept and abide by this agreement, you may not use GrinnellPlans. This agreement is subject to change without notice, so you should periodically review the most up-to-date version. You may contact us at #{mail_to "grinnellplans@gmail.com"}.

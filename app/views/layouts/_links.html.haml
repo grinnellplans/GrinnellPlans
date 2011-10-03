@@ -1,10 +1,13 @@
-.links
+#links
   %h2 Links
-  %ul
+  %ul.linkslist
     -unless current_account.blank?
+      /#todo add "first" class
       -for link in current_account.avail_links
-        /#todo add "first" class
-        %li{:class=>"a#{cycle('even', 'odd')}" }
+        %li{:class=>"#{cycle('even', 'odd')}" }
           =link.html_code.to_s.html_safe #TODO railsify
+      %li
+        = link_to "Secrets", secrets_path
       %li#last
         = link_to "Log out", account_session_path, :method => :delete
+

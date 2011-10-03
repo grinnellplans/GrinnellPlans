@@ -7,23 +7,23 @@
     = stylesheet_link_tag :all
     = csrf_meta_tag
     = javascript_include_tag "http://www.google.com/jsapi?key=TODO"
-    :javascript
-      google.load("jquery", "1.5.0");
-      google.load("jqueryui", "1.8.10");
-    = javascript_include_tag :defaults, "old/chroma-hash.js"
+    = javascript_include_tag :defaults, "jquery-ui.js", "jquery_ujs.js", "old/chroma-hash.js"
     :javascript
       $(document).ready(function() {
       $("#username").focus();
       $("input:password").chromaHash({bars: 3, salt: "5bf999ac93430ed303cd0b56f976e289", minimum: 4});
       });
-  %body#planspage_readplan.planspage_readplan
-    .wrapper
-      .nav
-      .logo
-        =link_to "", root_path
-      =unless @current_account.blank?
-        =render :partial=>"/layouts/search"
-        =render :partial=>"/layouts/links"
-        =render :partial => "/layouts/autofinger"
-      =yield
+  %body#planspage_readplan.plan
+    #wrapper
+      #nav
+        %div
+          #logo
+            =link_to "", root_path
+          -unless @current_account.blank?
+            =render :partial=>"/layouts/search"
+            =render :partial=>"/layouts/links"
+            =render :partial => "/layouts/autofinger"
+      .main
+        %div
+          =yield
       =render :partial=>"/layouts/footer"
