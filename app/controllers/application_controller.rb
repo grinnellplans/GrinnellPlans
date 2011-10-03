@@ -20,10 +20,14 @@ class ApplicationController < ActionController::Base
     end
   end
   
-  def  reuqire_admin
+  def  require_admin
     if !true # TODO determine how a user is admin  
       redirect_to new_account_session_path
     end
+  end
+  
+  def load_autofingers
+    @autofingers = Autofinger.where(:owner=>@current_account.userid, :priority=> session[:autofinger_level], :updated => "1")
   end
   
 end
