@@ -83,7 +83,7 @@ class Account < ActiveRecord::Base
     characters -= ['B'] # B and 8 look very similar
     characters -= ['O'] # O and 0 look very similar
     characters.sort_by{rand}
-    (0..length).map{characters.sample}.join
+    (1..length).map{characters.sample}.join
   end
 end
 

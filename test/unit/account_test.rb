@@ -1,49 +1,33 @@
 require 'test_helper'
 
 class AccountTest < ActiveSupport::TestCase
-  test "create" do
-    assert a = Account.create( :username => "foobar", :password => "foobar", :password_confirmation => "foobar" )
-    assert a.valid?
+
+  test "validates random token default size" do
+    token = Account.create_random_token
+    assert_equal 8, token.size
   end
 
-  test "password hashing" do
-    assert Account.create( :username => "foobar", :password => "foobar", :password_confirmation => "foobar" )
-    # Force a full reload
-    assert a = Account.last
-    assert a.crypted_password.present?
-    assert a.password_salt.present?
-    assert_not_equal "foobar", a.password
-    assert_not_equal "foobar", a.crypted_password
-    assert ! a.valid_password?( "barbaz" )
-    assert a.valid_password?( "foobar" )
+  test "new account creation" do
+    username = 'bob'
+    email = 'bob@grinnell.edu'
+    ta = TentativeAccount.create( :username => username, :user_type => 'student', :email => email, :confirmation_token => 'ABCD' )
+    password = Account.create_new ta
+    assert_not_nil password
+
+    # an account should have been created
+    account = Account.find_by_username username
+    assert_equal email, account.email
+    
+    # a plan should have been created
+    plan = Plan.find_by_user_id account.userid
+    assert_equal '', plan.plan
+
+    # tentative account should have been deleted
+    ta = TentativeAccount.find_by_username username
+    assert_equal nil, ta
   end
 
-  test "fail with password mismatch" do
-    assert a = Account.new( :username => "foobar", :password => "foobar", :password_confirmation => "barbaz" )
-    assert a.invalid?
-  end
-
-  test "matches legacy MD5 password" do
-    assert a = Account.create( :username => "foobar", :crypted_password => "$1$f8Qwor9I$bSkUziPv/xNI/.Vhb/NUr." )
-    assert ! a.valid_password?( "barbaz" )
-    assert a.valid_password?( "foobar" )
-  end
-
-  test "matches legacy DES password" do
-    assert a = Account.create( :username => "foobar", :crypted_password => "abVbJXzHUY99s" )
-    assert ! a.valid_password?( "barbaz" )
-    assert a.valid_password?( "foobar" )
-  end
-
-  test "transitions legacy DES password" do
-    old_crypted = "abVbJXzHUY99s"
-    assert a = Account.create( :username => "foobar", :crypted_password => old_crypted )
-    a.valid_password?( "barbaz" )
-    assert_equal old_crypted, a.crypted_password
-    a.valid_password?( "foobar" )
-    assert_not_equal old_crypted, a.crypted_password
-    assert_match /\$1\$.{8}\$.{22}/, a.crypted_password
-  end
+    
 end
 
 # == Schema Information

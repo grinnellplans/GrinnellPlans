@@ -12,6 +12,8 @@ class AccountsController < ApplicationController
 
   def create
     @account = params[:account]
+
+    # TODO -- abstract and enforce allowed email domains
     
     @username = @account["username"]
     @user_email = "#{@account['username']}@#{@account['email_domain']}"
