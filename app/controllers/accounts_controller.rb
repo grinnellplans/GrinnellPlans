@@ -5,14 +5,6 @@ class AccountsController < ApplicationController
   def new
   end
 
-  def create_random_token length=8
-    characters = ('A'..'Z').to_a + (0..9).to_a
-    characters -= ['B'] # B and 8 look very similar
-    characters -= ['O'] # O and 0 look very similar
-    characters.sort_by{rand}
-    (0..length).map{characters.sample}.join
-  end
-
   def send_confirmation_email username, email, token
     confirmation_email = Notifier.confirm username, email, token
     confirmation_email.deliver
@@ -39,7 +31,7 @@ class AccountsController < ApplicationController
     ta = TentativeAccount.create( :username => @username,
                                   :user_type => @account["user_type"],
                                   :email => @user_email,
-                                  :confirmation_token => create_random_token)
+                                  :confirmation_token => Account.create_random_token)
     
     # send email
     send_confirmation_email ta.username, ta.email, ta.confirmation_token
@@ -56,6 +48,7 @@ class AccountsController < ApplicationController
       password = Account.create_new ta
       email = Notifier.send_password ta.username, ta.email, password
       email.deliver
+      current_account_session.destroy
     end
   end
   
