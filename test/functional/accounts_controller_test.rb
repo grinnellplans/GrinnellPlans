@@ -40,7 +40,20 @@ class AccountsControllerTest < ActionController::TestCase
   end
 
   test "confirm account successfully" do
-    # make sure account and plan is created
+    ta = TentativeAccount.create( :username => 'plans',
+                                  :user_type => 'student',
+                                  :email => 'plans@plans.plans',
+                                  :confirmation_token => 'PLAN9' )
+
+    account = Account.find_by_username ta.username
+    assert_nil account
+
+    get :confirm, { :token => 'PLAN9' }
+    assert_select 'p', /Thank you for confirming your email/
+
+    account = Account.find_by_username 'plans'
+    assert_not_nil account
+    assert_equal ta.email, account.email
   end
 
   test "confirm welcome email" do
