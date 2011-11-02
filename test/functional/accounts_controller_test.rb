@@ -8,7 +8,6 @@ class AccountsControllerTest < ActionController::TestCase
   end
 
   test "should create tentative account" do
-    
     ta = TentativeAccount.find_by_username "plans"
     assert_nil ta
 
@@ -17,10 +16,11 @@ class AccountsControllerTest < ActionController::TestCase
         "email_domain" => "grinnell.edu",
         "user_type" => "student"}}
     
+    assert_select 'p', /was just sent to plans@grinnell.edu/
     ta = TentativeAccount.find_by_username "plans"
-    assert_equal "plans", ta.username
+    assert_equal "plans@grinnell.edu", ta.email
   end
-
+  
   test "valid tentative account already exists" do
     ta = TentativeAccount.create( :username => 'plans',
                                   :user_type => 'student',
@@ -41,6 +41,22 @@ class AccountsControllerTest < ActionController::TestCase
   end
   
   test "expired tentative is cleared on create" do
+    past_time = Time.now - 2.days
+    ta = TentativeAccount.create( :username => 'plans',
+                                  :user_type => 'student',
+                                  :email => 'plans@plans.plans',
+                                  :confirmation_token => 'PLAN9',
+                                  :created_at => past_time,
+                                  :updated_at => past_time )
+    assert_not_nil ta
+    post :create, { :account => { 
+        "username" => "plans", 
+        "email_domain" => "plans.plans",
+        "user_type" => "student"}}
+    
+    assert_select 'p', /was just sent to plans@plans.plans/
+    ta = TentativeAccount.find_by_username 'plans'
+    assert_operator past_time, :<, ta.created_at
   end
 
   test "confirmation email is sent on create" do
