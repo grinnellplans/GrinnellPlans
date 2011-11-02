@@ -26,6 +26,7 @@ class AccountsController < ApplicationController
     tentative_account = TentativeAccount.find_by_username(@account["username"])
     if  tentative_account && tentative_account.created_at > (Time.now - 1.day)
       @account_exists_but_not_confirmed = true
+      @user_email = tentative_account.email
       return
     end
     

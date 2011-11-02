@@ -21,9 +21,13 @@ class AccountsControllerTest < ActionController::TestCase
     assert_equal "plans", ta.username
   end
 
-  ## Note: These tests should also test the views
-
   test "valid tentative account already exists" do
+    ta = TentativeAccount.create( :username => 'plans',
+                                  :user_type => 'student',
+                                  :email => 'plans@plans.plans',
+                                  :confirmation_token => 'PLAN9' )
+    post :create, { :account => { :username => ta.username }}
+    assert_select 'p', /A confirmation email has already been sent to #{ta.email}/
   end
   
   test "account already exists" do
