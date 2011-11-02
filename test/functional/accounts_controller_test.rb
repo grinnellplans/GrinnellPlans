@@ -31,6 +31,13 @@ class AccountsControllerTest < ActionController::TestCase
   end
   
   test "account already exists" do
+    ta = TentativeAccount.create( :username => 'plans',
+                                  :user_type => 'student',
+                                  :email => 'plan@plans.plans' )
+    account = Account.create_new ta
+    assert_not_nil account
+    post :create, { :account => { "username" => "plans" }}
+    assert_select 'p', /A plan already exists for this Grinnellian/
   end
   
   test "expired tentative is cleared on create" do
