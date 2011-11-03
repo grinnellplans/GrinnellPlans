@@ -14,11 +14,11 @@ class AccountsControllerTest < ActionController::TestCase
     assert_response :success
     assert_select 'form', /My Grinnell email is/
   end
-
+  
   test "should create tentative account and send email" do
     ta = TentativeAccount.find_by_username "plans"
     assert_nil ta
-
+    
     post :create, { :account => { 
         "username" => "plans", 
         "email_domain" => "grinnell.edu",
@@ -39,16 +39,17 @@ class AccountsControllerTest < ActionController::TestCase
   test "valid tentative account already exists" do
     ta = TentativeAccount.create( :username => 'plans',
                                   :user_type => 'student',
-                                  :email => 'plans@plans.plans',
+                                  :email => 'plans@grinnell.edu',
                                   :confirmation_token => 'PLAN9' )
-    post :create, { :account => { :username => ta.username }}
+    post :create, { :account => { :username => ta.username, 
+                                  :email_domain => 'grinnell.edu' }}
     assert_select 'p', /A confirmation email has already been sent to #{ta.email}/
   end
   
   test "account already exists" do
     ta = TentativeAccount.create( :username => 'plans',
                                   :user_type => 'student',
-                                  :email => 'plan@plans.plans' )
+                                  :email => 'plan@grinnell.edu' )
     account = Account.create_new ta
     assert_not_nil account
     post :create, { :account => { "username" => "plans" }}
@@ -59,17 +60,17 @@ class AccountsControllerTest < ActionController::TestCase
     past_time = Time.now - 2.days
     ta = TentativeAccount.create( :username => 'plans',
                                   :user_type => 'student',
-                                  :email => 'plans@plans.plans',
+                                  :email => 'plans@grinnell.edu',
                                   :confirmation_token => 'PLAN9',
                                   :created_at => past_time,
                                   :updated_at => past_time )
     assert_not_nil ta
     post :create, { :account => { 
         "username" => "plans", 
-        "email_domain" => "plans.plans",
+        "email_domain" => "grinnell.edu",
         "user_type" => "student"}}
     
-    assert_select 'p', /was just sent to plans@plans.plans/
+    assert_select 'p', /was just sent to plans@grinnell.edu/
     ta = TentativeAccount.find_by_username 'plans'
     assert_operator past_time, :<, ta.created_at
   end
@@ -77,7 +78,7 @@ class AccountsControllerTest < ActionController::TestCase
   test "confirm account successfully" do
     ta = TentativeAccount.create( :username => 'plans',
                                   :user_type => 'student',
-                                  :email => 'plans@plans.plans',
+                                  :email => 'plans@grinnell.edu',
                                   :confirmation_token => 'PLAN9' )
 
     account = Account.find_by_username ta.username
@@ -94,7 +95,7 @@ class AccountsControllerTest < ActionController::TestCase
     # verify welcome email
     email = ActionMailer::Base.deliveries.first
     assert_equal 'Plan Created', email.subject
-    assert_equal 'plans@plans.plans', email.to[0]
+    assert_equal 'plans@grinnell.edu', email.to[0]
     assert_match 'Your Plan has been created!', email.body
     assert_match 'Password', email.body
   end
@@ -102,7 +103,7 @@ class AccountsControllerTest < ActionController::TestCase
   test "confirm with expired tentative account" do
     ta = TentativeAccount.create( :username => 'plans',
                                   :user_type => 'student',
-                                  :email => 'plans@plans.plans',
+                                  :email => 'plans@grinnell.edu',
                                   :confirmation_token => 'PLAN9',
                                   :created_at => Time.now - 2.days,
                                   :updated_at => Time.now - 2.days )
@@ -118,7 +119,7 @@ class AccountsControllerTest < ActionController::TestCase
   test "resend confirmation email" do
     ta = TentativeAccount.create( :username => 'plans',
                                   :user_type => 'student',
-                                  :email => 'plans@plans.plans',
+                                  :email => 'plans@grinnell.edu',
                                   :confirmation_token => 'PLAN9' )
     post :resend_confirmation_email, { :username => 'plans' }
     

@@ -16,7 +16,7 @@
 
 <%= form_for @account, :as => :account, :url => { :action => "create" } do |f| %>
 My Grinnell email is <%= f.text_field :username %>
-@ <%= f.select :email_domain, options_for_select([['grinnell.edu'], ['alumni.grinnell.edu'], ['gmail.com']]), :selected => 'grinnell.edu' %>, and I am a
+@ <%= f.select :email_domain, options_for_select(@allowed_domains), :selected => 'grinnell.edu' %>, and I am a
 <%= f.select :user_type, options_for_select([['Student','student'], 
 					     ['Staff Member', 'staff'], 
 					     ['Faculty Member', 'faculty'], 

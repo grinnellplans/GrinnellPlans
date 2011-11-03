@@ -3,24 +3,26 @@ require File.expand_path('../../mailers/notifier.rb', __FILE__)
 class AccountsController < ApplicationController
 
   def new
+    @allowed_domains = Account::EMAIL_DOMAINS.map{|d| [d]}
   end
 
   def send_confirmation_email username, email, token
     confirmation_email = Notifier.confirm username, email, token
     confirmation_email.deliver
   end
-
+  
   def create
     @account = params[:account]
-
-    # TODO -- abstract and enforce allowed email domains
-    
     @username = @account["username"]
     @user_email = "#{@account['username']}@#{@account['email_domain']}"
-    
+
     if Account.find_by_username(@account["username"])
       @account_already_exists = true
       return
+    end
+
+    if not Account::EMAIL_DOMAINS.include? @account['email_domain']
+      redirect_to :action => 'new'
     end
     
     tentative_account = TentativeAccount.find_by_username(@account["username"])
