@@ -2,6 +2,13 @@ require 'test_helper'
 
 class AccountsControllerTest < ActionController::TestCase
 
+  def setup
+  end
+
+  def teardown
+    ActionMailer::Base.deliveries.clear
+  end
+
   test "should get registration page" do
     get :new
     assert_response :success
@@ -89,7 +96,7 @@ class AccountsControllerTest < ActionController::TestCase
     assert_equal 'Plan Created', email.subject
     assert_equal 'plans@plans.plans', email.to[0]
     assert_match 'Your Plan has been created!', email.body
-    assert_match 'password', email.body
+    assert_match 'Password', email.body
   end
   
   test "confirm with expired tentative account" do
