@@ -20,10 +20,6 @@ class Account < ActiveRecord::Base
   has_one :plan, :foreign_key => :user_id
   has_one :display, :foreign_key => :userid
 
-  # allowed email domains
-  EMAIL_DOMAINS = ['grinnell.edu', 'alumni.grinnell.edu', 'gmail.com']
-  
-
   before_validation do
     self.show_images = true
   end

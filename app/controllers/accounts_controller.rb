@@ -3,7 +3,7 @@ require File.expand_path('../../mailers/notifier.rb', __FILE__)
 class AccountsController < ApplicationController
 
   def new
-    @allowed_domains = Account::EMAIL_DOMAINS.map{|d| [d]}
+    @allowed_domains = ApplicationController::EMAIL_DOMAINS.map{|d| [d]}
   end
 
   def send_confirmation_email username, email, token
@@ -21,7 +21,7 @@ class AccountsController < ApplicationController
       return
     end
 
-    if not Account::EMAIL_DOMAINS.include? @account['email_domain']
+    if not ApplicationController::EMAIL_DOMAINS.include? @account['email_domain']
       redirect_to :action => 'new'
     end
     

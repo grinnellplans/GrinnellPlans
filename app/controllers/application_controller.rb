@@ -22,5 +22,9 @@ class ApplicationController < ActionController::Base
   
   DOMAIN_NAME = 'halogeno.us'
   FROM_ADDRESS = 'no-reply@grinnellplans.com'
-
+  if ENV["RAILS_ENV"] == 'test'
+    EMAIL_DOMAINS = ['grinnell.edu', 'alumni.grinnell.edu', 'gmail.com']
+  else
+    EMAIL_DOMAINS = ['grinnell.edu', 'alumni.grinnell.edu']
+  end
 end
