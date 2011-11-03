@@ -93,6 +93,16 @@ class AccountsControllerTest < ActionController::TestCase
   end
   
   test "resend confirmation email" do
+    ta = TentativeAccount.create( :username => 'plans',
+                                  :user_type => 'student',
+                                  :email => 'plans@plans.plans',
+                                  :confirmation_token => 'PLAN9' )
+    post :resend_confirmation_email, { :username => 'plans' }
+    
+    # verify confirmation email
+    email = ActionMailer::Base.deliveries.first
+    assert_equal 'Plan Activation Link', email.subject
+    assert_equal ta.email, email.to[0]
+    assert_match 'will expire in 24 hours', email.body
   end
-
 end
