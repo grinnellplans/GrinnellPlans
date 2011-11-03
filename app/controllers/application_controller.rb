@@ -19,5 +19,8 @@ class ApplicationController < ActionController::Base
       redirect_to new_account_session_path
     end
   end
+  
+  DOMAIN_NAME = 'halogeno.us'
+  FROM_ADDRESS = 'no-reply@grinnellplans.com'
 
 end

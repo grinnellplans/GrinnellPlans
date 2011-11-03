@@ -1,6 +1,6 @@
 class Notifier < ActionMailer::Base
   
-  default :from => "no-reply@grinnellplans.com"
+  default :from => ApplicationController::FROM_ADDRESS
   
   def confirm username, email, token
     @username = username
