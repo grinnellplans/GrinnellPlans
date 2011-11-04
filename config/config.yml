@@ -6,7 +6,7 @@ development:
 test:
   domain_name: halogeno.us
   from_address: no-reply@halogeno.us
-  email_domains: [grinnell.edu, alumni.grinnell.edu]
+  email_domains: [blop.blop]
 
 production:
   domain_name: grinnellplans.com

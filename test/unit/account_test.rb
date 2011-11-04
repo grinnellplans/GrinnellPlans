@@ -9,7 +9,7 @@ class AccountTest < ActiveSupport::TestCase
 
   test "new account creation" do
     username = 'bob'
-    email = 'bob@grinnell.edu'
+    email = 'bob@blop.blop'
     ta = TentativeAccount.create( :username => username, :user_type => 'student', :email => email, :confirmation_token => 'ABCD' )
     password = Account.create_new ta
     assert_not_nil password

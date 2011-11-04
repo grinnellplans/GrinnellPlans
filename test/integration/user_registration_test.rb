@@ -17,17 +17,17 @@ class UserRegistrationTest < ActionDispatch::IntegrationTest
     
     # fill in the details
     account = { :username => 'plans', 
-                :email_domain => 'grinnell.edu', 
+                :email_domain => 'blop.blop', 
                 :user_type => 'student' }
     post 'accounts#create', { :account => account }
     assert_response :success
     assert_template 'accounts/create'
-    assert_select 'p', /was just sent to plans@grinnell.edu/
+    assert_select 'p', /was just sent to plans@blop.blop/
     
     # check email
     email = ActionMailer::Base.deliveries.pop
     assert_equal 'Plan Activation Link', email.subject
-    assert_equal 'plans@grinnell.edu', email.to[0]
+    assert_equal 'plans@blop.blop', email.to[0]
     assert_match 'will expire in 24 hours', email.body
 
     # parse token and call confirm with supplied
@@ -39,7 +39,7 @@ class UserRegistrationTest < ActionDispatch::IntegrationTest
     # check email
     email = ActionMailer::Base.deliveries.pop
     assert_equal 'Plan Created', email.subject
-    assert_equal 'plans@grinnell.edu', email.to[0]
+    assert_equal 'plans@blop.blop', email.to[0]
     assert_match 'Your Plan has been created!', email.body
 
     # parse password from welcome email
