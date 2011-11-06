@@ -1,6 +1,6 @@
 Hi [<%= @username %>]!
 
-Activate: http://<%= APP_CONFIG['domain_name']%>/accounts/confirm?token=<%= @token    %>
+Activate: <%= confirm_accounts_url :token => @token %>
 
 Navigate to the above link to activate your Plan.
 The link will expire in 24 hours.
