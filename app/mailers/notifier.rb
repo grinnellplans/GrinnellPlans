@@ -1,6 +1,7 @@
 class Notifier < ActionMailer::Base
   
   default :from => APP_CONFIG['from_address']
+  default_url_options[:host] = APP_CONFIG['domain_name']
   
   def confirm username, email, token
     @username = username
