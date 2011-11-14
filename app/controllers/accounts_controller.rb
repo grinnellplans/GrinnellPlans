@@ -25,7 +25,7 @@ class AccountsController < ApplicationController
       redirect_to :action => 'new'
     end
     
-    tentative_account = TentativeAccount.find_by_username(@account["username"])
+    tentative_account = TentativeAccount.find_by_email(@user_email)
     if  tentative_account && tentative_account.created_at > (Time.now - 1.day)
       @account_exists_but_not_confirmed = true
       @user_email = tentative_account.email
