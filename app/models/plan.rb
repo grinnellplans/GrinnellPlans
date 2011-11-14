@@ -3,8 +3,11 @@ class Plan < ActiveRecord::Base
   before_save :clean_text
   attr_protected :generated_html
   after_update :set_modified_time
-
   alias_attribute :generated_html, :plan
+  # validates_presence_of :account
+  validates_length_of :plan, :maximum=>16777215,  :message => "Your plan is too long"
+  validates_length_of :edit_text, :maximum => 16777215,  :message => "Your plan is too long"
+  
   
   #TODO Consider migrating user_id to userid, like everythig else
   def userid
@@ -42,7 +45,6 @@ class Plan < ActiveRecord::Base
      loves = self.generated_html.scan(/.*?\[(.*?)\].*?/s)#get an array of everything in brackets
     logger.debug("self.plan________"+self.generated_html)
      for love in loves
-        debugger
        item = love.first
        jlw = item.gsub(/\#/, "\/")
        unless checked[item]

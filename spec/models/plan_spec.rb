@@ -1,6 +1,29 @@
 require 'spec_helper'
 
 describe Plan do
+  before(:each) do
+     @plan = Factory.create(:plan)
+   end
+   
+   it "is valid with valid attributes" do
+     @plan.should be_valid
+   end
+   
+   it "is not valid when plan is longer than 16777215 characters" do
+     @plan.plan =  TOO_LONG_STRING
+     @plan.should_not be_valid
+  end
+  
+  it "is not valid when edit_text is longer than 16777215 characters" do
+    @plan.edit_text =  TOO_LONG_STRING
+    @plan.should_not be_valid
+  end
+  
+  it "should protect generated_html attribute from mass assignment" do
+        @plan = Plan.new(:plan=>"Candyland", :generated_html => 'hax0rz')
+        @plan.generated_html.should_not == 'hax0rz'
+   end
+  
   describe "#generated_html" do
     it "is html safe" do
       subject.edit_text = "foo"
@@ -8,7 +31,7 @@ describe Plan do
       subject.generated_html.should be_html_safe
     end
   end
-
+  
   describe "#clean_text" do
     subject { Plan.new }
     def it_converts_text input, expected
@@ -114,7 +137,7 @@ describe Plan do
       pending do
         oscar = Account.create! :username => "wildeosc", :password => "foobar", :password_confirmation => "foobar"
         input = "planlove [wildeosc]."
-        expected = "planlove [<a href='#{Rails.application.routes.url_helpers.read_path oscar.username}' class='onplan'>wildosc</a>]."
+        expected = "planlove [<a href='#{Rails.application.routes.url_helpers.read_plan_path oscar.username}' class='onplan'>wildosc</a>]."
         it_converts_text input, expected
       end
     end
