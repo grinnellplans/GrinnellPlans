@@ -1,0 +1,14 @@
+development:
+  domain_name: localhost
+  from_address: no-reply@localhost
+  email_domains: [grinnell.edu, alumni.grinnell.edu, gmail.com]
+
+test:
+  domain_name: localhost
+  from_address: no-reply@localhost
+  email_domains: [blop.blop]
+
+production:
+  domain_name: grinnellplans.com
+  from_address: no-reply@grinnellplans.com
+  email_domains: [grinnell.edu, alumni.grinnell.edu]

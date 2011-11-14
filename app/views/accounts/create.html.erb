@@ -1,0 +1,11 @@
+<% if @account_already_exists %>
+<p> A plan already exists for this Grinnellian. Please check the username you are trying to register with. If you have forgotten your password, please <%= link_to "reset your password", :action => 'reset_password', :username => @username%>.</p>
+
+<% elsif @account_exists_but_not_confirmed %>
+<p> A confirmation email has already been sent to <%= @user_email %>. <br/>
+    <%= link_to "Resend the notification email", :action => 'resend_confirmation_email', :username => @username %>. </p>
+
+<% else %>
+<%= render :partial => 'sent_confirmation_email' %>
+
+<% end %>
