@@ -43,6 +43,7 @@ class AccountsController < ApplicationController
     ta = TentativeAccount.find_by_confirmation_token(token)
     
     if !ta || ta.created_at < (Time.now - 1.day)
+      flash[:notice] = 'This confirmation token has expired. Please register again.'
       redirect_to :action => 'new' 
     else
       password = SecureRandom.hex(10)

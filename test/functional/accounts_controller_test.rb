@@ -109,7 +109,8 @@ class AccountsControllerTest < ActionController::TestCase
                                   :created_at => Time.now - 2.days,
                                   :updated_at => Time.now - 2.days )
     get :confirm, { :token => 'PLAN9' }
-    assert_redirected_to :controller => 'accounts', :action => 'new' 
+    assert_redirected_to :controller => 'accounts', :action => 'new'
+    assert_match 'This confirmation token has expired', flash[:notice]
   end
 
   test "confirm with wrong token" do
