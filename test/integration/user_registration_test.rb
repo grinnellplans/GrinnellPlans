@@ -43,7 +43,7 @@ class UserRegistrationTest < ActionDispatch::IntegrationTest
     assert_match 'Your Plan has been created!', email.body
 
     # parse password from welcome email
-    password = /Intial Password: (.*)/.match(email.body.raw_source)[1]
+    password = /Initial Password: (.*)/.match(email.body.raw_source)[1]
 
     # log in with password
     get '/'
