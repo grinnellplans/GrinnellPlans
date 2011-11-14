@@ -19,8 +19,9 @@ describe PlansController do
     subject { response }
     it { should be_success }
     it { should render_template( "show" ) }
-    it { assigns( :plan ).should == @plan }
+    it { assigns( :account ).should == @account }
   end
+  
 
   describe "update plan" do
     context "normal request" do
@@ -34,8 +35,12 @@ describe PlansController do
         @account.reload.changed_date.should >= Time.now - 5
       end
       it "redirects to show" do
-        assert_redirected_to read_path( :id => @account.username )
+        assert_redirected_to read_plan_path( :id => @account.username )
       end
     end
   end
+  describe "edit plan"
+  describe "search plan"
+  describe "set_autofinger_level"
+  describe "mark_level_as_read"
 end

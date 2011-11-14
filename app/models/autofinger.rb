@@ -1,20 +1,27 @@
+require 'composite_primary_keys'
 class Autofinger < ActiveRecord::Base
+  set_primary_keys :owner, :interest
   set_table_name :autofinger
   validates_presence_of :owner, :interest, :priority
   
   belongs_to :interested_party, :foreign_key => :owner, :class_name => "Account"
   belongs_to :subject_of_interest, :foreign_key => :interest, :class_name => "Account"
+  
   validates_presence_of :interest, :owner
   
-  def self.mark_as_read(owner, interest)
-     autofinger = Autofinger.where(:owner=>owner, :interest=> interest ).first
+  def self.mark_plan_as_read(owner, interest)
+     autofinger = Autofinger.where(:owner=> owner, :interest=> interest ).first
       unless autofinger.blank?
-        autofinger.updated = '0'
+        autofinger.updated = "0"
         autofinger.readtime = Time.now
-        # autofinger.save
-        #TODO fix error
+        autofinger.save
       end
   end
+  
+  def self.mark_level_as_read(owner, level)
+    Autofinger.update_all({:updated => '0',:readtime => Time.now },{:owner=>owner, :priority=>level})
+  end
+      
 end
 
 # == Schema Information
