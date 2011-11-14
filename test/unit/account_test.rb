@@ -11,8 +11,9 @@ class AccountTest < ActiveSupport::TestCase
     username = 'bob'
     email = 'bob@blop.blop'
     ta = TentativeAccount.create( :username => username, :user_type => 'student', :email => email, :confirmation_token => 'ABCD' )
-    password = Account.create_from_tentative ta
-    assert_not_nil password
+    password = SecureRandom.hex(10)
+    account = Account.create_from_tentative ta, password
+    assert_not_nil account
 
     # an account should have been created
     account = Account.find_by_username username

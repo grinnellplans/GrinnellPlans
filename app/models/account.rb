@@ -58,15 +58,15 @@ class Account < ActiveRecord::Base
     read_attribute :password
   end
 
-  def self.create_from_tentative tentative_account
+  def self.create_from_tentative tentative_account, temp_password
     ta = tentative_account
-    password = SecureRandom.hex(10)
+    a = nil
     account_created = ActiveRecord::Base.transaction do
       a = Account.create( :username => ta.username,
                           :email => ta.email, 
                           :user_type => ta.user_type,
-                          :password => password,
-                          :password_confirmation => password,
+                          :password => temp_password,
+                          :password_confirmation => temp_password,
                           :created => Time.now)
       Plan.create( :user_id => a.userid,
                    :plan => '',
@@ -74,7 +74,7 @@ class Account < ActiveRecord::Base
       ta.delete
     end
     
-    return password if account_created
+    return a if account_created
     return nil
   end
 
