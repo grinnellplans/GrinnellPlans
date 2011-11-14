@@ -4,11 +4,10 @@ class ModifyTentativeAccounts < ActiveRecord::Migration
     create_table :tentative_accounts do |t|
       t.string :username, :email, :user_type, :confirmation_token
       t.timestamps
-      t.primary_key :username
     end
     add_index :tentative_accounts, :username
-    add_index :tentative_accounts,:email
-    add_index :tentative_accounts,:confirmation_token
+    add_index :tentative_accounts, :email
+    add_index :tentative_accounts, :confirmation_token
   end
 
   def self.down
