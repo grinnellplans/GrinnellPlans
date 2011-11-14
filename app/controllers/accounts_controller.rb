@@ -59,10 +59,10 @@ class AccountsController < ApplicationController
   
   def resend_confirmation_email
     @username = params[:username]
-    render :new if !@username
+    redirect_to :action => 'new' if !@username
     
     ta = TentativeAccount.find_by_username(@username)
-    render :new if !ta
+    redirect_to :action => 'new' if !ta
     
     send_confirmation_email ta.username, ta.email, ta.confirmation_token
     @user_email = ta.email
