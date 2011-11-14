@@ -6,11 +6,6 @@ class AccountsController < ApplicationController
     @allowed_domains = APP_CONFIG['email_domains'].map{|d| [d]}
   end
 
-  def send_confirmation_email username, email, token
-    confirmation_email = Notifier.confirm username, email, token
-    confirmation_email.deliver
-  end
-  
   def create
     @account = params[:account]
     @username = @account["username"]
@@ -73,7 +68,7 @@ class AccountsController < ApplicationController
     @confirmation_email_sent = true
   end
 
-  def reset_password # TODO
+  def reset_password # TODO: implement
     # generate a captcha
     # once verified human, reset password and send email
   end
@@ -86,5 +81,11 @@ class AccountsController < ApplicationController
   
   def destroy
   end
-  
+
+  private
+
+  def send_confirmation_email username, email, token
+    confirmation_email = Notifier.confirm username, email, token
+    confirmation_email.deliver
+  end
 end
