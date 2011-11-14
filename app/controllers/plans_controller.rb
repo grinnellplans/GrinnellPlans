@@ -16,9 +16,10 @@ class PlansController < ApplicationController
   end
 
   def show
-      @account = Account.find_by_username(params[:id])
+      username = params[:id] || current_account.username
+      @account = Account.find_by_username(username)
       if @account.blank?
-        redirect_to :action=>:search, :id=>params[:id]
+        redirect_to :action => :search, :id => username
       else
          Autofinger.mark_plan_as_read(current_account.userid, @account.userid)
       end

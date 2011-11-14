@@ -79,7 +79,34 @@ class Account < ActiveRecord::Base
   def crypted_password
     read_attribute :password
   end
-  
+
+  def self.create_from_tentative tentative_account, temp_password
+    ta = tentative_account
+    a = nil
+    account_created = ActiveRecord::Base.transaction do
+      a = Account.create( :username => ta.username,
+                          :email => ta.email, 
+                          :user_type => ta.user_type,
+                          :password => temp_password,
+                          :password_confirmation => temp_password,
+                          :created => Time.now)
+      Plan.create( :user_id => a.userid,
+                   :plan => '',
+                   :edit_text => '' )
+      ta.delete
+    end
+    
+    return a if account_created
+    return nil
+  end
+
+  def self.create_random_token length=8
+    characters = ('A'..'Z').to_a + (0..9).to_a
+    characters -= ['B'] # B and 8 look very similar
+    characters -= ['O'] # O and 0 look very similar
+    characters.sort_by{rand}
+    (1..length).map{characters.sample}.join
+  end
 end
 
 

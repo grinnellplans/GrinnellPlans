@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110227065143) do
+ActiveRecord::Schema.define(:version => 20110905085915) do
 
   create_table "accounts", :primary_key => "userid", :force => true do |t|
     t.string   "username",          :limit => 16,  :default => "",    :null => false
@@ -167,11 +167,18 @@ ActiveRecord::Schema.define(:version => 20110227065143) do
     t.text "poll"
   end
 
-  create_table "tentative_accounts", :primary_key => "tentative_accounts_id", :force => true do |t|
-    t.datetime "created"
-    t.string   "token",   :limit => 16
-    t.string   "session", :limit => 200
+  create_table "tentative_accounts", :force => true do |t|
+    t.string   "username"
+    t.string   "email"
+    t.string   "user_type"
+    t.string   "confirmation_token"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
+
+  add_index "tentative_accounts", ["confirmation_token"], :name => "index_tentative_accounts_on_confirmation_token"
+  add_index "tentative_accounts", ["email"], :name => "index_tentative_accounts_on_email"
+  add_index "tentative_accounts", ["username"], :name => "index_tentative_accounts_on_username"
 
   create_table "test", :id => false, :force => true do |t|
     t.text "name"
