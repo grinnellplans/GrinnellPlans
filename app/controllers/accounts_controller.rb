@@ -73,7 +73,7 @@ class AccountsController < ApplicationController
     @confirmation_email_sent = true
   end
 
-  def reset_password
+  def reset_password # TODO
     # generate a captcha
     # once verified human, reset password and send email
   end
