@@ -50,7 +50,7 @@ class AccountsController < ApplicationController
     if !ta || ta.created_at < (Time.now - 1.day)
       redirect_to :action => 'new' 
     else
-      password = Account.create_new ta
+      password = Account.create_from_tentative ta
       email = Notifier.send_password ta.username, ta.email, password
       email.deliver
       current_account_session.destroy

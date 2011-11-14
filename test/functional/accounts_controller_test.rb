@@ -50,7 +50,7 @@ class AccountsControllerTest < ActionController::TestCase
     ta = TentativeAccount.create( :username => 'plans',
                                   :user_type => 'student',
                                   :email => 'plan@blop.blop' )
-    account = Account.create_new ta
+    account = Account.create_from_tentative ta
     assert_not_nil account
     post :create, { :account => { "username" => "plans" }}
     assert_select 'p', /A plan already exists for this Grinnellian/

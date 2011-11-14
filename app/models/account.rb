@@ -58,7 +58,7 @@ class Account < ActiveRecord::Base
     read_attribute :password
   end
 
-  def self.create_new tentative_account
+  def self.create_from_tentative tentative_account
     ta = tentative_account
     password = SecureRandom.hex(10)
     account_created = ActiveRecord::Base.transaction do
