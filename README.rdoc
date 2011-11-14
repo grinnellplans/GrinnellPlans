@@ -36,3 +36,9 @@
 
 * To pretty up the display of data when you're using the console:
    Hirb.enable
+   
+* to run rspec tests
+  bundle exec rake spec
+
+* to run non-rspec tests
+  rake test
