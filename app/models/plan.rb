@@ -19,7 +19,15 @@ class Plan < ActiveRecord::Base
   end
 
   def clean_text
-    plan = Redcarpet.new( edit_text, :hard_wrap ).to_html
+    renderer = Redcarpet::Render::HTML.new :hard_wrap => true, :no_images => true
+    markdown = Redcarpet::Markdown.new(
+      renderer,
+      :no_intra_emphasis => true,
+      :strikethrough => true,
+      :lax_html_blocks => true,
+      :space_after_headers => true
+    )
+    plan = markdown.render edit_text
 
     # Convert some legacy elements
     { :u => :underline, :strike => :strike, :s => :strike }.each do |in_class,out_class|
