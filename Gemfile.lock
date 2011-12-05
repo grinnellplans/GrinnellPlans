@@ -114,7 +114,6 @@ GEM
     rbx-require-relative (0.0.5)
     rdoc (3.11)
       json (~> 1.4)
-    recaptcha (0.3.1)
     redcarpet (2.0.0)
     rspec (2.7.0)
       rspec-core (~> 2.7.0)
@@ -166,7 +165,6 @@ DEPENDENCIES
   railroady
   rails (~> 3.0.9)
   rails3-generators
-  recaptcha
   redcarpet
   rspec-rails
   ruby-debug
