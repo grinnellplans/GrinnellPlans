@@ -2,8 +2,7 @@ require 'spec_helper'
 
 describe MainBoard do
   before(:each) do
-    @main_board = MainBoard.new(:account=>mock_model("Account"),
-                                :title =>"Foo")
+    @main_board = Factory.build :main_board
   end
   
   it "is valid with valid attributes" do
