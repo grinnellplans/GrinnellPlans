@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 source  'http://gems.github.com'
 
-gem 'rails', '~> 3.0.9'
+gem 'rails', '~> 3.1.1'
 
 #our database, for now.  Eventually, it'll be msyql, but this is easier for now.
 gem 'sqlite3'
@@ -13,7 +13,7 @@ gem 'capistrano'
 gem 'haml'
 
 #A simple model based ruby authentication solution (https://github.com/binarylogic/authlogic)
-gem 'authlogic', '~> 3.0.0'
+gem 'authlogic', '~> 3.1.0'
 gem 'rails3-generators'
 
 #Helpers to deal with your model backed forms in Rails3  (https://github.com/joelmoss/dynamic_form)
@@ -38,7 +38,7 @@ gem 'jquery-rails', '>= 1.0.12'
 gem 'will_paginate', '~> 3.0.pre4'
 
 # supports composite primary keys for legacy tables like Autfinger https://github.com/drnic/composite_primary_keys
-gem "composite_primary_keys", "~> 3.1.10"
+gem "composite_primary_keys", "~> 4.0.0"
 
 group :production do
   #email any errors to people specified in the environment.rb
