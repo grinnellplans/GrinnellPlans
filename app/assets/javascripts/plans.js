@@ -1,3 +1,5 @@
+//= require jquery
+
 function checkPlanLength() {
 	var editText = $('#edit_textarea');
 	var planLength = editText.val().length;

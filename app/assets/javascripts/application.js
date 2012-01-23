@@ -1,5 +1,5 @@
-// Place your application-specific JavaScript functions and classes here
-// This file is automatically included by javascript_include_tag :defaults
+//= require jquery
+
 function toggleShowHide(target, caller, showText, hideText) {
 	// Where's my dollar sign :(
 	target = document.getElementById(target);
