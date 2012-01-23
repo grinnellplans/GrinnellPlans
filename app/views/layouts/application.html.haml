@@ -8,11 +8,6 @@
     = csrf_meta_tag
     = javascript_include_tag "application"
     = javascript_include_tag params[ :controller ]
-    :javascript
-      $(document).ready(function() {
-      $("#username").focus();
-      $("input:password").chromaHash({bars: 3, salt: "5bf999ac93430ed303cd0b56f976e289", minimum: 4});
-      });
   %body#planspage_readplan.plan
     #wrapper
       #nav
