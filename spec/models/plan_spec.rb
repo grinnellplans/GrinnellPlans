@@ -2,30 +2,30 @@ require 'spec_helper'
 
 describe Plan do
   before(:each) do
-     @plan = Factory.create(:plan)
-   end
-   
-   it "is valid with valid attributes" do
-     @plan.should be_valid
-   end
-   
-   it "is not valid when plan is longer than 16777215 characters" do
-     pending "Test is too slow. This will fix it: https://github.com/rails/rails/pull/3873"
-     @plan.plan =  TOO_LONG_STRING
-     @plan.should_not be_valid
+    @plan = Factory.create(:plan)
   end
-  
+
+  it "is valid with valid attributes" do
+    @plan.should be_valid
+  end
+
+  it "is not valid when plan is longer than 16777215 characters" do
+    pending "Test is too slow. This will fix it: https://github.com/rails/rails/pull/3873"
+    @plan.plan =  TOO_LONG_STRING
+    @plan.should_not be_valid
+  end
+
   it "is not valid when edit_text is longer than 16777215 characters" do
-     pending "Test is too slow. This will fix it: https://github.com/rails/rails/pull/3873"
+    pending "Test is too slow. This will fix it: https://github.com/rails/rails/pull/3873"
     @plan.edit_text =  TOO_LONG_STRING
     @plan.should_not be_valid
   end
-  
+
   it "should protect generated_html attribute from mass assignment" do
-        @plan = Plan.new(:plan=>"Candyland", :generated_html => 'hax0rz')
-        @plan.generated_html.should_not == 'hax0rz'
-   end
-  
+    @plan = Plan.new(:plan=>"Candyland", :generated_html => 'hax0rz')
+    @plan.generated_html.should_not == 'hax0rz'
+  end
+
   describe "#generated_html" do
     it "is html safe" do
       subject.edit_text = "foo"
@@ -33,7 +33,7 @@ describe Plan do
       subject.generated_html.should be_html_safe
     end
   end
-  
+
   describe "#clean_text" do
     subject { Plan.new }
     def it_converts_text input, expected
