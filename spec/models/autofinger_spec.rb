@@ -6,6 +6,20 @@ describe Autofinger do
     interest = Account.create! :username => "interest", :password => "123456", :password_confirmation => "123456"
     autofinger = described_class.create(:owner => owner, :interest => interest, :priority => nil).should be_invalid
   end
+
+  describe "updated scope" do
+    before do
+      @updated = Factory.create :autofinger, :updated => "1"
+      @not_updated = Factory.create :autofinger, :updated => "0"
+    end
+    subject { Autofinger.updated }
+    it "includes updated accounts" do
+      subject.exists?(@updated.id).should be_true
+    end
+    it "excludes un-updated accounts" do
+      subject.exists?(@not_updated.id).should be_false
+    end
+  end
 end
 
 # == Schema Information
