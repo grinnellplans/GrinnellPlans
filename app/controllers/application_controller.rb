@@ -16,13 +16,13 @@ class ApplicationController < ActionController::Base
 
   def require_user
     if current_account.nil?
-      redirect_to new_account_session_path
+      redirect_to '/login'
     end
   end
   
   def  require_admin
     if !true # TODO determine how a user is admin  
-      redirect_to new_account_session_path
+      redirect_to '/login'
     end
   end
   

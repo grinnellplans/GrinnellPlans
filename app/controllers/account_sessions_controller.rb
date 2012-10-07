@@ -20,7 +20,7 @@ class AccountSessionsController < ApplicationController
   def destroy
     current_account_session.destroy
     flash[ :notice ] = "You've been logged out."
-    redirect_to new_account_session_path
+    redirect_to '/login'
   end
   
 end

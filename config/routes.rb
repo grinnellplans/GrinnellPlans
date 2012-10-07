@@ -55,7 +55,7 @@ Plans::Application.routes.draw do
     resources :accounts, :only => [:new, :create]
   end
   
-  resources:plans do
+  resources :plans do
     member do
       get :edit
       put :update
@@ -69,8 +69,8 @@ Plans::Application.routes.draw do
   end
   
   resources :secrets 
-  
-  resource :user, :controller => "account_sessions", :as => "account_session", :only => [ :new, :create, :destroy ], :path_names => { :new => "login" }
+
+  resource :account_session, :only => [ :new, :create, :destroy ]
   
   resources :accounts do
     collection do
@@ -83,6 +83,8 @@ Plans::Application.routes.draw do
   end
     
   match '/register' => 'accounts#new'
+  match '/login' => 'account_sessions#new'
+  match '/logout' => 'account_sessions#destroy'
   
   # adding default route as lowest priority
   # match '/:controller(/:action(/:id))'
