@@ -11,7 +11,7 @@ describe PlansController do
   it "redirects to login when no user present" do
     @account_session.destroy
     get :show, :id => @account.username
-    assert_redirected_to '/login'
+    assert_redirected_to login_path
   end
 
   describe "read plan" do
