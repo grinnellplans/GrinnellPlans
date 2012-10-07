@@ -18,7 +18,7 @@
 
 = form_for @account, :as => :account, :url => { :action => "create" } do |f| 
   My Grinnell email is 
-  = "#{f.text_field :username}@ #{f.select :email_domain, options_for_select(@allowed_domains), :selected => @allowed_domains[0][0]},"
+  != "#{f.text_field :username}@ #{f.select :email_domain, options_for_select(@allowed_domains), :selected => @allowed_domains[0][0]},"
   and I am a
-  ="#{f.select :user_type, options_for_select([['Student','student'], ['Staff Member', 'staff'], ['Faculty Member', 'faculty'], ['Student Group', 'group']]), :selected => 'student'}."
-  = submit_tag("Register")
+  !="#{f.select :user_type, options_for_select([['Student','student'], ['Staff Member', 'staff'], ['Faculty Member', 'faculty'], ['Student Group', 'group']]), :selected => 'student'}."
+  != submit_tag("Register")
