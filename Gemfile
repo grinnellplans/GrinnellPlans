@@ -32,7 +32,7 @@ gem 'redcarpet'
 gem "json", "~> 1.5.4"
 
 #https://github.com/rails/jquery-ujs
-gem 'jquery-rails', '>= 1.0.12'
+gem 'jquery-rails', '~> 2.1'
 
 # https://github.com/mislav/will_paginate/tree/rails3
 gem 'will_paginate', '~> 3.0.pre4'

@@ -1,4 +1,5 @@
 //= require jquery
+//= require jquery_ujs
 
 function toggleShowHide(target, caller, showText, hideText) {
 	// Where's my dollar sign :(
