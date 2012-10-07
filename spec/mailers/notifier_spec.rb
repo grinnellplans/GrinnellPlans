@@ -1,11 +1,18 @@
-require 'test_helper'
-class UserMailerTest < ActionMailer::TestCase
+require 'spec_helper'
+
+describe Notifier do
+
+  before :each do
+    ActionMailer::Base.delivery_method = :test
+    ActionMailer::Base.perform_deliveries = true
+    ActionMailer::Base.deliveries = []
+  end
   
-  def teardown
+  after :each do
     ActionMailer::Base.deliveries.clear
   end
   
-  test "welcome email" do
+  it "sends a welcome email" do
     username = 'littlebird'
     email = 'little@bird.me'
     password = 'tastyw0rms'
@@ -13,11 +20,11 @@ class UserMailerTest < ActionMailer::TestCase
     sent = ActionMailer::Base.deliveries.first
     assert_equal 'Plan Created', sent.subject
     assert_equal email, sent.to[0]
-    assert_match 'Your Plan has been created!', sent.body
-    assert_match  password, sent.body
+    sent.body.should =~ /Your Plan has been created/
+    sent.body.should =~ /#{password}/
   end
 
-  test "confirmation email" do
+  it "sends a confirmation email" do
     username = 'littlebird'
     email = 'little@bird.me'
     token = 'tastyw0rms'
@@ -25,6 +32,7 @@ class UserMailerTest < ActionMailer::TestCase
     sent = ActionMailer::Base.deliveries.first
     assert_equal 'Plan Activation Link', sent.subject
     assert_equal email, sent.to[0]
-    assert_match 'will expire in 24 hours', sent.body
+    sent.body.should =~ /will expire in 24 hours/
   end
+
 end
