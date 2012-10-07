@@ -1,6 +1,5 @@
 require 'spec_helper'
 
-
 describe AccountsController do
   render_views
 

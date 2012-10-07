@@ -82,9 +82,9 @@ Plans::Application.routes.draw do
     end
   end
     
-  match '/register' => 'accounts#new'
-  match '/login' => 'account_sessions#new'
-  match '/logout' => 'account_sessions#destroy'
+  match '/register' => 'accounts#new', :as => :register
+  match '/login' => 'account_sessions#new', :as => :login
+  match '/logout' => 'account_sessions#destroy', :as => :logout
   
   # adding default route as lowest priority
   # match '/:controller(/:action(/:id))'
