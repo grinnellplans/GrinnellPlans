@@ -19,7 +19,7 @@ describe Account do
     its( :password ) { should_not == "foobar" }
     it_behaves_like "password oracle"
   end
-
+  
   it "fails if password confirmation is mismatch" do
     described_class.create( :username => "foobar", :password => "foobar", :password_confirmation => "barbaz" ).should be_invalid
   end
@@ -41,6 +41,38 @@ describe Account do
       subject.crypted_password.should match( /\$1\$.{8}\$.{22}/ )
     end
   end
+
+
+  describe "#create_random_token" do
+    it "creates 8 character random token" do
+      token = Account.create_random_token
+      assert_equal 8, token.size
+    end
+  end
+
+  describe "#create_from_tentative" do
+    it "creates new account" do
+      username = 'bob'
+      email = 'bob@blop.blop'
+      ta = TentativeAccount.create( :username => username, :user_type => 'student', :email => email, :confirmation_token => 'ABCD' )
+      password = SecureRandom.hex(10)
+      account = Account.create_from_tentative ta, password
+      assert_not_nil account
+
+      # an account should have been created
+      account = Account.find_by_username username
+      assert_equal email, account.email
+      
+      # a plan should have been created
+      plan = Plan.find_by_user_id account.userid
+      assert_equal '', plan.plan
+
+      # tentative account should have been deleted
+      ta = TentativeAccount.find_by_username username
+      assert_equal nil, ta
+    end
+  end
+
 end
 
 
