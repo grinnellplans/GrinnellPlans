@@ -1,6 +1,7 @@
 require File.expand_path('../../mailers/notifier.rb', __FILE__)
 
 class AccountsController < ApplicationController
+  layout false
 
   def new
     @allowed_domains = APP_CONFIG['email_domains'].map{|d| [d]}
