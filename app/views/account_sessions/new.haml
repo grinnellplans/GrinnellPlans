@@ -3,6 +3,8 @@
     %meta{"http-equiv"=>"Content-Type", :content=>"text/html", :charset=>"utf-8"}
     %title GrinnellPlans
     = csrf_meta_tag
+    :css
+      .field_with_errors { display: inline; }
   %body
     .left
       %br
@@ -14,7 +16,6 @@
         %tr.boxes
           %td.boxes{:colspan=>2, :align=>"center"}
             =form_for @session, :url => account_session_path do |f|
-              = f.error_messages
               =f.label :"Username : "
               =f.text_field :username
               %br
@@ -25,7 +26,8 @@
               =f.hidden_field "js_test_value",:value => "off"
               :javascript
                 document.getElementById("account_js_test_value").value = "on";
-            %td
+              -if @session.errors.messages[:base]
+                .error_message= @session.errors.messages[:base][0]
         %tr
           %td{:colspan=>2, :align=>"center"}
             %br

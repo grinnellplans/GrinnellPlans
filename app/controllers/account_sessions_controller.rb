@@ -12,7 +12,7 @@ class AccountSessionsController < ApplicationController
       account = Account.where(:username => @session.username).first #todo - I bet there's a better way to do this line
       account.login = Time.now
       account.save!
-      redirect_to "/"
+      redirect_to root_path
     else
       render :action => :new
     end
