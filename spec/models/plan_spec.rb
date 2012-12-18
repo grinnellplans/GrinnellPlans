@@ -47,12 +47,15 @@ describe Plan do
       subject.save
     end
 
-    it "scrubs disallowed html" do
-      pending "until I figure out why Redcarpet is escaping quotes"
-      input = "foo <script>alert('foo');</script> image: <img src=\"foo.jpg\" />"
-      expected = "foo alert('foo'); image: "
+    it "sanitizes disallowed html" do
+      pending "I haven't finessed it quite right yet"
+      input = "<script>alert('foo');</script> image: <img src=\"foo.jpg\" />"
+      expected = "&lt;script&gt;alert('foo');&lt;/script&gt; image: &lt;img src=\"foo.jpg\"&gt;"
       it_converts_text input, expected
     end
+
+    it "escapes unclosed tags"
+    it "escapes unopened tags"
 
     it "wraps paragraphs at <hr>" do
       input = "foo\n<hr>bar"
