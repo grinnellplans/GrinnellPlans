@@ -9,8 +9,8 @@ describe Autofinger do
 
   describe "updated scope" do
     before do
-      @updated = Factory.create :autofinger, :updated => "1"
-      @not_updated = Factory.create :autofinger, :updated => "0"
+      @updated = FactoryGirl.create :autofinger, :updated => "1"
+      @not_updated = FactoryGirl.create :autofinger, :updated => "0"
     end
     subject { Autofinger.updated }
     it "includes updated accounts" do

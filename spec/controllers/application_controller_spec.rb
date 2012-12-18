@@ -12,7 +12,7 @@ describe ApplicationController do
 
   describe "autofinger" do
     before do
-      @interest = Factory.create :autofinger, :updated => 1
+      @interest = FactoryGirl.create :autofinger, :updated => 1
       controller.stub(:current_account) { @interest.interested_party }
     end
     it "is populated" do

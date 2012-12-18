@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Plan do
   before(:each) do
-    @plan = Factory.create(:plan)
+    @plan = FactoryGirl.create(:plan)
   end
 
   it "is valid with valid attributes" do

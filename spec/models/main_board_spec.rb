@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe MainBoard do
   before(:each) do
-    @main_board = Factory.build :main_board
+    @main_board = FactoryGirl.build :main_board
   end
   
   it "is valid with valid attributes" do
