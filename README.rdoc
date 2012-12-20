@@ -6,6 +6,8 @@
 2. Install {ruby & rails}[http://rubyonrails.org/download].
 
 3. bundler will manage the gems for the project
+    gem install bundler
+   or
     sudo gem install bundler
 
 4. Checkout the project
@@ -18,11 +20,18 @@
 6. Create the database (specified in database yml) and seed it with data
     rake db:setup
 
-7. Start the server. GrinnellPlans will be at http://localhost:3000
+=== Rails Project Tasks
+
+* Start the server (GrinnellPlans will be at http://localhost:3000):
     rails server
 
+* Run the tests:
+    bundle exec rake spec
 
-=== Helpful Tasks
+* To use the Rails console (for debugging, playing with data, etc):
+    rails console
+
+=== Other Helpful Tasks
 
 * To generate diagrams (in doc/):
    rake diagram:all
@@ -31,14 +40,5 @@
 * To annotate models (that is, to add the column info to the models as comments):
    annotate
 
-* To use the Rails console (for debugging, playing with data, etc):
-   rails console
-
 * To pretty up the display of data when you're using the console:
    Hirb.enable
-   
-* to run rspec tests
-  bundle exec rake spec
-
-* to run non-rspec tests
-  rake test
