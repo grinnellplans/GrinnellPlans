@@ -56,15 +56,15 @@ Plans::Application.routes.draw do
   end
   
   resources :plans do
+    collection do
+      get :set_autofinger_level
+      put :mark_level_as_read
+    end
     member do
       get :edit
       put :update
       get :show, :as => "read"
       get :search
-    end
-    collection do
-      get :set_autofinger_level
-      put :mark_level_as_read
     end
   end
   

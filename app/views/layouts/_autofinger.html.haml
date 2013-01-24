@@ -6,7 +6,7 @@
       %li{:class=>"autoreadlevel #{cycle('even','odd')}"}
         .autoreadname
           =link_to "Level #{priority}", set_autofinger_level_plans_path(:level=>priority, :return_to=>request.fullpath), {:id=>"set_autoreadlev#{priority}", :class=>"autoreadlink"}
-          =link_to "X", mark_level_as_read_plans_path(:level=>priority, :return_to=>request.fullpath ), {:class=>"markasread", :method=>:put, :confirm=>"Are you sure you'd like to mark all the Plans on level 1 as read?"}
+          =link_to "X", mark_level_as_read_plans_path(:level=>priority, :return_to=>request.fullpath ), {:class=>"markasread", :method=>:put, :confirm=>"Are you sure you'd like to mark all the Plans on level #{priority} as read?"}
           -if priority == session[:autofinger_level]
             %ul
               -for autofinger in @autofingers
