@@ -1,0 +1,295 @@
+--- 
+k: 
+  poll: "0"
+  pseudo: ""
+  changed: ""
+  edit_rows: "14"
+  guest_password: ""
+  group_bit: ""
+  username: mckitter
+  user_type: student
+  grad_year: "2008"
+  spec_message: ""
+  is_admin: "false"
+  userid: "107"
+  webview: ""
+  show_images: "false"
+  notes_asc: ""
+  login: 2007-12-26 20:22:36 UTC
+  password: ab5OmsfD8HjDQ
+  edit_cols: "70"
+  email: mckitter@foo.bar
+  created: 2007-12-23 18:17:40 UTC
+l: 
+  poll: "0"
+  pseudo: ""
+  changed: ""
+  edit_rows: "14"
+  guest_password: ""
+  group_bit: ""
+  username: tylerjac
+  user_type: student
+  grad_year: "2011"
+  spec_message: ""
+  is_admin: "false"
+  userid: "108"
+  webview: ""
+  show_images: "false"
+  notes_asc: ""
+  login: 2007-12-26 20:28:02 UTC
+  password: abBVvbyJnTL7w
+  edit_cols: "70"
+  email: tylerjac@foo.bar
+  created: 2007-12-23 18:18:08 UTC
+a: 
+  poll: "0"
+  pseudo: yet again
+  changed: ""
+  edit_rows: "40"
+  guest_password: 
+  group_bit: ""
+  username: youngian
+  user_type: ""
+  grad_year: ""
+  spec_message: ""
+  is_admin: "true"
+  userid: "100"
+  webview: "0"
+  show_images: "false"
+  notes_asc: "0"
+  login: 2008-09-29 14:06:36 UTC
+  password: ab8EpSDFI7IO.
+  edit_cols: "100"
+  email: youngian@grinnell.edu
+  created: 2004-08-23 09:59:29 UTC
+m: 
+  poll: "0"
+  pseudo: ""
+  changed: ""
+  edit_rows: "14"
+  guest_password: vanvalke
+  group_bit: ""
+  username: vanvalke
+  user_type: student
+  grad_year: "2009"
+  spec_message: ""
+  is_admin: "false"
+  userid: "109"
+  webview: ""
+  show_images: "false"
+  notes_asc: ""
+  login: 2007-12-27 15:48:20 UTC
+  password: abeYX1p9jn4Tc
+  edit_cols: "70"
+  email: vanvalke@foo.bar
+  created: 2007-12-23 18:20:13 UTC
+b: 
+  poll: "0"
+  pseudo: The Official Plan of GrinnellPlans
+  changed: ""
+  edit_rows: "20"
+  guest_password: 
+  group_bit: ""
+  username: plans
+  user_type: ""
+  grad_year: ""
+  spec_message: ""
+  is_admin: "true"
+  userid: "1"
+  webview: "0"
+  show_images: "false"
+  notes_asc: 
+  login: 2010-04-07 17:07:35 UTC
+  password: abGkwsBKKg0WQ
+  edit_cols: "90"
+  email: plans@grinnell.edu
+  created: 2002-09-09 19:48:25 UTC
+n: 
+  poll: "0"
+  pseudo: ""
+  changed: ""
+  edit_rows: "14"
+  guest_password: ""
+  group_bit: ""
+  username: wrightjo
+  user_type: student
+  grad_year: "2010"
+  spec_message: ""
+  is_admin: "false"
+  userid: "112"
+  webview: ""
+  show_images: "false"
+  notes_asc: ""
+  login: 2007-12-23 19:01:59 UTC
+  password: abR1mC87ZiV2U
+  edit_cols: "70"
+  email: wrightjo@foo.bar
+  created: 2007-12-23 18:20:49 UTC
+c: 
+  poll: "0"
+  pseudo: ""
+  changed: ""
+  edit_rows: "14"
+  guest_password: ""
+  group_bit: ""
+  username: krohn
+  user_type: staff
+  grad_year: ""
+  spec_message: ""
+  is_admin: "false"
+  userid: "110"
+  webview: ""
+  show_images: "false"
+  notes_asc: ""
+  login: 2007-12-26 20:33:24 UTC
+  password: ab/NVhoJXkkIY
+  edit_cols: "70"
+  email: krohn@foo.bar
+  created: 2007-12-23 17:16:34 UTC
+d: 
+  poll: "0"
+  pseudo: ""
+  changed: ""
+  edit_rows: "14"
+  guest_password: ""
+  group_bit: ""
+  username: teachems
+  user_type: faculty
+  grad_year: ""
+  spec_message: ""
+  is_admin: "false"
+  userid: "111"
+  webview: ""
+  show_images: "false"
+  notes_asc: ""
+  login: 2007-12-26 20:32:06 UTC
+  password: abTYtq5PvOBk6
+  edit_cols: "70"
+  email: teachems@foo.bar
+  created: 2007-12-23 17:23:09 UTC
+e: 
+  poll: "0"
+  pseudo: ""
+  changed: ""
+  edit_rows: "14"
+  guest_password: ""
+  group_bit: ""
+  username: swap
+  user_type: group
+  grad_year: ""
+  spec_message: ""
+  is_admin: "false"
+  userid: "101"
+  webview: ""
+  show_images: "false"
+  notes_asc: ""
+  login: 
+  password: abrjvH8nAXK4E
+  edit_cols: "70"
+  email: swap@foo.bar
+  created: 2007-12-23 18:01:13 UTC
+f: 
+  poll: "0"
+  pseudo: ""
+  changed: ""
+  edit_rows: "14"
+  guest_password: ""
+  group_bit: ""
+  username: cow
+  user_type: group
+  grad_year: ""
+  spec_message: ""
+  is_admin: "false"
+  userid: "102"
+  webview: ""
+  show_images: "false"
+  notes_asc: ""
+  login: 2007-12-27 15:28:07 UTC
+  password: ab.fV1cS1PgOc
+  edit_cols: "70"
+  email: cow@foo.bar
+  created: 2007-12-23 18:03:21 UTC
+g: 
+  poll: "0"
+  pseudo: ""
+  changed: ""
+  edit_rows: "14"
+  guest_password: ""
+  group_bit: ""
+  username: goodj
+  user_type: rlc
+  grad_year: ""
+  spec_message: ""
+  is_admin: "false"
+  userid: "103"
+  webview: ""
+  show_images: "false"
+  notes_asc: ""
+  login: 2007-12-27 15:40:30 UTC
+  password: abZyb6l/6pg4A
+  edit_cols: "70"
+  email: goodj@foo.bar
+  created: 2007-12-23 18:06:27 UTC
+h: 
+  poll: "0"
+  pseudo: ""
+  changed: ""
+  edit_rows: "14"
+  guest_password: ""
+  group_bit: ""
+  username: moosejaw
+  user_type: city
+  grad_year: ""
+  spec_message: ""
+  is_admin: "false"
+  userid: "104"
+  webview: ""
+  show_images: "false"
+  notes_asc: ""
+  login: 2007-12-27 15:43:21 UTC
+  password: ab8K5Fx42NpzU
+  edit_cols: "70"
+  email: plans@foo.bar
+  created: 2007-12-23 18:09:32 UTC
+i: 
+  poll: "0"
+  pseudo: ""
+  changed: ""
+  edit_rows: "14"
+  guest_password: ""
+  group_bit: ""
+  username: johnso58
+  user_type: student
+  grad_year: "2001"
+  spec_message: ""
+  is_admin: "false"
+  userid: "105"
+  webview: "1"
+  show_images: "false"
+  notes_asc: ""
+  login: 2007-12-27 15:49:04 UTC
+  password: aben8B8WvfeW6
+  edit_cols: "70"
+  email: johnso58@foo.bar
+  created: 2007-12-23 18:16:01 UTC
+j: 
+  poll: "0"
+  pseudo: ""
+  changed: ""
+  edit_rows: "14"
+  guest_password: ""
+  group_bit: ""
+  username: remarjen
+  user_type: student
+  grad_year: "2008"
+  spec_message: ""
+  is_admin: "false"
+  userid: "106"
+  webview: ""
+  show_images: "false"
+  notes_asc: ""
+  login: 2007-12-26 20:24:02 UTC
+  password: abu28OdKUlAps
+  edit_cols: "70"
+  email: remarjen@foo.bar
+  created: 2007-12-23 18:17:09 UTC

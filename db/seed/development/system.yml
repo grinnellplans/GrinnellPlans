@@ -1,0 +1,4 @@
+--- 
+a: 
+  poll: ""
+  motd: "[<a href=\\\"read.php?searchname=plans\\\">plans</a>] [<a href=\\\"read.php?searchname=swap\\\">swap</a>]\r<br><hr>\r<br>This is a MOTD feature. You can put up news, updates, whatever.\r<br>"

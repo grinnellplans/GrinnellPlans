@@ -1,0 +1,17 @@
+--- 
+a: 
+  descr: <b>Modern</b><br>Default interface.
+  interface: "1"
+  path: interfaces/default/defaultinterface.php
+b: 
+  descr: <b>Old Term</b>
+  interface: "2"
+  path: interfaces/oldplans/oldplan.php
+c: 
+  descr: <b>Centered</b><br>Autofinger list is on the right side.
+  interface: "3"
+  path: interfaces/centered/centered.php
+d: 
+  descr: <b>Postmodern</b><br>New, tableless, and powerful
+  interface: "4"
+  path: interfaces/tableless/tableless.php

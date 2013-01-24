@@ -1,0 +1,85 @@
+--- 
+k: 
+  descr: Toggle rearrangement of middle letters in each word of a Plan
+  html_code: 
+  linknum: "12"
+  static: "no"
+  linkname: Jumble
+l: 
+  descr: Self-Governance Tile Sorting
+  html_code: <a href="http://www.thebroth.com/plans" class="main">broth</a>
+  linknum: "13"
+  static: "yes"
+  linkname: Broth
+a: 
+  descr: Gives a link that you can click on to go to a random plan.
+  html_code: <a href="random.php" class="main">random plan</a>
+  linknum: "1"
+  static: "yes"
+  linkname: Random Plan
+m: 
+  descr: IRC-style chat with other Plans users
+  html_code: <a href="/chat/" class="main" target="_blank">chat</a>
+  linknum: "14"
+  static: "yes"
+  linkname: Plans Chat
+b: 
+  descr: Gives various information on different aspects of plans. By Andrew Kensler.
+  html_code: <a href="http://www.grinnellplans.com/sandbox/wellons" class="main">planlove v2</a>
+  linknum: "2"
+  static: "yes"
+  linkname: Planlove
+n: 
+  descr: Interface showing all users by initial letter
+  html_code: <a href="listusers.php" class="main">list users</a>
+  linknum: "15"
+  static: "yes"
+  linkname: List Users
+c: 
+  descr: See who has updated in past few hours.
+  html_code: <a href="planwatch.php" class="main">plan watch</a>
+  linknum: "3"
+  static: "yes"
+  linkname: Planwatch
+d: 
+  descr: Gives you a link that you just click to search for who has given you planlove.
+  html_code: <a href="quicklove.php" class="main">quick love</a>
+  linknum: "4"
+  static: "yes"
+  linkname: Quick Love Search
+e: 
+  descr: Gives you a link to a page listing newly created plans.
+  html_code: <a href="lastcreated.php" class="main">plan genesis</a>
+  linknum: "5"
+  static: "yes"
+  linkname: Plan Genesis
+f: 
+  descr: Gives a link to the Notes board.
+  html_code: <a href="board_show.php" class="main">notes</a>
+  linknum: "6"
+  static: "yes"
+  linkname: Notes
+g: 
+  descr: Link to beta-test of a Plans phpBB forum
+  html_code: <a href="http://forum.grinnellplans.com" class="main">forum</a>
+  linknum: "7"
+  static: "no"
+  linkname: phpBB Forum
+h: 
+  descr: Beta test of Advanced Poll page
+  html_code: <a href="poll.php" class="main">poll</a>
+  linknum: "8"
+  static: "yes"
+  linkname: Poll
+i: 
+  descr: Shows the Message of the Day homepage.
+  html_code: <a href="home.php" class="main">home</a>
+  linknum: "9"
+  static: "yes"
+  linkname: Home
+j: 
+  descr: Anonymous Posts
+  html_code: 
+  linknum: "11"
+  static: "no"
+  linkname: Secrets

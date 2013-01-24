@@ -1,0 +1,37 @@
+--- 
+k: 
+  userid: "109"
+  status: ""
+l: 
+  userid: "112"
+  status: ""
+a: 
+  userid: "110"
+  status: ""
+b: 
+  userid: "111"
+  status: ""
+c: 
+  userid: "101"
+  status: write-only
+d: 
+  userid: "102"
+  status: ""
+e: 
+  userid: "103"
+  status: ""
+f: 
+  userid: "104"
+  status: write-only
+g: 
+  userid: "105"
+  status: ""
+h: 
+  userid: "106"
+  status: ""
+i: 
+  userid: "107"
+  status: ""
+j: 
+  userid: "108"
+  status: ""

@@ -1,0 +1,11 @@
+--- 
+a: 
+  html: I exercise most with
+  type: multiple
+  poll_question_id: "1"
+  created: 2007-10-14 13:20:13 UTC
+b: 
+  html: Mentally multiplying 77 and 83 takes me...
+  type: single
+  poll_question_id: "2"
+  created: 2007-10-21 07:35:55 UTC

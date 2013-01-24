@@ -1,0 +1,61 @@
+--- 
+k: 
+  html: I can't do this
+  poll_choice_id: "11"
+  poll_question_id: "2"
+  created: 2007-10-16 10:21:39 UTC
+l: 
+  html: "  23 - 45 seconds"
+  poll_choice_id: "12"
+  poll_question_id: "2"
+  created: 2007-10-16 11:15:00 UTC
+a: 
+  html: "  Running"
+  poll_choice_id: "1"
+  poll_question_id: "1"
+  created: 2007-10-14 13:20:13 UTC
+b: 
+  html: "  Biking"
+  poll_choice_id: "2"
+  poll_question_id: "1"
+  created: 2007-10-14 13:20:13 UTC
+c: 
+  html: "  Climbing"
+  poll_choice_id: "3"
+  poll_question_id: "1"
+  created: 2007-10-14 13:20:13 UTC
+d: 
+  html: " Chess"
+  poll_choice_id: "4"
+  poll_question_id: "1"
+  created: 2007-10-14 13:20:13 UTC
+e: 
+  html: " Ball Sports "
+  poll_choice_id: "5"
+  poll_question_id: "1"
+  created: 2007-10-14 13:20:13 UTC
+f: 
+  html: WoW
+  poll_choice_id: "6"
+  poll_question_id: "1"
+  created: 2007-10-14 13:20:13 UTC
+g: 
+  html: "    < 3 seconds"
+  poll_choice_id: "7"
+  poll_question_id: "2"
+  created: 2007-10-16 10:21:39 UTC
+h: 
+  html: "   3 - 9 seconds"
+  poll_choice_id: "8"
+  poll_question_id: "2"
+  created: 2007-10-16 10:21:39 UTC
+i: 
+  html: "  10 - 22 seconds"
+  poll_choice_id: "9"
+  poll_question_id: "2"
+  created: 2007-10-16 10:21:39 UTC
+j: 
+  html: " > 45 seconds"
+  poll_choice_id: "10"
+  poll_question_id: "2"
+  created: 2007-10-16 10:21:39 UTC

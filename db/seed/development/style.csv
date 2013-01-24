@@ -1,9 +1,0 @@
-style,path,descr
-1,styles/default/default.css,<b>Pastel Hell</b><br>The default color scheme.
-2,styles/oldstyle/oldstyle.css,"<b>Black, White, and Red all over</b><br>Old style color scheme."
-3,styles/jolly/jolly.css,"<b>Jolly Rancher</b><br>A colorful and elegant style. Notes: Does not work in Netscape 4, link backgrounds do not show up in Opera."
-4,styles/blue/blue.css,"<b>Pastel Purgatory</b><br>A pastel color scheme, but not as heavy on the pastel colors as Pastel Hell."
-5,styles/terminal/terminal.css,<b>Terminal</b><br>A color scheme emulating the old green and black monitors. Courtesy of Andrew Kensler.
-6,styles/parchment/parchment.css,<b>Parchment</b><br>A light white-orange color scheme. Courtesy of Andrew Kensler.
-7,styles/slate.css,<b>Slate</b><br> by youngian. Use with Postmodern interface only.
-8,styles/libre.css,<b>Libre</b><br> by youngian. Use with Postmodern interface only. Incompatible with Internet Explorer.

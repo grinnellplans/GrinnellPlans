@@ -1,5 +1,0 @@
-interface,path,descr
-1,interfaces/default/defaultinterface.php,<b>Modern</b><br>Default interface.
-2,interfaces/oldplans/oldplan.php,<b>Old Term</b>
-3,interfaces/centered/centered.php,<b>Centered</b><br>Autofinger list is on the right side.
-4,interfaces/tableless/tableless.php,"<b>Postmodern</b><br>New, tableless, and powerful"
