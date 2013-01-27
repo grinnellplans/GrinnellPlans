@@ -5,11 +5,12 @@ class Style < ActiveRecord::Base
 end
 
 
+
 # == Schema Information
 #
 # Table name: style
 #
-#  style :integer         not null
+#  style :integer         not null, primary key
 #  path  :string(128)
 #  descr :string(255)
 #

@@ -4,11 +4,12 @@ class Permission < ActiveRecord::Base
 end
 
 
+
 # == Schema Information
 #
 # Table name: perms
 #
-#  userid :integer         not null
+#  userid :integer         not null, primary key
 #  status :string(32)
 #
 

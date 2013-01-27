@@ -78,6 +78,7 @@ end
 
 
 
+
 # == Schema Information
 #
 # Table name: accounts
@@ -104,5 +105,6 @@ end
 #  is_admin          :boolean         default(FALSE)
 #  persistence_token :string(255)
 #  password_salt     :string(255)
+#  perishable_token  :string(255)     default(""), not null
 #
 
