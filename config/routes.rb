@@ -81,6 +81,8 @@ Plans::Application.routes.draw do
       get :reset_password
     end
   end
+  
+  resources :password_resets, :except => [:destroy, :show, :index]
     
   match '/register' => 'accounts#new', :as => :register
   match '/login' => 'account_sessions#new', :as => :login

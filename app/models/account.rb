@@ -69,6 +69,7 @@ class Account < ActiveRecord::Base
     c.transition_from_crypto_providers PhpCrypt::CryptoProviders::DES
     c.validate_email_field false
     c.check_passwords_against_database false
+    c.perishable_token_valid_for 1.day.to_i #NOTE, the password reset email says it expires in 24 hours.
   end
 
   # Trick authlogic into behaving with our column name
@@ -78,6 +79,11 @@ class Account < ActiveRecord::Base
 
   def crypted_password
     read_attribute :password
+  end
+  
+  def deliver_password_reset_instructions!  
+    reset_perishable_token!  
+    Notifier.password_reset_instructions(self).deliver
   end
 
   def self.create_from_tentative tentative_account, temp_password
@@ -111,6 +117,7 @@ end
 
 
 
+
 # == Schema Information
 #
 # Table name: accounts
@@ -137,5 +144,6 @@ end
 #  is_admin          :boolean         default(FALSE)
 #  persistence_token :string(255)
 #  password_salt     :string(255)
+#  perishable_token  :string(255)     default(""), not null
 #
 

@@ -1,9 +1,10 @@
 #footer
-  #justupdated
-    %div 
-      Do you read 
-      =link_to "TODO",read_plan_path(:id=>" ")  #TODO
-      , who just updated?
+  -unless @current_account.blank?
+    #justupdated
+      %div 
+        Do you read 
+        =link_to "TODO",read_plan_path(:id=>" ")  #TODO
+        , who just updated?
 
   #poweredby
     %div

@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110905085915) do
+ActiveRecord::Schema.define(:version => 20130125033218) do
 
   create_table "accounts", :primary_key => "userid", :force => true do |t|
     t.string   "username",          :limit => 16,  :default => "",    :null => false
@@ -34,11 +35,13 @@ ActiveRecord::Schema.define(:version => 20110905085915) do
     t.boolean  "is_admin",                         :default => false
     t.string   "persistence_token"
     t.string   "password_salt"
+    t.string   "perishable_token",                 :default => "",    :null => false
   end
 
   add_index "accounts", ["changed"], :name => "changed"
   add_index "accounts", ["password"], :name => "password"
   add_index "accounts", ["password"], :name => "password_2"
+  add_index "accounts", ["perishable_token"], :name => "index_accounts_on_perishable_token"
   add_index "accounts", ["username"], :name => "username", :unique => true
   add_index "accounts", ["username"], :name => "username_2"
 

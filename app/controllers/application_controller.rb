@@ -20,6 +20,13 @@ class ApplicationController < ActionController::Base
     end
   end
   
+  def require_no_user
+    if current_account.present?
+      redirect_to root_path
+    end
+  end
+  
+  
   def  require_admin
     if !true # TODO determine how a user is admin  
       redirect_to login_path

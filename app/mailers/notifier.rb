@@ -14,5 +14,10 @@ class Notifier < ActionMailer::Base
     @password = password
     mail :to => email, :subject => "Plan Created"
   end
+  
+  def password_reset_instructions account
+    @account = account
+    mail :to => account.email, :subject => "Plan Password Reset Instructions"
+  end
 
 end
