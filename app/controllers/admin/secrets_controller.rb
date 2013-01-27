@@ -1,5 +1,5 @@
 class Admin::SecretsController < ApplicationController
-  before_filter :require_admin
+  before_filter :require_admin, :load_autofingers
   # GET /admin/secrets
   def index
     @secrets = Secret.page(params[:page]).order("date DESC")
