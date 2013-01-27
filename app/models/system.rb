@@ -1,5 +1,5 @@
 class System < ActiveRecord::Base
-  set_table_name :system
+  self.table_name = :system
 end
 
 # == Schema Information

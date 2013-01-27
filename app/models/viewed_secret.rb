@@ -1,5 +1,5 @@
 class ViewedSecret < ActiveRecord::Base
-  set_primary_key :userid
+  self.primary_key = :userid
   belongs_to :account, :foreign_key=> :userid
   
 end

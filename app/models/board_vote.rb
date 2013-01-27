@@ -1,6 +1,6 @@
 class BoardVote  < ActiveRecord::Base
-  set_table_name "boardvotes"
-  set_primary_key :voteid
+  self.table_name = "boardvotes"
+  self.primary_key = :voteid
   belongs_to :account, :foreign_key=> :userid
   belongs_to :main_board, :foreign_key => :thredid
   belongs_to :sub_board, :foreign_key => :message_id

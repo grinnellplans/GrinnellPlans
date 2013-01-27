@@ -1,5 +1,5 @@
 class PollQuestion < ActiveRecord::Base
-  set_primary_key :poll_question_id 
+  self.primary_key = :poll_question_id 
   has_many :poll_choices
  
  # don't use "type" as a column for Single table inheritance, it's a legacy name

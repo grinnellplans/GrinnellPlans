@@ -1,5 +1,5 @@
 class Permission < ActiveRecord::Base
-  set_table_name "perms"
+  self.table_name = "perms"
   belongs_to :account, :foreign_key=> :userid
 end
 

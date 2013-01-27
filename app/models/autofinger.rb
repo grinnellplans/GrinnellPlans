@@ -1,7 +1,7 @@
 require 'composite_primary_keys'
 class Autofinger < ActiveRecord::Base
-  set_primary_keys :owner, :interest
-  set_table_name :autofinger
+  self.primary_keys = :owner, :interest
+  self.table_name = :autofinger
   validates_presence_of :owner, :interest, :priority
   
   belongs_to :interested_party, :foreign_key => :owner, :class_name => "Account"

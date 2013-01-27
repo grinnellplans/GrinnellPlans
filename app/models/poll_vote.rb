@@ -1,5 +1,5 @@
 class PollVote < ActiveRecord::Base
-  set_primary_key :poll_vote_id
+  self.primary_key = :poll_vote_id
   belongs_to :account, :foreign_key=> :userid
   belongs_to :poll_choice, :foreign_key=> :poll_choice_id
   

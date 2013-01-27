@@ -1,5 +1,5 @@
 class Account < ActiveRecord::Base
-  set_primary_key :userid
+  self.primary_key = :userid
   validates :username, :presence => true, :length =>{ :maximum => 16 }
   validates :password,  :length =>{ :maximum => 34 }
   validates :email, :length =>{ :maximum => 64 }

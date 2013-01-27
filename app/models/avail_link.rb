@@ -1,5 +1,5 @@
 class AvailLink < ActiveRecord::Base
-  set_primary_key :linknum
+  self.primary_key = :linknum
   has_many :opt_links, :foreign_key =>:linknum
 end
 

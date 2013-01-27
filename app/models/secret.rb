@@ -1,5 +1,5 @@
 class Secret < ActiveRecord::Base
-  set_primary_key :secret_id
+  self.primary_key = :secret_id
   self.per_page = 5
  
   DISPLAY_OPTIONS = ["yes", "no"]

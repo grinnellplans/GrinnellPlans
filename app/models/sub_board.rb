@@ -1,6 +1,6 @@
 class SubBoard < ActiveRecord::Base
-  set_table_name "subboard"
-  set_primary_key :messageid
+  self.table_name = "subboard"
+  self.primary_key = :messageid
   belongs_to :main_board, :foreign_key =>:threadid
   belongs_to :account, :foreign_key=> :userid
 

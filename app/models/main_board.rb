@@ -1,6 +1,6 @@
 class MainBoard < ActiveRecord::Base
-  set_table_name "mainboard"
-  set_primary_key "threadid" 
+  self.table_name = "mainboard"
+  self.primary_key = "threadid" 
   belongs_to :account, :foreign_key=> :userid
   has_many :sub_boards, :foreign_key =>:threadid
   validates_presence_of :userid, :title
