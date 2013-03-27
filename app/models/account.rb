@@ -8,7 +8,7 @@ class Account < ActiveRecord::Base
   validates :user_type, :length =>{ :maximum => 128 }
 
   # validate :grad_year_for_user_type
-  
+
   has_many :interests_in_others, :class_name => "Autofinger", :foreign_key => "owner"
   has_many :people_that_interest_me, :class_name => "Account", :through => :interests_in_others, :source=>"subject_of_interest"
   has_many :board_votes, :foreign_key=> :userid
@@ -21,14 +21,14 @@ class Account < ActiveRecord::Base
   has_many :sub_boards, :foreign_key=> :userid
   has_one  :viewed_secret, :foreign_key=> :userid
   has_one  :plan, :foreign_key => :user_id
-  
+
   #Every ruby object already has a .dsiplay() method  so we can't call it display
-  has_one  :display_item, :foreign_key => :userid, :class_name =>"Display" 
+  has_one  :display_item, :foreign_key => :userid, :class_name =>"Display"
 
   before_validation do
     self.show_images = true
   end
-  
+
   before_create do
        self.created = Time.now
        self.is_admin = false
@@ -40,7 +40,7 @@ class Account < ActiveRecord::Base
   #     self.plan.create
   #     # TODO create links for new user
   #   end
-  
+
   #can't have "changed" attribute because of changed? method
   class << self
     def instance_method_already_implemented?(method_name)
@@ -48,19 +48,19 @@ class Account < ActiveRecord::Base
       super
     end
   end
-  
+
   def changed_date= value
     self[:changed] = value
   end
-  
+
   def changed_date
     self[:changed]
   end
-  
+
   # def grad_year_for_user_type
   #    (user_type == 'student' && grad_year > 0) || user_type != 'student'
   #  end
-  #  
+  #
 
   acts_as_authentic do |c|
     c.login_field :username
@@ -80,9 +80,9 @@ class Account < ActiveRecord::Base
   def crypted_password
     read_attribute :password
   end
-  
-  def deliver_password_reset_instructions!  
-    reset_perishable_token!  
+
+  def deliver_password_reset_instructions!
+    reset_perishable_token!
     Notifier.password_reset_instructions(self).deliver
   end
 
@@ -91,7 +91,7 @@ class Account < ActiveRecord::Base
     a = nil
     account_created = ActiveRecord::Base.transaction do
       a = Account.create( :username => ta.username,
-                          :email => ta.email, 
+                          :email => ta.email,
                           :user_type => ta.user_type,
                           :password => temp_password,
                           :password_confirmation => temp_password,
@@ -101,7 +101,7 @@ class Account < ActiveRecord::Base
                    :edit_text => '' )
       ta.delete
     end
-    
+
     return a if account_created
     return nil
   end
