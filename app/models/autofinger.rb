@@ -3,10 +3,10 @@ class Autofinger < ActiveRecord::Base
   self.primary_keys = :owner, :interest
   self.table_name = :autofinger
   validates_presence_of :owner, :interest, :priority
-  
+
   belongs_to :interested_party, :foreign_key => :owner, :class_name => "Account"
   belongs_to :subject_of_interest, :foreign_key => :interest, :class_name => "Account"
-  
+
   validates_presence_of :interest, :owner
 
   scope :updated, where( :updated => 1 )
@@ -19,11 +19,11 @@ class Autofinger < ActiveRecord::Base
         autofinger.save
       end
   end
-  
+
   def self.mark_level_as_read(owner, level)
     Autofinger.update_all({:updated => '0',:readtime => Time.now },{:owner=>owner, :priority=>level})
   end
-      
+
 end
 
 # == Schema Information

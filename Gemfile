@@ -9,7 +9,7 @@ gem 'sqlite3'
 #Capistrano is a sort of deployment script (https://github.com/capistrano/capistrano/wiki)
 gem 'capistrano'
 
-#haml is a lazy/concise way of generating html (http://haml-lang.com/) 
+#haml is a lazy/concise way of generating html (http://haml-lang.com/)
 gem 'haml'
 
 #A simple model based ruby authentication solution (https://github.com/binarylogic/authlogic)
@@ -48,39 +48,39 @@ end
 group :development do
   #fancy-format things in the rails console.  "Hirb.enable" in the console to start it.
   gem 'hirb'
-  
+
   #add comments to the models/tests that show the attributes
   gem 'annotate'
-  
+
   # Generate model and controller diagrams and put them in /doc
   gem "railroady"
-  
+
   #add a footer to the page with info about sql, javascript, etc.
   # gem 'rails3-footnotes'
-  
+
   # To use debugger (ruby-debug for Ruby 1.8.7+, ruby-debug19 for Ruby 1.9.2+)
   gem 'ruby-debug', :platform => :ruby_18
   # gem 'ruby-debug19', :platform => :ruby_19
-  
+
   gem "single_test"
 end
 
 group :test, :development do
   # Tests! (http://relishapp.com/rspec)
   gem 'rspec-rails'
-  
+
   #SanitizeEmail allows you to play with your application's email abilities without worrying that emails will get sent to actual live addresses. (https://github.com/pboling/sanitize_email)
   #gem 'sanitize_email'
 end
 
 group :test do
-  #Mocha is a library for mocking and stubbing 
+  #Mocha is a library for mocking and stubbing
   # gem 'mocha'
-  
+
   gem 'factory_girl_rails'
   #Calculate the differences between two XML/HTML documents
   #If you have trouble installing nokogiri on lion: http://pinds.com/2011/08/06/rails-tip-of-the-day-rails-os-x-lion-rvm-nokogiri/
   gem 'nokogiri-diff'
-  
-  
+
+
 end

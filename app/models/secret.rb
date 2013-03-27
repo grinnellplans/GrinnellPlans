@@ -1,25 +1,25 @@
 class Secret < ActiveRecord::Base
   self.primary_key = :secret_id
   self.per_page = 5
- 
+
   DISPLAY_OPTIONS = ["yes", "no"]
   validates_presence_of :secret_text
   validates_inclusion_of :display_attr, :in =>DISPLAY_OPTIONS
   validates_length_of :secret_text, :maximum => 16777215
   attr_protected :display_attr, :date_approved
-  
+
   before_validation :on => :create do
     self.display_attr = "no" unless !self.display_attr.blank?
   end
-  
-  before_create do 
+
+  before_create do
     self.date = Time.now
   end
-  
+
   before_update do
      self.date_approved = Time.now
   end
-  
+
   #can't have "display" attribute because of Object.display ruby method
   class << self
     def instance_method_already_implemented?(method_name)
@@ -31,11 +31,11 @@ class Secret < ActiveRecord::Base
   def display_attr= value
     self[:display] = value
   end
-  
+
   def display_attr
     self[:display]
   end
-  
+
 end
 
 

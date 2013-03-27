@@ -1,8 +1,8 @@
 #footer
   -unless @current_account.blank?
     #justupdated
-      %div 
-        Do you read 
+      %div
+        Do you read
         =link_to "TODO",read_plan_path(:id=>" ")  #TODO
         , who just updated?
 
@@ -10,10 +10,10 @@
     %div
       = image_tag "logo-small.png", :class => "logo"
       %span
-        Powered by 
+        Powered by
         =link_to "GrinnellPlans", "http://code.google.com/p/grinnellplans/"
-        , an opensource project. 
-        File a 
+        , an opensource project.
+        File a
         =link_to "bug report","TODO"
         / <a href="http://code.google.com/p/grinnellplans/issues/entry?comment=Username%3A+%5Bcarey%5D%0ARevision%3A+564%0AURL%3A+www.grinnellplans.com%2Fhome.php%0AUser-agent%3A+Mozilla%2F5.0+%28Macintosh%3B+Intel+Mac+OS+X+10.6%3B+rv%3A5.0.1%29+Gecko%2F20100101+Firefox%2F5.0.1%0A%0AHow+can+we+reproduce+the+problem%3F%0A1.+%0A2.+%0A3.+%0A%0AWhat+is+the+expected+output%3F+What+do+you+see+instead%3F%0A+"></a>
         after taking a look at the

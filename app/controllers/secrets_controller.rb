@@ -1,6 +1,6 @@
 class SecretsController < ApplicationController
   before_filter :require_user, :load_autofingers , :except=>[:new,:create]
-  
+
   # GET /secrets
   def index
     @secrets = Secret.where(:display=>"yes").page(params[:page]).order("date DESC")
@@ -16,7 +16,7 @@ class SecretsController < ApplicationController
   def create
     @secret = Secret.new(params[:secret])
       if @secret.save
-        redirect_to(secrets_path, :notice => 'Secret was successfully created.') 
+        redirect_to(secrets_path, :notice => 'Secret was successfully created.')
       else
         render :action => "new"
       end

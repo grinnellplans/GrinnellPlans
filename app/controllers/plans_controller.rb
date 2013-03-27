@@ -24,17 +24,17 @@ class PlansController < ApplicationController
          Autofinger.mark_plan_as_read(current_account.userid, @account.userid)
       end
   end
-  
+
   def mark_level_as_read
     Autofinger.mark_level_as_read(current_account.userid, params[:level])
     redirect_to params[:return_to]
   end
-  
+
   def set_autofinger_level
     session[:autofinger_level] = params[:level]
     redirect_to params[:return_to]
   end
-  
+
   def search
     @account = Account.find_by_username(params[:id])
     if !@account.blank?
@@ -43,5 +43,5 @@ class PlansController < ApplicationController
       # TODO
     end
   end
-  
+
 end
