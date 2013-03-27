@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  layout 'none'
+  layout 'minimal'
   def index
   end
 

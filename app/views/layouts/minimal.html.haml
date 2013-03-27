@@ -1,0 +1,16 @@
+!!!
+%html{:dir=>"ltr"}
+  %head
+    %meta{"http-equiv"=>"Content-Type", :content=>"text/html", :charset=>"utf-8"}
+    %meta{:name=>"ROBOTS", :content=>"noarchhive"}
+    %title TODO [THIS_PERSON]'s plan
+    = stylesheet_link_tag :login, :libre
+    = csrf_meta_tag
+    = javascript_include_tag "application"
+    = javascript_include_tag params[ :controller ]
+  %body#planspage_readplan.plan
+    #wrapper
+      .main
+        %div
+          =yield
+      =render :partial=>"/layouts/footer"
