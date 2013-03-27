@@ -3,35 +3,35 @@ source  'http://gems.github.com'
 
 gem 'rails', '~> 3.2'
 
-#our database, for now.  Eventually, it'll be msyql, but this is easier for now.
+# our database, for now.  Eventually, it'll be msyql, but this is easier for now.
 gem 'sqlite3'
 
-#Capistrano is a sort of deployment script (https://github.com/capistrano/capistrano/wiki)
+# Capistrano is a sort of deployment script (https://github.com/capistrano/capistrano/wiki)
 gem 'capistrano'
 
-#haml is a lazy/concise way of generating html (http://haml-lang.com/)
+# haml is a lazy/concise way of generating html (http://haml-lang.com/)
 gem 'haml'
 
-#A simple model based ruby authentication solution (https://github.com/binarylogic/authlogic)
+# A simple model based ruby authentication solution (https://github.com/binarylogic/authlogic)
 gem 'authlogic', '~> 3.1.2'
 gem 'rails3-generators'
 
-#Helpers to deal with your model backed forms in Rails3  (https://github.com/joelmoss/dynamic_form)
+# Helpers to deal with your model backed forms in Rails3  (https://github.com/joelmoss/dynamic_form)
 gem 'dynamic_form'
 
-#Crypt3 is a ruby version of crypt(3), a salted one-way hashing of a password.
+# Crypt3 is a ruby version of crypt(3), a salted one-way hashing of a password.
 gem 'crypt3', :git => "git://github.com/rubyunworks/crypt3.git"
 
-#A whitelist-based Ruby HTML sanitizer (http://wonko.com/post/sanitize)
+# A whitelist-based Ruby HTML sanitizer (http://wonko.com/post/sanitize)
 gem 'sanitize'
 
-#A powerful parser for Markdown (https://github.com/tanoku/redcarpet)
+# A powerful parser for Markdown (https://github.com/tanoku/redcarpet)
 gem 'redcarpet'
 
-#Serialization using JSON
+# Serialization using JSON
 gem "json", "~> 1.5.4"
 
-#https://github.com/rails/jquery-ujs
+# https://github.com/rails/jquery-ujs
 gem 'jquery-rails', '~> 2.1'
 
 # https://github.com/mislav/will_paginate/tree/rails3
@@ -39,6 +39,9 @@ gem 'will_paginate', '~> 3.0.pre4'
 
 # supports composite primary keys for legacy tables like Autfinger https://github.com/drnic/composite_primary_keys
 gem "composite_primary_keys", "~> 5.0"
+
+# Procfile management for ruby.
+gem "foreman"
 
 group :production do
   #email any errors to people specified in the environment.rb
