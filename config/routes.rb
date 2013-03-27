@@ -15,7 +15,7 @@ Plans::Application.routes.draw do
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-  
+
   # Sample resource route with options:
   #   resources :products do
   #     member do
@@ -42,19 +42,19 @@ Plans::Application.routes.draw do
   #     end
   #   end
 
-  
+
   # See how all your routes lay out with "rake routes"
 
   # You can have the root of your site routed with "root"
-  
+
   # just remember to delete public/index.html.
   root :controller => "plans", :action => "show", :id => "plans"
-  
+
   namespace :admin do
     resources :secrets, :only => [:index, :update]
     resources :accounts, :only => [:new, :create]
   end
-  
+
   resources :plans do
     collection do
       get :set_autofinger_level
@@ -67,11 +67,11 @@ Plans::Application.routes.draw do
       get :search
     end
   end
-  
-  resources :secrets 
+
+  resources :secrets
 
   resource :account_session, :only => [ :new, :create, :destroy ]
-  
+
   resources :accounts do
     collection do
       get :new
@@ -81,13 +81,17 @@ Plans::Application.routes.draw do
       get :reset_password
     end
   end
-  
+
+  resources :pages do
+    get :faq
+  end
+
   resources :password_resets, :except => [:destroy, :show, :index]
-    
+
   match '/register' => 'accounts#new', :as => :register
   match '/login' => 'account_sessions#new', :as => :login
   match '/logout' => 'account_sessions#destroy', :as => :logout
-  
+
   # adding default route as lowest priority
   # match '/:controller(/:action(/:id))'
 end

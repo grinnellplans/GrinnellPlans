@@ -18,7 +18,7 @@
             - if flash[:notice]
               %p.notice
                 = flash[:notice]
-            
+
             =form_for @session, :url => account_session_path do |f|
               =f.label :"Username : "
               =f.text_field :username
@@ -37,22 +37,22 @@
           %td{:colspan=>2, :align=>"center"}
             %br
             %br
-            Need a plan? 
+            Need a plan?
             =link_to "Register", register_path
             if you have an @grinnell.edu email address.
             %br
             %span{:style=>"font-size:0.7em"}
               Otherwise
               =mail_to "grinnellplans@gmail.com", "email us"
-              Alumni, please include your @alumni.grinnell.edu forwarding address (which you can get 
+              Alumni, please include your @alumni.grinnell.edu forwarding address (which you can get
               =link_to "here", "http://www.alumniconnections.com/olc/pub/GRN/permanentemail.html"
               ) and grad year.
             %br
             %br
-            What is plans? 
-            =link_to "GrinnellPlans FAQ", "documents/faq.html"
+            What is plans?
+            =link_to "GrinnellPlans FAQ", "pages/faq.html"
             %br
-            Email 
+            Email
             =mail_to "grinnellplans@gmail.com"
             with questions or concerns.
             %br
@@ -64,6 +64,6 @@
     %hr
     %center
     %p.legalese
-      Use of the GrinnellPlans service means you have accepted the 
+      Use of the GrinnellPlans service means you have accepted the
       =link_to "GrinnellPlans Terms of Service", "http://www.grinnellplans.com/tos/"
       agreement. If you do not accept and abide by this agreement, you may not use GrinnellPlans. This agreement is subject to change without notice, so you should periodically review the most up-to-date version.

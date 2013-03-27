@@ -18,7 +18,7 @@
     bundle install
 
 6. Create the database (specified in database yml) and seed it with data
-    rake db:setup
+    rake db:setup (can also be done with 'bundle exec rake db:schema:load')
 
 === Rails Project Tasks
 

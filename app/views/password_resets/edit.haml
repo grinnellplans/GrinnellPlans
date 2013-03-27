@@ -1,6 +1,6 @@
 %h1 Change My Password
 
-=form_for @account, :url => password_reset_path, :method => :put do |f| 
+=form_for @account, :url => password_reset_path, :method => :put do |f|
   = f.error_messages
   = f.label :password
   = f.password_field :password

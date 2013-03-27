@@ -7,8 +7,8 @@ class Plan < ActiveRecord::Base
   # validates_presence_of :account
   validates_length_of :plan, :maximum=>16777215,  :message => "Your plan is too long"
   validates_length_of :edit_text, :maximum => 16777215,  :message => "Your plan is too long"
-  
-  
+
+
   #TODO Consider migrating user_id to userid, like everythig else
   def userid
     user_id
@@ -72,21 +72,21 @@ class Plan < ActiveRecord::Base
            end
          else
            self.generated_html.gsub!(/\[#{item}\]/s, "[<a href=\"/read/#{item}\" class=\"planlove\">#{item}</a>]"); #change all occurences of person on plan
-           
+
          end
        end
        checked[item]=true
      end
      logger.debug("self.plan________"+self.generated_html)
   end
-  
+
   private
      def set_modified_time
        self.account.changed = Time.now()
        self.account.save!
      end
 end
-    
+
 # == Schema Information
 #
 # Table name: plans
