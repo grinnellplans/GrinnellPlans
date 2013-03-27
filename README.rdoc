@@ -19,6 +19,7 @@
 
 6. Create the database (specified in database yml) and seed it with data
     rake db:setup
+    (TODO: replace the 'bundle exec rake db:schema:load' style setup with actual migrations that make sense)
 
 === Rails Project Tasks
 
