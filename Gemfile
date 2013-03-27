@@ -12,6 +12,9 @@ gem 'capistrano'
 # haml is a lazy/concise way of generating html (http://haml-lang.com/)
 gem 'haml'
 
+# Sass is a lazy/concise way of preprocessing css (http://http://sass-lang.com/)
+gem 'sass'
+
 # A simple model based ruby authentication solution (https://github.com/binarylogic/authlogic)
 gem 'authlogic', '~> 3.1.2'
 gem 'rails3-generators'
