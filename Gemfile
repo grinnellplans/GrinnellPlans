@@ -20,7 +20,7 @@ gem 'rails3-generators'
 gem 'dynamic_form'
 
 #Crypt3 is a ruby version of crypt(3), a salted one-way hashing of a password.
-gem 'crypt3'
+gem 'crypt3', :git => "git://github.com/rubyunworks/crypt3.git"
 
 #A whitelist-based Ruby HTML sanitizer (http://wonko.com/post/sanitize)
 gem 'sanitize'

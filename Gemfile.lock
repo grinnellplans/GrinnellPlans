@@ -4,6 +4,12 @@ GIT
   specs:
     exception_notification (1.0.0)
 
+GIT
+  remote: git://github.com/rubyunworks/crypt3.git
+  revision: 2dd4c98ab2882c9233d70833886ad4588e7ff8e6
+  specs:
+    crypt3 (1.1.5)
+
 GEM
   remote: http://rubygems.org/
   remote: http://gems.github.com/
@@ -50,7 +56,6 @@ GEM
     columnize (0.3.6)
     composite_primary_keys (5.0.10)
       activerecord (~> 3.2.0, >= 3.2.9)
-    crypt3 (1.1.4)
     diff-lcs (1.1.3)
     dynamic_form (1.1.4)
     erubis (2.7.0)
@@ -163,7 +168,7 @@ DEPENDENCIES
   authlogic (~> 3.1.2)
   capistrano
   composite_primary_keys (~> 5.0)
-  crypt3
+  crypt3!
   dynamic_form
   exception_notification!
   factory_girl_rails
