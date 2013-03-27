@@ -82,6 +82,10 @@ Plans::Application.routes.draw do
     end
   end
 
+  resources :pages do
+    get :faq
+  end
+
   resources :password_resets, :except => [:destroy, :show, :index]
 
   match '/register' => 'accounts#new', :as => :register
