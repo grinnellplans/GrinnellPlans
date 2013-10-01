@@ -1,7 +1,10 @@
 source 'http://rubygems.org'
 source  'http://gems.github.com'
 
+ruby '1.9.3'
+
 gem 'rails', '~> 3.2'
+
 
 # our database, for now.  Eventually, it'll be msyql, but this is easier for now.
 gem 'sqlite3'
@@ -66,10 +69,24 @@ group :development do
   # gem 'rails3-footnotes'
 
   # To use debugger (ruby-debug for Ruby 1.8.7+, ruby-debug19 for Ruby 1.9.2+)
-  gem 'ruby-debug', :platform => :ruby_18
-  # gem 'ruby-debug19', :platform => :ruby_19
+  #gem 'ruby-debug', :platform => :ruby_18
+  gem 'ruby-debug19', :platform => :ruby_19
 
   gem "single_test"
+
+  #makes the error pages much more useful and makes them look better
+  gem 'better_errors'
+  
+  #Using binding_of_caller we can grab bindings from higher up the call stack and evaluate code in that context. 
+  #development only
+  gem 'binding_of_caller'
+  #Supporting gem for Rails Panel (Google Chrome extension for Rails development).
+  gem 'meta_request'
+  #Mutes assets pipeline log messages.
+  gem 'quiet_assets'
+  
+  gem 'thin'
+
 end
 
 group :test, :development do
@@ -81,13 +98,12 @@ group :test, :development do
 end
 
 group :test do
-  #Mocha is a library for mocking and stubbing
-  # gem 'mocha'
 
   gem 'factory_girl_rails'
   #Calculate the differences between two XML/HTML documents
   #If you have trouble installing nokogiri on lion: http://pinds.com/2011/08/06/rails-tip-of-the-day-rails-os-x-lion-rvm-nokogiri/
   gem 'nokogiri-diff'
-
+  #Code coverage
+  gem "simplecov"
 
 end
