@@ -10,13 +10,11 @@ describe Plan do
   end
 
   it "is not valid when plan is longer than 16777215 characters" do
-    pending "Test is too slow. This will fix it: https://github.com/rails/rails/pull/3873"
     @plan.plan =  TOO_LONG_STRING
     @plan.should_not be_valid
   end
 
   it "is not valid when edit_text is longer than 16777215 characters" do
-    pending "Test is too slow. This will fix it: https://github.com/rails/rails/pull/3873"
     @plan.edit_text =  TOO_LONG_STRING
     @plan.should_not be_valid
   end
@@ -54,8 +52,19 @@ describe Plan do
       it_converts_text input, expected
     end
 
-    it "escapes unclosed tags"
-    it "escapes unopened tags"
+    #should it escape unclosed tags, or is automatically closing them good enough?
+    it "escapes unclosed tags" do
+      input = "Eek <b>Bold <i>4</i> ever!"
+      expected = "Eek <b>Bold <i>4</i> ever!</b>"
+      it_converts_text input, expected
+    end
+
+    it "escapes unopened tags" do
+      pending "functinality not implemented"
+      input = " close unopened </b> tag"
+      expected = "close unopened &lt;b&gt; tag"
+      it_converts_text input, expected
+    end
 
     it "wraps paragraphs at <hr>" do
       input = "foo\n<hr>bar"
@@ -76,15 +85,18 @@ describe Plan do
     end
 
     context "safe html" do
+
       def accepts_tag name
         input = "<#{name}>Some text</#{name}>"
         it_converts_text input, input
       end
+
       def converts_tag name, new_open, new_close
         input = "<#{name}>Some text</#{name}>"
         expected = "<#{new_open}>Some text</#{new_close}>"
         it_converts_text input, expected
       end
+
       it { accepts_tag "i" }
       it { accepts_tag "b" }
       it { accepts_tag "span" }
@@ -132,21 +144,32 @@ describe Plan do
     end
 
     it "parses link format" do
-      pending do
         input = "here is a [http://google.com|link]!"
-        expected = "here is a <a href='http://google.com'>link</a>!"
+        expected = "here is a <a href='http://google.com' class=\"onplan\">link</a>!"
         it_converts_text input, expected
-      end
     end
 
     it "parses planlove" do
-      pending do
         oscar = Account.create! :username => "wildeosc", :password => "foobar", :password_confirmation => "foobar"
         input = "planlove [wildeosc]."
-        expected = "planlove [<a href='#{Rails.application.routes.url_helpers.read_plan_path oscar.username}' class='onplan'>wildosc</a>]."
+        expected = "planlove [<a href='#{Rails.application.routes.url_helpers.read_plan_path oscar.username}' class='planlove'>wildeosc</a>]."
         it_converts_text input, expected
-      end
     end
+
+    it "allows camel case planloves" do
+        oscar = Account.create! :username => "wildeosc", :password => "foobar", :password_confirmation => "foobar"
+        input = "planlove [WiLdeosc]."
+        expected = "planlove [<a href='#{Rails.application.routes.url_helpers.read_plan_path oscar.username}' class='planlove'>WiLdeosc</a>]."
+        it_converts_text input, expected
+    end
+
+
+    it "ignores unlinkable planloves" do 
+      input = "I wish [thispersohasnoplan] was on plans."
+      expected = "I wish [thispersohasnoplan] was on plans."
+      it_converts_text input, expected
+    end
+
   end
 end
 

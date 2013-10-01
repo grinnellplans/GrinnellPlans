@@ -7,7 +7,18 @@ class Plan < ActiveRecord::Base
   # validates_presence_of :account
   validates_length_of :plan, :maximum=>16777215,  :message => "Your plan is too long"
   validates_length_of :edit_text, :maximum => 16777215,  :message => "Your plan is too long"
+  
 
+  ALLOWED_HTML = {
+      :elements => %w[ a b hr i p span pre tt code br ],
+      :attributes => {
+        'a' => [ 'href' ],
+        'span' => [ 'class' ],
+      },
+      :protocols => {
+        'a' => { 'href' => [ 'http', 'https', 'mailto' ] }
+      },
+    }
 
   #TODO Consider migrating user_id to userid, like everythig else
   def userid
@@ -37,54 +48,59 @@ class Plan < ActiveRecord::Base
     end
 
     # Now sanitize any bad elements
-    self.generated_html = Sanitize.clean plan, {
-      :elements => %w[ a b hr i p span pre tt code br ],
-      :attributes => {
-        'a' => [ 'href' ],
-        'span' => [ 'class' ],
-      },
-      :protocols => {
-        'a' => { 'href' => [ 'http', 'https', 'mailto' ] }
-      },
-    }
+    plan_html = Sanitize.clean plan, ALLOWED_HTML
+  
+    self.generated_html = link_loves plan_html
 
-    # TODO make actual rails links
-     checked = {}
-     loves = self.generated_html.scan(/.*?\[(.*?)\].*?/s)#get an array of everything in brackets
-    logger.debug("self.plan________"+self.generated_html)
-     for love in loves
-       item = love.first
-       jlw = item.gsub(/\#/, "\/")
-       unless checked[item]
-         account = Account.where(:username=>item).first
-         if account.blank?
-           if item.match(/^\d+$/) && SubBoard.find(:first, :conditions=>{:messageid=>item})
-             #TODO  Regexp.escape(item, "/")
-             self.generated_html.gsub!(/\[" . Regexp.escape(item) . "\]/s, "[<a href=\"board_messages.php?messagenum=$item#{item}\" class=\"boardlink\">#{item}</a>]")
-           end
-           if item =~ /:/
-             if item =~ /|/
-               love_replace = item.match(/(.+?)\|(.+)/si)
-                self.generated_html.gsub!(/\[" . Regexp.escape(item) . "\]/s, "<a href=\"/read/#{love_replace[1]}\" class=\"onplan\">#{love_replace[2]}</a>") #change all occurences of person on plan
-             else
-               self.generated_html.gsub!(/\[" .  Regexp.escape(item) . "\]/s, "<a href=\"#{item}\" class=\"onplan\">#{item}</a>")
-             end
-           end
-         else
-           self.generated_html.gsub!(/\[#{item}\]/s, "[<a href=\"/read/#{item}\" class=\"planlove\">#{item}</a>]"); #change all occurences of person on plan
-
-         end
-       end
-       checked[item]=true
-     end
-     logger.debug("self.plan________"+self.generated_html)
   end
 
   private
-     def set_modified_time
-       self.account.changed = Time.now()
-       self.account.save!
-     end
+    #TODO ink_loves should be moved to a helper
+    def link_loves(plan_html)
+      # TODO make actual rails links, probably in helper
+      logger.debug("self.plan________"+plan_html)
+      checked = {}
+      loves = plan_html.scan(/\[(.*?)\]/)#get an array of everything in brackets
+      loves.each do |love|
+        item = love.first
+        unless checked[item]
+          checked[item] = true
+
+          if item.match(/^\d+$/) && SubBoard.find(:first, :conditions=>{:messageid=>item})
+            #TODO  Regexp.escape(item, "/")
+            plan_html.gsub!(/\[#{Regexp.escape(item)}\]/, "[<a href=\"board_messages.php?messagenum=$item#{item}\" class=\"boardlink\">#{item}</a>]")
+            next
+          end
+
+          if item =~ /:/
+            if item =~ /\|/
+              # external link with name
+              love_replace = item.match(/(.+?)\|(.+)/i)
+              plan_html.gsub!(/\[#{Regexp.escape(item)}\]/, "<a href=\"#{love_replace[1]}\" class=\"onplan\">#{love_replace[2]}</a>") 
+            else
+              # external link without name
+              plan_html.gsub!(/\[#{Regexp.escape(item)}\]/, "<a href=\"#{item}\" class=\"onplan\">#{item}</a>")
+            end
+            next
+          end
+
+          account = Account.where(:username=>item.downcase).first
+          unless account.blank?
+            #change all occurences of person on plan
+            plan_html.gsub!(/\[#{item}\]/, "[<a href=\"#{Rails.application.routes.url_helpers.read_plan_path account.username}\" class=\"planlove\">#{item}</a>]"); 
+          end
+        end
+        
+      end
+
+      logger.debug("self.plan________"+plan_html)
+      return plan_html
+    end
+
+    def set_modified_time
+      self.account.changed = Time.now()
+      self.account.save!
+    end
 end
 
 # == Schema Information
