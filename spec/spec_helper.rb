@@ -31,6 +31,8 @@ end
 
 RSpec::Matchers.define :be_same_html_as do |expected|
   match do |actual|
+    actual.gsub!( "\n", "" )
+    expected.gsub!( "\n", "" )
     Nokogiri::HTML( actual ).diff( Nokogiri::HTML( expected ) ).all? do |c,dummy|
       c == " "
     end
