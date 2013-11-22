@@ -10,13 +10,11 @@ describe Plan do
   end
 
   it 'is not valid when plan is longer than 16777215 characters' do
-    pending 'Test is too slow. This will fix it: https://github.com/rails/rails/pull/3873'
     @plan.plan =  TOO_LONG_STRING
     @plan.should_not be_valid
   end
 
   it 'is not valid when edit_text is longer than 16777215 characters' do
-    pending 'Test is too slow. This will fix it: https://github.com/rails/rails/pull/3873'
     @plan.edit_text =  TOO_LONG_STRING
     @plan.should_not be_valid
   end
