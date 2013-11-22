@@ -1,4 +1,4 @@
-source 'http://rubygems.org'
+source 'https://rubygems.org'
 source  'http://gems.github.com'
 
 gem 'rails', '~> 3.2'
@@ -65,9 +65,9 @@ group :development do
   #add a footer to the page with info about sql, javascript, etc.
   # gem 'rails3-footnotes'
 
-  # To use debugger (ruby-debug for Ruby 1.8.7+, ruby-debug19 for Ruby 1.9.2+)
-  gem 'ruby-debug', :platform => :ruby_18
-  # gem 'ruby-debug19', :platform => :ruby_19
+  # To use debugger
+  gem 'debugger'
+
 
   gem "single_test"
 end
