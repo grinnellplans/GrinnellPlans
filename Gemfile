@@ -68,7 +68,6 @@ group :development do
   # To use debugger
   gem 'debugger'
 
-
   gem "single_test"
 end
 
@@ -78,6 +77,8 @@ group :test, :development do
 
   #SanitizeEmail allows you to play with your application's email abilities without worrying that emails will get sent to actual live addresses. (https://github.com/pboling/sanitize_email)
   #gem 'sanitize_email'
+
+  gem 'rubocop'
 end
 
 group :test do

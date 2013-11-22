@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe ViewedSecret do 
+describe ViewedSecret do
 end
 # == Schema Information
 #
@@ -9,4 +9,3 @@ end
 #  userid :integer         not null, primary key
 #  date   :datetime
 #
-

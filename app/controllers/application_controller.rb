@@ -34,7 +34,7 @@ class ApplicationController < ActionController::Base
   end
 
   def load_autofingers
-    @autofingers = current_account.interests_in_others.updated.where :priority=> session[:autofinger_level]
+    @autofingers = current_account.interests_in_others.updated.where priority: session[:autofinger_level]
   end
 
 end

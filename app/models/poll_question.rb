@@ -4,7 +4,7 @@ class PollQuestion < ActiveRecord::Base
 
  # don't use "type" as a column for Single table inheritance, it's a legacy name
  def self.inheritance_column
-   "na"
+   'na'
  end
 end
 
@@ -19,4 +19,3 @@ end
 #  type             :string(20)
 #  created          :datetime
 #
-

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "secrets/index.html.haml" do
+describe 'secrets/index.html.haml' do
   before(:each) do
     assign(:secrets, [
       stub_model(Secret),
@@ -8,5 +8,5 @@ describe "secrets/index.html.haml" do
     ])
   end
 
-  it "renders a list of secrets" 
+  it 'renders a list of secrets'
 end

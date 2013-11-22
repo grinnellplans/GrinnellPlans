@@ -1,9 +1,9 @@
 class BoardVote  < ActiveRecord::Base
-  self.table_name = "boardvotes"
+  self.table_name = 'boardvotes'
   self.primary_key = :voteid
-  belongs_to :account, :foreign_key=> :userid
-  belongs_to :main_board, :foreign_key => :thredid
-  belongs_to :sub_board, :foreign_key => :message_id
+  belongs_to :account, foreign_key: :userid
+  belongs_to :main_board, foreign_key: :thredid
+  belongs_to :sub_board, foreign_key: :message_id
   validates_presence_of :main_board, :sub_board, :account, :vote_date
 
   before_update :set_vote_date
@@ -27,4 +27,3 @@ end
 #  vote_date :datetime        not null
 #  vote      :integer(2)
 #
-

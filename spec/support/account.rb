@@ -6,4 +6,4 @@
 # end
 
 
-TOO_LONG_STRING = "blah foo! blah foo! blah foo! blah foo! "*419431
+TOO_LONG_STRING = 'blah foo! blah foo! blah foo! blah foo! ' * 419431

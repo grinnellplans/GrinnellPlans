@@ -1,6 +1,6 @@
 class Permission < ActiveRecord::Base
-  self.table_name = "perms"
-  belongs_to :account, :foreign_key=> :userid
+  self.table_name = 'perms'
+  belongs_to :account, foreign_key: :userid
 end
 
 
@@ -12,4 +12,3 @@ end
 #  userid :integer         not null, primary key
 #  status :string(32)
 #
-

@@ -1,22 +1,22 @@
 require 'spec_helper'
 
 describe Autofinger do
-  it "must have a priority" do
-    owner = Account.create! :username => "owner", :password => "123456", :password_confirmation => "123456"
-    interest = Account.create! :username => "interest", :password => "123456", :password_confirmation => "123456"
-    described_class.new(:owner => owner.id, :interest => interest.id, :priority => nil).should be_invalid
+  it 'must have a priority' do
+    owner = Account.create! username: 'owner', password: '123456', password_confirmation: '123456'
+    interest = Account.create! username: 'interest', password: '123456', password_confirmation: '123456'
+    described_class.new(owner: owner.id, interest: interest.id, priority: nil).should be_invalid
   end
 
-  describe "updated scope" do
+  describe 'updated scope' do
     before do
-      @updated = FactoryGirl.create :autofinger, :updated => "1"
-      @not_updated = FactoryGirl.create :autofinger, :updated => "0"
+      @updated = FactoryGirl.create :autofinger, updated: '1'
+      @not_updated = FactoryGirl.create :autofinger, updated: '0'
     end
     subject { Autofinger.updated }
-    it "includes updated accounts" do
+    it 'includes updated accounts' do
       subject.exists?(@updated.id).should be_true
     end
-    it "excludes un-updated accounts" do
+    it 'excludes un-updated accounts' do
       subject.exists?(@not_updated.id).should be_false
     end
   end
@@ -33,4 +33,3 @@ end
 #  updtime  :datetime
 #  readtime :datetime
 #
-

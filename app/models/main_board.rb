@@ -1,8 +1,8 @@
 class MainBoard < ActiveRecord::Base
-  self.table_name = "mainboard"
-  self.primary_key = "threadid"
-  belongs_to :account, :foreign_key=> :userid
-  has_many :sub_boards, :foreign_key =>:threadid
+  self.table_name = 'mainboard'
+  self.primary_key = 'threadid'
+  belongs_to :account, foreign_key: :userid
+  has_many :sub_boards, foreign_key:  :threadid
   validates_presence_of :userid, :title
 
   before_update :set_lastupdated
@@ -10,11 +10,11 @@ class MainBoard < ActiveRecord::Base
 
   private
     def set_created
-      self.created = Time.now()
+      self.created = Time.now
     end
 
    def set_lastupdated
-     self.lastupdated = Time.now()
+     self.lastupdated = Time.now
    end
 end
 
@@ -29,4 +29,3 @@ end
 #  lastupdated :datetime
 #  userid      :integer(2)      default(0), not null
 #
-

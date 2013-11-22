@@ -9,9 +9,9 @@ class PlansController < ApplicationController
     @plan = current_account.plan
     @plan.edit_text = params[:plan][:edit_text]
     if @plan.save
-      redirect_to read_plan_path( :id => @plan.account.username )
+      redirect_to read_plan_path(id: @plan.account.username)
     else
-      render :action => "edit"
+      render action: 'edit'
     end
   end
 
@@ -19,7 +19,7 @@ class PlansController < ApplicationController
       username = params[:id] || current_account.username
       @account = Account.find_by_username(username)
       if @account.blank?
-        redirect_to :action => :search, :id => username
+        redirect_to action: :search, id: username
       else
          Autofinger.mark_plan_as_read(current_account.userid, @account.userid)
       end
@@ -38,7 +38,7 @@ class PlansController < ApplicationController
   def search
     @account = Account.find_by_username(params[:id])
     if !@account.blank?
-      redirect_to read_plan_path( :id => @account.username )
+      redirect_to read_plan_path(id: @account.username)
     else
       # TODO
     end

@@ -3,21 +3,21 @@ require File.expand_path('../../mailers/notifier.rb', __FILE__)
 class AccountsController < ApplicationController
 
   def new
-    @allowed_domains = APP_CONFIG['email_domains'].map{|d| [d]}
+    @allowed_domains = APP_CONFIG['email_domains'].map { |d| [d] }
   end
 
   def create
     @account = params[:account]
-    @username = @account["username"]
+    @username = @account['username']
     @user_email = "#{@account['username']}@#{@account['email_domain']}"
 
-    if Account.find_by_username(@account["username"])
+    if Account.find_by_username(@account['username'])
       @account_already_exists = true
       return
     end
 
     if not APP_CONFIG['email_domains'].include? @account['email_domain']
-      redirect_to :action => 'new'
+      redirect_to action: 'new'
     end
 
     tentative_account = TentativeAccount.find_by_email(@user_email)
@@ -28,10 +28,10 @@ class AccountsController < ApplicationController
     end
 
     tentative_account.delete if tentative_account
-    ta = TentativeAccount.create( :username => @username,
-                                  :user_type => @account["user_type"],
-                                  :email => @user_email,
-                                  :confirmation_token => Account.create_random_token)
+    ta = TentativeAccount.create(username: @username,
+                                 user_type: @account['user_type'],
+                                 email: @user_email,
+                                 confirmation_token: Account.create_random_token)
 
     # send email
     send_confirmation_email ta.username, ta.email, ta.confirmation_token
@@ -44,7 +44,7 @@ class AccountsController < ApplicationController
 
     if !ta || ta.created_at < (Time.now - 1.day)
       flash[:notice] = 'This confirmation token has expired. Please register again.'
-      redirect_to :action => 'new'
+      redirect_to action: 'new'
     else
       password = SecureRandom.hex(10)
       account = Account.create_from_tentative ta, password
@@ -59,10 +59,10 @@ class AccountsController < ApplicationController
 
   def resend_confirmation_email
     @username = params[:username]
-    redirect_to :action => 'new' if !@username
+    redirect_to action: 'new' if !@username
 
     ta = TentativeAccount.find_by_username(@username)
-    redirect_to :action => 'new' if !ta
+    redirect_to action: 'new' if !ta
 
     send_confirmation_email ta.username, ta.email, ta.confirmation_token
     @user_email = ta.email
@@ -85,7 +85,7 @@ class AccountsController < ApplicationController
 
   private
 
-  def send_confirmation_email username, email, token
+  def send_confirmation_email(username, email, token)
     confirmation_email = Notifier.confirm username, email, token
     confirmation_email.deliver
   end

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe PollChoice do 
+describe PollChoice do
 end
 # == Schema Information
 #
@@ -11,4 +11,3 @@ end
 #  html             :text
 #  created          :datetime
 #
-

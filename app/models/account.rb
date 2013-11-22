@@ -1,29 +1,29 @@
 class Account < ActiveRecord::Base
   self.primary_key = :userid
-  validates :username, :presence => true, :length =>{ :maximum => 16 }
-  validates :password,  :length =>{ :maximum => 34 }
-  validates :email, :length =>{ :maximum => 64 }
-  validates :guest_password, :length =>{ :maximum => 64 }
-  validates :show_images, :presence => true
-  validates :user_type, :length =>{ :maximum => 128 }
+  validates :username, presence: true, length:  { maximum: 16 }
+  validates :password,  length:  { maximum: 34 }
+  validates :email, length:  { maximum: 64 }
+  validates :guest_password, length:  { maximum: 64 }
+  validates :show_images, presence: true
+  validates :user_type, length:  { maximum: 128 }
 
   # validate :grad_year_for_user_type
 
-  has_many :interests_in_others, :class_name => "Autofinger", :foreign_key => "owner"
-  has_many :people_that_interest_me, :class_name => "Account", :through => :interests_in_others, :source=>"subject_of_interest"
-  has_many :board_votes, :foreign_key=> :userid
-  has_many :opt_links, :foreign_key=> :userid
-  has_many :avail_links, :through=>:opt_links
-  has_one  :permission, :foreign_key=> :userid
-  has_many :poll_votes, :foreign_key=> :userid
-  has_one  :stylesheet, :foreign_key=> :userid
-  has_many :main_boards, :foreign_key=> :userid
-  has_many :sub_boards, :foreign_key=> :userid
-  has_one  :viewed_secret, :foreign_key=> :userid
-  has_one  :plan, :foreign_key => :user_id
+  has_many :interests_in_others, class_name: 'Autofinger', foreign_key: 'owner'
+  has_many :people_that_interest_me, class_name: 'Account', through: :interests_in_others, source: 'subject_of_interest'
+  has_many :board_votes, foreign_key: :userid
+  has_many :opt_links, foreign_key: :userid
+  has_many :avail_links, through: :opt_links
+  has_one  :permission, foreign_key: :userid
+  has_many :poll_votes, foreign_key: :userid
+  has_one  :stylesheet, foreign_key: :userid
+  has_many :main_boards, foreign_key: :userid
+  has_many :sub_boards, foreign_key: :userid
+  has_one  :viewed_secret, foreign_key: :userid
+  has_one  :plan, foreign_key: :user_id
 
-  #Every ruby object already has a .dsiplay() method  so we can't call it display
-  has_one  :display_item, :foreign_key => :userid, :class_name =>"Display"
+  # Every ruby object already has a .dsiplay() method  so we can't call it display
+  has_one  :display_item, foreign_key: :userid, class_name:  'Display'
 
   before_validation do
     self.show_images = true
@@ -41,15 +41,15 @@ class Account < ActiveRecord::Base
   #     # TODO create links for new user
   #   end
 
-  #can't have "changed" attribute because of changed? method
+  # can't have "changed" attribute because of changed? method
   class << self
     def instance_method_already_implemented?(method_name)
-      return true if (method_name == 'changed?'||method_name == 'changed')
+      return true if (method_name == 'changed?' || method_name == 'changed')
       super
     end
   end
 
-  def changed_date= value
+  def changed_date=(value)
     self[:changed] = value
   end
 
@@ -69,11 +69,11 @@ class Account < ActiveRecord::Base
     c.transition_from_crypto_providers PhpCrypt::CryptoProviders::DES
     c.validate_email_field false
     c.check_passwords_against_database false
-    c.perishable_token_valid_for 1.day.to_i #NOTE, the password reset email says it expires in 24 hours.
+    c.perishable_token_valid_for 1.day.to_i # NOTE, the password reset email says it expires in 24 hours.
   end
 
   # Trick authlogic into behaving with our column name
-  def crypted_password= hash
+  def crypted_password=(hash)
     write_attribute :password, hash
   end
 
@@ -86,32 +86,32 @@ class Account < ActiveRecord::Base
     Notifier.password_reset_instructions(self).deliver
   end
 
-  def self.create_from_tentative tentative_account, temp_password
+  def self.create_from_tentative(tentative_account, temp_password)
     ta = tentative_account
     a = nil
     account_created = ActiveRecord::Base.transaction do
-      a = Account.create( :username => ta.username,
-                          :email => ta.email,
-                          :user_type => ta.user_type,
-                          :password => temp_password,
-                          :password_confirmation => temp_password,
-                          :created => Time.now)
-      Plan.create( :user_id => a.userid,
-                   :plan => '',
-                   :edit_text => '' )
+      a = Account.create(username: ta.username,
+                         email: ta.email,
+                         user_type: ta.user_type,
+                         password: temp_password,
+                         password_confirmation: temp_password,
+                         created: Time.now)
+      Plan.create(user_id: a.userid,
+                  plan: '',
+                  edit_text: '')
       ta.delete
     end
 
     return a if account_created
-    return nil
+    nil
   end
 
-  def self.create_random_token length=8
+  def self.create_random_token(length = 8)
     characters = ('A'..'Z').to_a + (0..9).to_a
     characters -= ['B'] # B and 8 look very similar
     characters -= ['O'] # O and 0 look very similar
-    characters.sort_by{rand}
-    (1..length).map{characters.sample}.join
+    characters.sort_by { rand }
+    (1..length).map { characters.sample }.join
   end
 end
 
@@ -146,4 +146,3 @@ end
 #  password_salt     :string(255)
 #  perishable_token  :string(255)     default(""), not null
 #
-
