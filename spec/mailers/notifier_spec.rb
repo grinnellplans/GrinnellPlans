@@ -7,12 +7,12 @@ describe Notifier do
     ActionMailer::Base.perform_deliveries = true
     ActionMailer::Base.deliveries = []
   end
-  
+
   after :each do
     ActionMailer::Base.deliveries.clear
   end
-  
-  it "sends a welcome email" do
+
+  it 'sends a welcome email' do
     username = 'littlebird'
     email = 'little@bird.me'
     password = 'tastyw0rms'
@@ -24,7 +24,7 @@ describe Notifier do
     sent.body.should =~ /#{password}/
   end
 
-  it "sends a confirmation email" do
+  it 'sends a confirmation email' do
     username = 'littlebird'
     email = 'little@bird.me'
     token = 'tastyw0rms'

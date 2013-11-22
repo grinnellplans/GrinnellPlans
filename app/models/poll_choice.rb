@@ -4,8 +4,6 @@ class PollChoice < ActiveRecord::Base
   has_many :poll_votes
 end
 
-
-
 # == Schema Information
 #
 # Table name: poll_choices
@@ -15,4 +13,3 @@ end
 #  html             :text
 #  created          :datetime
 #
-

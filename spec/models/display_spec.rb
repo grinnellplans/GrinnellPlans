@@ -9,4 +9,3 @@ end
 #  interface :integer(1)
 #  style     :integer(1)
 #
-

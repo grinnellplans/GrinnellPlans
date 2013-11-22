@@ -1,4 +1,4 @@
-source 'http://rubygems.org'
+source 'https://rubygems.org'
 source  'http://gems.github.com'
 
 ruby '1.9.3'
@@ -68,23 +68,23 @@ group :development do
   #add a footer to the page with info about sql, javascript, etc.
   # gem 'rails3-footnotes'
 
-  # To use debugger (ruby-debug for Ruby 1.8.7+, ruby-debug19 for Ruby 1.9.2+)
-  #gem 'ruby-debug', :platform => :ruby_18
-  gem 'ruby-debug19', :platform => :ruby_19
+
+  # To use debugger
+  gem 'debugger'
 
   gem "single_test"
 
   #makes the error pages much more useful and makes them look better
   gem 'better_errors'
-  
-  #Using binding_of_caller we can grab bindings from higher up the call stack and evaluate code in that context. 
+
+  #Using binding_of_caller we can grab bindings from higher up the call stack and evaluate code in that context.
   #development only
   gem 'binding_of_caller'
   #Supporting gem for Rails Panel (Google Chrome extension for Rails development).
   gem 'meta_request'
   #Mutes assets pipeline log messages.
   gem 'quiet_assets'
-  
+
   gem 'thin'
 
 end
@@ -95,6 +95,8 @@ group :test, :development do
 
   #SanitizeEmail allows you to play with your application's email abilities without worrying that emails will get sent to actual live addresses. (https://github.com/pboling/sanitize_email)
   #gem 'sanitize_email'
+
+  gem 'rubocop'
 end
 
 group :test do
@@ -103,7 +105,8 @@ group :test do
   #Calculate the differences between two XML/HTML documents
   #If you have trouble installing nokogiri on lion: http://pinds.com/2011/08/06/rails-tip-of-the-day-rails-os-x-lion-rvm-nokogiri/
   gem 'nokogiri-diff'
-  #Code coverage
+
+  # Code coverage
   gem "simplecov"
 
 end

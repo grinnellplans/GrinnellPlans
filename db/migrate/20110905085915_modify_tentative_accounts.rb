@@ -14,8 +14,8 @@ class ModifyTentativeAccounts < ActiveRecord::Migration
     drop_table :tentative_accounts
     create_table :tentative_accounts do |t|
       t.integer :tentative_accounts_id
-      t.string :token, :length => 16
-      t.string :session => 200
+      t.string :token, length: 16
+      t.string session: 200
       t.timestamps
       t.primary_key :tentative_accounts_id
     end

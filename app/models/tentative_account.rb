@@ -1,12 +1,6 @@
 class TentativeAccount < ActiveRecord::Base
 end
 
-
-
-
-
-
-
 # == Schema Information
 #
 # Table name: tentative_accounts
@@ -19,4 +13,3 @@ end
 #  created_at         :datetime
 #  updated_at         :datetime
 #
-

@@ -42,17 +42,16 @@ Plans::Application.routes.draw do
   #     end
   #   end
 
-
   # See how all your routes lay out with "rake routes"
 
   # You can have the root of your site routed with "root"
 
   # just remember to delete public/index.html.
-  root :controller => "plans", :action => "show", :id => "plans"
+  root controller: 'plans', action: 'show', id: 'plans'
 
   namespace :admin do
-    resources :secrets, :only => [:index, :update]
-    resources :accounts, :only => [:new, :create]
+    resources :secrets, only: [:index, :update]
+    resources :accounts, only: [:new, :create]
   end
 
   resources :plans do
@@ -63,14 +62,14 @@ Plans::Application.routes.draw do
     member do
       get :edit
       put :update
-      get :show, :as => "read"
+      get :show, as: 'read'
       get :search
     end
   end
 
   resources :secrets
 
-  resource :account_session, :only => [ :new, :create, :destroy ]
+  resource :account_session, only: [:new, :create, :destroy]
 
   resources :accounts do
     collection do
@@ -86,7 +85,7 @@ Plans::Application.routes.draw do
     get :faq
   end
 
-  resources :password_resets, :except => [:destroy, :show, :index]
+  resources :password_resets, except: [:destroy, :show, :index]
 
   match '/register' => 'accounts#new', :as => :register
   match '/login' => 'account_sessions#new', :as => :login

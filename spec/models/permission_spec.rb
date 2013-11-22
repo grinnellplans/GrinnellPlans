@@ -1,10 +1,9 @@
 require 'spec_helper'
 
 describe Permission do
-   before(:each) do
-     @permission = Permission.new(:account=>mock_model("Account"))
-     
-   end
+  before(:each) do
+    @permission = Permission.new(account: mock_model('Account'))
+  end
 end
 
 # == Schema Information
@@ -14,4 +13,3 @@ end
 #  userid :integer         not null, primary key
 #  status :string(32)
 #
-

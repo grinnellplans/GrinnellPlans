@@ -1,15 +1,12 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
-ENV["RAILS_ENV"] ||= 'test'
-
+ENV['RAILS_ENV'] ||= 'test'
 require 'simplecov'
 SimpleCov.start 'rails'
-require File.expand_path("../../config/environment", __FILE__)
+require File.expand_path('../../config/environment', __FILE__)
 require 'rspec/rails'
 require 'authlogic/test_case'
 include Authlogic::TestCase
 require 'nokogiri/diff'
-
-
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -36,8 +33,10 @@ end
 
 RSpec::Matchers.define :be_same_html_as do |expected|
   match do |actual|
-    Nokogiri::HTML( actual ).diff( Nokogiri::HTML( expected ) ).all? do |c,dummy|
-      c == " "
+    actual.gsub!("\n", '')
+    expected.gsub!("\n", '')
+    Nokogiri::HTML(actual).diff(Nokogiri::HTML(expected)).all? do |c, dummy|
+      c == ' '
     end
   end
   diffable
