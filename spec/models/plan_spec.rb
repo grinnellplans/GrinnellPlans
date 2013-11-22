@@ -144,9 +144,8 @@ describe Plan do
     end
 
     it "parses link format" do
-
-        input = 'here is a [http://google.com|link]!'
-        expected = "here is a <a href='http://google.com'>link</a>!"
+        input = 'here is a [https://www.google.com/search?q=I+need+to+search&oq=I+need+to+search&aqs=chrome..69i64.10986j0j8&sourceid=chrome&espv=210&es_sm=119&ie=UTF-8|link]!'
+        expected = "here is a <a href='https://www.google.com/search?q=I+need+to+search&oq=I+need+to+search&aqs=chrome..69i64.10986j0j8&sourceid=chrome&espv=210&es_sm=119&ie=UTF-8' class='onplan'>link</a>!"
         it_converts_text input, expected
     end
 
