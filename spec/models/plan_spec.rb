@@ -52,17 +52,17 @@ describe Plan do
       it_converts_text input, expected
     end
 
-    # should it escape unclosed tags, or is automatically closing them good enough?
-    it 'escapes unclosed tags' do
+
+    it 'closes unclosed tags' do
       input = 'Eek <b>Bold <i>4</i> ever!'
       expected = 'Eek <b>Bold <i>4</i> ever!</b>'
       it_converts_text input, expected
     end
 
-    it 'escapes unopened tags' do
-      pending 'functinality not implemented'
+    it 'strips unopened tags' do
+      # pending 'functinality not implemented'
       input = ' close unopened </b> tag'
-      expected = 'close unopened &lt;b&gt; tag'
+      expected = 'close unopened  tag'
       it_converts_text input, expected
     end
 
@@ -71,9 +71,8 @@ describe Plan do
       expected = '<p>foo<br></p><hr><p>bar</p>'
       subject.edit_text = input
       subject.clean_text
-      pending do
-        subject.generated_html.should be_same_html_as expected
-      end
+      pending
+      subject.generated_html.should be_same_html_as expected
     end
 
     it 'wraps paragraphs at <pre>' do
