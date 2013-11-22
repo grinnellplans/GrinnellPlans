@@ -5,8 +5,6 @@ class PollVote < ActiveRecord::Base
 
 end
 
-
-
 # == Schema Information
 #
 # Table name: poll_votes

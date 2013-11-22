@@ -1,12 +1,6 @@
 class TentativeAccount < ActiveRecord::Base
 end
 
-
-
-
-
-
-
 # == Schema Information
 #
 # Table name: tentative_accounts

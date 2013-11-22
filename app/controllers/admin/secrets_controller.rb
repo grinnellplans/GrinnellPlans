@@ -14,5 +14,4 @@ class Admin::SecretsController < ApplicationController
       render action: 'index'
     end
   end
-
 end

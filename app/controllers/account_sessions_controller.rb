@@ -23,5 +23,4 @@ class AccountSessionsController < ApplicationController
     flash[ :notice] = "You've been logged out."
     redirect_to login_path
   end
-
 end

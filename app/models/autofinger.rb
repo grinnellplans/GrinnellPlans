@@ -12,7 +12,7 @@ class Autofinger < ActiveRecord::Base
   scope :updated, where(updated: 1)
 
   def self.mark_plan_as_read(owner, interest)
-     autofinger = Autofinger.where(owner: owner, interest: interest).first
+    autofinger = Autofinger.where(owner: owner, interest: interest).first
       unless autofinger.blank?
         autofinger.updated = '0'
         autofinger.readtime = Time.now

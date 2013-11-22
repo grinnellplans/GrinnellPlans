@@ -7,8 +7,6 @@ class SubBoard < ActiveRecord::Base
   validates_presence_of :threadid, :userid, :contents
 end
 
-
-
 # == Schema Information
 #
 # Table name: subboard

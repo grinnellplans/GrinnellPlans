@@ -4,8 +4,6 @@ class Style < ActiveRecord::Base
   has_many :displays, foreign_key: :style
 end
 
-
-
 # == Schema Information
 #
 # Table name: style

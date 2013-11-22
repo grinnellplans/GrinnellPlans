@@ -3,7 +3,6 @@ class AvailLink < ActiveRecord::Base
   has_many :opt_links, foreign_key:  :linknum
 end
 
-
 # == Schema Information
 #
 # Table name: avail_links

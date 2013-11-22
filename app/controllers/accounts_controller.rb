@@ -1,7 +1,6 @@
 require File.expand_path('../../mailers/notifier.rb', __FILE__)
 
 class AccountsController < ApplicationController
-
   def new
     @allowed_domains = APP_CONFIG['email_domains'].map { |d| [d] }
   end
@@ -16,9 +15,7 @@ class AccountsController < ApplicationController
       return
     end
 
-    if not APP_CONFIG['email_domains'].include? @account['email_domain']
-      redirect_to action: 'new'
-    end
+    redirect_to action: 'new' unless APP_CONFIG['email_domains'].include? @account['email_domain']
 
     tentative_account = TentativeAccount.find_by_email(@user_email)
     if  tentative_account && tentative_account.created_at > (Time.now - 1.day)
@@ -59,10 +56,10 @@ class AccountsController < ApplicationController
 
   def resend_confirmation_email
     @username = params[:username]
-    redirect_to action: 'new' if !@username
+    redirect_to action: 'new' unless @username
 
     ta = TentativeAccount.find_by_username(@username)
-    redirect_to action: 'new' if !ta
+    redirect_to action: 'new' unless ta
 
     send_confirmation_email ta.username, ta.email, ta.confirmation_token
     @user_email = ta.email

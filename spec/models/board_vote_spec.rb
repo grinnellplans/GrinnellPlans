@@ -8,7 +8,7 @@ describe BoardVote do
   end
 
   it 'is valid with valid attributes' do
-   @board_vote.should be_valid
+    @board_vote.should be_valid
   end
 
   it 'is not valid without an account' do
@@ -25,9 +25,8 @@ describe BoardVote do
     @board_vote.sub_board = nil
     @board_vote.should_not be_valid
   end
-
-
 end
+
 # == Schema Information
 #
 # Table name: boardvotes

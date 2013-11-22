@@ -21,20 +21,20 @@ describe Secret do
   end
 
   it 'is not valid when the secret is exceeds db limit for text length (16777215)' do
-     @secret.secret_text = TOO_LONG_STRING
-     @secret.should_not be_valid
+    @secret.secret_text = TOO_LONG_STRING
+    @secret.should_not be_valid
   end
 
   it 'is not valid when date not null before_create' do
     @secret = Secret.create(@attributes)
-    @secret.date.should_not == nil
+    !@secret.date.should_not.nil?
   end
 
   it 'is not valid when date_approved is not populated before_update' do
     @secret.save
     @secret.secret_text = 'fee'
     @secret.save
-   @secret.date_approved.should_not == nil
+    !@secret.date_approved.should_not.nil?
   end
 end
 # == Schema Information

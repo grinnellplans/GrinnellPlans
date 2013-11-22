@@ -10,14 +10,14 @@ describe MainBoard do
   end
 
   it 'is not valid without a title' do
-     @main_board.title = nil
-     @main_board.should_not be_valid
-   end
+    @main_board.title = nil
+    @main_board.should_not be_valid
+  end
 
-   it 'is not valid without an account' do
-     @main_board.account = nil
-     @main_board.should_not be_valid
-   end
+  it 'is not valid without an account' do
+    @main_board.account = nil
+    @main_board.should_not be_valid
+  end
 end
 # == Schema Information
 #

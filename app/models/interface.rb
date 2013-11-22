@@ -5,7 +5,6 @@ class Interface < ActiveRecord::Base
   has_many :displays, foreign_key:  :interface
 end
 
-
 # == Schema Information
 #
 # Table name: interface

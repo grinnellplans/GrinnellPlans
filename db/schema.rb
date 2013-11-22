@@ -115,7 +115,7 @@ ActiveRecord::Schema.define(version: 20130125033218) do
 
   create_table 'plans', force: true do |t|
     t.integer 'user_id',   limit: 2
-    t.text    'plan',      limit: 16777215
+    t.text    'plan',      limit: 16_777_215
     t.text    'edit_text'
   end
 

@@ -7,6 +7,7 @@ class BoardVote  < ActiveRecord::Base
   validates_presence_of :main_board, :sub_board, :account, :vote_date
 
   before_update :set_vote_date
+
   private
 
   def set_vote_date
@@ -14,7 +15,6 @@ class BoardVote  < ActiveRecord::Base
   end
 
 end
-
 
 # == Schema Information
 #

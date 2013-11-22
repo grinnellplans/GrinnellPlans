@@ -8,8 +8,6 @@ class PollQuestion < ActiveRecord::Base
  end
 end
 
-
-
 # == Schema Information
 #
 # Table name: poll_questions

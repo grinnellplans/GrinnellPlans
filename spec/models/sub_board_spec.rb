@@ -6,23 +6,23 @@ describe SubBoard do
   end
 
   it 'is valid with valid attributes' do
-     @sub_board.should be_valid
+    @sub_board.should be_valid
   end
 
   it 'is not valid without a threadid' do
-     @sub_board.threadid = nil
-     @sub_board.should_not be_valid
+    @sub_board.threadid = nil
+    @sub_board.should_not be_valid
   end
 
   it 'is not valid without a userid' do
-     @sub_board.userid = nil
-     @sub_board.should_not be_valid
+    @sub_board.userid = nil
+    @sub_board.should_not be_valid
   end
 
   it 'is not valid without contents' do
-      @sub_board.contents = nil
-      @sub_board.should_not be_valid
-   end
+    @sub_board.contents = nil
+    @sub_board.should_not be_valid
+  end
 
 end
 # == Schema Information

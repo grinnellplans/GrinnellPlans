@@ -35,7 +35,9 @@ describe Plan do
   end
 
   describe '#clean_text' do
+
     subject { Plan.new }
+
     def it_converts_text(input, expected)
       subject.edit_text = input
       subject.save
@@ -76,15 +78,18 @@ describe Plan do
     end
 
     context 'safe html' do
+
       def accepts_tag(name)
         input = "<#{name}>Some text</#{name}>"
         it_converts_text input, input
       end
+
       def converts_tag(name, new_open, new_close)
         input = "<#{name}>Some text</#{name}>"
         expected = "<#{new_open}>Some text</#{new_close}>"
         it_converts_text input, expected
       end
+
       it { accepts_tag 'i' }
       it { accepts_tag 'b' }
       it { accepts_tag 'span' }

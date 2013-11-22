@@ -19,9 +19,8 @@ describe PlansController do
     subject { response }
     it { should be_success }
     it { should render_template('show') }
-    it { assigns(:account).should == @account }
+    it { assigns(:account).should eq @account }
   end
-
 
   describe 'update plan' do
     context 'normal request' do
@@ -29,7 +28,7 @@ describe PlansController do
         post :update, id: @account.username, plan: { edit_text: 'Foo bar' }
       end
       it 'changes plan contents' do
-        @plan.reload.edit_text.should == 'Foo bar'
+        @plan.reload.edit_text.should eq 'Foo bar'
       end
       it 'updates changed timestamp' do
         @account.reload.changed_date.should >= Time.now - 5
@@ -70,6 +69,5 @@ describe PlansController do
   describe 'edit plan'
   describe 'search plan'
   describe 'set_autofinger_level'
-
 
 end

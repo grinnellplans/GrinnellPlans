@@ -4,8 +4,6 @@ class Stylesheet < ActiveRecord::Base
 
 end
 
-
-
 # == Schema Information
 #
 # Table name: stylesheet

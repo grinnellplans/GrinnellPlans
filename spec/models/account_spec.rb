@@ -12,7 +12,9 @@ end
 describe Account do
 
   context 'with password' do
-    subject { described_class.create(username: 'foobar', password: 'foobar', password_confirmation: 'foobar'); described_class.last }
+    subject do described_class.create(username: 'foobar', password: 'foobar', password_confirmation: 'foobar')
+     described_class.last
+    end
     its(:crypted_password) { should be_present }
     its(:password_salt) { should be_present }
     its(:crypted_password) { should_not == 'foobar' }
@@ -41,7 +43,6 @@ describe Account do
       subject.crypted_password.should match(/\$1\$.{8}\$.{22}/)
     end
   end
-
 
   describe '#create_random_token' do
     it 'creates 8 character random token' do
@@ -74,10 +75,6 @@ describe Account do
   end
 
 end
-
-
-
-
 
 # == Schema Information
 #

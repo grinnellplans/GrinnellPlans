@@ -25,7 +25,7 @@ describe 'User Registration' do
     account = { username: 'plans',
                 email_domain: 'blop.blop',
                 user_type: 'student' }
-    post 'accounts#create', { account: account }
+    post 'accounts#create', account: account
     assert_response :success
     assert_template 'accounts/create'
     assert_select 'p', /was just sent to plans@blop.blop/
@@ -38,7 +38,7 @@ describe 'User Registration' do
 
     # parse token and call confirm with supplied
     token = /token=(.*)/.match(email.body.raw_source)[1]
-    get 'accounts/confirm', { token: token }
+    get 'accounts/confirm', token: token
     assert_response :success
     assert_select 'p', /Thank you for confirming your email!/
 
@@ -57,7 +57,7 @@ describe 'User Registration' do
     assert_response :success
 
     account_session = { username: 'plans', password: password }
-    post account_session_path, { account_session: account_session }
+    post account_session_path, account_session: account_session
     assert_response 302
     follow_redirect!
     assert_response :success

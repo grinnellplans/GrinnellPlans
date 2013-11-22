@@ -15,26 +15,18 @@ class ApplicationController < ActionController::Base
   end
 
   def require_user
-    if current_account.nil?
-      redirect_to login_path
-    end
+    redirect_to login_path if current_account.nil?
   end
 
   def require_no_user
-    if current_account.present?
-      redirect_to root_path
-    end
+    redirect_to root_path if current_account.present?
   end
 
-
   def  require_admin
-    if current_account.nil? || !current_account.is_admin?
-      redirect_to root_path
-    end
+    redirect_to root_path if current_account.nil? || !current_account.is_admin?
   end
 
   def load_autofingers
     @autofingers = current_account.interests_in_others.updated.where priority: session[:autofinger_level]
   end
-
 end

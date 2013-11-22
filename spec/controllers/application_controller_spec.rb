@@ -16,8 +16,8 @@ describe ApplicationController do
       controller.stub(:current_account) { @interest.interested_party }
     end
     it 'is populated' do
-      get :index, {}, { autofinger_level: @interest.priority }
-      assigns(:autofingers).should == [@interest]
+      get :index, {}, autofinger_level: @interest.priority
+      assigns(:autofingers).should eq [@interest]
     end
   end
 end

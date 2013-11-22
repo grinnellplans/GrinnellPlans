@@ -18,7 +18,7 @@ describe PasswordResetsController do
       it { response.should be_redirect }
       it 'should send an email' do
         email = ActionMailer::Base.deliveries.first
-        email.to[0].should == @account.email
+        email.to[0].should eq @account.email
         email.body.should =~ /#{@account.reload.perishable_token}/
       end
     end
@@ -28,7 +28,7 @@ describe PasswordResetsController do
       it { response.should be_success }
       it { should render_template :new }
       it 'should not have sent an email' do
-        ActionMailer::Base.deliveries.first.should == nil
+        ActionMailer::Base.deliveries.first.should eq nil
       end
     end
   end
@@ -42,7 +42,7 @@ describe PasswordResetsController do
     describe 'edit' do
       before { get :edit, id: @account.perishable_token }
       it { should render_template :edit }
-      it { @controller.current_account.should == nil }
+      it { @controller.current_account.should eq nil }
     end
 
     describe 'update' do
@@ -51,7 +51,7 @@ describe PasswordResetsController do
         put :update, id: @account.perishable_token, account: { password: 'newpassword', password_confirmation: 'newpassword' }
       end
       it { response.should be_redirect }
-      it { @controller.current_account.should == @account }
+      it { @controller.current_account.should eq @account }
       it 'should have reset the password' do
         @password_was.should_not == @account.reload.crypted_password
       end

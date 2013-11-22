@@ -30,11 +30,11 @@ class Account < ActiveRecord::Base
   end
 
   before_create do
-       self.created = Time.now
-       self.is_admin = false
-       self.edit_cols = 70
-       self.edit_rows = 14
-     end
+    self.created = Time.now
+    self.is_admin = false
+    self.edit_cols = 70
+    self.edit_rows = 14
+  end
 
   #   after_create do
   #     self.plan.create
@@ -44,7 +44,7 @@ class Account < ActiveRecord::Base
   # can't have "changed" attribute because of changed? method
   class << self
     def instance_method_already_implemented?(method_name)
-      return true if (method_name == 'changed?' || method_name == 'changed')
+      return true if method_name == 'changed?' || method_name == 'changed'
       super
     end
   end
@@ -114,9 +114,6 @@ class Account < ActiveRecord::Base
     (1..length).map { characters.sample }.join
   end
 end
-
-
-
 
 # == Schema Information
 #

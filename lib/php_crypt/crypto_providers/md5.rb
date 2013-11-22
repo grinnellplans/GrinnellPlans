@@ -1,6 +1,7 @@
 module PhpCrypt
   module CryptoProviders
     class MD5
+
       def self.encrypt(* tokens)
         Crypt3.crypt tokens.join
       end
@@ -12,6 +13,7 @@ module PhpCrypt
           false
         end
       end
+
     end
   end
 end

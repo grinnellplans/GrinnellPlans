@@ -9,6 +9,7 @@ class MainBoard < ActiveRecord::Base
   before_create :set_created
 
   private
+
     def set_created
       self.created = Time.now
     end
@@ -17,7 +18,6 @@ class MainBoard < ActiveRecord::Base
      self.lastupdated = Time.now
    end
 end
-
 
 # == Schema Information
 #
