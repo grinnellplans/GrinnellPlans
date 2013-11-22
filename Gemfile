@@ -89,6 +89,6 @@ group :test do
   #Calculate the differences between two XML/HTML documents
   #If you have trouble installing nokogiri on lion: http://pinds.com/2011/08/06/rails-tip-of-the-day-rails-os-x-lion-rvm-nokogiri/
   gem 'nokogiri-diff'
-
+  gem 'simplecov'
 
 end
