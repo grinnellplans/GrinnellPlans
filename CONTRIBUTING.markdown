@@ -33,7 +33,7 @@ If something seems broken, it probably is -- ask early, ask often.
 
 
 
-## Contributing other things ##
+## Contributing non-code ##
 
 Due to the current rewrite status of this project, we don't need much non-code contribution at the moment.
 Plans as a whole always needs more help, though, so don't give up!
