@@ -18,6 +18,7 @@ Plans::Application.routes.draw do
       put :update
       get :show, as: 'read'
       get :search
+      put :set_autofinger_subscription
     end
   end
 

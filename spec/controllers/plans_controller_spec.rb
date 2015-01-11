@@ -66,6 +66,34 @@ describe PlansController do
     end
   end
 
+  describe 'set_autofinger_subscription' do
+    let(:interest) { FactoryGirl.create :account }
+
+    context 'logged in user adds new plan to autoread list' do
+      before do
+        @request.env['HTTP_REFERER'] = "/plans/#{interest.username}" #so redirect_to :back doesn't break
+        post :set_autofinger_subscription, id: interest.username, priority: 1
+      end
+      it 'sets correct autoread priority' do
+        expect(@account.interests_in_others.find_by_interest(interest.id).priority).to eq 1
+      end
+    end
+
+    context 'logged in user changes priority of existing autoread subject' do
+      before do
+        @request.env['HTTP_REFERER'] = "/plans/#{interest.username}" #so redirect_to :back doesn't break
+        Autofinger.create(owner: @account, interest: interest, priority: 2)
+        post :set_autofinger_subscription, id: interest.username, priority: 3
+      end
+      it 'sets correct autoread priority' do
+        expect(@account.interests_in_others.find_by_interest(interest.id).priority).to eq 3
+      end
+      it "doesn't create an extra Autofinger instance" do
+        expect(Autofinger.where("interest = ? AND owner = ?", interest.id, @account.id).count).to eq 1
+      end
+    end
+  end
+
   describe 'edit plan'
   describe 'search plan'
   describe 'set_autofinger_level'

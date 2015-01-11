@@ -43,4 +43,12 @@ class PlansController < ApplicationController
       # TODO
     end
   end
+
+  def set_autofinger_subscription
+    owner = current_account
+    interest = Account.find_by_username(params[:id])
+    autofinger = owner.interests_in_others.find_or_create_by_interest(interest.id)
+    success = autofinger.update_attributes(priority: params[:priority])
+    redirect_to :back
+  end
 end

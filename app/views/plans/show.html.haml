@@ -31,3 +31,15 @@
 
 .plan_text
   =@account.plan.generated_html
+
+.autofinger-control
+  = form_tag set_autofinger_subscription_plan_path, method: :put do
+    = radio_button_tag :priority, 0
+    = label_tag 'priority_0', 'X'
+    = radio_button_tag :priority, 1
+    = label_tag 'priority_1', 1
+    = radio_button_tag :priority, 2
+    = label_tag 'priority_2', 2
+    = radio_button_tag :priority, 3
+    = label_tag 'priority_3', 3
+    = submit_tag 'Save'
