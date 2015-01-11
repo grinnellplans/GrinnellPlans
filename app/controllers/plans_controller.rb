@@ -49,6 +49,15 @@ class PlansController < ApplicationController
     interest = Account.find_by_username(params[:id])
     autofinger = owner.interests_in_others.find_or_create_by_interest(interest.id)
     success = autofinger.update_attributes(priority: params[:priority])
-    redirect_to :back
+    if success
+      if params[:priority] == '0'
+        notice = 'User was removed from your autoread list.'
+      else
+        notice = "User is now on your autoread list with priority level of #{params[:priority]}."
+      end
+    else
+      notice = "Could not change autoread priority. Please try again."
+    end
+    redirect_to :back, notice: notice
   end
 end
