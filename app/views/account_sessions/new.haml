@@ -15,10 +15,6 @@
             =image_tag "logo.png"
         %tr.boxes
           %td.boxes{:colspan=>2, :align=>"center"}
-            - if flash[:notice]
-              %p.notice
-                = flash[:notice]
-
             =form_for @session, :url => account_session_path do |f|
               =f.label :"Username : "
               =f.text_field :username

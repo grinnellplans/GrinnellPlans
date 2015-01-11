@@ -11,6 +11,9 @@
   %body#planspage_readplan.plan
     #wrapper
       .main
+        - if flash[:notice]
+          .notice
+            = flash[:notice]
         %div
           =yield
       =render :partial=>"/layouts/footer"

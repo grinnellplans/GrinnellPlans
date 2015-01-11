@@ -19,6 +19,9 @@
             =render :partial=>"/layouts/links"
             =render :partial => "/layouts/autofinger"
       .main
+        - if flash[:notice]
+          .notice
+            = flash[:notice]
         %div
           =yield
       =render :partial=>"/layouts/footer"
