@@ -1,4 +1,5 @@
 Plans::Application.routes.draw do
+  # For more information on routing, see http://guides.rubyonrails.org/routing.html.
 
   # just remember to delete public/index.html.
   root controller: 'plans', action: 'show', id: 'plans'
