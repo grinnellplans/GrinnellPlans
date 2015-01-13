@@ -85,35 +85,36 @@ describe PlansController do
     context 'logged in user changes priority of existing autoread subject' do
       before do
         @request.env['HTTP_REFERER'] = "/plans/#{interest.username}" #so redirect_to :back doesn't break
-        Autofinger.create(owner: @account, interest: interest, priority: 2)
-        post :set_autofinger_subscription, id: interest.username, priority: 3
+        Autofinger.create(owner: @account.id, interest: interest.id, priority: 2)
+        post :set_autofinger_subscription, id: interest.username, priority: new_priority
       end
-      it 'sets correct autoread priority' do
-        expect(@account.interests_in_others.find_by_interest(interest.id).priority).to eq 3
-      end
-      it "doesn't create an extra Autofinger instance" do
-        expect(Autofinger.where("interest = ? AND owner = ?", interest.id, @account.id).count).to eq 1
-      end
-      it 'sets correct flash message' do
-        expect(flash[:notice]).to eq 'User is now on your autoread list with priority level of 3.'
-      end
-    end
 
-    context 'logged in user removes plan from autoread list' do
-      before do
-        @request.env['HTTP_REFERER'] = "/plans/#{interest.username}" #so redirect_to :back doesn't break
-        Autofinger.create(owner: @account, interest: interest, priority: 2)
-        post :set_autofinger_subscription, id: interest.username, priority: 0
+      context 'changes to different priority' do
+        let(:new_priority) { 3 }
+        it 'sets correct autoread priority' do
+          expect(@account.interests_in_others.find_by_interest(interest.id).priority).to eq 3
+        end
+        it "doesn't create an extra Autofinger instance" do
+          expect(Autofinger.where("interest = ? AND owner = ?", interest.id, @account.id).count).to eq 1
+        end
+        it 'sets correct flash message' do
+          expect(flash[:notice]).to eq 'User is now on your autoread list with priority level of 3.'
+        end
       end
-      it 'sets correct autoread priority' do
-        expect(@account.interests_in_others.find_by_interest(interest.id).priority).to eq 0
+
+      context 'removes plan from autoread list' do
+        let(:new_priority) { 0 }
+        it 'sets correct autoread priority' do
+          expect(@account.interests_in_others.find_by_interest(interest.id).priority).to eq 0
+        end
+        it "doesn't create an extra Autofinger instance" do
+          expect(Autofinger.where("interest = ? AND owner = ?", interest.id, @account.id).count).to eq 1
+        end
+        it 'sets correct flash message' do
+          expect(flash[:notice]).to eq 'User was removed from your autoread list.'
+        end
       end
-      it "doesn't create an extra Autofinger instance" do
-        expect(Autofinger.where("interest = ? AND owner = ?", interest.id, @account.id).count).to eq 1
-      end
-      it 'sets correct flash message' do
-        expect(flash[:notice]).to eq 'User was removed from your autoread list.'
-      end
+
     end
   end
 
