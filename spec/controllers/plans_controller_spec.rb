@@ -74,6 +74,7 @@ describe PlansController do
         @request.env['HTTP_REFERER'] = "/plans/#{interest.username}" #so redirect_to :back doesn't break
         post :set_autofinger_subscription, id: interest.username, priority: 1
       end
+
       it 'sets correct autoread priority' do
         expect(@account.interests_in_others.find_by_interest(interest.id).priority).to eq 1
       end
@@ -115,6 +116,15 @@ describe PlansController do
         end
       end
 
+      context 'assigns an invalid priority' do
+        let(:new_priority) { 4 }
+        it "doesn't change autoread priority" do
+          expect(@account.interests_in_others.find_by_interest(interest.id).priority).to eq 2
+        end
+        it 'sets correct flash message' do
+          expect(flash[:notice]).to eq 'Could not change autoread priority. If this happens more than once, contact the Plans admins at grinnellplans@gmail.com.'
+        end
+      end
     end
   end
 

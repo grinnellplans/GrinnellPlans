@@ -56,7 +56,7 @@ class PlansController < ApplicationController
         notice = "User is now on your autoread list with priority level of #{params[:priority]}."
       end
     else
-      notice = "Could not change autoread priority. Please try again."
+      notice = "Could not change autoread priority. If this happens more than once, contact the Plans admins at grinnellplans@gmail.com."
     end
     redirect_to :back, notice: notice
   end
