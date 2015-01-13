@@ -20,6 +20,19 @@ describe Autofinger do
       subject.exists?(@not_updated.id).should be_false
     end
   end
+
+  describe 'priority validation' do
+    it 'accepts priority 0' do
+      expect(FactoryGirl.build :autofinger, priority: 0).to be_valid
+    end
+    it 'accepts priority 3' do
+      expect(FactoryGirl.build :autofinger, priority: 3).to be_valid
+    end
+
+    it 'rejects priority > 3' do
+      expect(FactoryGirl.build :autofinger, priority: 4).not_to be_valid
+    end
+  end
 end
 
 # == Schema Information
