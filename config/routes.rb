@@ -43,9 +43,9 @@ Plans::Application.routes.draw do
 
   resources :password_resets, except: [:destroy, :show, :index]
 
-  match '/register' => 'accounts#new', :as => :register
-  match '/login' => 'account_sessions#new', :as => :login
-  match '/logout' => 'account_sessions#destroy', :as => :logout
+  get '/register' => 'accounts#new', :as => :register
+  get '/login' => 'account_sessions#new', :as => :login
+  delete '/logout' => 'account_sessions#destroy', :as => :logout
 
   # adding default route as lowest priority
   # match '/:controller(/:action(/:id))'
