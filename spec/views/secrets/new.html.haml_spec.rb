@@ -4,7 +4,7 @@ describe 'secrets/new.html.haml' do
   before(:each) do
     assign(:secret, stub_model(Secret).as_new_record)
   end
-pending do
+skip do
   it 'renders new secret form' do
     render
 

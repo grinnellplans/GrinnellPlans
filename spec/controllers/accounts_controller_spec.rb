@@ -38,9 +38,9 @@ describe AccountsController do
 
       # verify confirmation email
       email = ActionMailer::Base.deliveries.first
-      email.subject.should eq 'Plan Activation Link'
-      email.to[0].should eq 'plans@blop.blop'
-      email.body.should =~ /will expire in 24 hours/
+      expect(email.subject).to eq 'Plan Activation Link'
+      expect(email.to[0]).to eq 'plans@blop.blop'
+      expect(email.body).to match(/will expire in 24 hours/)
     end
 
     it 'should dedupe tentative accounts' do
@@ -104,10 +104,10 @@ describe AccountsController do
 
       # verify welcome email
       email = ActionMailer::Base.deliveries.first
-      email.subject.should eq 'Plan Created'
-      email.to[0].should eq 'plans@blop.blop'
-      email.body.should =~ /Your Plan has been created!/
-      email.body.should =~ /Password/
+      expect(email.subject).to eq 'Plan Created'
+      expect(email.to[0]).to eq 'plans@blop.blop'
+      expect(email.body).to match(/Your Plan has been created!/)
+      expect(email.body).to match(/Password/)
     end
 
     it 'should not create account if token is expired' do
@@ -138,9 +138,9 @@ describe AccountsController do
 
       # verify confirmation email
       email = ActionMailer::Base.deliveries.first
-      email.subject.should eq 'Plan Activation Link'
-      email.to[0].should eq ta.email
-      email.body.should =~ /will expire in 24 hours/
+      expect(email.subject).to eq 'Plan Activation Link'
+      expect(email.to[0]).to eq ta.email
+      expect(email.body).to match(/will expire in 24 hours/)
     end
   end
 end

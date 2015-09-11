@@ -20,8 +20,8 @@ describe Notifier do
     sent = ActionMailer::Base.deliveries.first
     assert_equal 'Plan Created', sent.subject
     assert_equal email, sent.to[0]
-    sent.body.should =~ /Your Plan has been created/
-    sent.body.should =~ /#{password}/
+    expect(sent.body).to match(/Your Plan has been created/)
+    expect(sent.body).to match(/#{password}/)
   end
 
   it 'sends a confirmation email' do
@@ -32,7 +32,7 @@ describe Notifier do
     sent = ActionMailer::Base.deliveries.first
     assert_equal 'Plan Activation Link', sent.subject
     assert_equal email, sent.to[0]
-    sent.body.should =~ /will expire in 24 hours/
+    expect(sent.body).to match(/will expire in 24 hours/)
   end
 
 end

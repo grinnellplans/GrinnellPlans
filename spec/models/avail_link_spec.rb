@@ -5,7 +5,7 @@ describe AvailLink do
   end
 
   it 'is valid with valid attributes' do
-    @avail_link.should be_valid
+    expect(@avail_link).to be_valid
   end
 
 end

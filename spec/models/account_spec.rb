@@ -2,10 +2,10 @@ require 'spec_helper'
 
 shared_examples_for 'password oracle' do
   it 'validates correct password' do
-    subject.valid_password?('foobar').should be_true
+    expect(subject.valid_password?('foobar')).to be_truthy
   end
   it 'does not validate incorrect password' do
-    subject.valid_password?('barbaz').should be_false
+    expect(subject.valid_password?('barbaz')).to be_falsey
   end
 end
 
@@ -15,19 +15,35 @@ describe Account do
     subject do described_class.create(username: 'foobar', password: 'foobar', password_confirmation: 'foobar')
      described_class.last
     end
-    its(:crypted_password) { should be_present }
-    its(:password_salt) { should be_present }
-    its(:crypted_password) { should_not == 'foobar' }
-    its(:password) { should_not == 'foobar' }
+
+    describe '#crypted_password' do
+      subject { super().crypted_password }
+      it { is_expected.to be_present }
+    end
+
+    describe '#password_salt' do
+      subject { super().password_salt }
+      it { is_expected.to be_present }
+    end
+
+    describe '#crypted_password' do
+      subject { super().crypted_password }
+      it { is_expected.not_to eq('foobar') }
+    end
+
+    describe '#password' do
+      subject { super().password }
+      it { is_expected.not_to eq('foobar') }
+    end
     it_behaves_like 'password oracle'
   end
 
   it 'fails if password confirmation is mismatch' do
-    described_class.create(username: 'foobar', password: 'foobar', password_confirmation: 'barbaz').should be_invalid
+    expect(described_class.create(username: 'foobar', password: 'foobar', password_confirmation: 'barbaz')).to be_invalid
   end
 
   it 'fails if password confirmation is missing' do
-    described_class.create(username: 'foobar', password: 'foobar').should be_invalid
+    expect(described_class.create(username: 'foobar', password: 'foobar')).to be_invalid
   end
 
   context 'legacy MD5 password' do
@@ -40,7 +56,7 @@ describe Account do
     it_behaves_like 'password oracle'
     it 'transitions password on successful validation' do
       subject.valid_password?('foobar')
-      subject.crypted_password.should match(/\$1\$.{8}\$.{22}/)
+      expect(subject.crypted_password).to match(/\$1\$.{8}\$.{22}/)
     end
   end
 

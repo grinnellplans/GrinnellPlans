@@ -34,7 +34,7 @@ describe 'User Registration' do
     email = ActionMailer::Base.deliveries.pop
     assert_equal 'Plan Activation Link', email.subject
     assert_equal 'plans@blop.blop', email.to[0]
-    email.body.should =~ /will expire in 24 hours/
+    expect(email.body).to match(/will expire in 24 hours/)
 
     # parse token and call confirm with supplied
     token = /token=(.*)/.match(email.body.raw_source)[1]
@@ -46,7 +46,7 @@ describe 'User Registration' do
     email = ActionMailer::Base.deliveries.pop
     assert_equal 'Plan Created', email.subject
     assert_equal 'plans@blop.blop', email.to[0]
-    email.body.should =~ /Your Plan has been created/
+    expect(email.body).to match(/Your Plan has been created/)
 
     # parse password from welcome email
     password = /Initial Password:\W+([0-9a-f]+)/.match(email.body.raw_source)[1]

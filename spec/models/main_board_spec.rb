@@ -6,17 +6,17 @@ describe MainBoard do
   end
 
   it 'is valid with valid attributes' do
-    @main_board.should be_valid
+    expect(@main_board).to be_valid
   end
 
   it 'is not valid without a title' do
     @main_board.title = nil
-    @main_board.should_not be_valid
+    expect(@main_board).not_to be_valid
   end
 
   it 'is not valid without an account' do
     @main_board.account = nil
-    @main_board.should_not be_valid
+    expect(@main_board).not_to be_valid
   end
 end
 # == Schema Information

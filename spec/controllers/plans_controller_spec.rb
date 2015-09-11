@@ -17,9 +17,9 @@ describe PlansController do
   describe 'read plan' do
     before { get :show, id: @account.username }
     subject { response }
-    it { should be_success }
-    it { should render_template('show') }
-    it { assigns(:account).should eq @account }
+    it { is_expected.to be_success }
+    it { is_expected.to render_template('show') }
+    it { expect(assigns(:account)).to eq @account }
   end
 
   describe 'update plan' do
@@ -28,10 +28,10 @@ describe PlansController do
         post :update, id: @account.username, plan: { edit_text: 'Foo bar' }
       end
       it 'changes plan contents' do
-        @plan.reload.edit_text.should eq 'Foo bar'
+        expect(@plan.reload.edit_text).to eq 'Foo bar'
       end
       it 'updates changed timestamp' do
-        @account.reload.changed_date.should >= Time.now - 5
+        expect(@account.reload.changed_date).to be >= Time.now - 5
       end
       it 'redirects to show' do
         assert_redirected_to read_plan_path(id: @account.username)

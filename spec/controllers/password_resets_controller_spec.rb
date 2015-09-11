@@ -3,8 +3,8 @@ require 'spec_helper'
 describe PasswordResetsController do
   describe 'new' do
     subject { get :new }
-    it { response.should be_success }
-    it { should render_template :new }
+    it { expect(response).to be_success }
+    it { is_expected.to render_template :new }
   end
 
   context 'with user' do
@@ -15,20 +15,20 @@ describe PasswordResetsController do
 
     describe 'create' do
       before { post :create, email: @account.email }
-      it { response.should be_redirect }
+      it { expect(response).to be_redirect }
       it 'should send an email' do
         email = ActionMailer::Base.deliveries.first
-        email.to[0].should eq @account.email
-        email.body.should =~ /#{@account.reload.perishable_token}/
+        expect(email.to[0]).to eq @account.email
+        expect(email.body).to match(/#{@account.reload.perishable_token}/)
       end
     end
 
     describe 'failed create' do
       before { post :create, password_reset: { email: 'fred@example.com' } }
-      it { response.should be_success }
-      it { should render_template :new }
+      it { expect(response).to be_success }
+      it { is_expected.to render_template :new }
       it 'should not have sent an email' do
-        ActionMailer::Base.deliveries.first.should eq nil
+        expect(ActionMailer::Base.deliveries.first).to eq nil
       end
     end
   end
@@ -41,8 +41,8 @@ describe PasswordResetsController do
 
     describe 'edit' do
       before { get :edit, id: @account.perishable_token }
-      it { should render_template :edit }
-      it { @controller.current_account.should eq nil }
+      it { is_expected.to render_template :edit }
+      it { expect(@controller.current_account).to eq nil }
     end
 
     describe 'update' do
@@ -50,10 +50,10 @@ describe PasswordResetsController do
         @password_was = @account.reload.crypted_password
         put :update, id: @account.perishable_token, account: { password: 'newpassword', password_confirmation: 'newpassword' }
       end
-      it { response.should be_redirect }
-      it { @controller.current_account.should eq @account }
+      it { expect(response).to be_redirect }
+      it { expect(@controller.current_account).to eq @account }
       it 'should have reset the password' do
-        @password_was.should_not == @account.reload.crypted_password
+        expect(@password_was).not_to eq(@account.reload.crypted_password)
       end
     end
   end

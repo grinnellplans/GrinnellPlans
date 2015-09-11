@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Style do
   it 'must have a path' do
-    described_class.create(path: nil).should be_invalid
+    expect(described_class.create(path: nil)).to be_invalid
   end
 end
 

@@ -6,29 +6,29 @@ describe Plan do
   end
 
   it 'is valid with valid attributes' do
-    @plan.should be_valid
+    expect(@plan).to be_valid
   end
 
   it 'is not valid when plan is longer than 16777215 characters' do
     @plan.plan =  TOO_LONG_STRING
-    @plan.should_not be_valid
+    expect(@plan).not_to be_valid
   end
 
   it 'is not valid when edit_text is longer than 16777215 characters' do
     @plan.edit_text =  TOO_LONG_STRING
-    @plan.should_not be_valid
+    expect(@plan).not_to be_valid
   end
 
   it 'should protect generated_html attribute from mass assignment' do
     @plan = Plan.new(plan: 'Candyland', generated_html: 'hax0rz')
-    @plan.generated_html.should_not == 'hax0rz'
+    expect(@plan.generated_html).not_to eq('hax0rz')
   end
 
   describe '#generated_html' do
     it 'is html safe' do
       subject.edit_text = 'foo'
       subject.save
-      subject.generated_html.should be_html_safe
+      expect(subject.generated_html).to be_html_safe
     end
   end
 
@@ -37,16 +37,16 @@ describe Plan do
     def it_converts_text(input, expected)
       subject.edit_text = input
       subject.save
-      subject.generated_html.should be_same_html_as "<p>#{expected}</p>"
+      expect(subject.generated_html).to be_same_html_as "<p>#{expected}</p>"
     end
 
     it 'is called on save' do
-      subject.should_receive(:clean_text)
+      expect(subject).to receive(:clean_text)
       subject.save
     end
 
     it 'sanitizes disallowed html' do
-      pending "I haven't finessed it quite right yet"
+      skip "I haven't finessed it quite right yet"
       input = "<script>alert('foo');</script> image: <img src=\"foo.jpg\" />"
       expected = "&lt;script&gt;alert('foo');&lt;/script&gt; image: &lt;img src=\"foo.jpg\"&gt;"
       it_converts_text input, expected
@@ -71,8 +71,8 @@ describe Plan do
       expected = '<p>foo<br></p><hr><p>bar</p>'
       subject.edit_text = input
       subject.clean_text
-      pending
-      subject.generated_html.should be_same_html_as expected
+      skip
+      expect(subject.generated_html).to be_same_html_as expected
     end
 
     it 'wraps paragraphs at <pre>' do
@@ -80,7 +80,7 @@ describe Plan do
       expected = '<p>foo</p><pre>bar</pre>'
       subject.edit_text = input
       subject.clean_text
-      subject.generated_html.should be_same_html_as expected
+      expect(subject.generated_html).to be_same_html_as expected
     end
 
     context 'safe html' do

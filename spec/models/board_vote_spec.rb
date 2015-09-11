@@ -8,22 +8,22 @@ describe BoardVote do
   end
 
   it 'is valid with valid attributes' do
-    @board_vote.should be_valid
+    expect(@board_vote).to be_valid
   end
 
   it 'is not valid without an account' do
     @board_vote.account = nil
-    @board_vote.should_not be_valid
+    expect(@board_vote).not_to be_valid
   end
 
   it 'is not valid without a main_board' do
     @board_vote.main_board = nil
-    @board_vote.should_not be_valid
+    expect(@board_vote).not_to be_valid
   end
 
   it 'is not valid without a sub_board' do
     @board_vote.sub_board = nil
-    @board_vote.should_not be_valid
+    expect(@board_vote).not_to be_valid
   end
 end
 

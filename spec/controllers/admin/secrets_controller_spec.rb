@@ -14,10 +14,10 @@ describe Admin::SecretsController do
     subject { response }
 
     it 'should load secrets' do
-      assigns(:secrets).should eq([@secret])
+      expect(assigns(:secrets)).to eq([@secret])
     end
-    it { should be_success }
-    it { should render_template('index') }
+    it { is_expected.to be_success }
+    it { is_expected.to render_template('index') }
   end
 
   describe 'GET index as an regular user' do
@@ -28,7 +28,7 @@ describe Admin::SecretsController do
     end
     subject { response }
 
-    it { should be_redirect }
+    it { is_expected.to be_redirect }
   end
 
   describe 'GET index when not logged in' do
@@ -38,7 +38,7 @@ describe Admin::SecretsController do
     end
     subject { response }
 
-    it { should be_redirect }
+    it { is_expected.to be_redirect }
   end
 
 end

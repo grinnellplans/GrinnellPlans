@@ -4,7 +4,7 @@ describe Autofinger do
   it 'must have a priority' do
     owner = Account.create! username: 'owner', password: '123456', password_confirmation: '123456'
     interest = Account.create! username: 'interest', password: '123456', password_confirmation: '123456'
-    described_class.new(owner: owner.id, interest: interest.id, priority: nil).should be_invalid
+    expect(described_class.new(owner: owner.id, interest: interest.id, priority: nil)).to be_invalid
   end
 
   describe 'updated scope' do
@@ -14,10 +14,10 @@ describe Autofinger do
     end
     subject { Autofinger.updated }
     it 'includes updated accounts' do
-      subject.exists?(@updated.id).should be_true
+      expect(subject.exists?(@updated.id)).to be_truthy
     end
     it 'excludes un-updated accounts' do
-      subject.exists?(@not_updated.id).should be_false
+      expect(subject.exists?(@not_updated.id)).to be_falsey
     end
   end
 
