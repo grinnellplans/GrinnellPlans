@@ -12,7 +12,11 @@ module PhpCrypt
 
       def self.matches?(crypted, *tokens)
         salt = crypted[ 0..1]
-        crypted == tokens.join.crypt(salt)
+        begin
+          crypted == tokens.join.crypt(salt)
+        rescue ArgumentError => e
+          false
+        end
       end
     end
   end
