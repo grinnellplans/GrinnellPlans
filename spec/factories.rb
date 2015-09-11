@@ -22,4 +22,15 @@ FactoryGirl.define do
     b.title 'A notes thread'
     b.association :account
   end
+
+  factory :sub_board do |b|
+    contents "foo bar"
+  end
+
+  factory :board_vote do |v|
+    v.association :account
+    v.association :main_board
+    v.association :sub_board
+    v.vote_date Time.now
+  end
 end

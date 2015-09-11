@@ -27,14 +27,14 @@ describe Secret do
 
   it 'is not valid when date not null before_create' do
     @secret = Secret.create(@attributes)
-    !expect(@secret.date).not_to.nil?
+    !expect(@secret.date).not_to be_nil
   end
 
   it 'is not valid when date_approved is not populated before_update' do
     @secret.save
     @secret.secret_text = 'fee'
     @secret.save
-    !expect(@secret.date_approved).not_to.nil?
+    !expect(@secret.date_approved).not_to be_nil
   end
 end
 # == Schema Information

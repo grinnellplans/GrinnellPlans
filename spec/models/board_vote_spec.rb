@@ -1,10 +1,7 @@
 require 'spec_helper'
 describe BoardVote do
   before(:each) do
-    @board_vote =  BoardVote.new(account: mock_model('Account'),
-                                 main_board: mock_model('MainBoard'),
-                                 sub_board: mock_model('SubBoard'),
-                                 vote_date: Time.now)
+    @board_vote = FactoryGirl.build :board_vote
   end
 
   it 'is valid with valid attributes' do
