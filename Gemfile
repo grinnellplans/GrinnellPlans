@@ -1,7 +1,5 @@
 source 'https://rubygems.org'
 
-ruby '1.9.3'
-
 gem 'rails', '~> 4.0.3'
 
 # our database, for now.  Eventually, it'll be msyql, but this is easier for now.

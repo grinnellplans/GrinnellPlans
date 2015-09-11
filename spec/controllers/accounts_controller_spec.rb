@@ -58,7 +58,7 @@ describe AccountsController do
                                    email: 'plan@blop.blop')
       password = SecureRandom.hex(10)
       account = Account.create_from_tentative ta, password
-      assert_not_nil account
+      expect(account).not_to be_nil
       post :create, account: { 'username' => 'plans' }
       assert_select 'p', /A plan already exists for this Grinnellian/
     end
@@ -71,7 +71,7 @@ describe AccountsController do
                                    confirmation_token: 'PLAN9',
                                    created_at: past_time,
                                    updated_at: past_time)
-      assert_not_nil ta
+      expect(ta).not_to be_nil
       post :create, account: {
           'username' => 'plans',
           'email_domain' => 'blop.blop',
@@ -99,7 +99,7 @@ describe AccountsController do
 
       # verify account
       account = Account.find_by_username 'plans'
-      assert_not_nil account
+      expect(account).not_to be_nil
       assert_equal ta.email, account.email
 
       # verify welcome email

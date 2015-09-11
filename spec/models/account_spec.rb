@@ -74,7 +74,7 @@ describe Account do
       ta = TentativeAccount.create(username: username, user_type: 'student', email: email, confirmation_token: 'ABCD')
       password = SecureRandom.hex(10)
       account = Account.create_from_tentative ta, password
-      assert_not_nil account
+      expect(account).not_to be_nil
 
       # an account should have been created
       account = Account.find_by_username username

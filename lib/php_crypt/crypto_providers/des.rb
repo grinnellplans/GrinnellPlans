@@ -14,7 +14,7 @@ module PhpCrypt
         salt = crypted[ 0..1]
         begin
           crypted == tokens.join.crypt(salt)
-        rescue ArgumentError => e
+        rescue Errno::EINVAL => e
           false
         end
       end
