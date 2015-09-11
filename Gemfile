@@ -66,7 +66,7 @@ end
 
 group :test, :development do
   # Tests! (http://relishapp.com/rspec)
-  gem 'rspec-rails', '~> 2.99.0'
+  gem 'rspec-rails', '~> 3.0'
 
   #SanitizeEmail allows you to play with your application's email abilities without worrying that emails will get sent to actual live addresses. (https://github.com/pboling/sanitize_email)
   #gem 'sanitize_email'
