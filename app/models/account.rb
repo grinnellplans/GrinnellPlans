@@ -83,7 +83,7 @@ class Account < ActiveRecord::Base
 
   def deliver_password_reset_instructions!
     reset_perishable_token!
-    Notifier.password_reset_instructions(self).deliver
+    Notifier.password_reset_instructions(self).deliver_later
   end
 
   def self.create_from_tentative(tentative_account, temp_password)

@@ -16,7 +16,7 @@ describe Notifier do
     username = 'littlebird'
     email = 'little@bird.me'
     password = 'tastyw0rms'
-    Notifier.send_password(username, email, password).deliver
+    Notifier.send_password(username, email, password).deliver_now
     sent = ActionMailer::Base.deliveries.first
     assert_equal 'Plan Created', sent.subject
     assert_equal email, sent.to[0]
@@ -28,7 +28,7 @@ describe Notifier do
     username = 'littlebird'
     email = 'little@bird.me'
     token = 'tastyw0rms'
-    Notifier.confirm(username, email, token).deliver
+    Notifier.confirm(username, email, token).deliver_now
     sent = ActionMailer::Base.deliveries.first
     assert_equal 'Plan Activation Link', sent.subject
     assert_equal email, sent.to[0]

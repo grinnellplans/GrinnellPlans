@@ -47,7 +47,7 @@ class AccountsController < ApplicationController
       account = Account.create_from_tentative ta, password
       if account
         email = Notifier.send_password ta.username, ta.email, password
-        email.deliver
+        email.deliver_later
         current_account_session.destroy
         @account_created = true
       end
@@ -84,6 +84,6 @@ class AccountsController < ApplicationController
 
   def send_confirmation_email(username, email, token)
     confirmation_email = Notifier.confirm username, email, token
-    confirmation_email.deliver
+    confirmation_email.deliver_later
   end
 end
