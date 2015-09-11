@@ -116,8 +116,6 @@ GEM
       activesupport (= 3.2.22)
       bundler (~> 1.0)
       railties (= 3.2.22)
-    rails3-generators (1.0.0)
-      railties (>= 3.0.0)
     railties (3.2.22)
       actionpack (= 3.2.22)
       activesupport (= 3.2.22)
@@ -204,7 +202,6 @@ DEPENDENCIES
   nokogiri-diff
   quiet_assets
   rails (~> 3.2)
-  rails3-generators
   redcarpet
   rspec-rails (~> 3.0)
   rubocop

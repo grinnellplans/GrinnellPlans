@@ -19,7 +19,6 @@ gem 'sass'
 
 # A simple model based ruby authentication solution (https://github.com/binarylogic/authlogic)
 gem 'authlogic', '~> 3.1.2'
-gem 'rails3-generators'
 
 # Helpers to deal with your model backed forms in Rails3  (https://github.com/joelmoss/dynamic_form)
 gem 'dynamic_form'
