@@ -54,6 +54,9 @@ group :development do
   #Mutes assets pipeline log messages.
   gem 'quiet_assets'
 
+  # Handy in-browser console for debugging
+  gem 'web-console'
+
   gem 'thin'
 end
 
