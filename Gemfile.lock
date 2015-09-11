@@ -213,4 +213,4 @@ DEPENDENCIES
   simplecov
   sqlite3
   thin
-  will_paginate (~> 3.0.pre4)
+  will_paginate (~> 3.0)

@@ -41,7 +41,7 @@ gem "json", "~> 1.5.4"
 gem 'jquery-rails', '~> 2.1'
 
 # https://github.com/mislav/will_paginate/tree/rails3
-gem 'will_paginate', '~> 3.0.pre4'
+gem 'will_paginate', '~> 3.0'
 
 # supports composite primary keys for legacy tables like Autfinger https://github.com/drnic/composite_primary_keys
 gem "composite_primary_keys", "~> 5.0"
