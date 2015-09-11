@@ -1,7 +1,6 @@
 class Plan < ActiveRecord::Base
   belongs_to :account, foreign_key: :user_id
   before_save :clean_text
-  attr_protected :generated_html
   after_update :set_modified_time
   alias_attribute :generated_html, :plan
   # validates_presence_of :account

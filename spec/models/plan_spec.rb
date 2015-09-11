@@ -20,6 +20,7 @@ describe Plan do
   end
 
   it 'should protect generated_html attribute from mass assignment' do
+    pending "This is moving to strong params"
     @plan = Plan.new(plan: 'Candyland', generated_html: 'hax0rz')
     expect(@plan.generated_html).not_to eq('hax0rz')
   end

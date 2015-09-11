@@ -6,7 +6,6 @@ class Secret < ActiveRecord::Base
   validates_presence_of :secret_text
   validates_inclusion_of :display_attr, in:  DISPLAY_OPTIONS
   validates_length_of :secret_text, maximum: 16_777_215
-  attr_protected :display_attr, :date_approved
 
   before_validation on: :create do
     self.display_attr = 'no' if display_attr.blank?
