@@ -3,7 +3,5 @@
 
 require File.expand_path('../config/application', __FILE__)
 require 'rake'
-require 'single_test'
 
 Plans::Application.load_tasks
-SingleTest.load_tasks
