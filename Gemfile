@@ -2,8 +2,7 @@ source 'https://rubygems.org'
 
 ruby '1.9.3'
 
-gem 'rails', '~> 3.2'
-
+gem 'rails', '~> 4.0.3'
 
 # our database, for now.  Eventually, it'll be msyql, but this is easier for now.
 gem 'sqlite3'
@@ -18,7 +17,7 @@ gem 'haml'
 gem 'sass'
 
 # A simple model based ruby authentication solution (https://github.com/binarylogic/authlogic)
-gem 'authlogic', '~> 3.4.6'
+gem 'authlogic'
 
 # Helpers to deal with your model backed forms in Rails3  (https://github.com/joelmoss/dynamic_form)
 gem 'dynamic_form'
@@ -33,9 +32,6 @@ gem 'sanitize', '~> 2.0.3'
 # A powerful parser for Markdown (https://github.com/tanoku/redcarpet)
 gem 'redcarpet'
 
-# Serialization using JSON
-gem "json", "~> 1.5.4"
-
 # https://github.com/rails/jquery-ujs
 gem 'jquery-rails', '~> 2.1'
 
@@ -43,7 +39,7 @@ gem 'jquery-rails', '~> 2.1'
 gem 'will_paginate', '~> 3.0'
 
 # supports composite primary keys for legacy tables like Autfinger https://github.com/drnic/composite_primary_keys
-gem "composite_primary_keys", "~> 5.0"
+gem "composite_primary_keys"
 
 # Procfile management for ruby.
 gem "foreman"
