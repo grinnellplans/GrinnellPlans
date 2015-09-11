@@ -29,7 +29,7 @@ gem 'dynamic_form'
 gem 'crypt3', :git => "git://github.com/rubyunworks/crypt3.git", :tag => '2dd4c98ab2882c9233d70833886ad4588e7ff8e6'
 
 # A whitelist-based Ruby HTML sanitizer (http://wonko.com/post/sanitize)
-gem 'sanitize'
+gem 'sanitize', '~> 2.0.3'
 
 # A powerful parser for Markdown (https://github.com/tanoku/redcarpet)
 gem 'redcarpet'
