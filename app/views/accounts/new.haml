@@ -13,7 +13,7 @@
 /      <input type="submit" value="Register">
 /    </form>
 
-= form_for @account, :as => :account, :url => { :action => "create" } do |f|
+= form_for :account, :url => { :action => "create" } do |f|
   My Grinnell email is
   != "#{f.text_field :username}@ #{f.select :email_domain, options_for_select(@allowed_domains), :selected => @allowed_domains[0][0]},"
   and I am a
