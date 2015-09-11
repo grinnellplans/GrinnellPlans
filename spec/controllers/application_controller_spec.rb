@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe ApplicationController do
   # This sets up an anonymous controller to let us easily test the

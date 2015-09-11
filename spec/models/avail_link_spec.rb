@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 describe AvailLink do
   before(:each) do
     @avail_link = AvailLink.new

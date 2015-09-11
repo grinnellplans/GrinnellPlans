@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 shared_examples_for 'password oracle' do
   it 'validates correct password' do

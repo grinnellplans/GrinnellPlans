@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 describe BoardVote do
   before(:each) do
     @board_vote = FactoryGirl.build :board_vote

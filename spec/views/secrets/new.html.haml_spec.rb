@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe 'secrets/new.html.haml' do
   before(:each) do

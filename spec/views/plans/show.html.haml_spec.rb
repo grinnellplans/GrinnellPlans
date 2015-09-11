@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe 'plans/show.html.haml' do
   skip 'displays plan html' do

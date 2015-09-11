@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 describe AccountSession do
   before(:each) do
     @account_session = AccountSession.new
