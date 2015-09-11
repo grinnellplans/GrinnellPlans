@@ -1,1 +1,3 @@
 script: "RAILS_ENV=test bundle exec rake db:setup && RAILS_ENV=test bundle exec rake spec"
+sudo: false
+cache: bundler
