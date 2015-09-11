@@ -25,10 +25,10 @@ describe 'User Registration' do
     account = { username: 'plans',
                 email_domain: 'blop.blop',
                 user_type: 'student' }
-    post 'accounts#create', account: account
+    post '/accounts#create', account: account
     assert_response :success
     assert_template 'accounts/create'
-    assert_select 'p', /was just sent to plans@blop.blop/
+    expect(response.body).to match(/was just sent to plans@blop.blop/)
 
     # check email
     email = ActionMailer::Base.deliveries.pop
@@ -38,9 +38,9 @@ describe 'User Registration' do
 
     # parse token and call confirm with supplied
     token = /token=(.*)/.match(email.body.raw_source)[1]
-    get 'accounts/confirm', token: token
+    get '/accounts/confirm', token: token
     assert_response :success
-    assert_select 'p', /Thank you for confirming your email!/
+    expect(response.body).to match(/Thank you for confirming your email!/)
 
     # check email
     email = ActionMailer::Base.deliveries.pop
