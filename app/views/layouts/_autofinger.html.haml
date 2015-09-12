@@ -1,14 +1,14 @@
 #autoread
   %h2 Autoread List
   %ul
-    -for priority in 1..3
+    - each_with_list_classes(1..3) do |priority, classes|
       /TODO classes first notcurrent/current
-      %li{:class=>"autoreadlevel #{cycle('even','odd')}"}
+      %li{ class: (classes + ["autoreadlevel", "current"]) }
         .autoreadname
           =link_to "Level #{priority}", set_autofinger_level_plans_path(:level=>priority, :return_to=>request.fullpath), {:id=>"set_autoreadlev#{priority}", :class=>"autoreadlink"}
           =link_to "X", mark_level_as_read_plans_path(:level=>priority, :return_to=>request.fullpath ), {:class=>"markasread", :method=>:put, :data => { :confirm=>"Are you sure you'd like to mark all the Plans on level #{priority} as read?"} }
           -if priority == session[:autofinger_level]
             %ul
-              -for autofinger in @autofingers
-                %li{:class=>"autoreadentry #{cycle('even', 'odd')}" }
-                  =link_to autofinger.subject_of_interest.username, read_plan_path(autofinger.subject_of_interest.username)
+              - each_with_list_classes(@autofingers) do |autofinger, classes|
+                %li{ class: (classes << "autoreadentry") }
+                  =link_to autofinger.subject_of_interest.username, read_plan_path(autofinger.subject_of_interest.username), class: "planlove"

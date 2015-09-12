@@ -2,9 +2,8 @@
   %h2 Links
   %ul.linkslist
     -unless current_account.blank?
-      /#todo add "first" class
-      -for link in current_account.avail_links
-        %li{:class=>"#{cycle('even', 'odd')}" }
+      - each_with_list_classes(current_account.avail_links) do |link, classes|
+        %li{ class: classes }
           =link.html_code.to_s.html_safe #TODO railsify
       %li
         = link_to "Secrets", secrets_path
