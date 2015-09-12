@@ -67,6 +67,7 @@ group :test, :development do
   #SanitizeEmail allows you to play with your application's email abilities without worrying that emails will get sent to actual live addresses. (https://github.com/pboling/sanitize_email)
   #gem 'sanitize_email'
 
+  # Automated checking of code style and correctness
   gem 'rubocop'
 end
 
