@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
     redirect_to root_path if current_account.present?
   end
 
-  def  require_admin
+  def require_admin
     redirect_to root_path if current_account.nil? || !current_account.is_admin?
   end
 

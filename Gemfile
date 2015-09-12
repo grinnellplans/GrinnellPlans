@@ -22,7 +22,7 @@ gem 'dynamic_form'
 
 # Crypt3 is a ruby version of crypt(3), a salted one-way hashing of a password.
 # It is no longer maintained, but necessary to support conversion of old PHP hashed passwords.
-gem 'crypt3', :git => "git://github.com/rubyunworks/crypt3.git", :tag => '2dd4c98ab2882c9233d70833886ad4588e7ff8e6'
+gem 'crypt3', git: "git://github.com/rubyunworks/crypt3.git", tag: '2dd4c98ab2882c9233d70833886ad4588e7ff8e6'
 
 # A whitelist-based Ruby HTML sanitizer (http://wonko.com/post/sanitize)
 gem 'sanitize', '~> 2.0.3'
@@ -44,7 +44,7 @@ gem "foreman"
 
 group :production do
   #email any errors to people specified in the environment.rb
-  gem "exception_notification", :git => "git://github.com/rails/exception_notification", :require => 'exception_notifier'
+  gem "exception_notification", git: "git://github.com/rails/exception_notification", require: 'exception_notifier'
 end
 
 group :development do

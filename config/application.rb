@@ -32,4 +32,4 @@ module Plans
     config.active_record.raise_in_transactional_callbacks = true
   end
 end
- WillPaginate.per_page = 60
+WillPaginate.per_page = 60

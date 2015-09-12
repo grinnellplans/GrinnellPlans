@@ -10,12 +10,12 @@ describe Plan do
   end
 
   it 'is not valid when plan is longer than 16777215 characters' do
-    @plan.plan =  TOO_LONG_STRING
+    @plan.plan = TOO_LONG_STRING
     expect(@plan).not_to be_valid
   end
 
   it 'is not valid when edit_text is longer than 16777215 characters' do
-    @plan.edit_text =  TOO_LONG_STRING
+    @plan.edit_text = TOO_LONG_STRING
     expect(@plan).not_to be_valid
   end
 
@@ -52,7 +52,6 @@ describe Plan do
       expected = "&lt;script&gt;alert('foo');&lt;/script&gt; image: &lt;img src=\"foo.jpg\"&gt;"
       it_converts_text input, expected
     end
-
 
     it 'closes unclosed tags' do
       input = 'Eek <b>Bold <i>4</i> ever!'
@@ -180,4 +179,3 @@ end
 #  plan      :text(16777215)
 #  edit_text :text
 #
-

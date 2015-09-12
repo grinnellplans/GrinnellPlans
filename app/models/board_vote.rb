@@ -1,4 +1,4 @@
-class BoardVote  < ActiveRecord::Base
+class BoardVote < ActiveRecord::Base
   self.table_name = 'boardvotes'
   self.primary_key = :voteid
   belongs_to :account, foreign_key: :userid

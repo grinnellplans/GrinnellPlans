@@ -2,7 +2,7 @@ require File.expand_path('../../mailers/notifier.rb', __FILE__)
 
 class AccountsController < ApplicationController
   def new
-    @allowed_domains = APP_CONFIG['email_domains'].map { |d| [d] }
+    @allowed_domains = APP_CONFIG['email_domains'].map {|d| [d] }
   end
 
   def create
@@ -18,7 +18,7 @@ class AccountsController < ApplicationController
     redirect_to action: 'new' unless APP_CONFIG['email_domains'].include? @account['email_domain']
 
     tentative_account = TentativeAccount.find_by_email(@user_email)
-    if  tentative_account && tentative_account.created_at > (Time.now - 1.day)
+    if tentative_account && tentative_account.created_at > (Time.now - 1.day)
       @account_exists_but_not_confirmed = true
       @user_email = tentative_account.email
       return

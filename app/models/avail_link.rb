@@ -1,6 +1,6 @@
 class AvailLink < ActiveRecord::Base
   self.primary_key = :linknum
-  has_many :opt_links, foreign_key:  :linknum
+  has_many :opt_links, foreign_key: :linknum
 end
 
 # == Schema Information

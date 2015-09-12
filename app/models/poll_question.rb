@@ -3,9 +3,9 @@ class PollQuestion < ActiveRecord::Base
   has_many :poll_choices
 
  # don't use "type" as a column for Single table inheritance, it's a legacy name
- def self.inheritance_column
-   'na'
- end
+  def self.inheritance_column
+    'na'
+  end
 end
 
 # == Schema Information

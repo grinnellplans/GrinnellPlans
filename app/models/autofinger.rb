@@ -12,11 +12,11 @@ class Autofinger < ActiveRecord::Base
 
   def self.mark_plan_as_read(owner, interest)
     autofinger = Autofinger.where(owner: owner, interest: interest).first
-      unless autofinger.blank?
-        autofinger.updated = '0'
-        autofinger.readtime = Time.now
-        autofinger.save
-      end
+    unless autofinger.blank?
+      autofinger.updated = '0'
+      autofinger.readtime = Time.now
+      autofinger.save
+    end
   end
 
   def self.mark_level_as_read(owner, level)

@@ -1,5 +1,5 @@
 class SecretsController < ApplicationController
-  before_filter :require_user, :load_autofingers , except: [:new, :create]
+  before_filter :require_user, :load_autofingers, except: [:new, :create]
 
   # GET /secrets
   def index
@@ -15,11 +15,11 @@ class SecretsController < ApplicationController
   # POST /secrets
   def create
     @secret = Secret.new(params[:secret])
-      if @secret.save
-        redirect_to(secrets_path, notice: 'Secret was successfully created.')
-      else
-        render action: 'new'
-      end
+    if @secret.save
+      redirect_to(secrets_path, notice: 'Secret was successfully created.')
+    else
+      render action: 'new'
+    end
   end
 
 end

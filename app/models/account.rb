@@ -1,9 +1,9 @@
 class Account < ActiveRecord::Base
   self.primary_key = :userid
-  validates :username, presence: true, length:  { maximum: 16 }
-  validates :password,  length:  { maximum: 34 }
+  validates :username, presence: true, length: { maximum: 16 }
+  validates :password, length: { maximum: 34 }
   validates :email, length:  { maximum: 64 }
-  validates :guest_password, length:  { maximum: 64 }
+  validates :guest_password, length: { maximum: 64 }
   validates :show_images, presence: true
   validates :user_type, length:  { maximum: 128 }
 
@@ -14,16 +14,16 @@ class Account < ActiveRecord::Base
   has_many :board_votes, foreign_key: :userid
   has_many :opt_links, foreign_key: :userid
   has_many :avail_links, through: :opt_links
-  has_one  :permission, foreign_key: :userid
+  has_one :permission, foreign_key: :userid
   has_many :poll_votes, foreign_key: :userid
-  has_one  :stylesheet, foreign_key: :userid
+  has_one :stylesheet, foreign_key: :userid
   has_many :main_boards, foreign_key: :userid
   has_many :sub_boards, foreign_key: :userid
-  has_one  :viewed_secret, foreign_key: :userid
-  has_one  :plan, foreign_key: :user_id
+  has_one :viewed_secret, foreign_key: :userid
+  has_one :plan, foreign_key: :user_id
 
   # Every ruby object already has a .dsiplay() method  so we can't call it display
-  has_one  :display_item, foreign_key: :userid, class_name:  'Display'
+  has_one :display_item, foreign_key: :userid, class_name: 'Display'
 
   before_validation do
     self.show_images = true

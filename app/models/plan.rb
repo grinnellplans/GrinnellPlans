@@ -4,8 +4,8 @@ class Plan < ActiveRecord::Base
   after_update :set_modified_time
   alias_attribute :generated_html, :plan
   # validates_presence_of :account
-  validates_length_of :plan, maximum: 16_777_215,  message: 'Your plan is too long'
-  validates_length_of :edit_text, maximum: 16_777_215,  message: 'Your plan is too long'
+  validates_length_of :plan, maximum: 16_777_215, message: 'Your plan is too long'
+  validates_length_of :edit_text, maximum: 16_777_215, message: 'Your plan is too long'
 
   ALLOWED_HTML = {
       elements: %w[ a b hr i p span pre tt code br ],
@@ -111,4 +111,3 @@ end
 #  plan      :text(16777215)
 #  edit_text :text
 #
-

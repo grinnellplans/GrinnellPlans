@@ -13,7 +13,7 @@ describe Account do
 
   context 'with password' do
     subject do described_class.create(username: 'foobar', password: 'foobar', password_confirmation: 'foobar')
-     described_class.last
+               described_class.last
     end
 
     describe '#crypted_password' do
