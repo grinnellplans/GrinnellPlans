@@ -47,6 +47,14 @@ Plans::Application.routes.draw do
   get '/login' => 'account_sessions#new', :as => :login
   delete '/logout' => 'account_sessions#destroy', :as => :logout
 
+  # Placeholder routes until we build the real things
+  get "/" => "plans#show", as: :notes
+  get "/" => "plans#show", as: :quicklove
+  get "/" => "plans#show", as: :polls
+  get "/" => "plans#show", as: :random_plan
+  get "/" => "plans#show", as: :recently_updated_plans
+  get "/" => "plans#show", as: :recently_created_plans
+
   # adding default route as lowest priority
   # match '/:controller(/:action(/:id))'
 end

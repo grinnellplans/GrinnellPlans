@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130125033218) do
+ActiveRecord::Schema.define(version: 20150912233905) do
 
   create_table "accounts", primary_key: "userid", force: :cascade do |t|
     t.string   "username",          limit: 16,  default: "",    null: false
@@ -58,10 +58,11 @@ ActiveRecord::Schema.define(version: 20130125033218) do
   add_index "autofinger", ["owner"], name: "owner"
 
   create_table "avail_links", primary_key: "linknum", force: :cascade do |t|
-    t.string "linkname",  limit: 128
+    t.string "linkname",     limit: 128
     t.text   "descr"
-    t.text   "html_code", limit: 255
-    t.text   "static",    limit: 255
+    t.text   "html_code",    limit: 255
+    t.text   "static",       limit: 255
+    t.string "rails_helper"
   end
 
   create_table "boardvotes", primary_key: "voteid", force: :cascade do |t|
