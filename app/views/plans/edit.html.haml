@@ -1,3 +1,6 @@
+- content_for :head do
+  = javascript_include_tag :plans
+
 #editform
   =form_for @plan, :url => {:action=>:update, :controller=>:plans } do |f|
     =f.text_area :edit_text, :onkeyup=>"javascript:checkPlanLength()"

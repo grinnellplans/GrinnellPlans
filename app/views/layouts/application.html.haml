@@ -7,7 +7,7 @@
     = stylesheet_link_tag :login, :libre
     = csrf_meta_tag
     = javascript_include_tag "application"
-    = javascript_include_tag params[ :controller ]
+    = content_for :head
   %body#planspage_readplan.plan
     #wrapper
       #nav
