@@ -18,6 +18,16 @@ FactoryGirl.define do
     a.updated 1
   end
 
+  factory :avail_link do |l|
+    l.linkname "An optional link"
+    l.sequence(:rails_helper) {|i| "rails_helper_#{i}"}
+  end
+
+  factory :opt_link do |l|
+    l.association :account
+    l.association :avail_link
+  end
+
   factory :main_board do |b|
     b.title 'A notes thread'
     b.association :account
