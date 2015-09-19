@@ -6,15 +6,3 @@ class SubBoard < ActiveRecord::Base
 
   validates_presence_of :threadid, :userid, :contents
 end
-
-# == Schema Information
-#
-# Table name: subboard
-#
-#  messageid :integer         not null, primary key
-#  threadid  :integer(2)      default(0), not null
-#  created   :datetime
-#  userid    :integer(2)      default(0), not null
-#  title     :string(128)
-#  contents  :text            not null
-#

@@ -18,14 +18,3 @@ class MainBoard < ActiveRecord::Base
     self.lastupdated = Time.now
   end
 end
-
-# == Schema Information
-#
-# Table name: mainboard
-#
-#  threadid    :integer         not null, primary key
-#  title       :string(128)
-#  created     :datetime
-#  lastupdated :datetime
-#  userid      :integer(2)      default(0), not null
-#

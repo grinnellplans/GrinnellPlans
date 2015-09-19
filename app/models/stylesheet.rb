@@ -3,11 +3,3 @@ class Stylesheet < ActiveRecord::Base
   belongs_to :account, foreign_key: :userid
 
 end
-
-# == Schema Information
-#
-# Table name: stylesheet
-#
-#  userid     :integer         not null, primary key
-#  stylesheet :text(255)
-#

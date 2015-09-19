@@ -24,15 +24,3 @@ class Autofinger < ActiveRecord::Base
   end
 
 end
-
-# == Schema Information
-#
-# Table name: autofinger
-#
-#  owner    :integer(2)      default(0), not null
-#  interest :integer(2)      default(0), not null
-#  priority :integer(1)
-#  updated  :string(1)
-#  updtime  :datetime
-#  readtime :datetime
-#

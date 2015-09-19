@@ -101,13 +101,3 @@ class Plan < ActiveRecord::Base
     account.save!
   end
 end
-
-# == Schema Information
-#
-# Table name: plans
-#
-#  id        :integer         not null, primary key
-#  user_id   :integer(2)
-#  plan      :text(16777215)
-#  edit_text :text
-#

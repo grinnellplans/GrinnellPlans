@@ -48,9 +48,6 @@ group :production do
 end
 
 group :development do
-  #add comments to the models/tests that show the attributes
-  gem 'annotate'
-
   #Mutes assets pipeline log messages.
   gem 'quiet_assets'
 
