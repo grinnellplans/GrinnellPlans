@@ -4,7 +4,7 @@
     -unless current_account.blank?
       - each_with_list_classes(current_account.avail_links.active) do |link, classes|
         %li{ class: classes }
-          =link.html_code.to_s.html_safe #TODO railsify
+          = link_to link.linkname, send(link.path_helper)
       %li#last
         = link_to "Log out", account_session_path, :method => :delete
 
