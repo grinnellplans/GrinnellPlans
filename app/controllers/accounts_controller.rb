@@ -6,7 +6,7 @@ class AccountsController < ApplicationController
   end
 
   def create
-    @account = params[:account]
+    @account = unsafe_params[:account]
     @username = @account['username']
     @user_email = "#{@account['username']}@#{@account['email_domain']}"
 
@@ -36,7 +36,7 @@ class AccountsController < ApplicationController
   end
 
   def confirm
-    token = params[:token]
+    token = unsafe_params[:token]
     ta = TentativeAccount.find_by_confirmation_token(token)
 
     if !ta || ta.created_at < (Time.now - 1.day)
@@ -55,7 +55,7 @@ class AccountsController < ApplicationController
   end
 
   def resend_confirmation_email
-    @username = params[:username]
+    @username = unsafe_params[:username]
     redirect_to action: 'new' unless @username
 
     ta = TentativeAccount.find_by_username(@username)

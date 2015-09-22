@@ -4,7 +4,7 @@ class PagesController < ApplicationController
   end
 
   def show
-    @page = params.fetch(:id, 'index')
+    @page = unsafe_params.fetch(:id, 'index')
     expanded_page = "#{Rails.root}/app/views/pages/#{@page}.haml"
     exists = File.exist?(File.expand_path(expanded_page))
     if exists

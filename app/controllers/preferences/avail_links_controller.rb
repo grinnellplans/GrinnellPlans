@@ -8,7 +8,7 @@ module Preferences
     end
 
     def update
-      current_account.update params[:account]
+      current_account.update unsafe_params[:account]
       redirect_to preferences_links_path
     end
   end

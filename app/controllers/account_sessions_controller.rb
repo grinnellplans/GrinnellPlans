@@ -6,7 +6,7 @@ class AccountSessionsController < ApplicationController
   end
 
   def create
-    @session = AccountSession.new params[ :account_session]
+    @session = AccountSession.new unsafe_params[ :account_session]
     if @session.save
       session[:autofinger_level] = 1
       account = @session.record

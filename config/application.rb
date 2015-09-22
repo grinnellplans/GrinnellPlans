@@ -25,9 +25,6 @@ module Plans
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = 'utf-8'
 
-    # This is naughty, but I swear I'll fix it later!
-    config.action_controller.permit_all_parameters = true
-
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
   end

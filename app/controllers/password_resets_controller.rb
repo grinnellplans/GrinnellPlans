@@ -7,7 +7,7 @@ class PasswordResetsController < ApplicationController
   end
 
   def create
-    @account = Account.find_by_email(params[:email])
+    @account = Account.find_by_email(unsafe_params[:email])
     if @account
       @account.deliver_password_reset_instructions!
       flash[:notice] = 'Instructions to reset your password have been emailed to you. Please check your email.'
@@ -23,8 +23,8 @@ class PasswordResetsController < ApplicationController
   end
 
   def update
-    @account.password = params[:account][:password]
-    @account.password_confirmation = params[:account][:password_confirmation]
+    @account.password = unsafe_params[:account][:password]
+    @account.password_confirmation = unsafe_params[:account][:password_confirmation]
     if @account.save
       flash[:notice] = 'Password successfully updated'
       redirect_to root_path
@@ -36,7 +36,7 @@ class PasswordResetsController < ApplicationController
   private
 
   def load_account_using_perishable_token
-    @account = Account.find_using_perishable_token(params[:id])
+    @account = Account.find_using_perishable_token(unsafe_params[:id])
     unless @account
       flash[:notice] = "We're sorry, but we could not locate your account. " +
       'If you are having issues try copying and pasting the URL ' +

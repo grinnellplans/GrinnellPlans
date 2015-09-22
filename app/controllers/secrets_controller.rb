@@ -3,7 +3,7 @@ class SecretsController < ApplicationController
 
   # GET /secrets
   def index
-    @secrets = Secret.where(display: 'yes').page(params[:page]).order('date DESC')
+    @secrets = Secret.where(display: 'yes').page(unsafe_params[:page]).order('date DESC')
     @secret = Secret.new
   end
 
@@ -14,7 +14,7 @@ class SecretsController < ApplicationController
 
   # POST /secrets
   def create
-    @secret = Secret.new(params[:secret])
+    @secret = Secret.new(unsafe_params[:secret])
     if @secret.save
       redirect_to(secrets_path, notice: 'Secret was successfully created.')
     else

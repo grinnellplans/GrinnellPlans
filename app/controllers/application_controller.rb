@@ -29,4 +29,12 @@ class ApplicationController < ActionController::Base
   def load_autofingers
     @autofingers = current_account.interests_in_others.updated.where priority: session[:autofinger_level]
   end
+
+  # Don't use this! It's for migration purposes only.
+  # Use strong unsafe_params properly instead:
+  # http://guides.rubyonrails.org/action_controller_overview.html#strong-parameters
+  def unsafe_params
+    ActiveSupport::Deprecation.warn("Using `unsafe_params` isn't a great plan", caller(1))
+    params.dup.tap(&:permit!)
+  end
 end
