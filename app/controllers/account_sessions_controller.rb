@@ -6,7 +6,7 @@ class AccountSessionsController < ApplicationController
   end
 
   def create
-    @session = AccountSession.new unsafe_params[ :account_session]
+    @session = AccountSession.new account_session_params
     if @session.save
       session[:autofinger_level] = 1
       account = @session.record
@@ -20,7 +20,13 @@ class AccountSessionsController < ApplicationController
 
   def destroy
     current_account_session.destroy
+    @current_account = nil
+    @current_account_session = nil
     flash[ :notice] = "You've been logged out."
     redirect_to login_path
+  end
+
+  def account_session_params
+    params.require(:account_session).permit(:username, :password, :password_confirmation)
   end
 end
