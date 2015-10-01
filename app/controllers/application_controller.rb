@@ -27,6 +27,7 @@ class ApplicationController < ActionController::Base
   end
 
   def load_autofingers
+    return if current_account.nil?
     @autofingers = current_account.interests_in_others.updated.where priority: session[:autofinger_level]
   end
 
