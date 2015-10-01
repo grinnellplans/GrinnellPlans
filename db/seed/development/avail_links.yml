@@ -17,6 +17,7 @@ a:
   linknum: "1"
   static: "yes"
   linkname: Random Plan
+  rails_helper: random_plan
 m: 
   descr: IRC-style chat with other Plans users
   html_code: <a href="/chat/" class="main" target="_blank">chat</a>
@@ -35,30 +36,35 @@ n:
   linknum: "15"
   static: "yes"
   linkname: List Users
+  rails_helper: accounts
 c: 
   descr: See who has updated in past few hours.
   html_code: <a href="planwatch.php" class="main">plan watch</a>
   linknum: "3"
   static: "yes"
   linkname: Planwatch
+  rails_helper: recently_updated_plans
 d: 
   descr: Gives you a link that you just click to search for who has given you planlove.
   html_code: <a href="quicklove.php" class="main">quick love</a>
   linknum: "4"
   static: "yes"
   linkname: Quick Love Search
+  rails_helper: quicklove
 e: 
   descr: Gives you a link to a page listing newly created plans.
   html_code: <a href="lastcreated.php" class="main">plan genesis</a>
   linknum: "5"
   static: "yes"
   linkname: Plan Genesis
+  rails_helper: recently_created_plans
 f: 
   descr: Gives a link to the Notes board.
   html_code: <a href="board_show.php" class="main">notes</a>
   linknum: "6"
   static: "yes"
   linkname: Notes
+  rails_helper: notes
 g: 
   descr: Link to beta-test of a Plans phpBB forum
   html_code: <a href="http://forum.grinnellplans.com" class="main">forum</a>
@@ -71,15 +77,18 @@ h:
   linknum: "8"
   static: "yes"
   linkname: Poll
+  rails_helper: polls
 i: 
   descr: Shows the Message of the Day homepage.
   html_code: <a href="home.php" class="main">home</a>
   linknum: "9"
   static: "yes"
   linkname: Home
+  rails_helper: root
 j: 
   descr: Anonymous Posts
   html_code: 
   linknum: "11"
   static: "no"
   linkname: Secrets
+  rails_helper: secrets
