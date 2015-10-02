@@ -1,35 +1,43 @@
 ==Grinnell Plans
+
+Interested in helping out?
+More information in the {Getting Started Guide}[https://github.com/grinnellplans/GrinnellPlans/wiki/Getting-Started]!
+
 === Quickstart
 
 1. Install {git}[http://git-scm.com/].
 
-2. Install {ruby & rails}[http://rubyonrails.org/download].
+2. Install {Ruby & Rails}[http://rubyonrails.org/download].
 
-3. bundler will manage the gems for the project
+3. Bundler will manage the gems for the project
     gem install bundler
    or
     sudo gem install bundler
 
 4. Checkout the project
-    git clone git@github.com:annaswims/GrinnellPlans.git
+    git clone git@github.com:grinnellplans/GrinnellPlans.git
     cd GrinnellPlans
 
 5. Install the gems that are specified in Gemfile
     bundle install
 
-6. Create the database (specified in database yml) and seed it with data
-    rake db:setup (can also be done with 'bundle exec rake db:schema:load')
+6. Create the database and seed it with data
+    rake db:setup
 
 === Rails Project Tasks
 
-* Start the server (GrinnellPlans will be at http://localhost:3000):
+* Start the server
     ./bin/rails server
-
-* To use the Rails console (for debugging, playing with data, etc):
-    ./bin/rails console
+  Open the app in a browser at http://localhost:3000. You can log in with any of
+  the accounts listed in {the seeds}[https://github.com/grinnellplans/GrinnellPlans/blob/master/db/seed/development/accounts.yml].
+  The password is the same as the username for all development accounts.
 
 * Run the tests:
     ./bin/rspec spec
+  If you haven't made any changes, all the tests should pass, or else you have found a bug.
+
+* To use the Rails console (for debugging, playing with data, etc):
+    ./bin/rails console
 
 * Check for code style violations from mean old Rubocop:
     rubocop
