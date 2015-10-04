@@ -17,4 +17,10 @@ module ApplicationHelper
   def edit_current_plan_path
     edit_plan_path current_account
   end
+
+  # Simple helper to render an informational message.
+  # Takes a block that yields the body of the message.
+  def info_message(title="Info", &block)
+    render layout: "/info_message", locals: { title: title }, &block
+  end
 end
