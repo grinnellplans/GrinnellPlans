@@ -1,4 +1,6 @@
 class Account < ActiveRecord::Base
+  include Links
+
   self.primary_key = :userid
   validates :username, presence: true, length: { maximum: 16 }
   validates :password, length: { maximum: 34 }
