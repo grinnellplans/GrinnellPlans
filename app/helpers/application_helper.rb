@@ -21,6 +21,12 @@ module ApplicationHelper
   # Simple helper to render an informational message.
   # Takes a block that yields the body of the message.
   def info_message(title="Info", &block)
-    render layout: "/info_message", locals: { title: title }, &block
+    render layout: "/flash_message", locals: { title: title, css_class: "infomessage" }, &block
+  end
+
+  # Simple helper to render an alert message.
+  # Takes a block that yields the body of the message.
+  def alert_message(title="Alert", &block)
+    render layout: "/flash_message", locals: { title: title, css_class: "alertmessage" }, &block
   end
 end

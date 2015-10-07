@@ -28,6 +28,9 @@
         - if flash[:notice]
           = info_message do
             = flash[:notice]
+        - if flash[:alert]
+          = alert_message do
+            = flash[:alert]
         %div
           =yield
       =render :partial=>"/layouts/footer"
