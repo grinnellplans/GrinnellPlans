@@ -26,7 +26,7 @@
             =render :partial => "/layouts/autofinger"
       #main
         - if flash[:notice]
-          .notice
+          = info_message do
             = flash[:notice]
         %div
           =yield
