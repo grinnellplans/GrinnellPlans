@@ -62,7 +62,7 @@ describe 'User Registration' do
     follow_redirect!
     assert_response :success
     assert_match /Last login/, @response.body
-    assert_match /Log out/, @response.body
+    assert_match /Log Out/, @response.body
   end
 
 end
