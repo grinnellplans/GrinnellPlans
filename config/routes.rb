@@ -13,12 +13,12 @@ Plans::Application.routes.draw do
     collection do
       get :set_autofinger_level
       put :mark_level_as_read
+      get :search, as: 'search'
     end
     member do
       get :edit
       put :update
       get :show, as: 'read'
-      get :search
       put :set_autofinger_subscription
     end
   end

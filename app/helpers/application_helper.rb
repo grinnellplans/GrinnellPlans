@@ -13,4 +13,8 @@ module ApplicationHelper
       yield item, classes, index
     end
   end
+
+  def edit_current_plan_path
+    edit_plan_path current_account
+  end
 end
