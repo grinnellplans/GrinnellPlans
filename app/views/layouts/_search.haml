@@ -1,5 +1,5 @@
 #finger.form
-  =form_tag("plans/search")do
+  =form_tag(search_plans_path, method: :get)do
     %div
       %div{:class=>"form_prompt textinput"}
         =text_field_tag :id

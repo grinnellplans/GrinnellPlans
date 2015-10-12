@@ -129,7 +129,22 @@ describe PlansController do
   end
 
   describe 'edit plan'
-  describe 'search plan'
+
+  describe 'search plan' do
+    context 'given the username of an existing plan' do
+      let(:plan) { FactoryGirl.create :plan }
+      let!(:username) { plan.account.username }
+      it 'redirects to that plan' do
+        get :search, id: username
+        expect(response).to redirect_to(read_plan_path(username))
+      end
+    end
+
+    context 'given any other input' do
+      #TODO
+    end
+  end
+
   describe 'set_autofinger_level'
 
 end
