@@ -24,10 +24,13 @@
             =render :partial=>"/layouts/search"
             =render :partial=>"/layouts/links"
             =render :partial => "/layouts/autofinger"
-      .main
+      #main
         - if flash[:notice]
-          .notice
+          = info_message do
             = flash[:notice]
+        - if flash[:alert]
+          = alert_message do
+            = flash[:alert]
         %div
           =yield
       =render :partial=>"/layouts/footer"

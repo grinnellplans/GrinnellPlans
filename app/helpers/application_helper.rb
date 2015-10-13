@@ -17,4 +17,16 @@ module ApplicationHelper
   def edit_current_plan_path
     edit_plan_path current_account
   end
+
+  # Simple helper to render an informational message.
+  # Takes a block that yields the body of the message.
+  def info_message(title="Info", &block)
+    render layout: "/flash_message", locals: { title: title, css_class: "infomessage" }, &block
+  end
+
+  # Simple helper to render an alert message.
+  # Takes a block that yields the body of the message.
+  def alert_message(title="Alert", &block)
+    render layout: "/flash_message", locals: { title: title, css_class: "alertmessage" }, &block
+  end
 end
