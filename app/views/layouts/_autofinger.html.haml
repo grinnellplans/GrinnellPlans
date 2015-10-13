@@ -11,5 +11,5 @@
         - unless autofinger_entries.blank?
           %ul
             - each_with_list_classes(autofinger_entries) do |autofinger, classes|
-              %li{ class: (classes << "autoreadentry") }
-                =link_to autofinger.subject_of_interest.username, read_plan_path(autofinger.subject_of_interest.username), class: "planlove"
+              %li{ class: (classes << "autoreadentry") }<
+                = link_to autofinger.subject_of_interest.username, read_plan_path(autofinger.subject_of_interest.username), class: "planlove"
