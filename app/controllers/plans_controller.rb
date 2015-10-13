@@ -9,6 +9,7 @@ class PlansController < ApplicationController
     @plan = current_account.plan
     @plan.edit_text = unsafe_params[:plan][:edit_text]
     if @plan.save
+      flash[:notice] = "Plan updated successfully"
       redirect_to read_plan_path(id: @plan.account.username)
     else
       render action: 'edit'
