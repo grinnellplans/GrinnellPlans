@@ -54,7 +54,7 @@ class AccountsController < ApplicationController
   end
 
   def resend_confirmation_email
-    @username = unsafe_params[:username]
+    @username = params[:username]
     redirect_to action: 'new' unless @username
 
     ta = TentativeAccount.find_by_username(@username)
