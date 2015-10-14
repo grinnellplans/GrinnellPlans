@@ -8,7 +8,7 @@
  * Some images come courtesy of Briar Press <http://www.briarpress.org>, and are under
  * a Creative Commons BY-NC license.
  *
- * Â«The Fell Types are digitally reproduced by Igino Marini. www.iginomarini.comÂ»
+ * «The Fell Types are digitally reproduced by Igino Marini. www.iginomarini.com»
  */
 
 body {
@@ -112,7 +112,8 @@ ul {
 	font-family: Tahoma, Didot, Georgia, serif;
 	font-weight: bold;
 	font-style: italic;
-	/*margin: 2px 2px 0px 42px;*/
+	/* Apple browsers have stupid chrome */
+	padding: 0;
 }
 /* When we hover, show a full border */
 #finger .textinput input:hover, #finger .textinput input:focus {
@@ -428,8 +429,11 @@ p.sub:first-letter {
 	text-decoration: underline;
 }
 /* Avoid clearing problems */
-.notes_content {
+#notes_thread {
 	float: left;
+}
+.notes_content {
+	overflow: auto;
 }
 .notes_post_header {
 	padding-bottom: 0.8em;
@@ -490,21 +494,21 @@ ul#search_results ul li {
 	display: block;
 	padding-left: 56px; /* 46px + 10px padding */
 	min-height: 60px;
-	background: url("/images/skull.png") no-repeat left top;
+	background: url("images/skull.png") no-repeat left top;
 }
 
 .infomessage {
 	display: block;
 	padding-left: 56px; /* 46px + 10px padding */
 	min-height: 50px;
-	background: url("/images/info.png") no-repeat left top;
+	background: url("images/info.png") no-repeat left top;
 }
 
 .requestmessage {
 	display: block;
 	padding-left: 50px; /* 40px + 10px padding */
 	min-height: 65px;
-	background: url("/images/book.png") no-repeat left top;
+	background: url("images/book.png") no-repeat left top;
 }
 .requestmessage .title, .infomessage .title, .alertmessage .title {
 	font-style: italic;
