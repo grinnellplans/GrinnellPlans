@@ -6,16 +6,16 @@ class AccountsController < ApplicationController
   end
 
   def create
-    @account = unsafe_params[:account]
-    @username = @account['username']
-    @user_email = "#{@account['username']}@#{@account['email_domain']}"
+    @username = params[:account]['username']
+    email_domain = params[:account]['email_domain']
+    @user_email = "#{@username}@#{email_domain}"
 
-    if Account.find_by_username(@account['username'])
+    if Account.find_by_username(@username)
       @account_already_exists = true
       return
     end
 
-    redirect_to action: 'new' unless APP_CONFIG['email_domains'].include? @account['email_domain']
+    redirect_to action: 'new' unless APP_CONFIG['email_domains'].include? email_domain
 
     tentative_account = TentativeAccount.find_by_email(@user_email)
     if tentative_account && tentative_account.created_at > (Time.now - 1.day)
@@ -26,7 +26,7 @@ class AccountsController < ApplicationController
 
     tentative_account.delete if tentative_account
     ta = TentativeAccount.create(username: @username,
-                                 user_type: @account['user_type'],
+                                 user_type: params[:account]['user_type'],
                                  email: @user_email,
                                  confirmation_token: Account.create_random_token)
 
@@ -36,8 +36,7 @@ class AccountsController < ApplicationController
   end
 
   def confirm
-    token = unsafe_params[:token]
-    ta = TentativeAccount.find_by_confirmation_token(token)
+    ta = TentativeAccount.find_by_confirmation_token(params[:token])
 
     if !ta || ta.created_at < (Time.now - 1.day)
       flash[:notice] = 'This confirmation token has expired. Please register again.'
@@ -55,7 +54,7 @@ class AccountsController < ApplicationController
   end
 
   def resend_confirmation_email
-    @username = unsafe_params[:username]
+    @username = params[:username]
     redirect_to action: 'new' unless @username
 
     ta = TentativeAccount.find_by_username(@username)
