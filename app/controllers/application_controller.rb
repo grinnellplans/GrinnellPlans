@@ -28,7 +28,9 @@ class ApplicationController < ActionController::Base
 
   def load_autofingers
     return if current_account.nil?
-    @autofingers = current_account.interests_in_others.updated.where priority: session[:autofinger_level]
+    @autofingers = current_account.interests_in_others.updated.group_by(&:priority)
+    (1..3).each {|i| @autofingers[i] ||= [] }
+    @autofingers = @autofingers.sort_by {|k, v| k }
   end
 
   # Don't use this! It's for migration purposes only.

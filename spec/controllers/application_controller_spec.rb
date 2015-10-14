@@ -12,12 +12,16 @@ describe ApplicationController do
 
   describe 'autofinger' do
     before do
-      @interest = FactoryGirl.create :autofinger, updated: 1
+      @interest = FactoryGirl.create :autofinger, updated: 1, priority: 2
       allow(controller).to receive(:current_account) { @interest.interested_party }
     end
     it 'is populated' do
       get :index, {}, autofinger_level: @interest.priority
-      expect(assigns(:autofingers)).to eq [@interest]
+      expect(assigns(:autofingers)).to eq([
+        [1, []],
+        [2, [@interest]],
+        [3, []],
+      ])
     end
   end
 end
