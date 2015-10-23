@@ -67,7 +67,7 @@ group :test, :development do
   # Automated checking of code style and correctness
   gem 'pronto'
   gem 'pronto-rubocop'
-  #gem 'pronto-haml'
+  gem 'pronto-haml'
   #gem 'pronto-reek'
   #gem 'pronto-flay'
   #gem 'pronto-rails_best_practices'
