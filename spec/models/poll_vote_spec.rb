@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe PollVote do
   it 'must have an account' do
-    poll_vote = described_class.create(:account => nil).should be_invalid
+    poll_vote = described_class.create(account: nil).should be_invalid
   end
 end
 # == Schema Information
