@@ -59,6 +59,8 @@ Style/FileName:
 Style/HashSyntax:
   EnforcedStyle: ruby19_no_mixed_keys
   Enabled: true
+  Exclude:
+    - 'config/routes.rb'
 
 Style/IndentationConsistency:
   Enabled: true
