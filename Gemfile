@@ -71,6 +71,7 @@ group :test, :development do
   #gem 'pronto-reek'
   #gem 'pronto-flay'
   #gem 'pronto-rails_best_practices'
+  #gem 'pronto-brakeman'
 end
 
 group :test do
