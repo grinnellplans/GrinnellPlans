@@ -39,4 +39,3 @@ describe Secret do
   end
 
 end
-

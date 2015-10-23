@@ -9,12 +9,12 @@ describe AccountSessionsController do
 
   context 'with user' do
     before do
-      @account =  Account.create!(username: 'foobar', password: 'foobar', password_confirmation: 'foobar')
+      @account = Account.create!(username: 'foobar', password: 'foobar', password_confirmation: 'foobar')
     end
 
     describe 'login' do
       before { post :create, account_session: { username: 'foobar', password: 'foobar' } }
-      it { expect(assigns[:session].record.id).to eq  @account.id}
+      it { expect(assigns[:session].record.id).to eq @account.id }
       it { expect(response).to redirect_to(root_path) }
     end
 
