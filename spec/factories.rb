@@ -20,7 +20,7 @@ FactoryGirl.define do
 
   factory :avail_link do |l|
     l.linkname "An optional link"
-    l.sequence(:rails_helper) {|i| "rails_helper_#{i}"}
+    l.sequence(:rails_helper) {|i| "rails_helper_#{i}" }
   end
 
   factory :opt_link do |l|

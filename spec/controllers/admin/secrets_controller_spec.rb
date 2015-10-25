@@ -54,17 +54,17 @@ describe Admin::SecretsController do
     it { expect(assigns(:secret).date_approved).not_to be_nil }
   end
 
-   describe 'deny as an admin' do
-    before do
-      @account = Account.create! username: 'testaccount', password: '123456', password_confirmation: '123456'
-      @account.update_attribute(:is_admin, true)
-      @account_session = AccountSession.create! @account
-      @secret = Secret.create! secret_text: 'pssssst'
-      put :update, id: @secret.id, display_attr: 'no'
-    end
+  describe 'deny as an admin' do
+   before do
+     @account = Account.create! username: 'testaccount', password: '123456', password_confirmation: '123456'
+     @account.update_attribute(:is_admin, true)
+     @account_session = AccountSession.create! @account
+     @secret = Secret.create! secret_text: 'pssssst'
+     put :update, id: @secret.id, display_attr: 'no'
+   end
 
-    it { expect(assigns(:secret).display_attr).to eq 'no' }
-    it { expect(assigns(:secret).date_approved).not_to be_nil }
-  end
+   it { expect(assigns(:secret).display_attr).to eq 'no' }
+   it { expect(assigns(:secret).date_approved).not_to be_nil }
+ end
 
 end
