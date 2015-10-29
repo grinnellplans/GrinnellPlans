@@ -401,6 +401,10 @@ p.sub:first-letter {
 	color: #888;
 }
 
+#plan_edit_text {
+	width: 100%;
+}
+
 /* Space out secret headers a bit */
 .secret .secret_id {
 	margin-right: 1em;
