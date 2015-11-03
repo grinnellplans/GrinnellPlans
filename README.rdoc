@@ -40,4 +40,4 @@ More information in the {Getting Started Guide}[https://github.com/grinnellplans
     ./bin/rails console
 
 * Check for code style violations from mean old Rubocop:
-    rubocop
+    ./bin/rubocop
