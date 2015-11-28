@@ -65,7 +65,13 @@ group :test, :development do
   #gem 'sanitize_email'
 
   # Automated checking of code style and correctness
-  gem 'rubocop'
+  gem 'pronto'
+  gem 'pronto-rubocop'
+  #gem 'pronto-haml'
+  #gem 'pronto-reek'
+  #gem 'pronto-flay'
+  #gem 'pronto-rails_best_practices'
+  #gem 'pronto-brakeman'
 end
 
 group :test do

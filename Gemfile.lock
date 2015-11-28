@@ -49,6 +49,7 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    addressable (2.3.8)
     arel (6.0.3)
     ast (2.1.0)
     astrolabe (1.3.1)
@@ -80,16 +81,24 @@ GEM
     factory_girl_rails (4.5.0)
       factory_girl (~> 4.5.0)
       railties (>= 3.0.0)
+    faraday (0.9.2)
+      multipart-post (>= 1.2, < 3)
     ffi (1.9.10)
     ffi-compiler (0.1.3)
       ffi (>= 1.0.0)
       rake
     foreman (0.78.0)
       thor (~> 0.19.1)
+    gitlab (3.4.0)
+      httparty
+      terminal-table
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     haml (4.0.7)
       tilt
+    httparty (0.13.7)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
     i18n (0.7.0)
     jquery-rails (2.3.0)
       railties (>= 3.0, < 5.0)
@@ -102,6 +111,8 @@ GEM
     mime-types (2.6.1)
     mini_portile (0.6.2)
     minitest (5.8.0)
+    multi_xml (0.5.5)
+    multipart-post (2.0.0)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (2.9.2)
@@ -110,9 +121,19 @@ GEM
     nokogiri-diff (0.2.0)
       nokogiri (~> 1.5)
       tdiff (~> 0.3, >= 0.3.2)
-    parser (2.2.2.6)
+    octokit (4.1.1)
+      sawyer (~> 0.6.0, >= 0.5.3)
+    parser (2.2.3.0)
       ast (>= 1.1, < 3.0)
     powerpack (0.1.1)
+    pronto (0.4.3)
+      gitlab (~> 3.4.0)
+      octokit (~> 4.1.0)
+      rugged (~> 0.23.0)
+      thor (~> 0.19.0)
+    pronto-rubocop (0.4.7)
+      pronto (~> 0.4.0)
+      rubocop (~> 0.34.0)
     quiet_assets (1.1.0)
       railties (>= 3.1, < 5.0)
     rack (1.6.4)
@@ -163,16 +184,20 @@ GEM
       rspec-mocks (~> 3.3.0)
       rspec-support (~> 3.3.0)
     rspec-support (3.3.0)
-    rubocop (0.34.1)
+    rubocop (0.34.2)
       astrolabe (~> 1.3)
       parser (>= 2.2.2.5, < 3.0)
       powerpack (~> 0.1)
       rainbow (>= 1.99.1, < 3.0)
       ruby-progressbar (~> 1.4)
     ruby-progressbar (1.7.5)
+    rugged (0.23.3)
     sanitize (2.0.6)
       nokogiri (>= 1.4.4)
     sass (3.4.18)
+    sawyer (0.6.0)
+      addressable (~> 2.3.5)
+      faraday (~> 0.8, < 0.10)
     scrypt (2.0.2)
       ffi-compiler (>= 0.0.2)
       rake
@@ -193,6 +218,7 @@ GEM
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
     tdiff (0.3.3)
+    terminal-table (1.5.2)
     thin (1.6.3)
       daemons (~> 1.0, >= 1.0.9)
       eventmachine (~> 1.0)
@@ -224,11 +250,12 @@ DEPENDENCIES
   haml
   jquery-rails (~> 2.1)
   nokogiri-diff
+  pronto
+  pronto-rubocop
   quiet_assets
   rails (~> 4.2.0)
   redcarpet
   rspec-rails (~> 3.0)
-  rubocop
   sanitize (~> 2.0.3)
   sass
   simplecov
