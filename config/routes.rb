@@ -1,4 +1,12 @@
 Plans::Application.routes.draw do
+  namespace :admin do
+    DashboardManifest::DASHBOARDS.each do |dashboard_resource|
+      resources dashboard_resource
+    end
+
+    root controller: DashboardManifest::ROOT_DASHBOARD, action: :index
+  end
+
   # For more information on routing, see http://guides.rubyonrails.org/routing.html.
 
   # just remember to delete public/index.html.
