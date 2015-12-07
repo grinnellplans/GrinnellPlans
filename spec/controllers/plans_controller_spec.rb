@@ -37,6 +37,14 @@ describe PlansController do
         assert_redirected_to read_plan_path(id: @account.username)
       end
     end
+
+    it 'updates autofinger entries' do
+      follower = Account.create! username: 'follower', password: '123456', password_confirmation: '123456'
+      follow_relationship = follower.interests_in_others.create!(subject_of_interest: @account, priority: 1, updated: 0)
+      expect {
+        post :update, id: @account.username, plan: { edit_text: 'Foo bar baz' }
+      }.to change { follow_relationship.reload.updated }.from('0').to('1')
+    end
   end
 
   describe 'mark_level_as_read' do
