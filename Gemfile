@@ -44,6 +44,7 @@ gem "foreman"
 
 # Framework for building admin screens
 # Version locked because it's still in beta and may have breaking changes
+# See: https://administrate-docs.herokuapp.com/
 gem "administrate", "~> 0.1.1"
 
 group :production do
