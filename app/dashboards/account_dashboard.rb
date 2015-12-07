@@ -86,7 +86,6 @@ class AccountDashboard < Administrate::BaseDashboard
     :password_confirmation,
   ]
 
-
   def display_resource(account)
     "Account (#{account.username})"
   end
