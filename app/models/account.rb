@@ -11,21 +11,21 @@ class Account < ActiveRecord::Base
 
   # validate :grad_year_for_user_type
 
-  has_many :interests_in_others, class_name: 'Autofinger', foreign_key: 'owner'
-  has_many :people_that_interest_me, class_name: 'Account', through: :interests_in_others, source: 'subject_of_interest'
-  has_many :board_votes, foreign_key: :userid
-  has_many :opt_links, foreign_key: :userid
+  has_many :interests_in_others, class_name: 'Autofinger', foreign_key: 'owner', dependent: :destroy
+  has_many :people_that_interest_me, class_name: 'Account', through: :interests_in_others, source: 'subject_of_interest', dependent: :destroy
+  has_many :board_votes, foreign_key: :userid, dependent: :destroy
+  has_many :opt_links, foreign_key: :userid, dependent: :destroy
   has_many :avail_links, through: :opt_links
-  has_one :permission, foreign_key: :userid
-  has_many :poll_votes, foreign_key: :userid
-  has_one :stylesheet, foreign_key: :userid
+  has_one :permission, foreign_key: :userid, dependent: :destroy
+  has_many :poll_votes, foreign_key: :userid, dependent: :destroy
+  has_one :stylesheet, foreign_key: :userid, dependent: :destroy
   has_many :main_boards, foreign_key: :userid
   has_many :sub_boards, foreign_key: :userid
-  has_one :viewed_secret, foreign_key: :userid
-  has_one :plan, foreign_key: :user_id
+  has_one :viewed_secret, foreign_key: :userid, dependent: :destroy
+  has_one :plan, foreign_key: :user_id, dependent: :destroy
 
   # Every ruby object already has a .dsiplay() method  so we can't call it display
-  has_one :display_item, foreign_key: :userid, class_name: 'Display'
+  has_one :display_item, foreign_key: :userid, class_name: 'Display', dependent: :destroy
 
   before_validation do
     self.show_images = true
