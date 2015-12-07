@@ -33,8 +33,8 @@ gem 'redcarpet'
 # https://github.com/rails/jquery-ujs
 gem 'jquery-rails'
 
-# https://github.com/mislav/will_paginate/tree/rails3
-gem 'will_paginate', '~> 3.0'
+# Pagination
+gem 'kaminari'
 
 # supports composite primary keys for legacy tables like Autfinger https://github.com/drnic/composite_primary_keys
 gem "composite_primary_keys"
