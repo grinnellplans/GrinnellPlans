@@ -2,6 +2,7 @@ class Plan < ActiveRecord::Base
   belongs_to :account, foreign_key: :user_id
   before_save :clean_text
   after_update :set_modified_time
+  after_update :update_autofingers
   alias_attribute :generated_html, :plan
   # validates_presence_of :account
   validates_length_of :plan, maximum: 16_777_215, message: 'Your plan is too long'
@@ -99,5 +100,9 @@ class Plan < ActiveRecord::Base
   def set_modified_time
     account.changed = Time.now
     account.save!
+  end
+
+  def update_autofingers
+    account.interests_from_others.update_all(updated: 1)
   end
 end
