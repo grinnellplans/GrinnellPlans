@@ -19,6 +19,13 @@ module Admin
       }
     end
 
+    def update
+      respond_to do |f|
+        f.html { super }
+        f.js { requested_resource.update(resource_params) && render(nothing: true) }
+      end
+    end
+
     private
 
     def filter(resources, filter_value)
