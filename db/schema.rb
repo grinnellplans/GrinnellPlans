@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150912233905) do
+ActiveRecord::Schema.define(version: 20151207075209) do
 
   create_table "accounts", primary_key: "userid", force: :cascade do |t|
     t.string   "username",          limit: 16,  default: "",    null: false
@@ -103,7 +103,7 @@ ActiveRecord::Schema.define(version: 20150912233905) do
     t.integer "version"
   end
 
-  create_table "opt_links", id: false, force: :cascade do |t|
+  create_table "opt_links", force: :cascade do |t|
     t.integer "userid",  limit: 2, default: 0, null: false
     t.integer "linknum", limit: 1
   end

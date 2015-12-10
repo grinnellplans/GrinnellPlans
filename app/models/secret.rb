@@ -1,6 +1,6 @@
 class Secret < ActiveRecord::Base
   self.primary_key = :secret_id
-  self.per_page = 100
+  paginates_per 100
 
   DISPLAY_OPTIONS = %w{yes no}
   validates :secret_text, presence: true

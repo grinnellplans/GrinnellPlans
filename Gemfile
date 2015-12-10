@@ -31,16 +31,21 @@ gem 'sanitize', '~> 2.0.3'
 gem 'redcarpet'
 
 # https://github.com/rails/jquery-ujs
-gem 'jquery-rails', '~> 2.1'
+gem 'jquery-rails'
 
-# https://github.com/mislav/will_paginate/tree/rails3
-gem 'will_paginate', '~> 3.0'
+# Pagination
+gem 'kaminari'
 
 # supports composite primary keys for legacy tables like Autfinger https://github.com/drnic/composite_primary_keys
 gem "composite_primary_keys"
 
 # Procfile management for ruby.
 gem "foreman"
+
+# Framework for building admin screens
+# Version locked because it's still in beta and may have breaking changes
+# See: https://administrate-docs.herokuapp.com/
+gem "administrate", "~> 0.1.1"
 
 group :production do
   #email any errors to people specified in the environment.rb
