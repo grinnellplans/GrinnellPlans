@@ -4,6 +4,11 @@ module Admin
       @filters = %w[unconfirmed accepted rejected]
       @filter = params[:filter] || "unconfirmed"
 
+      if params[:order].nil?
+        params[:order] = "date"
+        params[:direction] = "desc"
+      end
+
       # This part is mostly from Administrate, but modified for filters
       search_term = params[:search].to_s.strip
       resources = Administrate::Search.new(resource_resolver, search_term).run
