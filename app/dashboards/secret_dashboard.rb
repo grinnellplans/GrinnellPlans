@@ -9,7 +9,7 @@ class SecretDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     secret_id: Field::Number,
-    secret_text: Field::Text,
+    secret_text: Field::Text.with_options(truncate: 9999),
     date: Field::DateTime,
     display: Field::String,
     date_approved: Field::DateTime,
