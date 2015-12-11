@@ -2,7 +2,7 @@ module Admin
   class SecretsController < Admin::ApplicationController
     def index
       @filters = %w[unconfirmed accepted rejected]
-      @filter = params[:filter]
+      @filter = params[:filter] || "unconfirmed"
 
       # This part is mostly from Administrate, but modified for filters
       search_term = params[:search].to_s.strip
