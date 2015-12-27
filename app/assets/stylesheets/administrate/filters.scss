@@ -1,0 +1,25 @@
+@import "administrate/base/extends/button";
+
+.filters {
+  .button.selected {
+    border: 3px inset $base-button-color;
+  }
+}
+
+.approval-widget {
+  .approve, .reject {
+    border: 3px solid white;
+    @extend %button;
+    &.selected {
+      border-style: inset;
+    }
+  }
+  .approve {
+    background-color: $light-green;
+    border-color: $light-green;
+  }
+  .reject {
+    background-color: $light-red;
+    border-color: $light-red;
+  }
+}

@@ -8,16 +8,27 @@ describe Admin::SecretsController do
       @account = Account.create! username: 'testaccount', password: '123456', password_confirmation: '123456'
       @account.update_attribute(:is_admin, true)
       @account_session = AccountSession.create! @account
-      @secret = Secret.create! secret_text: 'pssssst'
-      get :index
+      @secrets = [
+        Secret.create!(secret_text: 'approved secret', display: "yes"),
+        Secret.create!(secret_text: 'rejected secret', display: "no", date_approved: Date.today),
+        Secret.create!(secret_text: 'unmoderated secret', display: "no"),
+      ]
     end
-    subject { response }
 
-    it 'should load secrets' do
-      expect(assigns(:secrets)).to eq([@secret])
+    it 'loads unmoderated secrets by default' do
+      get :index
+      expect(response).to render_template("index", locals: { resources: [@secrets[2]]})
     end
-    it { is_expected.to be_success }
-    it { is_expected.to render_template('index') }
+
+    it 'loads approved secrets when passed filter param' do
+      get :index, filter: "accepted"
+      expect(response).to render_template("index", locals: { resources: [@secrets[0]]})
+    end
+
+    it 'loads rejected secrets when passed filter param' do
+      get :index, filter: "rejected"
+      expect(response).to render_template("index", locals: { resources: [@secrets[1]]})
+    end
   end
 
   describe 'GET index as an regular user' do
@@ -47,24 +58,27 @@ describe Admin::SecretsController do
       @account.update_attribute(:is_admin, true)
       @account_session = AccountSession.create! @account
       @secret = Secret.create! secret_text: 'pssssst'
-      put :update, id: @secret.id, display_attr: 'yes'
+      put :update, { id: @secret.id, secret: { display: 'yes' }, format: :js }
     end
+    subject { response }
 
-    it { expect(assigns(:secret).display_attr).to eq 'yes' }
-    it { expect(assigns(:secret).date_approved).not_to be_nil }
+    it { is_expected.to be_success }
+    it { expect(@secret.reload.display_attr).to eq 'yes' }
+    it { expect(@secret.reload.date_approved).not_to be_nil }
   end
 
   describe 'deny as an admin' do
-   before do
-     @account = Account.create! username: 'testaccount', password: '123456', password_confirmation: '123456'
-     @account.update_attribute(:is_admin, true)
-     @account_session = AccountSession.create! @account
-     @secret = Secret.create! secret_text: 'pssssst'
-     put :update, id: @secret.id, display_attr: 'no'
-   end
+    before do
+      @account = Account.create! username: 'testaccount', password: '123456', password_confirmation: '123456'
+      @account.update_attribute(:is_admin, true)
+      @account_session = AccountSession.create! @account
+      @secret = Secret.create! secret_text: 'pssssst'
+      put :update, { id: @secret.id, secret: { display: 'no' }, format: :js }
+    end
+    subject { response }
 
-   it { expect(assigns(:secret).display_attr).to eq 'no' }
-   it { expect(assigns(:secret).date_approved).not_to be_nil }
- end
+    it { expect(@secret.reload.display_attr).to eq 'no' }
+    it { expect(@secret.reload.date_approved).not_to be_nil }
+  end
 
 end
