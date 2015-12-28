@@ -25,7 +25,6 @@ RSpec.describe Preferences::AccountDetailsController, type: :controller do
     it { is_expected.to be_success }
     it { is_expected.to render_template('show') }
     it { expect(assigns(:available_links)).to eq(@avail_links) }
-    it { expect(assigns(:current_links)).to eq([@avail_links[0], @avail_links[2]]) }
   end
 
   describe '#update' do
