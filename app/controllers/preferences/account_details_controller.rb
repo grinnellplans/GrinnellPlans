@@ -1,5 +1,5 @@
 module Preferences
-  class AvailLinksController < ApplicationController
+  class AccountDetailsController < ApplicationController
     before_filter :require_user, :load_autofingers
 
     def show
@@ -9,7 +9,7 @@ module Preferences
 
     def update
       current_account.update unsafe_params[:account]
-      redirect_to preferences_links_path
+      redirect_to preferences_account_path
     end
   end
 end

@@ -29,7 +29,7 @@ Plans::Application.routes.draw do
   resources :secrets
 
   namespace :preferences do
-    resource :links, controller: :avail_links, only: [:show, :update]
+    resource :account, controller: :account_details, only: [:show, :update]
   end
 
   resource :account_session, only: [:new, :create, :destroy]

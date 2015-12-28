@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Preferences::AvailLinksController, type: :controller do
+RSpec.describe Preferences::AccountDetailsController, type: :controller do
   setup :activate_authlogic
   before do
     @account = Account.create! username: 'testaccount', password: '123456', password_confirmation: '123456'
@@ -33,7 +33,7 @@ RSpec.describe Preferences::AvailLinksController, type: :controller do
       put :update, account: { avail_link_ids: [@avail_links[0].id, @avail_links[1].id] }
     end
     subject { response }
-    it { is_expected.to redirect_to(preferences_links_path) }
+    it { is_expected.to redirect_to(preferences_account_path) }
     it "updates user's links" do
       expect(@account.reload.avail_links).to eq([@avail_links[0], @avail_links[1]])
     end

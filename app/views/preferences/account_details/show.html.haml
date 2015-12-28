@@ -1,9 +1,12 @@
 - content_for :title do
-  Optional Links
+  Account Details
 
 %h1.heading1= content_for :title
+
+%h2.heading2 Optional Links
+
 #optionallinks.form
-  = form_for current_account, url: preferences_links_path do |f|
+  = form_for current_account, url: preferences_account_path do |f|
     %div
       = f.collection_check_boxes :avail_link_ids, @available_links, :id, :linkname do |cb|
         .form_prompt.checkboxinput
