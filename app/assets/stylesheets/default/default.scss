@@ -37,7 +37,7 @@ p.sub {
   border-width: thin;
   border-color: #a9aaec;
   margin-bottom: 2px;
-  font-variant: none; 
+  font-variant: none;
   padding: 10px
 }
 
@@ -223,15 +223,15 @@ a.lev3:hover, #autoread li.autoreadentry a:hover  {
  * Notes Board *
  ***************/
 .noteslight, #notes_board tr.even {
-  background: #eee;   
+  background: #eee;
   border-style: solid;
   border-width: 1px;
   border-color: #a9aaec;
-}            
+}
 .notesdark, #notes_board tr.odd {
-  background: #e9eaff;   
+  background: #e9eaff;
   border-style: solid;
-  border-width: 1px;  
+  border-width: 1px;
   border-color: #eee;
 }
 
