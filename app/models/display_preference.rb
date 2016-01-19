@@ -1,4 +1,4 @@
-class Display < ActiveRecord::Base
+class DisplayPreference < ActiveRecord::Base
   self.table_name = 'display'
   self.primary_key = :userid
   belongs_to :interface, foreign_key: :interface
