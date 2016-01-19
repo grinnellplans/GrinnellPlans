@@ -1,0 +1,36 @@
+- content_for :title do
+  Account Details
+
+%h1.heading1= content_for :title
+
+= form_for @user, url: preferences_account_path do |f|
+  - if @user.errors.any?
+    = alert_message "Submission error" do
+      %ul
+        - @user.errors.full_messages.each do |msg|
+          %li= msg
+  %div.form
+    #accountdetails.form
+      .form_prompt
+        = f.label :pseudo
+        = f.text_field :pseudo
+      .form_prompt
+        = f.label :email
+        = f.email_field :email
+      .form_prompt
+        = f.label :password
+        = f.password_field :password
+      .form_prompt
+        = f.label :password_confirmation
+        = f.password_field :password_confirmation
+      = f.submit "Save"
+  %div
+    #optionallinks.form
+      %h2.heading2 Optional Links
+
+      = f.collection_check_boxes :avail_link_ids, @available_links, :id, :linkname do |cb|
+        .form_prompt.checkboxinput
+          = cb.check_box
+          = cb.label(class: :prompt_label)
+          %span.prompt_description= cb.object.descr
+      = f.submit "Save"

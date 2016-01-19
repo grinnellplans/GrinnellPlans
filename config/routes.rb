@@ -12,11 +12,6 @@ Plans::Application.routes.draw do
   # just remember to delete public/index.html.
   root controller: 'plans', action: 'show', id: 'plans'
 
-  namespace :admin do
-    resources :secrets, only: [:index, :update]
-    resources :accounts, only: [:new, :create]
-  end
-
   resources :plans do
     collection do
       get :set_autofinger_level
@@ -34,7 +29,7 @@ Plans::Application.routes.draw do
   resources :secrets
 
   namespace :preferences do
-    resource :links, controller: :avail_links, only: [:show, :update]
+    resource :account, controller: :account_details, only: [:show, :update]
   end
 
   resource :account_session, only: [:new, :create, :destroy]
