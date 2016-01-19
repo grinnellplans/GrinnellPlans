@@ -1,0 +1,146 @@
+/* postmodern like modern */
+@import url('../modern.css');
+
+/**************
+ * Main stuff *
+ **************/
+body {
+  color: #000;
+  background: #fdb url("parch.jpg") repeat;
+  font-family: "Garamond, Georgia, Times New Roman, Times, serif";
+  scrollbar-face-color: #fdb;
+  scrollbar-shadow-color: #864;
+  scrollbar-highlight-color: #ffd;
+  scrollbar-3dlight-color: #ffd;
+  scrollbar-darkshadow-color: #864;
+  scrollbar-track-color: #db9;
+  scrollbar-arrow-color: #000;
+}
+p.logo, #logo a {
+  background: url("../../images/logo-small.png") no-repeat;
+}
+p.logo {
+  width: 100%;
+  height: 70px;
+}
+table.main, div#wrapper {
+  background: #fff url("parchlight.jpg") repeat;
+  border: 1px #000 solid;
+  padding: 10px;
+}
+td.left, div#nav {
+  border: #000 solid;
+  border-width: 0px 1px 0px 0px;
+}
+a {
+  color: #864;
+  text-decoration: none;
+  border-style: dotted;
+  border-width: 1px;
+  border-color: #fdb;
+  padding-left: 3px;
+  padding-right: 3px;
+  margin-left: 4px;
+  margin-right: 4px;
+}
+a:visited {
+  color: #a86;
+}
+a:hover {
+  color: #000;
+  background: #a8e url("parchdark.jpg") repeat;
+  border-style: solid;
+  border-color: #000;
+}
+#logo a { border: none; }
+/******************
+ * Forms and misc *
+ ******************/
+/* Fix for PRE double-spacing [bug 21] */
+pre br {display:none}
+/* End fix */
+
+input, button {
+  background-color: #FFF;
+  font-family: "Garamond, Georgia, Times New Roman, Times, serif";
+  font-size: larger;
+}
+table.mainpanel input,
+div#nav input, div#nav button {
+  border: 1px #000 solid;
+  max-width: 180px;
+}
+hr {
+  color: #CCC;
+  height: 1px;
+}
+/*************
+ * Nav links *
+ *************/
+table.lowerpanel, div#links {
+  background: #fdb url("parchmed.jpg") repeat;
+  background-attachment: fixed;
+  border: 1px #000 solid;
+  padding: 10px;
+}
+div#links li {
+  margin-left: 0;
+}
+table.lowerpanel {
+  width: 100%;
+}
+p.main {
+  font-weight: bold;
+  text-align: center;
+}
+p.lev2 {
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+  color: #000;
+}
+.lowerpanel a, #links a {
+  color: #000;
+  display: block;
+  font-weight: bold;
+  text-align: center;
+}
+.lowerpanel a {
+  width: 100%;
+}
+.lowerpanel a:hover {
+  background: #a8e url("parchdark.jpg") repeat;
+  border-style: solid;
+  border-color: #000;
+}
+a.lev3 {
+  font-weight: normal;
+}
+/********************
+ * Top of plan info *
+ ********************/
+p.main2 {
+  font-weight: bold;
+}
+p.main3 {
+  font-weight: bold;
+}
+p.main4 {
+  font-weight: bold;
+}
+/***************
+ * Notes Board *
+ ***************/
+.noteslight, #notes_board tr.even, #notes_thread li.even {
+  background: #fff url("parchlight.jpg") repeat;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #000;
+}
+.notesdark, #notes_board tr.odd, #notes_thread li.odd {
+  background: #fdb url("parchmed.jpg") repeat;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #000;
+}
+

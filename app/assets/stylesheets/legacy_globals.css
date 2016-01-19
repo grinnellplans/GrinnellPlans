@@ -1,0 +1,26 @@
+/**
+ * CSS styles for use with legacy interfaces - Modern, Centered, and Old Term
+ */
+/* Styling for the fill meter when editing */
+#edit_fill_meter .fill_bar {
+	background: url("../images/old/unfilled.gif");
+	float: left;
+	width: 100px;
+	height: 16px;
+}
+#edit_fill_meter .full_amount {
+	background: url("../images/old/filled.gif");
+	height: 1em;
+	/* Default to no width if javascript is turned off */
+	width: 0%;
+}
+#edit_fill_meter .fill_percent {
+	float: left;
+}
+#edit_fill_meter.danger .full_amount {
+	background: url("../images/old/danger.gif");
+}
+
+#poweredby .logo {
+	vertical-align: middle;
+}

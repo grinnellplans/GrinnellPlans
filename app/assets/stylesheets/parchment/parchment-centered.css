@@ -1,0 +1,8 @@
+
+@import url('parchment.css');
+@import url('../centered.css');
+
+div#finger, div#links {
+  width: 165px;
+}
+

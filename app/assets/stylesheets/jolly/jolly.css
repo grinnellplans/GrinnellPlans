@@ -1,0 +1,167 @@
+/* postmodern like modern */
+@import url('../modern.css');
+
+/**************
+ * Main stuff *
+ **************/
+body {
+  background-color: #FFF;
+  color: #000; 
+                           scrollbar-face-color: ffffff;
+		           scrollbar-shadow-color: 999;
+		           scrollbar-highlight-color:999;
+		           scrollbar-3dlight-color: ffffff;
+		           scrollbar-darkshadow-color: ffffff;
+		           scrollbar-track-color: ffffff;
+		           scrollbar-arrow-color: 999;
+}
+p.logo, #logo a {
+  background: url("../../images/logo-small.png") no-repeat;
+  width: 150px;
+  height: 75px;
+  margin-bottom: 1em;
+}
+table.main, div#wrapper {
+  background: url(stripes.jpg) repeat;
+  border: 1px #CCC solid;
+  padding: 10px;
+}
+td.left, div#nav {
+  border: #CCC solid;
+  border-width: 0px 1px 0px 0px;
+}
+/******************
+ * Forms and misc *
+ ******************/
+/* Fix for PRE double-spacing [bug 21] */
+pre br {display:none}
+/* End fix */
+
+input, button {
+  background-color: #FFF;
+}
+table.mainpanel input,
+div#nav input, div#nav button {
+  border: 1px #999 solid;
+}
+hr {
+  color: #CCC;
+  height: 1;
+}
+/*************
+ * Nav links *
+ *************/
+a.main, #links a {
+  display: block;
+  background: url(lightbluepill.jpg) no-repeat;
+  width: 150px;
+  height: 24px;
+  font-family: Geneva, Arial, Helvetica, san-serif;
+  font-weight: bold;
+  font-size: x-small;
+  text-decoration: none;
+  text-align: center;
+  color: #000;
+  padding-top: 5px;
+  margin-top: -5px;
+}
+a.main:hover, #links a:hover {
+  background: url(darkbluepill.jpg) no-repeat;
+}
+#nav li {
+  margin-left: 0;
+}
+/********************
+ * Top of plan info *
+ ********************/
+p.main, p.main2, p.main3, p.main4,
+#header li span.title {
+  background: url(darkgreenpill.jpg) no-repeat;
+  width: 150px;
+  height: 24px;
+  font-family: Geneva, Arial, Helvetica, san-serif;
+  font-weight: bold;
+  font-size: x-small;
+  text-decoration: none;
+  text-align: center;
+  color: #000;
+  padding-top: 5px;
+  margin-top: -5px;
+}
+#header li span.title {
+  display: inline-block;
+}
+/******************
+ * Autofinger nav *
+ ******************/
+p.lev2, a.lev2, a.lev3,
+a.autoreadlink, li.autoreadentry a {
+  background: url(lightgreenpill.jpg) no-repeat;
+  width: 150px;
+  height: 24px;
+  font-family: Geneva, Arial, Helvetica, san-serif;
+  font-weight: bold;
+  font-size: x-small;
+  text-decoration: none;
+  text-align: center;
+  color: #000;
+  padding-top: 5px;
+  margin-top: -5px;
+}
+a.lev2, a.lev3 {
+  display: block;
+}
+#autoread a {
+  display: inline-block;
+}
+a.lev2:hover, #autoread li.autoreadlevel a:hover {
+  background: url(darkgreenpill.jpg) no-repeat;
+}
+a.lev3, #autoread li.autoreadentry a {
+  font-weight: normal;
+  color: #000;
+  text-decoration: none;
+}
+a.lev3:hover, #autoread li.autoreadentry a:hover {
+  background: url(darkgreenpill.jpg) no-repeat;
+}
+/*****************
+ * In-plan Links *
+ *****************/
+a.planlove {
+  color: #09F;
+  text-decoration: none;
+}
+a.planlove:hover {
+  text-decoration: underline;
+}
+a.planlove:visited {
+  color: #69F;
+}
+a.onplan {
+  color: #09F;
+  text-decoration: none;
+}
+a.onplan:hover {
+  text-decoration: underline;
+}
+a.onplan:visited {
+  color: #69F;
+}
+
+/***************
+ * Notes Board *
+ ***************/
+.noteslight, #notes_board tr.even, #notes_thread li.even {
+  background: #f3f3f3;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #74a;
+}
+.notesdark, #notes_board tr.odd, #notes_thread li.odd {
+  background: #f3fff3;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #74a;
+
+
