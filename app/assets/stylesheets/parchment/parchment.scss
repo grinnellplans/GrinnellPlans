@@ -6,7 +6,7 @@
  **************/
 body {
   color: #000;
-  background: #fdb url("parch.jpg") repeat;
+  background: #fdb asset-url("styles/parchment/parch.jpg") repeat;
   font-family: "Garamond, Georgia, Times New Roman, Times, serif";
   scrollbar-face-color: #fdb;
   scrollbar-shadow-color: #864;
@@ -24,7 +24,7 @@ p.logo {
   height: 70px;
 }
 table.main, div#wrapper {
-  background: #fff url("parchlight.jpg") repeat;
+  background: #fff asset-url("styles/parchment/parchlight.jpg") repeat;
   border: 1px #000 solid;
   padding: 10px;
 }
@@ -48,7 +48,7 @@ a:visited {
 }
 a:hover {
   color: #000;
-  background: #a8e url("parchdark.jpg") repeat;
+  background: #a8e asset-url("styles/parchment/parchdark.jpg") repeat;
   border-style: solid;
   border-color: #000;
 }
@@ -78,7 +78,7 @@ hr {
  * Nav links *
  *************/
 table.lowerpanel, div#links {
-  background: #fdb url("parchmed.jpg") repeat;
+  background: #fdb asset-url("styles/parchment/parchmed.jpg") repeat;
   background-attachment: fixed;
   border: 1px #000 solid;
   padding: 10px;
@@ -109,7 +109,7 @@ p.lev2 {
   width: 100%;
 }
 .lowerpanel a:hover {
-  background: #a8e url("parchdark.jpg") repeat;
+  background: #a8e asset-url("styles/parchment/parchdark.jpg") repeat;
   border-style: solid;
   border-color: #000;
 }
@@ -132,13 +132,13 @@ p.main4 {
  * Notes Board *
  ***************/
 .noteslight, #notes_board tr.even, #notes_thread li.even {
-  background: #fff url("parchlight.jpg") repeat;
+  background: #fff asset-url("styles/parchment/parchlight.jpg") repeat;
   border-style: solid;
   border-width: 1px;
   border-color: #000;
 }
 .notesdark, #notes_board tr.odd, #notes_thread li.odd {
-  background: #fdb url("parchmed.jpg") repeat;
+  background: #fdb asset-url("styles/parchment/parchmed.jpg") repeat;
   border-style: solid;
   border-width: 1px;
   border-color: #000;

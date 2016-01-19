@@ -86,7 +86,7 @@ p.main4, #header li.planname span.title {
 
 /* Set the regular image */
 p.imagelev1, #nav li {
-  background: #ffffff url("right.gif") no-repeat;
+  background: #ffffff asset-url("styles/default/right.gif") no-repeat;
 }
 p.imagelev1 { padding: 0.0cm 0.2cm }
 #nav li     { padding: 0.0cm 0.8cm; margin-left: -0.4cm; }
@@ -143,7 +143,7 @@ p.sub tt a {
 
 /* Set the sub image */
 p.imagelev2, #autoread li {
-  background: #ffffff url("right2.gif") no-repeat;
+  background: #ffffff asset-url("styles/default/right2.gif") no-repeat;
 }
 p.imagelev2, { padding: 0.0cm 0.2cm }
 #autoread li { padding: 0.0cm 0.8cm; margin-left: -0.4cm; }
@@ -187,7 +187,7 @@ p.lev2, li.autoreadlevel {
 
 /* Set the sub-sub image */
 p.imagelev3, #autoread li.autoreadentry {
-  background: #ffffff url("right3.gif") no-repeat;
+  background: #ffffff asset-url("styles/default/right3.gif") no-repeat;
 }
 p.imagelev3                { padding: 0.0cm 0.2cm }
 #autoread li.autoreadentry { padding: 0.0cm 0.8cm; margin-left: -0.4cm; }

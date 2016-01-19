@@ -28,7 +28,7 @@ p.logo {
 }
 table.main, div#wrapper {
  bgcolor: #fff;
-  background: url(stripes.jpg) repeat;
+  background: asset-url("styles/blue/stripes.jpg") repeat;
   border: 1px #CCC solid;
   padding: 10px;
 }
@@ -63,7 +63,7 @@ hr {
 a.main, #links a {
 
   display: block;
-  background: url(blueborder.jpg) no-repeat;
+  background: asset-url("styles/blue/blueborder.jpg") no-repeat;
   width: 150px;
   height: 24px;
   font-family: Geneva, Arial, Helvetica, san-serif;
@@ -77,7 +77,7 @@ a.main, #links a {
   margin-top: -5px;
 }
 a.main:hover, #links a:hover {
-  background: url(bluesolid.jpg) no-repeat;
+  background: asset-url("styles/blue/bluesolid.jpg") no-repeat;
 }
 #nav li {
   margin-left: 0;
@@ -103,23 +103,23 @@ p.main, p.main2, p.main3, p.main4,
   display: inline-block;
 }
 p.main, #header li.username span.title {
-  background: url(greysolid.jpg) no-repeat;
+  background: asset-url("styles/blue/greysolid.jpg") no-repeat;
 }
 p.main2, #header li.lastupdated span.title {
-  background: url(bluesolid.jpg) no-repeat;
+  background: asset-url("styles/blue/bluesolid.jpg") no-repeat;
 }
 p.main3, #header li.lastlogin span.title {
-  background: url(yellowsolid.jpg) no-repeat;
+  background: asset-url("styles/blue/yellowsolid.jpg") no-repeat;
 }
 p.main4, #header li.planname span.title {
-  background: url(redsolid.jpg) no-repeat;
+  background: asset-url("styles/blue/redsolid.jpg") no-repeat;
 }
 /******************
  * Autofinger nav *
  ******************/
 p.lev2, a.lev2, a.lev3,
 a.autoreadlink, li.autoreadentry a {
-  background: url(yellowborder.jpg) no-repeat;
+  background: asset-url("styles/blue/yellowborder.jpg") no-repeat;
   width: 150px;
   height: 24px;
   font-family: Geneva, Arial, Helvetica, san-serif;
@@ -139,15 +139,15 @@ a.lev2, a.lev3 {
   display: inline-block;
 }
 a.lev2:hover, #autoread a.autoreadlink:hover {
-  background: url(yellowsolid.jpg) no-repeat;
+  background: asset-url("styles/blue/yellowsolid.jpg") no-repeat;
 }
 a.lev3, #autoread li.autoreadentry a {
-  background: url(redsolid.jpg) no-repeat;
+  background: asset-url("styles/blue/redsolid.jpg") no-repeat;
   color: #000;
   font-weight: normal;
 }
 a.lev3:hover, #autoread li.autoreadentry a:hover {
-  background: url(redborder.jpg) no-repeat;
+  background: asset-url("styles/blue/redborder.jpg") no-repeat;
   text-decoration: none;
 }
 /*****************

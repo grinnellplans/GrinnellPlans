@@ -2,7 +2,7 @@
 @import url('../modern.css');
 
 #af_loading {
-  background: url("progress.gif");
+  background: asset-url("styles/oldstyle/progress.gif");
   width: 16px;
   height: 16px;
   display: block;
@@ -67,14 +67,14 @@ p.imagelev1 {
 
 p.imagelev2 {
  /*   background: #000
-url("right.gif")
+asset-url("styles/oldstyle/right.gif")
 no-repeat; */
     margin-left: 0.25cm;
     padding-right: 0.5cm
 }
 p.imagelev3 {
 /*    background: #000
-url("right.gif")
+asset-url("styles/oldstyle/right.gif")
 no-repeat;*/
     margin-left: 0.5cm;
     padding-right: 0.5cm

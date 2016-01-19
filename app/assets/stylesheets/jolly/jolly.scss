@@ -22,7 +22,7 @@ p.logo, #logo a {
   margin-bottom: 1em;
 }
 table.main, div#wrapper {
-  background: url(stripes.jpg) repeat;
+  background: asset-url("styles/jolly/stripes.jpg") repeat;
   border: 1px #CCC solid;
   padding: 10px;
 }
@@ -53,7 +53,7 @@ hr {
  *************/
 a.main, #links a {
   display: block;
-  background: url(lightbluepill.jpg) no-repeat;
+  background: asset-url("styles/jolly/lightbluepill.jpg") no-repeat;
   width: 150px;
   height: 24px;
   font-family: Geneva, Arial, Helvetica, san-serif;
@@ -66,7 +66,7 @@ a.main, #links a {
   margin-top: -5px;
 }
 a.main:hover, #links a:hover {
-  background: url(darkbluepill.jpg) no-repeat;
+  background: asset-url("styles/jolly/darkbluepill.jpg") no-repeat;
 }
 #nav li {
   margin-left: 0;
@@ -76,7 +76,7 @@ a.main:hover, #links a:hover {
  ********************/
 p.main, p.main2, p.main3, p.main4,
 #header li span.title {
-  background: url(darkgreenpill.jpg) no-repeat;
+  background: asset-url("styles/jolly/darkgreenpill.jpg") no-repeat;
   width: 150px;
   height: 24px;
   font-family: Geneva, Arial, Helvetica, san-serif;
@@ -96,7 +96,7 @@ p.main, p.main2, p.main3, p.main4,
  ******************/
 p.lev2, a.lev2, a.lev3,
 a.autoreadlink, li.autoreadentry a {
-  background: url(lightgreenpill.jpg) no-repeat;
+  background: asset-url("styles/jolly/lightgreenpill.jpg") no-repeat;
   width: 150px;
   height: 24px;
   font-family: Geneva, Arial, Helvetica, san-serif;
@@ -115,7 +115,7 @@ a.lev2, a.lev3 {
   display: inline-block;
 }
 a.lev2:hover, #autoread li.autoreadlevel a:hover {
-  background: url(darkgreenpill.jpg) no-repeat;
+  background: asset-url("styles/jolly/darkgreenpill.jpg") no-repeat;
 }
 a.lev3, #autoread li.autoreadentry a {
   font-weight: normal;
@@ -123,7 +123,7 @@ a.lev3, #autoread li.autoreadentry a {
   text-decoration: none;
 }
 a.lev3:hover, #autoread li.autoreadentry a:hover {
-  background: url(darkgreenpill.jpg) no-repeat;
+  background: asset-url("styles/jolly/darkgreenpill.jpg") no-repeat;
 }
 /*****************
  * In-plan Links *
