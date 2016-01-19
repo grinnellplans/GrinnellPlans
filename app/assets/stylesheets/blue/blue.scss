@@ -22,7 +22,7 @@ pre br {display:none}
 /* End fix */
 
 p.logo {
-  background: url("../../images/logo-small.png") no-repeat;
+  background: asset-url("logo-small.png") no-repeat;
   width: 150px;
   height: 75px;
 }

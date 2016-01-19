@@ -43,13 +43,13 @@
 
 /* Styling for the fill meter when editing */
 #edit_fill_meter .fill_bar {
-	background: url("../images/old/unfilled.gif");
+	background: asset-url("old/unfilled.gif");
 	float: left;
 	width: 100px;
 	height: 16px;
 }
 #edit_fill_meter .full_amount {
-	background: url("../images/old/filled.gif");
+	background: asset-url("old/filled.gif");
 	height: 1em;
 	/* Default to no width if javascript is turned off */
 	width: 0%;
@@ -58,7 +58,7 @@
 	float: left;
 }
 #edit_fill_meter.danger .full_amount {
-	background: url("../images/old/danger.gif");
+	background: asset-url("old/danger.gif");
 }
 
 /* Some styling with small icons for various messages */
@@ -72,7 +72,7 @@
 	font-weight: bold;
 	padding-left: 20px;
 	padding-bottom: 0.3em;
-	background: url("../images/icons/famfamfam/exclamation.png") no-repeat left center;
+	background: asset-url("icons/famfamfam/exclamation.png") no-repeat left center;
 }
 .infomessage .body, .requestmessage .body {
 	padding-left: 20px;
@@ -81,17 +81,17 @@
 	display: none;
 }
 .infomessage .body {
-	background: url("../images/icons/famfamfam/information.png") no-repeat left center;
+	background: asset-url("icons/famfamfam/information.png") no-repeat left center;
 }
 .requestmessage .body {
-	background: url("../images/icons/famfamfam/help.png") no-repeat left center;
+	background: asset-url("icons/famfamfam/help.png") no-repeat left center;
 }
 /* IE screws up the background image positioning when we span more than one line, so hack IE7... */
 *:first-child+html .infomessage .body {
-	background: url("../images/icons/famfamfam/information.png") no-repeat left 8px;
+	background: asset-url("icons/famfamfam/information.png") no-repeat left 8px;
 }
 *:first-child+html .requestmessage .body {
-	background: url("../images/icons/famfamfam/help.png") no-repeat left 8px;
+	background: asset-url("icons/famfamfam/help.png") no-repeat left 8px;
 }
 /* ...and just hide them altogether for IE6 */
 * html .infomessage .body, * html .requestmessage .body, * html .alertmessage .title {

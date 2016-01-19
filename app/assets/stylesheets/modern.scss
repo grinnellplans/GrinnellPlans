@@ -57,7 +57,7 @@
 /* Show an image for the logo */
 #logo a {
 	display: block;
-	background: url("../images/logo-small.png") no-repeat;
+	background: asset-url("logo-small.png") no-repeat;
 	height: 70px;
 	width: 180px;
 	/* Scooch the text out of view */

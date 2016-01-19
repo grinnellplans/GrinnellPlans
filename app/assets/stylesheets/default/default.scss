@@ -14,7 +14,7 @@ body {
 }
 
 p.logo {
-  background: #ffffff url("../../images/logo-small.png") no-repeat;
+  background: #ffffff asset-url("logo-small.png") no-repeat;
   padding: 0.3cm 2.6cm
 }
 

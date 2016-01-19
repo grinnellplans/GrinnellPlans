@@ -17,7 +17,7 @@ body {
   scrollbar-arrow-color: #000;
 }
 p.logo, #logo a {
-  background: url("../../images/logo-small.png") no-repeat;
+  background: asset-url("logo-small.png") no-repeat;
 }
 p.logo {
   width: 100%;
