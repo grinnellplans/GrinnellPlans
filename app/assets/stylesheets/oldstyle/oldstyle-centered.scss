@@ -1,6 +1,6 @@
 
-@import url('oldstyle.css');
-@import url('../centered.css');
+@import 'oldstyle';
+@import '../centered';
 
 /* assign black background to contents of #nav
  * instead of #nav itself */
