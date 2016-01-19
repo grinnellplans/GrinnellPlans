@@ -71,7 +71,7 @@ ul {
 /* Show an image for the logo */
 #logo a {
 	display: block;
-	background: url("/images/p.png") no-repeat;
+	background: asset-url("styles/libre/p.png") no-repeat;
 	height: 178px;
 	width: 180px;
 	/* Scooch the text out of view */
@@ -125,14 +125,14 @@ ul {
 	float: left;
 	border: none;
 	text-indent: -9999px;
-	background: url("/images/finger2.png") left center no-repeat;
+	background: asset-url("styles/libre/finger2.png") left center no-repeat;
 	width: 40px;
 	height: 20px;
 }
 /* Change colors on hover using CSS sprites */
 #finger .submitinput:hover {
 	cursor: pointer;
-	background: url("/images/finger2.png") right center no-repeat;
+	background: asset-url("styles/libre/finger2.png") right center no-repeat;
 }
 
 /* Some space above the links */
@@ -146,7 +146,7 @@ ul {
 	padding-left: 24px;
 }
 #links a:hover {
-	background: url("/images/fleuron.png") no-repeat left center;
+	background: asset-url("styles/libre/fleuron.png") no-repeat left center;
 }
 
 /* Can't use floats here because the subsequent clear breaks the layout */
@@ -217,7 +217,7 @@ ul {
 #autoread .autoreadname .markasread {
 	float: right;
 	text-indent: -9999px;
-	background: url("/images/x.png") left center no-repeat;
+	background: asset-url("styles/libre/x.png") left center no-repeat;
 	width: 15px;
 	height: 17px;
 }
@@ -227,7 +227,7 @@ ul {
 }
 /* Highlight it when hovered */
 #autoread .autoreadname .markasread:hover {
-	background: url("/images/x.png") right center no-repeat;
+	background: asset-url("styles/libre/x.png") right center no-repeat;
 }
 
 /* Black links */
@@ -340,7 +340,7 @@ p.sub:first-letter {
 .plan_text hr {
 	border: none;
 	height: 25px;
-	background-image: url("/images/woodends2.png");
+	background-image: asset-url("styles/libre/woodends2.png");
 	background-repeat: no-repeat;
 	background-position: center;
 }
@@ -369,7 +369,7 @@ p.sub:first-letter {
 	display: inline-block;
 	width: 19px;
 	height: 20px;
-	background: url("/images/brackets.png") no-repeat top left;
+	background: asset-url("styles/libre/brackets.png") no-repeat top left;
 	margin-top: -20px;
 	margin-bottom: -4px;
 	margin-right: 0.08em;
@@ -379,7 +379,7 @@ p.sub:first-letter {
 	display: inline-block;
 	width: 19px;
 	height: 20px;
-	background: url("/images/brackets.png") no-repeat bottom left;
+	background: asset-url("styles/libre/brackets.png") no-repeat bottom left;
 	margin-top: -20px;
 	margin-bottom: -4px;
 	margin-right: 0.08em;
@@ -389,10 +389,10 @@ p.sub:first-letter {
  * text. We do this with "CSS sprites"
  */
 .plan_text a.planlove:hover:before {
-	background: url("/images/brackets.png") no-repeat top right;
+	background: asset-url("styles/libre/brackets.png") no-repeat top right;
 }
 .plan_text a.planlove:hover:after {
-	background: url("/images/brackets.png") no-repeat bottom right;
+	background: asset-url("styles/libre/brackets.png") no-repeat bottom right;
 }
 
 /* Float the edit meter right and make it light gray */
@@ -489,7 +489,7 @@ ul#search_results ul {
 ul#search_results ul li {
 	margin-bottom: 2em;
 	padding-bottom: 40px;
-	background: url("/images/flowers_hr.png") no-repeat bottom center;
+	background: asset-url("styles/libre/flowers_hr.png") no-repeat bottom center;
 }
 
 /* Icons for messages */
@@ -498,21 +498,21 @@ ul#search_results ul li {
 	display: block;
 	padding-left: 56px; /* 46px + 10px padding */
 	min-height: 60px;
-	background: url("images/skull.png") no-repeat left top;
+	background: asset-url("styles/libre/skull.png") no-repeat left top;
 }
 
 .infomessage {
 	display: block;
 	padding-left: 56px; /* 46px + 10px padding */
 	min-height: 50px;
-	background: url("images/info.png") no-repeat left top;
+	background: asset-url("styles/libre/info.png") no-repeat left top;
 }
 
 .requestmessage {
 	display: block;
 	padding-left: 50px; /* 40px + 10px padding */
 	min-height: 65px;
-	background: url("images/book.png") no-repeat left top;
+	background: asset-url("styles/libre/book.png") no-repeat left top;
 }
 .requestmessage .title, .infomessage .title, .alertmessage .title {
 	font-style: italic;
