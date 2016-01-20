@@ -30,6 +30,7 @@ Plans::Application.routes.draw do
 
   namespace :preferences do
     resource :account, controller: :account_details, only: [:show, :update]
+    resource :display, controller: :display, only: [:show, :update]
   end
 
   resource :account_session, only: [:new, :create, :destroy]
