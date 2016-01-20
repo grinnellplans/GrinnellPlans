@@ -26,6 +26,7 @@ class Account < ActiveRecord::Base
 
   has_one :display_preference, foreign_key: :userid, dependent: :destroy
   has_one :custom_stylesheet, foreign_key: :userid, dependent: :destroy
+  has_one :style, through: :display_preference
 
   before_validation do
     self.show_images = true
