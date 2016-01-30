@@ -1,6 +1,5 @@
 class SecretsController < ApplicationController
   # Intentionally allowing unauthenticated users to post secrets
-  before_filter :load_autofingers
 
   # GET /secrets
   def index

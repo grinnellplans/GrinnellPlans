@@ -32,12 +32,13 @@ class ApplicationController < ActionController::Base
     redirect_to root_path if current_account.nil? || !current_account.is_admin?
   end
 
-  def load_autofingers
+  def autofingers
     return if current_account.nil?
-    @autofingers = current_account.interests_in_others.updated.group_by(&:priority)
-    (1..3).each {|i| @autofingers[i] ||= [] }
-    @autofingers = @autofingers.sort_by {|k, v| k }
+    @autofingers ||= ({1 => [], 2 => [], 3 => []}).merge(
+      current_account.interests_in_others.updated.group_by(&:priority)
+    )
   end
+  helper_method :autofingers
 
   # Don't use this! It's for migration purposes only.
   # Use strong unsafe_params properly instead:
