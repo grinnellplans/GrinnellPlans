@@ -1,0 +1,131 @@
+/* Terminal.css: Emulate the look of an old school monochrome green terminal.
+ * Author: Andrew Kensler
+ *
+ * $Log: terminal.css,v $
+ * Revision 1.4  2003/02/02 22:07:28  kenslerj
+ * Added CSS for notes
+ *
+ * Revision 1.2  2002/11/01 21:40:21  kenslerj
+ * Updated for extra stuff
+ *
+ * Revision 1.1  2002/10/05 18:03:51  kensler
+ * Added new style, "Terminal"
+ *
+ */
+
+body {
+  color: #0f0;
+  background-color: #000;
+  background: #000;
+  font-family: "Andale Mono", "Courier New", Courier, mono;
+  scrollbar-face-color: 020;
+  scrollbar-shadow-color: 0f0;
+  scrollbar-highlight-color:0f0;
+  scrollbar-3dlight-color: 080;
+  scrollbar-darkshadow-color: 080;
+  scrollbar-track-color: 020;
+  scrollbar-arrow-color: 0f0;
+}
+
+a {
+  text-decoration: none;
+  color: #8f8
+}
+
+a:hover {
+  background-color: #8f8;
+  color: #000;
+}
+
+p.logo {
+  background: #000 asset-url("logo-small.png") no-repeat;
+  padding: 0.4cm 2.25cm
+}
+
+table.mainpanel {
+  background: #000
+}
+
+table.lowerpanel {
+  color: #fff;
+  background: #020;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #0f0;
+}
+
+p.imagelev1 {
+/*  background: #000 no-repeat;
+  padding-right: 0.15cm
+*/
+}
+
+p.imagelev2 {
+/*
+  margin-left: 0.25cm;
+  padding-right: 0.5cm
+*/
+}
+p.imagelev3 {
+/*
+  margin-left: 0.5cm;
+  padding-right: 0.5cm
+*/
+}
+
+p.main {
+  font-weight: bold
+}
+
+p.main2 {
+  font-weight: bold
+}
+
+p.main3 {
+  font-weight: bold
+}
+
+p.main4 {
+  font-weight: bold
+}
+
+p.sub {
+  margin-bottom: 2px;
+  padding: 7px;
+  border-top: solid;
+  border-width: thin
+}
+
+p.sub2 {
+  background: #020;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #0f0;
+}
+
+input {
+  font-family: "Andale Mono", "Courier New", Courier, mono;
+  background: #020;
+  color: #8f8;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #0f0;
+}
+
+
+/***************
+ * Notes Board *
+ ***************/
+.noteslight {
+  background: #000;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #080;
+}
+.notesdark {
+  background: #020;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #080;
+}
+

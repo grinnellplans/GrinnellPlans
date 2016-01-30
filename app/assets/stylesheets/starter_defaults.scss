@@ -1,0 +1,160 @@
+/**
+ * Some styling that almost all styles will want
+ */
+
+/* Make the powered by bar a bit more obvious and stylish. */
+#poweredby {
+	font-size: larger;
+	clear: left;
+}
+
+#poweredby .logo {
+	vertical-align: middle;
+}
+
+/* Display the long version of dates in the plan header */
+.short {
+	display: none;
+}
+
+/* Float items within a set next to each other */
+.formitemset .form_prompt, .formitemset .formitemset_label {
+	float: left;
+	clear: none;
+}
+/* But in general, clear prompts to their own line */
+.formitemset, .form_prompt {
+	clear: left;
+}
+/* Keep text and textarea labels above the prompt */
+.textareainput label, .textinput label, .passwordinput label {
+	display: block;
+}
+
+/* float the Read button next to the finger form */
+#finger .form_prompt {
+	float: left;
+}
+/* float the submit button next to the add plan form */
+#autoreadadd .submitinput {
+	float: left;
+	clear:none;
+}
+
+/* Styling for the fill meter when editing */
+#edit_fill_meter .fill_bar {
+	background: asset-url("old/unfilled.gif");
+	float: left;
+	width: 100px;
+	height: 16px;
+}
+#edit_fill_meter .full_amount {
+	background: asset-url("old/filled.gif");
+	height: 1em;
+	/* Default to no width if javascript is turned off */
+	width: 0%;
+}
+#edit_fill_meter .fill_percent {
+	float: left;
+}
+#edit_fill_meter.danger .full_amount {
+	background: asset-url("old/danger.gif");
+}
+
+/* Some styling with small icons for various messages */
+.alertmessage, .infomessage, .requestmessage {
+	padding: 0.4em;
+}
+.alertmessage .title {
+	height: 16px;
+	display: block;
+	font-style: italic;
+	font-weight: bold;
+	padding-left: 20px;
+	padding-bottom: 0.3em;
+	background: asset-url("icons/famfamfam/exclamation.png") no-repeat left center;
+}
+.infomessage .body, .requestmessage .body {
+	padding-left: 20px;
+}
+.infomessage .title, .requestmessage .title {
+	display: none;
+}
+.infomessage .body {
+	background: asset-url("icons/famfamfam/information.png") no-repeat left center;
+}
+.requestmessage .body {
+	background: asset-url("icons/famfamfam/help.png") no-repeat left center;
+}
+/* IE screws up the background image positioning when we span more than one line, so hack IE7... */
+*:first-child+html .infomessage .body {
+	background: asset-url("icons/famfamfam/information.png") no-repeat left 8px;
+}
+*:first-child+html .requestmessage .body {
+	background: asset-url("icons/famfamfam/help.png") no-repeat left 8px;
+}
+/* ...and just hide them altogether for IE6 */
+* html .infomessage .body, * html .requestmessage .body, * html .alertmessage .title {
+	background-image: none;
+	padding-left: 0;
+}
+
+/* Float the poll options so the result numbers will line up with them */
+.polloption .form_prompt {
+	display: block;
+	float: left;
+	width: 20em;
+}
+
+/* Float the new thread link left */
+#notes_new_thread {
+	float: left;
+}
+/* Center the nav stuff */
+.notes_header {
+	width: 100%;
+	text-align: center;
+}
+/* Put some whitespace in between nav elements */
+.notes_header .oldest {
+	margin-left: 0.4em;
+}
+.notes_header .newest {
+	margin-right: 0.4em;
+}
+.notes_header .newer, .notes_header .older, .notes_header .even_newer, .notes_header .even_older, .notes_header .current {
+	margin: 0em 0.2em;
+}
+/* Hide inactive nav elements */
+.notes_header .disabled {
+	display: none;
+}
+/* Except the first and last arrows */
+.notes_header .newest, .notes_header .oldest {
+	display: inline;
+}
+
+/* Line up notes post stuff in a sensible fashion */
+.notes_post_header .post_id {
+	width: 4em;
+	float: left;
+}
+.notes_post_header .post_author {
+	float: left;
+	width: 7em;
+}
+.notes_post_header .post_date {
+	float: left;
+}
+.notes_post_header .post_votes {
+	float: right;
+}
+.notes_post_content {
+	clear: both;
+}
+
+/* Right-align the # Posts column on Notes */
+#notes_board td.num_posts {
+	text-align: right;
+	padding-right: 0.6em;
+}

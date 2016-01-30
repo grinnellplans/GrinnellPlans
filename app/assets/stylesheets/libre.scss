@@ -1,0 +1,522 @@
+/**
+ * (c) Ian Young 2009
+ * This stylesheet is under a Creative Commons BY-SA license. This means you are free to
+ * use it however you like, provided you retain this copyright notice and credit the
+ * author(s) in any derivative work.
+ * You can find more details at <http://creativecommons.org/licenses/by-sa/3.0/us/>
+ *
+ * Some images come courtesy of Briar Press <http://www.briarpress.org>, and are under
+ * a Creative Commons BY-NC license.
+ *
+ * «The Fell Types are digitally reproduced by Igino Marini. www.iginomarini.com»
+ */
+
+body {
+	background: #FFF;
+	font-family: Tahoma, Didot, Georgia, serif;
+	min-height: 100%;
+	/* Take the margin away so 100% doesn't overflow - we'll put it on #wrapper instead */
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+/* Needed for the footer */
+html, body {
+	height: 100%;
+}
+
+/* Make links bold, not underlined */
+a {
+	text-decoration: none;
+	font-weight: bold;
+	color: black;
+}
+
+/* Don't format lists by default */
+ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+/* Hide long dates */
+.long {
+	display: none;
+}
+
+/* Give the page nice scalability with min and max widths */
+#wrapper {
+	/* 15 nav + 2.5 padding + 65 main */
+	max-width: 82.5em;
+	/* 15 nav + 2.5 padding + 40 main */
+	min-width: 58em;
+	float: left;
+	/* Footer goes below everything */
+	position: relative;
+	min-height: 100%;
+}
+
+#main, #nav {
+	/* Make sure we leave a little margin on top */
+	margin-top: 0.5em;
+	/* Always leave room for the footer */
+	margin-bottom: 12em;
+}
+
+/* Don't display nav headers */
+#nav h2 {
+	display: none;
+}
+
+/* Show an image for the logo */
+#logo a {
+	display: block;
+	background: asset-url("styles/libre/p.png") no-repeat;
+	height: 178px;
+	width: 180px;
+	/* Scooch the text out of view */
+	text-indent: -9999px;
+}
+/* Bit of space below the logo */
+#logo {
+	margin-bottom: 1.3em;
+}
+
+/* Make the finger box as wide as the logo */
+#finger {
+	overflow: auto;
+	width: 180px;
+}
+/*
+ * Give the text box a negative margin so the Read button
+ * may float up to its left.
+ */
+#finger .form_prompt {
+	width: 100%;
+	margin-left: -40px;
+	float: right;
+}
+/* Pretty up the input box */
+#finger .textinput input {
+	/* Keep it out of the way of the Read button */
+	margin-left: 40px;
+	/* 180px - 40px Read button - 4px borders */
+	width: 136px;
+	/* White border on three sides */
+	border: 2px solid #FFF;
+	/* Black border on bottom */
+	border-bottom: 2px solid #555;
+	/* Let the background show through */
+	background: none;
+	/* Style entered text like plan names */
+	font-family: Tahoma, Didot, Georgia, serif;
+	font-weight: bold;
+	font-style: italic;
+	/* Apple browsers have stupid chrome */
+	padding: 0;
+}
+/* When we hover, show a full border */
+#finger .textinput input:hover, #finger .textinput input:focus {
+	border: 2px solid black;
+	/*margin: 0px 0px 0px 40px;*/
+}
+/* Float the Read button up on the left, remove the usual styling and make it an image */
+#finger .submitinput {
+	float: left;
+	border: none;
+	text-indent: -9999px;
+	background: asset-url("styles/libre/finger2.png") left center no-repeat;
+	width: 40px;
+	height: 20px;
+}
+/* Change colors on hover using CSS sprites */
+#finger .submitinput:hover {
+	cursor: pointer;
+	background: asset-url("styles/libre/finger2.png") right center no-repeat;
+}
+
+/* Some space above the links */
+#links {
+	margin-top: 0.8em;
+	clear: both;
+}
+
+/* Have an image appear when mousing over a link */
+#links a {
+	padding-left: 24px;
+}
+#links a:hover {
+	background: asset-url("styles/libre/fleuron.png") no-repeat left center;
+}
+
+/* Can't use floats here because the subsequent clear breaks the layout */
+.formitemset .form_prompt {
+	display: inline;
+}
+
+/* Fixed-width nav bar */
+#nav {
+	width: 15em;
+	float: left;
+}
+
+#main {
+	/* Leave some space for the nav bar + 1.5 em of padding */
+	margin-left: 17.5em;
+	/* Leave some space on top */
+	margin-top: 2em;
+	/* Fill the space that is available to us */
+	min-width: 40em;
+}
+
+/* Space above autoread */
+#autoread {
+	margin-top: 1em;
+}
+
+/* Fill the space before names on the autoread with dots */
+#autoread li ul li:before {
+	content: "...............................................................................";
+	color: #222222;
+}
+/* Float the names to the right */
+#autoread li ul li {
+	float: right;
+	padding-right: 0.4em;
+	line-height: 1.4em;
+}
+/* Don't show the dots when they spill off to the left */
+#autoread li ul {
+	overflow: hidden;
+}
+/* Don't display non-current autoread lists */
+#autoread .notcurrent ul {
+	display: none;
+}
+
+/* Get height of floated elements */
+#autoread .autoreadname {
+	overflow: auto;
+}
+
+/* Current level is black */
+#autoread .current .autoreadname .autoreadlink {
+	color: #000;
+}
+/* Other levels are gray */
+#autoread .autoreadname .autoreadlink {
+	float: left;
+	color: #333333;
+}
+/* Except when hovered upon */
+#autoread .autoreadname .autoreadlink:hover {
+	color: #000;
+}
+
+/* Float the mark as read link right */
+#autoread .autoreadname .markasread {
+	float: right;
+	text-indent: -9999px;
+	background: asset-url("styles/libre/x.png") left center no-repeat;
+	width: 15px;
+	height: 17px;
+}
+/* And don't display it for inactive levels */
+#autoread .notcurrent .autoreadname .markasread {
+	display: none;
+}
+/* Highlight it when hovered */
+#autoread .autoreadname .markasread:hover {
+	background: asset-url("styles/libre/x.png") right center no-repeat;
+}
+
+/* Black links */
+#autoread a, a.planlove {
+	color: black;
+}
+/* Gray links when moused over */
+#autoread a:hover, a.planlove:hover, a.onplan:hover, #main a:hover {
+	color: #666;
+}
+
+/* Names of plans are italic */
+#autoread li ul li a, a.planlove, #justupdated a {
+	font-style: italic;
+}
+
+/* Prepare header for crazy positioning */
+#header {
+	position: relative;
+}
+/* Hide the 'Username:' and such text */
+#header .username .title, #header .planname .title {
+	display: none;
+}
+/* Style the names in all-lowercase small-caps with nice color and spacing */
+#header ul li, .secret span {
+	text-transform: lowercase;
+	font-variant: small-caps;
+	color: #999999;
+	letter-spacing: 0.09em;
+}
+/* Make a box the hold our titles */
+#header ul {
+	width: 60%;
+	position: relative;
+	left: 20%;
+	overflow: auto;
+}
+/* Send our names to the left and right sides of the box */
+#header .username {
+	float: left;
+	/* Let .planname's empty padding push into this element */
+	margin-right: -10em;
+}
+#header .planname {
+	float: right;
+	/* Leave enough space so as not to run into the plan name */
+	padding-left: 10em;
+}
+/* Don't show login/update times */
+#header .lastupdated, #header .lastlogin {
+	display: none;
+}
+
+/* Some space between paragraphs in the plan */
+p.sub {
+	line-height: 1.5em;
+}
+/* Make a drop cap to start paragraphs in the plan */
+p.sub:first-letter {
+	font-size: 3em;
+	float: left;
+	padding-right: 0.06em;
+}
+
+#footer {
+	/* Make the font small and indented */
+	font-size: 0.8em;
+	/* 17.5 / 0.8 for the proportions */
+	margin-left: 21.875em;
+	margin-right: 0em;
+	overflow: auto;
+	/* Always put our footer at the bottom of the page */
+	position: absolute;
+	bottom: 0em;
+	height: 14em;
+}
+
+/* A little space between footer elements */
+#legal, #poweredby {
+	margin-top: 0.5em;
+}
+
+/* Hide the logo in the powered by message */
+#poweredby .logo {
+	display: none;
+}
+
+/*
+ * Give our footer items some nice little footnote numbers
+ */
+#justupdated div:before {
+	content: "1";
+}
+#poweredby div:before {
+	content: "2";
+}
+#legal div:before {
+	content: "3";
+}
+/* Indent them for those footnotes */
+#justupdated div:before, #legal div:before, #poweredby div:before {
+	font-size: 0.9em;
+	vertical-align: 0.5em;
+	padding-left: 0.8em;
+	padding-right: 0.3em;
+}
+
+/* Make a pretty horizontal rule decoration */
+.plan_text hr {
+	border: none;
+	height: 25px;
+	background-image: asset-url("styles/libre/woodends2.png");
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+/*
+ * Awesome hackination:
+ * Give planlove links negative margins of a very specific width
+ * and opaque backgrounds. This sucks in the surrounding brackets
+ * and effectively hides them.
+ */
+.plan_text a.planlove {
+	display: inline-block;
+	background: #FFF;
+	margin-left: -0.4em;
+	margin-right: -0.4em;
+	position: relative;
+}
+/*
+ * Next, style the sides of the planlove with images, with all sorts
+ * of margin tweaking to get things lined up nice and pretty. Display
+ * it as an inline-block so we get block behavior but don't break up
+ * the flow of the text.
+ */
+.plan_text a.planlove:before {
+	content: "";
+	display: inline-block;
+	width: 19px;
+	height: 20px;
+	background: asset-url("styles/libre/brackets.png") no-repeat top left;
+	margin-top: -20px;
+	margin-bottom: -4px;
+	margin-right: 0.08em;
+}
+.plan_text a.planlove:after {
+	content: "";
+	display: inline-block;
+	width: 19px;
+	height: 20px;
+	background: asset-url("styles/libre/brackets.png") no-repeat bottom left;
+	margin-top: -20px;
+	margin-bottom: -4px;
+	margin-right: 0.08em;
+}
+/*
+ * Finally, have the brackets turn grey on a hover to match the link
+ * text. We do this with "CSS sprites"
+ */
+.plan_text a.planlove:hover:before {
+	background: asset-url("styles/libre/brackets.png") no-repeat top right;
+}
+.plan_text a.planlove:hover:after {
+	background: asset-url("styles/libre/brackets.png") no-repeat bottom right;
+}
+
+/* Float the edit meter right and make it light gray */
+#edit_fill_meter {
+	float: right;
+	color: #888;
+}
+
+#plan_edit_text {
+	width: 100%;
+}
+
+/* Space out secret headers a bit */
+.secret .secret_id {
+	margin-right: 1em;
+}
+
+/* Notes stuff (mostly borrowed from xhtml_defaults) */
+
+/* Float the new thread link left */
+#notes_new_thread {
+	float: left;
+}
+/* Center the nav stuff */
+.notes_header {
+	width: 100%;
+	text-align: center;
+}
+/* Hide inactive nav elements */
+.notes_header .disabled {
+	display: none;
+}
+/* Except the first and last arrows */
+.notes_header .newest, .notes_header .oldest {
+	display: inline;
+}
+.notes_header .current span {
+	text-decoration: underline;
+}
+/* Avoid clearing problems */
+#notes_thread {
+	float: left;
+}
+.notes_content {
+	overflow: auto;
+}
+.notes_post_header {
+	padding-bottom: 0.8em;
+	padding-top: 1em;
+}
+/* Line up notes post stuff in a sensible fashion */
+.notes_post_header .post_id {
+	width: 4em;
+	float: left;
+}
+.notes_post_header .post_author {
+	float: left;
+	width: 7em;
+}
+.notes_post_header .post_author a {
+	color: #999999;
+}
+.notes_post_header .post_author a:hover {
+	color: #000000;
+}
+.notes_post_header .post_date {
+	float: left;
+}
+.notes_post_header .post_votes {
+	float: right;
+	color: #999999;
+}
+.notes_post_content {
+	clear: both;
+}
+.notes_post_header .post_id, .notes_post_header .post_date {
+	text-transform: lowercase;
+	font-variant: small-caps;
+	color: #999999;
+	letter-spacing: 0.09em;
+}
+/* Right-align the # Posts column on Notes */
+#notes_board td.num_posts {
+	text-align: right;
+	padding-right: 0.6em;
+}
+
+/* Style the search results a bit */
+
+ul#search_results ul {
+	margin-left: 1em;
+	margin-top: 0.6em;
+}
+ul#search_results ul li {
+	margin-bottom: 2em;
+	padding-bottom: 40px;
+	background: asset-url("styles/libre/flowers_hr.png") no-repeat bottom center;
+}
+
+/* Icons for messages */
+
+.alertmessage {
+	display: block;
+	padding-left: 56px; /* 46px + 10px padding */
+	min-height: 60px;
+	background: asset-url("styles/libre/skull.png") no-repeat left top;
+}
+
+.infomessage {
+	display: block;
+	padding-left: 56px; /* 46px + 10px padding */
+	min-height: 50px;
+	background: asset-url("styles/libre/info.png") no-repeat left top;
+}
+
+.requestmessage {
+	display: block;
+	padding-left: 50px; /* 40px + 10px padding */
+	min-height: 65px;
+	background: asset-url("styles/libre/book.png") no-repeat left top;
+}
+.requestmessage .title, .infomessage .title, .alertmessage .title {
+	font-style: italic;
+	font-weight: bold;
+	padding-bottom: 0.3em;
+	display: block;
+}

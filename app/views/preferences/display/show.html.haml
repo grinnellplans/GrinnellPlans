@@ -1,0 +1,14 @@
+- content_for :title do
+  Style options
+
+%h1.heading1= content_for :title
+
+#styleform.form
+  = form_for current_account, url: preferences_display_path do |f|
+    %div
+      = f.fields_for :display_preference do |d|
+        = d.collection_radio_buttons :style_id, @available_styles, :style, :descr do |rd|
+          .form_prompt.checkboxinput
+            = rd.radio_button checked: (rd.object == @user.style)
+            = rd.label class: :prompt_label
+      = f.submit "Save"

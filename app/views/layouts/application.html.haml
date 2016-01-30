@@ -11,7 +11,8 @@
     - else
       %title GrinnellPlans
 
-    = stylesheet_link_tag :login, :libre
+    = stylesheet_link_tag :login
+    = stylesheet_link_tag(user_stylesheet_url current_account)
     = csrf_meta_tag
     = javascript_include_tag "application"
     = content_for :head

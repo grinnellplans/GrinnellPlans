@@ -1,0 +1,122 @@
+/* Mixin CSS to approximate the look of the 'modern' interface in
+ * the newer 'postmodern' interface.
+ *
+ * 24 May 2013 baldwint
+ */
+
+/* starter defaults */
+@import 'starter_defaults';
+
+/* stop floating form fields before we all get a headache */
+.formitemset .form_prompt, .formitemset .formitemset_label {
+    float: none;
+    clear: none;
+    display: inline;
+}
+.formitemset, .form_prompt {
+	float: none;
+    clear: none;
+}
+#autoreadadd .submitinput {
+    float: none;
+    clear: none;
+    display: inline;
+}
+
+/* notes board also has some overzealous floating */
+#notes_new_thread{
+  float: none;
+  display: block;
+  margin-bottom: 1em;
+}
+.notes_post_content {
+  clear: none;
+  margin-bottom: 1em;
+}
+.notes_post_header .post_id,
+.notes_post_header .post_author,
+.notes_post_header .post_date {
+  float: none;
+  display: inline-block;
+}
+/*.notes_post_header .post_votes {
+ * float: none;
+ * display: inline-block;
+ * }
+ */
+
+/* put autoreadadd in the middle */
+#autoreadadd {
+  text-align: center;
+  margin-left: 30%;
+  margin-right: 30%;
+  margin-top: 1em;
+  padding: 0.5em;
+}
+
+/* Show an image for the logo */
+#logo a {
+	display: block;
+	background: asset-url("logo-small.png") no-repeat;
+	height: 70px;
+	width: 180px;
+	/* Scooch the text out of view */
+	text-indent: -9999px;
+}
+
+#links, #autoread {
+  padding: 1em;
+  margin-top: 1em;
+}
+
+/* no bullets for these lists */
+#links ul, #header ul, #autoread ul, ul#notes_thread {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#links li, #autoread li {
+  margin-left: 1em;
+  margin-top: 0.3em;
+}
+
+#links h2 { display: none; }
+#autoread h2 { font-size: 16px; }
+
+div#nav {
+  max-width: 200px;
+  float: left;
+  margin-left: 5px;
+  padding:5px;
+}
+
+div#footer {
+    clear: both;
+    margin-top: 3em;
+}
+
+div#footer div { margin-top: 1em;}
+
+div#main {
+    margin-left:220px;
+    padding-top: 20px;
+}
+
+/* header styling */
+#header li { margin-top: 0.2em; }
+#header span.title { font-weight: bold; }
+#header li.username span.value { font-weight: bold; }
+#header li.planname span.value { text-decoration: underline; }
+
+/* edit area */
+textarea#edit_textarea { width: 98%; }
+
+/* secrets */
+div.secret                  { margin-top: 1em; }
+div.secret p.sub            { margin-top: 0.5em; }
+div.secret span.date_posted { font-weight: bold; }
+
+/* only show one autoread list */
+li.autoreadlevel.notcurrent a.markasread { display: none; }
+li.autoreadlevel.notcurrent ul           { display: none; }

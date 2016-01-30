@@ -1,0 +1,315 @@
+/**
+ * (c) Ian Young 2009
+ * This stylesheet is under a Creative Commons BY-SA license. This means you are free to
+ * use it however you like, provided you retain this copyright notice and credit the
+ * author(s) in any derivative work.
+ * You can find more details at <http://creativecommons.org/licenses/by-sa/3.0/us/>
+ */
+
+@import 'starter_defaults';
+
+/* Base font and color settings */
+body {
+	background-color: #262626;
+	font-family: "Trebuchet MS", Arial, sans-serif;
+	margin-top: 0.2em;
+}
+
+/* Links in general are bold, and gray unless otherwise specified */
+a {
+	text-decoration: none;
+	font-weight: bold;
+	color: #eddabc;
+}
+/* Underline links when hovering */
+a:hover {
+	text-decoration: underline;
+}
+/* Clear out list styling */
+ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+/* Change the appearance of horizontal rules */
+hr {
+	border: 0;
+	border-top: 1px dotted #354044;
+}
+
+#main h1, #main h2, #main h3 {
+	color: #afafaf;
+}
+
+/* Style form inputs specially */
+.textinput input, .passwordinput input, button {
+	background-color: #2e2e2e;
+	border: 1px solid #ae997a;
+	color: #ffdead;
+	font-weight: bold;
+	margin-left: 0.1em;
+}
+textarea {
+	padding: 0.3em;
+	color: #aecfde;
+	background-color: #2e2e2e;
+	border: 1px solid #BBB;
+}
+.form_prompt {
+	color: #afafaf;
+}
+.prompt_label, .promptset_label {
+	font-weight: bold;
+}
+
+/* Don't show the logo */
+#logo {
+	display: none;
+}
+
+/* Style the finger form */
+#finger {
+	float: left;
+}
+#finger * div {
+	float: left;
+}
+#finger input, #finger button {
+	font-size: 0.73em;
+}
+
+/* Style the links panel */
+#links {
+	font-size: 0.9em;
+	margin-top: 0.15em;
+}
+#links a {
+	color: #ffdead;
+}
+
+#links ul li {
+	float: left;
+	margin-left: 1em;
+}
+/* No headings in the nav panel */
+#links h2, #autoread h2 {
+	display: none;
+}
+
+/* Style the autoread list */
+#autoread {
+	margin-top: 0.5em;
+	float: left;
+	clear: left;
+	font-size: 0.85em;
+}
+/* Each level gets its own line */
+.autoreadlevel {
+	float: left;
+	clear: left;
+}
+.autoreadname {
+	margin-right: 0.5em;
+}
+/* Float the various contents of each level left */
+.autoreadlevel ul, .autoreadname {
+	float: left;
+}
+
+.autoreadlink {
+	font-weight: normal;
+}
+.autoreadentry {
+	float: left;
+	clear: none;
+	margin-left: 0.5em;
+}
+/* Color the autoread links */
+.autoreadname a {
+	color: #ff5457;
+}
+.autoreadentry a {
+	color: #fa8072;
+}
+.autoreadentry a:visited {
+	color: #c9675c;
+}
+
+/* The main content div */
+#main {
+	float: left;
+	width: 100%;
+	margin: 1em 0em 2em 0em;
+	clear: both;
+	color: #afafaf;
+}
+/* And use different margins when it's someone's plan */
+body.plan #main {
+	margin: 0.5em 0em 0.5em 0em;
+}
+/* Make sure forms get the height of their floated contents */
+#main form {
+	overflow: auto;
+}
+/* Usually float form buttons left */
+#main button {
+	float: left;
+	clear: both;
+}
+
+
+/* Style the header at the top of plans */
+#header .title {
+	color: #6495ed;
+}
+#header .value {
+	color: #ffffff;
+}
+/* Float items in the header next to each other */
+#header li {
+	float: left;
+	margin-right: 1em;
+}
+/* Make sure we get the height of floating elements inside */
+#header {
+	overflow: auto;
+	width: 100%;
+}
+
+/* Position the footer and make it smallish */
+#footer {
+	clear: both;
+	font-size: 0.8em;
+}
+
+/* Make everything in the footer gray */
+#footer {
+	color: #7e7e7e;
+}
+#footer a {
+	color: #7e7e7e;
+}
+
+/* Positioning for the "Do you read..." bit */
+#justupdated {
+	float: left;
+	clear: left;
+	font-size: 0.9em;
+	margin-bottom: 1em;
+}
+/* And clear the legal stuff below that */
+#legal {
+	clear: left;
+}
+
+
+/* Style the plan itself */
+.plan_text {
+	padding: 1em;
+	margin: 0.2em 0em 0em 0em;
+	color: #aecfde;
+	border: 1px dotted #354044;
+}
+/* planlove links */
+.plan_text .planlove {
+	color: #a7d7eb;
+}
+.plan_text .planlove:visited {
+	color: #87ceeb;
+}
+
+/* The 'add to autoread' form at the bottom of plans */
+#autoreadadd {
+	margin-top: 1em;
+}
+#autoreadadd .submitinput {
+	float: left;
+	margin-left: 0.8em;
+}
+#autoreadadd .formitemset {
+	float: left;
+}
+
+/* Style the edit plan form */
+#editform {
+	float: left;
+}
+/* Float the submit button right */
+#editform button {
+	clear: right;
+	float: right;
+	margin: 0.2em 0em;
+}
+/* Not even gonna try to make right float work on IE6 */
+* html #editform button {
+	float: left;
+}
+/* The plan fill meter on the edit page */
+#edit_fill_meter {
+	margin: 0.2em 0em;
+	float: left;
+}
+#edit_fill_meter .fill_bar {
+	/* Position the meter */
+	float: left;
+	width: 100px;
+	height: 1em;
+	/* Don't use the default styling */
+	background-image: none;
+	background-color: #2e2f2e;
+	border: 1px solid #c9675c;
+}
+#edit_fill_meter .full_amount {
+	background: #fa8072;
+	height: 1em;
+}
+/* Style the numeric fill indicator */
+#edit_fill_meter .fill_percent {
+	float: left;
+	padding-left: 0.3em;
+	color: #fa8072;
+	font-weight: bold;
+}
+/* Settings for the "red zone" */
+#edit_fill_meter.danger .fill_bar {
+	border-color: #fa2108;
+}
+#edit_fill_meter.danger .full_amount {
+	background-image: none;
+	background-color: #fa2108;
+}
+#edit_fill_meter.danger .fill_percent {
+	color: #fa2108;
+}
+
+/* A bit of pretty grouping for search results */
+#search_results .result_user_group {
+	margin-top: 1em;
+}
+#search_results .result_sublist li {
+	margin-top: 1em;
+}
+/* Dumb ol' IE6 */
+* html #search_results {
+	clear: left;
+}
+
+/* Give secrets a little styling */
+.secret {
+	margin-top: 1em;
+}
+.secret span {
+	font-weight: bold;
+}
+
+/* Separate notes posts visually a little */
+#notes_thread li {
+	padding-bottom: 1em;
+	margin-bottom: 1em;
+	border-bottom: 1px dotted #354044;
+}
+#notes_thread li.first {
+	padding-top: 1em;
+	border-top: 1px dotted #354044;
+}

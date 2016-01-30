@@ -1,0 +1,19 @@
+.strike {
+	text-decoration: line-through;
+}
+.underline {
+	text-decoration: underline;
+}
+
+/* Bugfix: avoid displaying multiple newlines inside a <pre> */
+.plan_text pre br {
+	display: none;
+}
+
+.clickable {
+	cursor: pointer;
+}
+
+#block {
+  padding: 1.5em 0;
+}

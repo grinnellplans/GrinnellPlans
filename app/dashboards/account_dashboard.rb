@@ -15,12 +15,12 @@ class AccountDashboard < Administrate::BaseDashboard
     avail_links: Field::HasMany,
     permission: Field::HasOne,
     poll_votes: Field::HasMany,
-    stylesheet: Field::HasOne,
+    custom_stylesheet: Field::HasOne,
     main_boards: Field::HasMany,
     sub_boards: Field::HasMany,
     viewed_secret: Field::HasOne,
     plan: Field::HasOne,
-    display_item: Field::HasOne,
+    display_preference: Field::HasOne,
     userid: Field::Number,
     username: Field::String,
     created: Field::DateTime,
@@ -75,7 +75,7 @@ class AccountDashboard < Administrate::BaseDashboard
     :created,
     :webview,
     :plan,
-    :stylesheet,
+    :custom_stylesheet,
   ]
 
   # FORM_ATTRIBUTES

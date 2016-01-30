@@ -1,0 +1,134 @@
+/* Terminal.css: Emulate the look of an old school monochrome green terminal.
+ * Author: Andrew Kensler
+ *
+ * $Log: terminal.css,v $
+ * Revision 1.5  2013/06/14 00:00:00  baldwint
+ * Update for postmodern
+ *
+ * Revision 1.4  2003/02/02 22:07:28  kenslerj
+ * Added CSS for notes
+ *
+ * Revision 1.2  2002/11/01 21:40:21  kenslerj
+ * Updated for extra stuff
+ *
+ * Revision 1.1  2002/10/05 18:03:51  kensler
+ * Added new style, "Terminal"
+ *
+ */
+
+/* postmodern like modern */
+@import '../modern';
+
+body {
+  color: #0f0;
+  background-color: #000;
+  background: #000;
+  font-family: "Andale Mono", "Courier New", Courier, mono;
+  scrollbar-face-color: 020;
+  scrollbar-shadow-color: 0f0;
+  scrollbar-highlight-color:0f0;
+  scrollbar-3dlight-color: 080;
+  scrollbar-darkshadow-color: 080;
+  scrollbar-track-color: 020;
+  scrollbar-arrow-color: 0f0;
+}
+
+a {
+  text-decoration: none;
+  color: #8f8
+}
+
+a:hover {
+  background-color: #8f8;
+  color: #000;
+}
+
+p.logo, #logo a {
+  background: #000 asset-url("styles/terminal/logo.jpg") no-repeat;
+}
+
+p.logo {
+  padding: 0.4cm 2.25cm
+}
+
+table.mainpanel {
+  background: #000
+}
+
+table.lowerpanel, div#links {
+  color: #fff;
+  background: #020;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #0f0;
+}
+
+/* Fix for PRE double-spacing [bug 21] */
+pre br {display:none}
+/* End fix */
+
+p.imagelev1 {
+/*  background: #000 no-repeat;
+  padding-right: 0.15cm
+*/
+}
+
+p.imagelev2 {
+/*
+  margin-left: 0.25cm;
+  padding-right: 0.5cm
+*/
+}
+p.imagelev3 {
+/*
+  margin-left: 0.5cm;
+  padding-right: 0.5cm
+*/
+}
+
+#autoread h2 { color: white; }
+
+p.main, p.main2, p.main3, p.main4 {
+  font-weight: bold;
+}
+
+p.sub {
+  margin-bottom: 2px;
+  padding: 7px;
+  border-width: thin
+}
+
+p.sub2, div#autoreadadd {
+  background: #020;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #0f0;
+}
+
+input, button {
+  font-family: "Andale Mono", "Courier New", Courier, mono;
+  background: #020;
+  color: #8f8;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #0f0;
+}
+
+
+/***************
+ * Notes Board *
+ ***************/
+.noteslight, #notes_board tr.even, #notes_thread li.even {
+  background: #000;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #080;
+}
+.notesdark, #notes_board tr.odd, #notes_thread li.odd {
+  background: #020;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #080;
+}
+
+

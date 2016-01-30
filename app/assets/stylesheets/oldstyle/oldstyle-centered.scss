@@ -1,0 +1,30 @@
+
+@import 'oldstyle';
+@import '../centered';
+
+/* assign black background to contents of #nav
+ * instead of #nav itself */
+div#nav { background: none; padding: 0px; }
+div#autoread, div#links,
+div#logo, div#finger { background: #000; }
+
+/* carefully match widths of three leftmost divs */
+div#logo {
+  width: 185px;
+  padding-top:5px;
+  padding-left:5px;
+}
+div#finger {
+  width: 185px;
+  padding-left:5px;
+}
+div#links {
+  width: 150px;
+  padding:20px;
+  /* make black border continuous */
+  margin-top: 0em;
+  padding-top: 2em;
+ }
+
+/* rightmost div looks nice if it's the same width */
+div#autoread { width: 160px; }

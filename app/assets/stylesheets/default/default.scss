@@ -1,0 +1,234 @@
+/* ###Main stuff */
+
+/* postmodern like modern */
+@import '../modern';
+
+/* Fix for PRE double-spacing [bug 21] */
+pre br {display:none}
+/* End fix */
+
+body {
+  color: #000000;
+  background-color: #ffffff;
+  background: #ffffff
+}
+
+p.logo {
+  background: #ffffff asset-url("logo-small.png") no-repeat;
+  padding: 0.3cm 2.6cm
+}
+
+/* Set the main table */
+table.main {border-style: none none none none }
+
+/* Set the main panel */
+table.mainpanel {border-style: none none none none }
+
+/* Set the lower panel */
+table.lowerpanel {border-style: none none none none }
+
+/* Plan Display page stuff */
+
+/* Set the plan container text */
+p.sub {
+  background: #f1f1f1;
+  color: #000000;
+  border-style: solid solid solid solid;
+  border-width: thin;
+  border-color: #a9aaec;
+  margin-bottom: 2px;
+  font-variant: none;
+  padding: 10px
+}
+
+/* Set the autoread container text */
+p.sub2 {
+  background: #e1e1e1;
+  color: #000000;
+  border-style: solid solid solid  solid;
+  border-width: thin;
+  border-color: #ecaaa9;
+  margin-bottom: 2px;
+  font-variant: none
+}
+
+/* Plan Of: Text */
+p.main, #autoread h2, #header li.username span.title {
+  color: #A9AAEC;
+  font-variant: small-caps
+}
+
+/* Last Login: Text */
+p.main2, #header li.lastupdated span.title {
+  margin-left: 1cm;
+  color: #99DC9A;
+  font-variant: small-caps
+}
+
+/* Last Update: Text */
+p.main3, #header li.lastlogin span.title {
+  margin-left: 2cm;
+  color: #DC999A;
+  font-variant: small-caps
+}
+
+/* Name: Text */
+p.main4, #header li.planname span.title {
+  margin-left: 3cm;
+  color: #DC9ADC;
+  font-variant: small-caps
+}
+
+
+
+
+/* ###Regular link stuff */
+
+/* Set the regular image */
+p.imagelev1, #nav li {
+  background: #ffffff asset-url("styles/default/right.gif") no-repeat;
+}
+p.imagelev1 { padding: 0.0cm 0.2cm }
+#nav li     { padding: 0.0cm 0.8cm; margin-left: -0.4cm; }
+
+/* Set regular links */
+a:link {
+  text-decoration: none;
+  color: #a9aaec;
+  font-variant: small-caps;
+  font-family: times;
+}
+
+/* Set visited links */
+a:visited {
+  text-decoration: none;
+  color: #a9aaec;
+  font-family: times;
+}
+
+/* Set onMouseOver type effects */
+a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+  background-color: #a9aaec
+}
+
+/* Set on-plan, to outside links */
+a.onplan{
+  text-decoration: none;
+  color: #0000ff;
+  background: #f1f1f1
+}
+
+/* Set planlove links */
+p.sub a.planlove{
+  text-decoration: none;
+  color: #0000ff;
+  background: #f1f1f1
+}
+
+/* teletyped links should be monospaced */
+p.sub tt a {
+  font-variant: normal;
+  font-family: monospace;
+}
+
+
+
+
+
+/* ###Sub category stuff */
+
+/* Set the sub image */
+p.imagelev2, #autoread li {
+  background: #ffffff asset-url("styles/default/right2.gif") no-repeat;
+}
+p.imagelev2, { padding: 0.0cm 0.2cm }
+#autoread li { padding: 0.0cm 0.8cm; margin-left: -0.4cm; }
+
+/* Set the link for sub categories */
+a.lev2:link, li.autoreadlevel a:link {
+  text-decoration: none;
+  color: #50BED6;
+  font-variant: small-caps;
+  background-color: #ffffff;
+  font-family: times
+}
+
+/* Set visited links for sub categories */
+a.lev2:visited, li.autoreadlevel a:visited {
+  text-decoration: none;
+  color: #50BED6;
+  font-weight: bold;
+  background-color: #ffffff;
+  font-family: times;
+}
+
+/* Set hover links for subcategories */
+a.lev2:hover, li.autoreadlevel a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+  background-color: #50BED6
+}
+
+/* Set non-click text for subcategories */
+p.lev2, li.autoreadlevel {
+  color: #D68080;
+  font-variant: small-caps;
+}
+
+
+
+
+/* ###Sub-sub category stuff */
+
+/* Set the sub-sub image */
+p.imagelev3, #autoread li.autoreadentry {
+  background: #ffffff asset-url("styles/default/right3.gif") no-repeat;
+}
+p.imagelev3                { padding: 0.0cm 0.2cm }
+#autoread li.autoreadentry { padding: 0.0cm 0.8cm; margin-left: -0.4cm; }
+
+/* Set regular links for sub-sub category */
+a.lev3:link, #autoread li.autoreadentry a:link {
+  text-decoration: none;
+  color: #2EDFB4;
+  font-variant: small-caps;
+  background-color: #ffffff;
+  font-family: times
+}
+
+/* Set visited links for sub-sub category */
+a.lev3:visited, #autoread li.autoreadentry a:visited  {
+  text-decoration: none;
+  color: #2EDFB4;
+  font-variant: small-caps;
+  font-weight: bold;
+  background-color: #ffffff;
+  font-family: times;
+}
+
+/* Set hover links for sub-sub category */
+a.lev3:hover, #autoread li.autoreadentry a:hover  {
+  color: #ffffff;
+  text-decoration: underline;
+  background-color: #2EDFB4
+}
+
+
+/***************
+ * Notes Board *
+ ***************/
+.noteslight, #notes_board tr.even {
+  background: #eee;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #a9aaec;
+}
+.notesdark, #notes_board tr.odd {
+  background: #e9eaff;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #eee;
+}
+

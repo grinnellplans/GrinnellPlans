@@ -1,0 +1,134 @@
+/* postmodern like modern */
+@import '../modern';
+
+#af_loading {
+  background: asset-url("styles/oldstyle/progress.gif");
+  width: 16px;
+  height: 16px;
+  display: block;
+  float: left;
+}
+
+/* Fix for PRE double-spacing [bug 21] */
+pre br {display:none}
+/* End fix */
+
+body {
+    color: #000;
+    background-color: #fff;
+    background: #fff
+}
+
+a:link {
+    text-decoration: none;
+    color: #f00
+}
+
+
+a:visited {
+    text-decoration: none;
+    color: #99b
+}
+
+
+a:hover {
+    color: #f00;
+    text-decoration: underline
+}
+
+
+
+p.logo, #logo a {
+    background: #000 asset-url("styles/oldstyle/oldplans.jpg") no-repeat;
+}
+p.logo {
+    padding: 0.4cm 2.25cm
+}
+
+table.mainpanel, div#nav {
+    background: #000
+}
+
+#autoread h2 { color: white; }
+
+/*here
+*/
+
+
+
+table.lowerpanel {
+    color: #fff
+}
+
+p.imagelev1 {
+    background: #000 no-repeat;
+    padding-right: 0.15cm
+}
+
+p.imagelev2 {
+ /*   background: #000
+asset-url("styles/oldstyle/right.gif")
+no-repeat; */
+    margin-left: 0.25cm;
+    padding-right: 0.5cm
+}
+p.imagelev3 {
+/*    background: #000
+asset-url("styles/oldstyle/right.gif")
+no-repeat;*/
+    margin-left: 0.5cm;
+    padding-right: 0.5cm
+}
+
+p.main {
+    font-weight: bold
+}
+
+p.main2 {
+    font-weight: bold
+}
+
+p.main3 {
+    font-weight: bold
+}
+
+p.main4 {
+    font-weight: bold
+}
+td.left {background-color: #000000}
+
+p.sub {
+
+    color: #000;
+    margin-bottom: 2px;
+    padding: 7px;
+    border-top: solid;
+    border-width: thin
+
+}
+
+p.sub2 {
+    background: #e1e1e1;
+    color: #000;
+    border-style: solid;
+    border-width: thin;
+    border-color: #ecaaa9;
+    margin-bottom: 2px
+
+}
+
+/***************
+ * Notes Board *
+ ***************/
+.noteslight, #notes_board tr.even, #notes_thread li.even {
+  background: #fff;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #777;
+}
+.notesdark, #notes_board tr.odd, #notes_thread li.odd {
+  background: #ddd;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #777;
+}

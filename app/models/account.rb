@@ -19,14 +19,14 @@ class Account < ActiveRecord::Base
   has_many :avail_links, through: :opt_links
   has_one :permission, foreign_key: :userid, dependent: :destroy
   has_many :poll_votes, foreign_key: :userid, dependent: :destroy
-  has_one :stylesheet, foreign_key: :userid, dependent: :destroy
   has_many :main_boards, foreign_key: :userid
   has_many :sub_boards, foreign_key: :userid
   has_one :viewed_secret, foreign_key: :userid, dependent: :destroy
   has_one :plan, foreign_key: :user_id, dependent: :destroy
 
-  # Every ruby object already has a .dsiplay() method  so we can't call it display
-  has_one :display_item, foreign_key: :userid, class_name: 'Display', dependent: :destroy
+  has_one :display_preference, foreign_key: :userid, dependent: :destroy
+  has_one :custom_stylesheet, foreign_key: :userid, dependent: :destroy
+  has_one :style, through: :display_preference
 
   before_validation do
     self.show_images = true
