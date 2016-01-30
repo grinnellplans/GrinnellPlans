@@ -116,4 +116,8 @@ class Account < ActiveRecord::Base
     characters.sort_by { rand }
     (1..length).map { characters.sample }.join
   end
+
+  def forem_name
+    "[#{username}]"
+  end
 end
