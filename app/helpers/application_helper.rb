@@ -15,7 +15,15 @@ module ApplicationHelper
   end
 
   def edit_current_plan_path
-    edit_plan_path current_account
+    main_app.edit_plan_path current_account
+  end
+
+  def dynamic_link_helper(helper_name)
+    if respond_to? helper_name
+      send helper_name
+    else
+      main_app.send helper_name
+    end
   end
 
   # Simple helper to render an informational message.
