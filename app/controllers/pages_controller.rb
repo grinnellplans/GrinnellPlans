@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+  skip_before_filter :require_user
   layout 'minimal'
   def index
   end

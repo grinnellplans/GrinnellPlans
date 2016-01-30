@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  before_filter :require_user
 
   def forem_user
     current_account

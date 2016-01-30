@@ -1,7 +1,5 @@
 module Preferences
   class DisplayController < ApplicationController
-    before_filter :require_user
-
     def show
       populate
     end
