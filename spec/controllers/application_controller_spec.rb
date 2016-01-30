@@ -15,12 +15,11 @@ describe ApplicationController do
       allow(controller).to receive(:current_account) { @interest.interested_party }
     end
     it 'is populated' do
-      get :index, {}, autofinger_level: @interest.priority
-      expect(assigns(:autofingers)).to eq([
-        [1, []],
-        [2, [@interest]],
-        [3, []],
-      ])
+      expect(controller.autofingers).to eq({
+        1 => [],
+        2 => [@interest],
+        3 => [],
+      })
     end
   end
 end
