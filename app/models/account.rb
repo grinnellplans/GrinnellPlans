@@ -120,4 +120,8 @@ class Account < ActiveRecord::Base
   def forem_name
     "[#{username}]"
   end
+
+  def forem_admin?
+    is_admin?
+  end
 end

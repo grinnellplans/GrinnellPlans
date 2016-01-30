@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160130023841) do
+ActiveRecord::Schema.define(version: 20160130033929) do
 
   create_table "accounts", primary_key: "userid", force: :cascade do |t|
     t.string   "username",             limit: 16,  default: "",               null: false
@@ -36,7 +36,6 @@ ActiveRecord::Schema.define(version: 20160130023841) do
     t.string   "persistence_token"
     t.string   "password_salt"
     t.string   "perishable_token",                 default: "",               null: false
-    t.boolean  "forem_admin",                      default: false
     t.string   "forem_state",                      default: "pending_review"
     t.boolean  "forem_auto_subscribe",             default: false
   end
