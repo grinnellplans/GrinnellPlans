@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  before_filter :require_user
   protect_from_forgery
 
   # Filters added to this controller apply to all controllers in the application.
