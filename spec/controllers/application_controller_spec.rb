@@ -4,7 +4,6 @@ describe ApplicationController do
   # This sets up an anonymous controller to let us easily test the
   # logic in ApplicationController.
   controller do
-    before_filter :load_autofingers
     def index
       render nothing: true
     end
