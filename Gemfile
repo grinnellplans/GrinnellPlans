@@ -47,6 +47,9 @@ gem "foreman"
 # See: https://administrate-docs.herokuapp.com/
 gem "administrate", "~> 0.1.1"
 
+# Forum gem to replace notes
+gem 'forem', :github => "radar/forem", :branch => "rails4"
+
 group :production do
   #email any errors to people specified in the environment.rb
   gem "exception_notification", git: "git://github.com/rails/exception_notification", require: 'exception_notifier'

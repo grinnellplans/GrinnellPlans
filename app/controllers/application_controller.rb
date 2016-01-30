@@ -1,4 +1,10 @@
 class ApplicationController < ActionController::Base
+
+  def forem_user
+    current_account
+  end
+  helper_method :forem_user
+
   protect_from_forgery
 
   # Filters added to this controller apply to all controllers in the application.
