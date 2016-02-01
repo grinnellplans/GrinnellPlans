@@ -1,6 +1,6 @@
 module Preferences
   class AccountDetailsController < ApplicationController
-    before_filter :require_user, :load_autofingers
+    before_filter :require_user
 
     def show
       populate

@@ -4,7 +4,6 @@ describe ApplicationController do
   # This sets up an anonymous controller to let us easily test the
   # logic in ApplicationController.
   controller do
-    before_filter :load_autofingers
     def index
       render nothing: true
     end
@@ -16,12 +15,11 @@ describe ApplicationController do
       allow(controller).to receive(:current_account) { @interest.interested_party }
     end
     it 'is populated' do
-      get :index, {}, autofinger_level: @interest.priority
-      expect(assigns(:autofingers)).to eq([
-        [1, []],
-        [2, [@interest]],
-        [3, []],
-      ])
+      expect(controller.autofingers).to eq({
+        1 => [],
+        2 => [@interest],
+        3 => [],
+      })
     end
   end
 end

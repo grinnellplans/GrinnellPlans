@@ -1,7 +1,7 @@
 #autoread
   %h2 Autoread List
   %ul
-    - each_with_list_classes(@autofingers) do |keyval, classes|
+    - each_with_list_classes(autofingers) do |keyval, classes|
       - priority, autofinger_entries = keyval
       - classes << (current_autoread?(priority) ? "current" : "notcurrent")
       %li.autoreadlevel{ class: classes }
