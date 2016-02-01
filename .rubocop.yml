@@ -12,6 +12,7 @@ AllCops:
   Exclude:
     - 'vendor/**/*'
     - 'db/schema.rb'
+    - 'app/views/forem'
 
 Style/AccessModifierIndentation:
   EnforcedStyle: indent
