@@ -6,6 +6,7 @@ Forem.moderate_first_post = false
 # Forem.avatar_user_method = :custom_avatar_url
 Forem.per_page = 20
 
+Forem.formatter = Forem::PlansFormatter
 
 Rails.application.config.to_prepare do
   Forem::ApplicationController.layout "notes"
