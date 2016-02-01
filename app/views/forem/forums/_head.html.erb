@@ -1,5 +1,5 @@
 <div id='forum'>
-  <h2>Notes</h2>
+  <h3 class="heading3">Notes</h3>
   <div id='forum_topic_links' class='btn-group'>
     <% unless @topic.try(:new_record?) %>
       <% if can? :create_topic, @forum %>
