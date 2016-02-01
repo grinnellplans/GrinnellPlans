@@ -18,6 +18,10 @@ module ApplicationHelper
     main_app.edit_plan_path current_account
   end
 
+  def notes_path
+    forem.forum_path "default"
+  end
+
   def dynamic_link_helper(helper_name)
     if respond_to? helper_name
       send helper_name
