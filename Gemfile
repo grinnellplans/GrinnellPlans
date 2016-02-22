@@ -74,6 +74,8 @@ group :test, :development do
 
   # Automated checking of code style and correctness
   gem 'rubocop'
+
+  gem "codeclimate-test-reporter", require: nil
 end
 
 group :test do
