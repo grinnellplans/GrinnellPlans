@@ -85,7 +85,7 @@ Style/SingleLineMethods:
   Enabled: true
   AllowIfMethodIsEmpty: true
 
-Style/SingleSpaceBeforeFirstArg:
+Style/SpaceBeforeFirstArg:
   Enabled: true
 
 Style/SpaceAfterColon:
@@ -94,7 +94,7 @@ Style/SpaceAfterColon:
 Style/SpaceAfterComma:
   Enabled: true
 
-Style/SpaceAfterControlKeyword:
+Style/SpaceAroundKeyword:
   Enabled: true
 
 Style/SpaceAfterMethodName:
@@ -118,9 +118,6 @@ Style/SpaceInsideBlockBraces:
 
 Style/SpaceAroundOperators:
   Enabled: true
-  MultiSpaceAllowedForOperators:
-    - '='
-    - '=>'
 
 Style/Tab:
   Enabled: true
