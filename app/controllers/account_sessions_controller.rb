@@ -1,4 +1,5 @@
 class AccountSessionsController < ApplicationController
+  skip_before_filter :require_user, only: [:new, :create]
   layout false
 
   def new

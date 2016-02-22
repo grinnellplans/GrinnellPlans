@@ -1,6 +1,8 @@
 require File.expand_path('../../mailers/notifier.rb', __FILE__)
 
 class AccountsController < ApplicationController
+  skip_before_filter :require_user, only: [:new, :create, :confirm, :resend_confirmation_email]
+
   def new
     @allowed_domains = APP_CONFIG['email_domains'].map {|d| [d] }
   end

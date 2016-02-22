@@ -1,5 +1,6 @@
 class SecretsController < ApplicationController
   # Intentionally allowing unauthenticated users to post secrets
+  skip_before_filter :require_user
 
   # GET /secrets
   def index
