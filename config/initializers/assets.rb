@@ -17,4 +17,6 @@ Rails.application.config.assets.precompile += %w[
   account_sessions.js
   admin.js
   administrate/custom.css
+  forem.js
+  forem.css
 ]

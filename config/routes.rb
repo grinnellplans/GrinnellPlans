@@ -1,4 +1,7 @@
 Plans::Application.routes.draw do
+
+  mount Forem::Engine, :at => '/notes'
+
   namespace :admin do
     DashboardManifest::DASHBOARDS.each do |dashboard_resource|
       resources dashboard_resource

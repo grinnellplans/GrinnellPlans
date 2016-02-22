@@ -1,0 +1,67 @@
+<a name='post-<%= post.id %>'></a>
+<div class="notes_post">
+  <div id='post_<%= post_counter + 1 %>' class='post col-md-12'>
+    <% if post.pending_review? %>
+      <div class='moderation alert'>
+        <%= t(".pending_review") %>
+        <% if forem_admin_or_moderator?(post.topic.forum) %>
+          <% if local_assigns[:mass_moderation] %>
+            <%= render "/forem/posts/moderation_tools", :post => post %>
+          <% else %>
+            <%= form_tag forem.forum_moderate_posts_path(post.topic.forum), :method => :put do %>
+              <%= render "/forem/posts/moderation_tools", :post => post %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+
+    <div class='notes_post_header'>
+      <div class='post_author'>
+        <% if post.user.is_a?(Forem::NilUser) %>
+          <%= t(:deleted) %>
+        <% else %>
+          <%= link_to_if Forem.user_profile_links, post.user.forem_name, [main_app, post.user] %>
+        <% end %>
+      </div>
+      <div class='date post_date'>
+        <a href='#post-<%= post.id %>'>
+          <%= post_time_tag(post) %>
+        </a>
+      </div>
+    </div>
+
+    <div class='notes_post_content'>
+      <p class="sub">
+        <%= forem_format(post.text) %>
+      </p>
+    </div>
+
+    <div class='notes_post_controls'>
+      <% if post.reply_to %>
+        <div class='in-reply-to'>
+          <%= link_to "#{t("forem.post.in_reply_to")} #{post.reply_to.user.forem_name}", "#post-#{post.reply_to.id}" %>
+        </div>
+      <% end %>
+
+      <% if forem_user %>
+        <div class='btn-group'>
+          <% if can?(:reply, post.topic) %>
+            <% if post.topic.can_be_replied_to? %>
+              <%= link_to t('reply', :scope => 'forem.topic'), forem.new_forum_topic_post_path(post.forum, post.topic, :reply_to_id => post.id), :class => "btn btn-primary" %>
+              <%= link_to t('quote', :scope => 'forem.topic'), forem.new_forum_topic_post_path(post.forum, post.topic, :reply_to_id => post.id, :quote => true), :class => "btn btn-success" %>
+            <% end %>
+          <% end %>
+          <% if post.owner_or_admin?(forem_user) %>
+            <% if can?(:edit_post, post.topic.forum) %>
+              <%= link_to t('edit', :scope => 'forem.post'), forem.edit_forum_topic_post_path(post.forum, post.topic, post), :class => "btn btn-info" %>
+            <% end %>
+            <% if can?(:destroy_post, post.topic.forum) %>
+              <%= link_to t('delete', :scope => 'forem.topic'), forem.forum_topic_post_path(post.forum, post.topic, post), :method => :delete, data: { :confirm => t("are_you_sure") }, :class => "btn btn-danger" %>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,5 +1,11 @@
 class ApplicationController < ActionController::Base
   before_filter :require_user
+
+  def forem_user
+    current_account
+  end
+  helper_method :forem_user
+
   protect_from_forgery
 
   # Filters added to this controller apply to all controllers in the application.
@@ -16,15 +22,15 @@ class ApplicationController < ActionController::Base
   end
 
   def require_user
-    redirect_to login_path if current_account.nil?
+    redirect_to main_app.login_path if current_account.nil?
   end
 
   def require_no_user
-    redirect_to root_path if current_account.present?
+    redirect_to main_app.root_path if current_account.present?
   end
 
   def require_admin
-    redirect_to root_path if current_account.nil? || !current_account.is_admin?
+    redirect_to main_app.root_path if current_account.nil? || !current_account.is_admin?
   end
 
   def autofingers

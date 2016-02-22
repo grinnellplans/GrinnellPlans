@@ -4,4 +4,4 @@
     -unless current_account.blank?
       - each_with_list_classes(current_account.nav_links) do |link, classes|
         %li{ class: classes }
-          = link_to link.linkname, send(link.path_helper), method: link.http_method
+          = link_to link.linkname, dynamic_link_helper(link.path_helper), method: link.http_method

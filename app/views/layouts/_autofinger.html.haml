@@ -6,10 +6,10 @@
       - classes << (current_autoread?(priority) ? "current" : "notcurrent")
       %li.autoreadlevel{ class: classes }
         .autoreadname
-          =link_to "Level #{priority}", set_autofinger_level_plans_path(:level=>priority, :return_to=>request.fullpath), {:id=>"set_autoreadlev#{priority}", :class=>"autoreadlink"}
-          =link_to "X", mark_level_as_read_plans_path(:level=>priority, :return_to=>request.fullpath ), {:class=>"markasread", :method=>:put, :data => { :confirm=>"Are you sure you'd like to mark all the Plans on level #{priority} as read?"} }
+          =link_to "Level #{priority}", main_app.set_autofinger_level_plans_path(:level=>priority, :return_to=>request.fullpath), {:id=>"set_autoreadlev#{priority}", :class=>"autoreadlink"}
+          =link_to "X", main_app.mark_level_as_read_plans_path(:level=>priority, :return_to=>request.fullpath ), {:class=>"markasread", :method=>:put, :data => { :confirm=>"Are you sure you'd like to mark all the Plans on level #{priority} as read?"} }
         - unless autofinger_entries.blank?
           %ul
             - each_with_list_classes(autofinger_entries) do |autofinger, classes|
               %li{ class: (classes << "autoreadentry") }<
-                = link_to autofinger.subject_of_interest.username, read_plan_path(autofinger.subject_of_interest.username), class: "planlove"
+                = link_to autofinger.subject_of_interest.username, main_app.read_plan_path(autofinger.subject_of_interest.username), class: "planlove"
