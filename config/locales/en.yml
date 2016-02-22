@@ -20,6 +20,9 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  links:
+    account: Account Information
+    display: Customize Your Page
   date:
     formats:
       default: "%m/%d/%Y %H:%M"
