@@ -63,6 +63,9 @@ group :development do
   gem 'web-console'
 
   gem 'thin'
+
+  # Debugger
+  gem 'byebug'
 end
 
 group :test, :development do
