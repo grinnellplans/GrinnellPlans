@@ -1,14 +1,31 @@
 Plans::Application.routes.draw do
 
-  mount Forem::Engine, :at => '/notes'
-
   namespace :admin do
-    DashboardManifest::DASHBOARDS.each do |dashboard_resource|
-      resources dashboard_resource
-    end
+    resources :accounts
+    resources :autofingers
+    resources :avail_links
+    resources :board_votes
+    resources :custom_stylesheets
+    resources :display_preferences
+    resources :interfaces
+    resources :main_boards
+    resources :opt_links
+    resources :permissions
+    resources :plans
+    resources :poll_choices
+    resources :poll_questions
+    resources :poll_votes
+    resources :secrets
+    resources :styles
+    resources :sub_boards
+    resources :systems
+    resources :tentative_accounts
+    resources :viewed_secrets
 
-    root controller: DashboardManifest::ROOT_DASHBOARD, action: :index
+    root to: "accounts#index"
   end
+
+  mount Forem::Engine, :at => '/notes'
 
   # For more information on routing, see http://guides.rubyonrails.org/routing.html.
 
