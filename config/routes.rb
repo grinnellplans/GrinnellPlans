@@ -31,6 +31,7 @@ Plans::Application.routes.draw do
 
   resources :secrets
 
+  resources :preferences, only: [:index]
   namespace :preferences do
     resource :account, controller: :account_details, only: [:show, :update]
     resource :display, controller: :display, only: [:show, :update]
@@ -59,7 +60,6 @@ Plans::Application.routes.draw do
   delete '/logout' => 'account_sessions#destroy', :as => :logout
 
   # Placeholder routes until we build the real things
-  get "/" => "plans#show", as: :notes
   get "/" => "plans#show", as: :quicklove
   get "/" => "plans#show", as: :polls
   get "/" => "plans#show", as: :random_plan

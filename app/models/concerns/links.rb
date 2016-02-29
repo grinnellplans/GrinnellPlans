@@ -17,7 +17,7 @@ module Links
   PREPEND_LINKS = [
       PermanentLink.new(linkname: "Edit Plan", path_helper: "edit_current_plan_path"),
       PermanentLink.new(linkname: "Search Plans", path_helper: "search_plans_path"),
-      PermanentLink.new(linkname: "Preferences", path_helper: "root_path"),
+      PermanentLink.new(linkname: "Preferences", path_helper: "preferences_path"),
   ]
   APPEND_LINKS = [
       PermanentLink.new(linkname: "Log Out", path_helper: "account_session_path", method: :delete),
