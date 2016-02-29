@@ -91,6 +91,7 @@ GEM
       sass (~> 3.4)
       thor (~> 0.19)
     builder (3.2.2)
+    byebug (6.0.2)
     cancancan (1.13.1)
     capistrano (3.4.0)
       i18n
@@ -277,6 +278,7 @@ PLATFORMS
 DEPENDENCIES
   administrate (~> 0.1.4)
   authlogic
+  byebug
   capistrano
   composite_primary_keys
   crypt3!
