@@ -22,6 +22,15 @@ describe BoardVote do
     @board_vote.sub_board = nil
     expect(@board_vote).not_to be_valid
   end
+
+  it 'is only valid with a -1 or 1 vote' do
+    @board_vote.vote = 1
+    expect(@board_vote).to be_valid
+    @board_vote.vote = -1
+    expect(@board_vote).to be_valid
+    @board_vote.vote = 42
+    expect(@board_vote).not_to be_valid
+  end
 end
 
 # == Schema Information
