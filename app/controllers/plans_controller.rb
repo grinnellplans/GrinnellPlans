@@ -44,8 +44,8 @@ class PlansController < ApplicationController
   end
 
   def planwatch
-    h = unless params[:hours].nil? then params[:hours] else 12 end
-    @plans = Account.where(changed: (Time.now - h.hours)..Time.now)
+    @hours = params[:hours].to_i rescue 12
+    @plans = Account.where(changed: (Time.now - @hours.hours)..Time.now)
   end
 
   def set_autofinger_subscription
