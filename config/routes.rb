@@ -64,7 +64,6 @@ Plans::Application.routes.draw do
   get "/" => "plans#show", as: :quicklove
   get "/" => "plans#show", as: :polls
   get "/" => "plans#show", as: :random_plan
-  # get "/" => "plans#show", as: :recently_updated_plans
   get "/" => "plans#show", as: :recently_created_plans
 
   # adding default route as lowest priority
