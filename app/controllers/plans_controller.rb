@@ -45,7 +45,7 @@ class PlansController < ApplicationController
 
   def planwatch
     @hours = params[:hours].to_i rescue 12
-    @plans = Account.where(changed: (Time.now - @hours.hours)..Time.now)
+    @plans = Account.where(changed: (Time.now - @hours.hours)..Time.now).order(changed: :desc)
   end
 
   def set_autofinger_subscription
