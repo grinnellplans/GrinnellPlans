@@ -43,6 +43,11 @@ class PlansController < ApplicationController
     end
   end
 
+  def planwatch
+    @hours = if params[:hours].to_i < 1 then 12 else params[:hours].to_i end
+    @plans = Account.where(changed: (Time.now - @hours.hours)..Time.now).order(changed: :desc)
+  end
+
   def set_autofinger_subscription
     owner = current_account
     interest = Account.find_by_username(unsafe_params[:id])
