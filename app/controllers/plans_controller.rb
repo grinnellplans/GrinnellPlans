@@ -44,7 +44,7 @@ class PlansController < ApplicationController
   end
 
   def planwatch
-    @hours = params[:hours].to_i rescue 12
+    @hours = if params[:hours].to_i < 1 then 12 else params[:hours].to_i end
     @plans = Account.where(changed: (Time.now - @hours.hours)..Time.now).order(changed: :desc)
   end
 
