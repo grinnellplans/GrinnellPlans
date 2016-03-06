@@ -20,7 +20,7 @@ Plans::Application.routes.draw do
       get :set_autofinger_level
       put :mark_level_as_read
       get :search, as: 'search'
-      get :planwatch, as: :recently_updated
+      get :planwatch
     end
     member do
       get :edit
