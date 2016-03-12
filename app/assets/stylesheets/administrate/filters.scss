@@ -1,15 +1,15 @@
-@import "administrate/base/extends/button";
+@import "administrate/components/buttons";
 
 .filters {
   .button.selected {
-    border: 3px inset $base-button-color;
+    border: 3px inset $action-color;
   }
 }
 
 .approval-widget {
   .approve, .reject {
     border: 3px solid white;
-    @extend %button;
+    @extend .button;
     &.selected {
       border-style: inset;
     }
