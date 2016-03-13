@@ -30,7 +30,7 @@
           =@account.pseudo
 
 .plan_text
-  =@account.plan.generated_html
+  = @plantext
 
 .autofinger-control
   = form_tag set_autofinger_subscription_plan_path, method: :put do

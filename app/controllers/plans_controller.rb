@@ -22,6 +22,13 @@ class PlansController < ApplicationController
     if @account.blank?
       redirect_to action: :search, id: username
     else
+      @plantext = if Block.where(blocking_userid: @account.userid)
+                          .where(blocked_userid: current_account.userid)
+                          .empty?
+        @account.plan.generated_html
+      else
+        "[#{@account.username}] has enabled the block feature. This plan is not available."
+      end
       @viewing_self = username == current_account.username
       @block = Block.where(blocking_userid: current_account.userid)
                     .where(blocked_userid: @account.userid)
