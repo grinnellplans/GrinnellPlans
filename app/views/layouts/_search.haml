@@ -2,5 +2,5 @@
   =form_tag(main_app.search_plans_path, method: :get)do
     %div
       %div{:class=>"form_prompt textinput"}
-        = text_field_tag :id, "", id: :searchname
+        = text_field_tag :q, "", id: :searchname
       = button_tag "Read", {:class=>"submitinput"}

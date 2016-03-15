@@ -1,0 +1,18 @@
+-#TODO
+  =form_tag(main_app.search_plans_path, method: :get)do
+    %div
+      %div{:class=>"form_prompt textinput"}
+        = text_field_tag :q, "", id: :searchname
+      = button_tag "Search", {:class=>"submitinput"}
+
+%ul#search_results
+  - each_with_list_classes(@results) do |result, classes|
+    %li{ class: classes }
+      .result_user_group
+        = link_to result[:plan].account.username, main_app.read_plan_path(result[:plan].account.username), class: "planlove"
+        %span= result[:matches].count
+        %ul.result_sublist
+          - each_with_list_classes(result[:matches]) do |match|
+            %li{ class: classes }
+              - output = match[:text].insert(match[:pos][1], "</b>").insert(match[:pos][0], "<b>")
+              %span= (Sanitize.clean output, elements: ["b", "br"]).html_safe
