@@ -58,7 +58,11 @@ class PlansController < ApplicationController
 
   def planwatch
     @hours = if params[:hours].to_i < 1 then 12 else params[:hours].to_i end
-    @plans = Account.where(changed: (Time.now - @hours.hours)..Time.now).order(changed: :desc)
+    blocks = (Block.where(blocking_userid: current_account.userid).pluck(:blocked_userid) +
+              Block.where(blocked_userid: current_account.userid).pluck(:blocking_userid)).uniq
+    @plans = Account.where(changed: (Time.now - @hours.hours)..Time.now)
+                    .order(changed: :desc)
+                    .where.not(userid: blocks)
   end
 
   def set_autofinger_subscription
