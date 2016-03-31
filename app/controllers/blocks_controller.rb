@@ -1,4 +1,4 @@
-class BlockController < ApplicationController
+class BlocksController < ApplicationController
   before_filter :require_user
 
   def create

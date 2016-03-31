@@ -52,6 +52,6 @@
         = submit_tag 'Unblock this user'
   - else
     .block-control
-      = form_tag block_index_path, method: :post do
+      = form_tag blocks_index_path, method: :post do
         = hidden_field_tag 'target', @account.userid
         = submit_tag 'Block this user'

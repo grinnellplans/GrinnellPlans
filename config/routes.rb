@@ -73,7 +73,7 @@ Plans::Application.routes.draw do
 
   resources :password_resets, except: [:destroy, :show, :index]
 
-  resources :block, only: [:index, :create, :destroy] do
+  resources :blocks, only: [:index, :create, :destroy] do
     get :about, on: :collection
   end
 
