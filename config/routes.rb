@@ -37,7 +37,7 @@ Plans::Application.routes.draw do
       get :set_autofinger_level
       put :mark_level_as_read
       get :search, as: 'search'
-      get :planwatch, as: :recently_updated
+      get :planwatch
     end
     member do
       get :edit
@@ -72,6 +72,10 @@ Plans::Application.routes.draw do
   end
 
   resources :password_resets, except: [:destroy, :show, :index]
+
+  resources :blocks, only: [:index, :create, :destroy] do
+    get :about, on: :collection
+  end
 
   get '/register' => 'accounts#new', :as => :register
   get '/login' => 'account_sessions#new', :as => :login

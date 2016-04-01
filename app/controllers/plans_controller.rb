@@ -1,3 +1,5 @@
+require 'active_support/core_ext/object/try'
+
 class PlansController < ApplicationController
   def edit
     @plan = current_account.plan
@@ -20,6 +22,17 @@ class PlansController < ApplicationController
     if @account.blank?
       redirect_to action: :search, id: username
     else
+      @plantext = if Block.where(blocking_userid: @account.userid)
+                          .where(blocked_userid: current_account.userid)
+                          .empty?
+        @account.plan.generated_html
+      else
+        "[#{@account.username}] has enabled the block feature. This plan is not available."
+      end
+      @viewing_self = username == current_account.username
+      @block = Block.where(blocking_userid: current_account.userid)
+                    .where(blocked_userid: @account.userid)
+                    .first
       Autofinger.mark_plan_as_read(current_account.userid, @account.userid)
     end
   end
@@ -45,7 +58,11 @@ class PlansController < ApplicationController
 
   def planwatch
     @hours = if params[:hours].to_i < 1 then 12 else params[:hours].to_i end
-    @plans = Account.where(changed: (Time.now - @hours.hours)..Time.now).order(changed: :desc)
+    blocks = (Block.where(blocking_userid: current_account.userid).pluck(:blocked_userid) +
+              Block.where(blocked_userid: current_account.userid).pluck(:blocking_userid)).uniq
+    @plans = Account.where(changed: (Time.now - @hours.hours)..Time.now)
+                    .order(changed: :desc)
+                    .where.not(userid: blocks)
   end
 
   def set_autofinger_subscription

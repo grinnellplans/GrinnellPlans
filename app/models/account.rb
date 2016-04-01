@@ -23,6 +23,8 @@ class Account < ActiveRecord::Base
   has_many :sub_boards, foreign_key: :userid
   has_one :viewed_secret, foreign_key: :userid, dependent: :destroy
   has_one :plan, foreign_key: :user_id, dependent: :destroy
+  has_many :source_blocks, class_name: "Block", foreign_key: :blocking_userid
+  has_many :target_blocks, class_name: "Block", foreign_key: :blocked_userid
 
   has_one :display_preference, foreign_key: :userid, dependent: :destroy
   has_one :custom_stylesheet, foreign_key: :userid, dependent: :destroy

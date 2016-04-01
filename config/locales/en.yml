@@ -23,6 +23,7 @@ en:
   links:
     account: Account Information
     display: Customize Your Page
+    blocks: Blocking
   date:
     formats:
       default: "%m/%d/%Y %H:%M"
