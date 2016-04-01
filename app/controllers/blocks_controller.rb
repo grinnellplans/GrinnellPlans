@@ -20,4 +20,9 @@ class BlocksController < ApplicationController
     end
     redirect_to :back, notice: "User #{Account.find_by(userid: blocked).username} has been unblocked."
   end
+
+  def index
+    @account = Account.find_by_username(current_account.username)
+    @blocks = Block.where(blocking_userid: current_account.userid)
+  end
 end
