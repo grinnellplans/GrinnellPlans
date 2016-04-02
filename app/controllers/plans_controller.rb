@@ -49,8 +49,8 @@ class PlansController < ApplicationController
   end
 
   def genesis
-    @days = if params[:days].to_i < 1 then 12 else params[:days].to_i end
-    @plans = Account.where(created: (Time.now - @hours.days)..Time.now).order(created: :desc)
+    @days = if params[:days].to_i < 1 then 5 else params[:days].to_i end
+    @plans = Account.where(created: (Time.now - @days.days)..Time.now).order(created: :desc)
   end
 
   def set_autofinger_subscription
