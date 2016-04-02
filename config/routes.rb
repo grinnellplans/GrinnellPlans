@@ -38,7 +38,7 @@ Plans::Application.routes.draw do
       put :mark_level_as_read
       get :search, as: 'search'
       get :planwatch, as: :recently_updated
-      get :genesis, as: :recently_created_plans
+      get :genesis, as: :recently_created
     end
     member do
       get :edit
