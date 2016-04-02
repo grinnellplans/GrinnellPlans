@@ -1,0 +1,9 @@
+= form_tag({}, method: "get") do
+  = label_tag "days", "Plans updated in the past:"
+  = number_field_tag "days", @days, min: 1, max: 100
+  = label_tag "days", "days"
+%ul
+  - @plans.each do |p|
+    %li
+      = link_to p.username, p.username
+      = p.created_date.strftime "%k:%M %p, %a %B %e"
