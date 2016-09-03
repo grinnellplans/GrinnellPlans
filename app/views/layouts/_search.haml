@@ -3,4 +3,5 @@
     %div
       %div{:class=>"form_prompt textinput"}
         = text_field_tag :q, "", id: :searchname
+      = hidden_field :follow_usernames, true
       = button_tag "Read", {:class=>"submitinput"}

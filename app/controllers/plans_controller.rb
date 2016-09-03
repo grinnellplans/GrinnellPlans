@@ -36,11 +36,10 @@ class PlansController < ApplicationController
 
   def search
     q = params[:q]
-    # TODO: do this step somewhere else
     @account = Account.find_by_username(q)
-    if !@account.blank?
+    if !@account.blank? && params[:follow_usernames]
       redirect_to read_plan_path(id: @account.username)
-    else
+    elsif q.present?
       matching_plans = Plan.where("edit_text LIKE ?", "%#{q}%").joins(:account).order('accounts.username').includes(:account)
       @results = matching_plans.inject([]) do |results, plan|
         matches = []
@@ -55,7 +54,6 @@ class PlansController < ApplicationController
         end
         results << { plan: plan, matches: matches }
       end
-      #TODO: handle no results
     end
   end
 
