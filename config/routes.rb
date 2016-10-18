@@ -37,7 +37,8 @@ Plans::Application.routes.draw do
       get :set_autofinger_level
       put :mark_level_as_read
       get :search, as: 'search'
-      get :planwatch
+      get :planwatch, as: :recently_updated
+      get :genesis, as: :recently_created
     end
     member do
       get :edit
@@ -85,7 +86,6 @@ Plans::Application.routes.draw do
   get "/" => "plans#show", as: :quicklove
   get "/" => "plans#show", as: :polls
   get "/" => "plans#show", as: :random_plan
-  get "/" => "plans#show", as: :recently_created_plans
 
   # adding default route as lowest priority
   # match '/:controller(/:action(/:id))'

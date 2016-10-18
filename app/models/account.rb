@@ -62,6 +62,14 @@ class Account < ActiveRecord::Base
     self[:changed]
   end
 
+  def created_date=(value)
+    self[:created] = value
+  end
+
+  def created_date
+    self[:created]
+  end
+
   # def grad_year_for_user_type
   #    (user_type == 'student' && grad_year > 0) || user_type != 'student'
   #  end
