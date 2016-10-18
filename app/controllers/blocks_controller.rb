@@ -4,7 +4,7 @@ class BlocksController < ApplicationController
   def create
     blocked = params[:target]
     blocking = current_account.userid
-    Block.find_or_create_by(blocking_userid: blocking, blocked_userid: blocked)
+    Block.find_or_create_by(blocking_user_id: blocking, blocked_user_id: blocked)
     redirect_to :back, notice: "You have blocked this user. Blocking a user is one-directional."\
     " Selecting \"Block\" renders the contents of your plan unavailable to this user."\
     " Neither will see any [planlove] by the other, and any updates either make will not show up on each other’s planwatch."\
@@ -14,7 +14,7 @@ class BlocksController < ApplicationController
   def destroy
     blocked = params[:target]
     blocking = current_account.userid
-    b = Block.find_by(blocking_userid: blocking, blocked_userid: blocked)
+    b = Block.find_by(blocking_user_id: blocking, blocked_user_id: blocked)
     unless b.nil?
       b.destroy
     end
@@ -23,6 +23,6 @@ class BlocksController < ApplicationController
 
   def index
     @account = Account.find_by_username(current_account.username)
-    @blocks = Block.where(blocking_userid: current_account.userid)
+    @blocks = Block.where(blocking_user_id: current_account.userid)
   end
 end
