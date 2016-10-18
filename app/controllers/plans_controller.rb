@@ -35,11 +35,25 @@ class PlansController < ApplicationController
   end
 
   def search
-    @account = Account.find_by_username(unsafe_params[:id])
-    if !@account.blank?
+    q = params[:q]
+    @account = Account.find_by_username(q)
+    if !@account.blank? && params[:follow_usernames]
       redirect_to read_plan_path(id: @account.username)
-    else
-      # TODO
+    elsif q.present?
+      matching_plans = Plan.where("edit_text LIKE ?", "%#{q}%").joins(:account).order('accounts.username').includes(:account)
+      @results = matching_plans.inject([]) do |results, plan|
+        matches = []
+        last = 0
+        text = Sanitize.clean(plan.plan, elements: ["br"])
+        while (i = text.index(q, last)).present?
+          start_pos = text.index(/\s/, [0, i - 100].max)
+          end_pos = text.index(/\s/, i + q.length)
+          end_pos = [end_pos, i + q.length + 120].compact.min
+          matches << { text: text.slice(start_pos, end_pos).html_safe, pos: [i - start_pos, i + q.length - start_pos] }
+          last = end_pos
+        end
+        results << { plan: plan, matches: matches }
+      end
     end
   end
 

@@ -140,16 +140,33 @@ describe PlansController do
 
   describe 'search plan' do
     context 'given the username of an existing plan' do
-      let(:plan) { FactoryGirl.create :plan }
-      let!(:username) { plan.account.username }
-      it 'redirects to that plan' do
-        get :search, id: username
-        expect(response).to redirect_to(read_plan_path(username))
+      let!(:account) { FactoryGirl.create :account, username: 'joecool' }
+      let!(:joe_plan) { FactoryGirl.create :plan, account: account }
+      let!(:other_plan) { FactoryGirl.create :plan, edit_text: '[joecool] is cool' }
+
+      it 'redirects to that plan if passed `follow_usernames`' do
+        get :search, q: 'joecool', follow_usernames: true
+        expect(response).to redirect_to(read_plan_path('joecool'))
+      end
+
+      it 'performs search if not passed `follow_usernames`' do
+        get :search, q: 'joecool'
+        expect(response).to be_success
+        expect(assigns :results).to be_present
       end
     end
 
-    context 'given any other input' do
-      #TODO
+    context 'given search term' do
+      let!(:plan_1) { FactoryGirl.create :plan, edit_text: "Hello this has the keyword" }
+      let!(:plan_2) { FactoryGirl.create :plan, edit_text: "No match here" }
+      let!(:plan_3) { FactoryGirl.create :plan, edit_text: "Keyword here too" }
+
+      it 'populates results' do
+        get :search, q: "keyword"
+        results = assigns :results
+        expect(results.length).to eq(2)
+        expect(results.map {|h| h[:plan] }).to contain_exactly(plan_1, plan_3)
+      end
     end
   end
 
