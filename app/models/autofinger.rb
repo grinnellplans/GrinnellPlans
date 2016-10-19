@@ -1,6 +1,4 @@
-require 'composite_primary_keys'
 class Autofinger < ActiveRecord::Base
-  self.primary_keys = :owner, :interest
   self.table_name = :autofinger
   validates_presence_of :owner, :interest, :priority
   validates :priority, inclusion: { in: [0, 1, 2, 3] }

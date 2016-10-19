@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160305220019) do
+ActiveRecord::Schema.define(version: 20161019033415) do
 
   create_table "accounts", primary_key: "userid", force: :cascade do |t|
     t.string   "username",             limit: 16,  default: "",               null: false
@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 20160305220019) do
   add_index "accounts", ["username"], name: "username", unique: true
   add_index "accounts", ["username"], name: "username_2"
 
-  create_table "autofinger", id: false, force: :cascade do |t|
+  create_table "autofinger", force: :cascade do |t|
     t.integer  "owner",    limit: 2, default: 0, null: false
     t.integer  "interest", limit: 2, default: 0, null: false
     t.integer  "priority", limit: 1

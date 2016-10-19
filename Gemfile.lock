@@ -98,8 +98,6 @@ GEM
       rake (>= 10.0.0)
       sshkit (~> 1.3)
     colorize (0.7.7)
-    composite_primary_keys (8.1.1)
-      activerecord (~> 4.2.0)
     daemons (1.2.3)
     datetime_picker_rails (0.0.7)
       momentjs-rails (>= 2.8.1)
@@ -280,7 +278,6 @@ DEPENDENCIES
   authlogic
   byebug
   capistrano
-  composite_primary_keys
   crypt3!
   dynamic_form
   exception_notification!
@@ -304,4 +301,4 @@ DEPENDENCIES
   web-console
 
 BUNDLED WITH
-   1.10.5
+   1.12.5
