@@ -20,6 +20,13 @@ describe PlansController do
     it { is_expected.to be_success }
     it { is_expected.to render_template('show') }
     it { expect(assigns(:account)).to eq @account }
+
+    it 'refuses to show blocking plan' do
+      @other_user = FactoryGirl.create :account
+      @other_user.blocked_users << @account
+      get :show, id: @other_user.username
+      expect(assigns(:plantext)).to match(/has enabled the block feature/)
+    end
   end
 
   describe 'update plan' do
