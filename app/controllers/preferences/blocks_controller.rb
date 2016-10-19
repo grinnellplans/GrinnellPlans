@@ -16,12 +16,9 @@ module Preferences
     end
 
     def destroy
-      blocked = params[:target]
+      blocked = params[:id]
       blocking = current_account.userid
-      b = Block.find_by(blocking_user_id: blocking, blocked_user_id: blocked)
-      unless b.nil?
-        b.destroy
-      end
+      Block.where(blocking_user_id: blocking, blocked_user_id: blocked).delete_all
       redirect_to :back, notice: "User #{Account.find_by(userid: blocked).username} has been unblocked."
     end
 
