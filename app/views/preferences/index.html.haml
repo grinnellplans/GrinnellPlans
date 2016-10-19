@@ -1,8 +1,5 @@
 %h1 Preferences
 %ul#preflist
-  - each_with_list_classes %w[account display] do |section, classes|
+  - each_with_list_classes %w[account display blocks] do |section, classes|
     %li{ class: classes }
       = link_to t("links.#{section}"), dynamic_link_helper("preferences_#{section}_path"), class: "preflink"
-  - each_with_list_classes %w[blocks] do |section, classes|
-    %li{ class: classes }
-      = link_to t("links.#{section}"), dynamic_link_helper("#{section}_path"), class: "preflink"

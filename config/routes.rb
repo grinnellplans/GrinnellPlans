@@ -54,6 +54,9 @@ Plans::Application.routes.draw do
   namespace :preferences do
     resource :account, controller: :account_details, only: [:show, :update]
     resource :display, controller: :display, only: [:show, :update]
+    resources :blocks, controller: :blocks, only: [:index, :create, :destroy] do
+      get :about, on: :collection
+    end
   end
 
   resource :account_session, only: [:new, :create, :destroy]
@@ -73,10 +76,6 @@ Plans::Application.routes.draw do
   end
 
   resources :password_resets, except: [:destroy, :show, :index]
-
-  resources :blocks, only: [:index, :create, :destroy] do
-    get :about, on: :collection
-  end
 
   get '/register' => 'accounts#new', :as => :register
   get '/login' => 'account_sessions#new', :as => :login
