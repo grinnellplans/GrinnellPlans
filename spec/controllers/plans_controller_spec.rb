@@ -52,6 +52,22 @@ describe PlansController do
         post :update, id: @account.username, plan: { edit_text: 'Foo bar baz' }
       }.to change { follow_relationship.reload.updated }.from('0').to('1')
     end
+
+    it "doesn't update autofingers for blocked users" do
+      nice_follower = FactoryGirl.create :account
+      nice_follow_relationship = nice_follower.interests_in_others.create!(subject_of_interest: @account, priority: 1, updated: 0)
+      jerk_follower = FactoryGirl.create :account
+      jerk_follow_relationship = jerk_follower.interests_in_others.create!(subject_of_interest: @account, priority: 1, updated: 0)
+
+      @account.blocked_users << jerk_follower
+      @account.save!
+
+      expect {
+        expect {
+          post :update, id: @account.username, plan: { edit_text: 'Foo bar baz' }
+        }.to change { nice_follow_relationship.reload.updated }.from('0').to('1')
+      }.not_to change { jerk_follow_relationship.reload.updated }
+    end
   end
 
   describe 'mark_level_as_read' do

@@ -13,7 +13,7 @@ class Account < ActiveRecord::Base
 
   has_many :interests_in_others, class_name: 'Autofinger', foreign_key: 'owner', dependent: :destroy
   has_many :people_that_interest_me, class_name: 'Account', through: :interests_in_others, source: 'subject_of_interest', dependent: :destroy
-  has_many :interests_from_others, class_name: 'Autofinger', foreign_key: 'interest', dependent: :destroy
+  has_many :interests_from_others, -> { unblocked }, class_name: 'Autofinger', foreign_key: 'interest', dependent: :destroy
   has_many :board_votes, foreign_key: :userid, dependent: :destroy
   has_many :opt_links, foreign_key: :userid, dependent: :destroy
   has_many :avail_links, through: :opt_links
