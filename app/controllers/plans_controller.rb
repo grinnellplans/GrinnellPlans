@@ -15,7 +15,7 @@ class PlansController < ApplicationController
   end
 
   def show
-    username = unsafe_params[:id] || current_account.username
+    username = params[:id]
     @account = Account.find_by_username(username)
     if @account.blank?
       redirect_to action: :search, id: username
