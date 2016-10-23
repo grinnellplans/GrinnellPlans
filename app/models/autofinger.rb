@@ -1,6 +1,4 @@
-require 'composite_primary_keys'
 class Autofinger < ActiveRecord::Base
-  self.primary_keys = :owner, :interest
   self.table_name = :autofinger
   validates_presence_of :owner, :interest, :priority
   validates :priority, inclusion: { in: [0, 1, 2, 3] }
@@ -9,6 +7,11 @@ class Autofinger < ActiveRecord::Base
   belongs_to :subject_of_interest, foreign_key: :interest, class_name: 'Account'
 
   scope :updated, -> { where(updated: 1) }
+  scope :unblocked, -> do
+    joins(:interested_party, :subject_of_interest)
+      .joins('LEFT OUTER JOIN blocks ON blocks.blocking_user_id = autofinger.interest AND blocks.blocked_user_id = autofinger.owner')
+      .where('blocks.blocking_user_id IS NULL')
+  end
 
   def self.mark_plan_as_read(owner, interest)
     autofinger = Autofinger.where(owner: owner, interest: interest).first

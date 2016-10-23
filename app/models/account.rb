@@ -13,7 +13,7 @@ class Account < ActiveRecord::Base
 
   has_many :interests_in_others, class_name: 'Autofinger', foreign_key: 'owner', dependent: :destroy
   has_many :people_that_interest_me, class_name: 'Account', through: :interests_in_others, source: 'subject_of_interest', dependent: :destroy
-  has_many :interests_from_others, class_name: 'Autofinger', foreign_key: 'interest', dependent: :destroy
+  has_many :interests_from_others, -> { unblocked }, class_name: 'Autofinger', foreign_key: 'interest', dependent: :destroy
   has_many :board_votes, foreign_key: :userid, dependent: :destroy
   has_many :opt_links, foreign_key: :userid, dependent: :destroy
   has_many :avail_links, through: :opt_links
@@ -23,6 +23,9 @@ class Account < ActiveRecord::Base
   has_many :sub_boards, foreign_key: :userid
   has_one :viewed_secret, foreign_key: :userid, dependent: :destroy
   has_one :plan, foreign_key: :user_id, dependent: :destroy
+  has_many :target_blocks, class_name: "Block", foreign_key: :blocked_user_id
+  has_many :source_blocks, class_name: "Block", foreign_key: :blocking_user_id
+  has_many :blocked_users, through: :source_blocks, source: :blocked_user
 
   has_one :display_preference, foreign_key: :userid, dependent: :destroy
   has_one :custom_stylesheet, foreign_key: :userid, dependent: :destroy

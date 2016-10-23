@@ -1,0 +1,12 @@
+%p.info_message Users that you have blocked will not be able to read your plan, and you will not see each other listed in quicklove or search results.
+= link_to "See the FAQ for more information", about_preferences_blocks_path
+%p
+  %b Please be aware that your activity on Notes is still visible to everyone.
+  If you feel this presents a serious problem to you, please
+  %a{ href: "mailto:grinnellplans@gmail.com" } contact the administrators.
+%h2 Blocked Users
+- @blocks.each do |b|
+  = link_to "[#{b.blocked_user.username}]", read_plan_path(id: b.blocked_user.username)
+  = form_tag b, method: :delete do
+    = hidden_field_tag 'target', b.blocked_user.userid
+    = submit_tag "Unblock #{b.blocked_user.username}"

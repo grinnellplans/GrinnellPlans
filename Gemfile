@@ -36,9 +36,6 @@ gem 'jquery-rails'
 # Pagination
 gem 'kaminari'
 
-# supports composite primary keys for legacy tables like Autfinger https://github.com/drnic/composite_primary_keys
-gem "composite_primary_keys"
-
 # Procfile management for ruby.
 gem "foreman"
 

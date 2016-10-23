@@ -30,7 +30,7 @@
           =@account.pseudo
 
 .plan_text
-  =@account.plan.generated_html
+  = @plantext
 
 .autofinger-control
   = form_tag set_autofinger_subscription_plan_path, method: :put do
@@ -43,3 +43,14 @@
     = radio_button_tag :priority, 3
     = label_tag 'priority_3', 3
     = submit_tag 'Save'
+
+- if !@viewing_self
+  - if @block
+    .block-control
+      = form_tag preferences_block_path(@account.userid), method: :delete do
+        = submit_tag 'Unblock this user'
+  - else
+    .block-control
+      = form_tag preferences_blocks_path, method: :post do
+        = hidden_field_tag 'target', @account.userid
+        = submit_tag 'Block this user'
