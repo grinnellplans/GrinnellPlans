@@ -18,6 +18,10 @@ module ApplicationHelper
     main_app.edit_plan_path current_account
   end
 
+  def quicklove_path
+    main_app.search_plans_path q: "[#{current_account.username}]"
+  end
+
   def notes_path
     forem.forum_path "default"
   end
