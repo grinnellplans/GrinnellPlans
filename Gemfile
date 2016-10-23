@@ -60,9 +60,6 @@ group :development do
   gem 'web-console'
 
   gem 'thin'
-
-  # Debugger
-  gem 'byebug'
 end
 
 group :test, :development do
@@ -74,6 +71,9 @@ group :test, :development do
 
   # Automated checking of code style and correctness
   gem 'rubocop'
+
+  # Debugger
+  gem 'byebug'
 end
 
 group :test do
