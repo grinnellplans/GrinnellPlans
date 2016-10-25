@@ -45,7 +45,7 @@ gem "foreman"
 gem "administrate", "~> 0.1.4"
 
 # Forum gem to replace notes
-gem 'forem', :github => "radar/forem", :branch => "rails4"
+gem 'forem', github: "radar/forem", branch: "rails4"
 
 group :production do
   #email any errors to people specified in the environment.rb
