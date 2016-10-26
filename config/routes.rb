@@ -82,7 +82,6 @@ Plans::Application.routes.draw do
   delete '/logout' => 'account_sessions#destroy', :as => :logout
 
   # Placeholder routes until we build the real things
-  get "/" => "plans#show", as: :quicklove
   get "/" => "plans#show", as: :polls
   get "/" => "plans#show", as: :random_plan
 
