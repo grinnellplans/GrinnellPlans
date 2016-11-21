@@ -18,14 +18,14 @@
 ### Subsequent runs:
 
 - Run the development server:
-    ```bash
-    docker-compose up
-    ```
+```bash
+docker-compose up
+```
 - Run tests:
-    ```bash
-    docker-compose run plans ./bin/rspec spec
-    ```
+```bash
+docker-compose run plans ./bin/rspec spec
+```
 - Run a Rails console:
-    ```bash
-    docker-compose run plans ./bin/rails console
-    ```
+```bash
+docker-compose run plans ./bin/rails console
+```
