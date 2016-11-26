@@ -5,6 +5,8 @@ More information in the {Getting Started Guide}[https://github.com/grinnellplans
 
 === Quickstart
 
+If you're already comfortable with Docker, you can use that instead. See the {Docker setup guide}[https://github.com/grinnellplans/GrinnellPlans/blob/master/local-development-using-docker.md].
+
 1. Install {git}[http://git-scm.com/].
 
 2. Install {Ruby & Rails}[http://rubyonrails.org/download].
