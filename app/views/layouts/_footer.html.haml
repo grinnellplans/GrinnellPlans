@@ -3,8 +3,9 @@
     #justupdated
       %div
         Do you read
-        =link_to "TODO", main_app.read_plan_path(:id=>" ")  #TODO
-        , who just updated?
+        = succeed "," do
+          =last_updated_user_link
+        who just updated?
 
   #poweredby
     %div
