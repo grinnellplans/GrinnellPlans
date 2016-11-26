@@ -1,0 +1,11 @@
+version: '2'
+
+services:
+
+    plans:
+        build: .
+        ports:
+            - 3000:3000
+        volumes:
+            - ./:/code
+        command: bundle exec rails server -b 0.0.0.0
