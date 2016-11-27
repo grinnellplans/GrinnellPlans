@@ -1,0 +1,69 @@
+# Grinnell Plans #
+
+Interested in helping out?
+More information in the [Getting Started Guide](https://github.com/grinnellplans/GrinnellPlans/wiki/Getting-Started)!
+
+## Quickstart ##
+
+*If you're already comfortable with Docker, you can use that instead. See the [Docker setup guide](https://github.com/grinnellplans/GrinnellPlans/blob/master/local-development-using-docker.md).*
+
+1. Install [git](http://git-scm.com/).
+
+2. Install [Ruby & Rails](http://rubyonrails.org/download).
+
+3. Bundler will manage the gems for the project:
+
+   ```
+   gem install bundler
+   ```
+
+4. Checkout the project:
+
+   ```
+   git clone git@github.com:grinnellplans/GrinnellPlans.git
+   cd GrinnellPlans
+   ```
+
+5. Install the gems that are specified in Gemfile:
+
+   ```
+   bundle install
+   ```
+
+6. Create the database and seed it with data:
+
+   ```
+   rake db:setup
+   ```
+
+## Rails Project Tasks ##
+
+### Start the server ###
+
+```
+./bin/rails server
+```
+
+Open the app in a browser at http://localhost:3000. You can log in with any of
+the accounts listed in [the seeds](https://github.com/grinnellplans/GrinnellPlans/blob/master/db/seed/development/accounts.yml).
+The password is the same as the username for all development accounts.
+
+### Run the tests ###
+
+```
+./bin/rspec spec
+```
+
+If you haven't made any changes, all the tests should pass, or else you have found a bug.
+
+### Use the Rails console (for debugging, playing with data, etc)###
+
+```
+./bin/rails console
+```
+
+### Check for code style violations from mean old Rubocop ###
+
+```
+./bin/rubocop
+```
