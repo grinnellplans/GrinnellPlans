@@ -121,6 +121,12 @@ describe Account do
       assert_equal @account3, @account2.last_updated_visible_user
     end
 
+    it 'does not return your own account' do
+      @account3.plan.update_attributes(edit_text: 'NEW!!!')
+      @account1.plan.update_attributes(edit_text: 'NEWER!!!')
+      assert_equal @account3, @account1.last_updated_visible_user
+    end
+
     it 'returns the most recently created user if there are no updated users' do
       assert_equal @account3, @account1.last_updated_visible_user
     end
