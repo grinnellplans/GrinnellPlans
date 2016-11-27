@@ -5,7 +5,7 @@ More information in the [Getting Started Guide](https://github.com/grinnellplans
 
 ## Quickstart ##
 
-*If you're already comfortable with Docker, you can use that instead. See the [Docker setup guide](https://github.com/grinnellplans/GrinnellPlans/blob/master/local-development-using-docker.md).*
+*If you're already comfortable with Docker, you can use that instead. See the [Docker setup guide](./local-development-using-docker.md).*
 
 1. Install [git](http://git-scm.com/).
 
@@ -45,7 +45,7 @@ More information in the [Getting Started Guide](https://github.com/grinnellplans
 ```
 
 Open the app in a browser at http://localhost:3000. You can log in with any of
-the accounts listed in [the seeds](https://github.com/grinnellplans/GrinnellPlans/blob/master/db/seed/development/accounts.yml).
+the accounts listed in [the seeds](./db/seed/development/accounts.yml).
 The password is the same as the username for all development accounts.
 
 ### Run the tests ###
