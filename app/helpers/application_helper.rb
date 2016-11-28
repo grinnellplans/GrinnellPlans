@@ -45,4 +45,9 @@ module ApplicationHelper
   def alert_message(title="Alert", &block)
     render layout: "/flash_message", locals: { title: title, css_class: "alertmessage" }, &block
   end
+
+  def last_updated_user_link
+    last_updated = current_account.last_updated_visible_user
+    link_to last_updated.username, main_app.read_plan_path(id: last_updated.username)
+  end
 end

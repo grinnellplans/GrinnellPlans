@@ -90,6 +90,48 @@ describe Account do
     end
   end
 
+  describe '#last_updated_visible_user' do
+    before do
+      ta1 = TentativeAccount.create(username: 'account1', user_type: 'student', email: 'account1@butt.gov', confirmation_token: 'ABCD')
+      @account1 = Account.create_from_tentative(ta1, SecureRandom.hex(10))
+
+      ta2 = TentativeAccount.create(username: 'account2', user_type: 'student', email: 'account2@butt.gov', confirmation_token: 'ABCD')
+      @account2 = Account.create_from_tentative(ta2, SecureRandom.hex(10))
+
+      ta3 = TentativeAccount.create(username: 'account3', user_type: 'student', email: 'account3@butt.gov', confirmation_token: 'ABCD')
+      @account3 = Account.create_from_tentative(ta3, SecureRandom.hex(10))
+    end
+
+    it 'returns the most recently updated user' do
+      @account2.plan.update_attributes(edit_text: 'NEW!!!')
+      assert_equal @account2, @account1.last_updated_visible_user
+    end
+
+    it 'does not return blocked users' do
+      @account1.blocked_users << @account2
+      @account3.plan.update_attributes(edit_text: 'NEW!!!')
+      @account2.plan.update_attributes(edit_text: 'NEWER!!!')
+      assert_equal @account3, @account1.last_updated_visible_user
+    end
+
+    it 'does not return users who are blocking you' do
+      @account1.blocked_users << @account2
+      @account3.plan.update_attributes(edit_text: 'NEW!!!')
+      @account1.plan.update_attributes(edit_text: 'NEWER!!!')
+      assert_equal @account3, @account2.last_updated_visible_user
+    end
+
+    it 'does not return your own account' do
+      @account3.plan.update_attributes(edit_text: 'NEW!!!')
+      @account1.plan.update_attributes(edit_text: 'NEWER!!!')
+      assert_equal @account3, @account1.last_updated_visible_user
+    end
+
+    it 'returns the most recently created user if there are no updated users' do
+      assert_equal @account3, @account1.last_updated_visible_user
+    end
+  end
+
 end
 
 # == Schema Information

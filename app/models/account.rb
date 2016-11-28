@@ -135,4 +135,13 @@ class Account < ActiveRecord::Base
   def forem_admin?
     is_admin?
   end
+
+  def last_updated_visible_user
+    blocked_ids = blocked_users.pluck(:userid)
+    blocking_ids = target_blocks.pluck(:blocking_user_id)
+    ignored_user_ids = blocked_ids + blocking_ids + [userid]
+    ignored_user_ids = 0 if ignored_user_ids.empty?
+    last_updated = Account.where('userid not in (?)', ignored_user_ids).order(changed: :desc).first
+    last_updated || Account.last
+  end
 end
