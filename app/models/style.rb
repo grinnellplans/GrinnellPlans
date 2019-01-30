@@ -1,6 +1,7 @@
 class Style < ActiveRecord::Base
   self.table_name = 'style'
-  validates_presence_of :path
+  validates_presence_of :path, format: {with: /\A\S+.css\z/, message: 'Stylesheet must be CSS'}
+
   has_many :displays, foreign_key: :style
 
   def descr
